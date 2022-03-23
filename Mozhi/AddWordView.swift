@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddWord: View {
+struct AddWordView: View {
     @StateObject var myWordListVM = MyWordListViewModel()
     
     @State private var word: String = ""
@@ -69,6 +69,6 @@ struct AddWord: View {
 
 struct AddWord_Previews: PreviewProvider {
     static var previews: some View {
-        AddWord()
+        AddWordView()
     }
 }

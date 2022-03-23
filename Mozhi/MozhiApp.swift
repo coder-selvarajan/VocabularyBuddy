@@ -11,7 +11,8 @@ import SwiftUI
 struct MozhiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+                .environment(\.colorScheme, .light)
         }
     }
 }
