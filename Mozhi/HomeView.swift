@@ -45,6 +45,7 @@ struct HomeView: View {
                         }
                     }
                 }
+//                .ignoresSafeArea(edges: .top)
                 .onAppear {
                     myWordListVM.getAllMyWordEntries()
                 }

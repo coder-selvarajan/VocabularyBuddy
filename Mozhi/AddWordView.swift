@@ -14,6 +14,7 @@ struct AddWordView: View {
     @State private var tag: String = ""
     @State private var sampleSentence: String = ""
     @State private var meaning: String = ""
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         
@@ -55,6 +56,8 @@ struct AddWordView: View {
                     
                     Button("Save Word") {
                         myWordListVM.saveWord(word: word, tag: tag, meaning: meaning, sampleSentence: sampleSentence)
+                        
+                        presentationMode.wrappedValue.dismiss()
                     }
                     .padding(.vertical)
                     .buttonStyle(.borderedProminent)
