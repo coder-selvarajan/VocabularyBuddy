@@ -48,6 +48,22 @@ extension BaseModel {
         }
     }
     
+    static func getRecentFiveRecords<T>() -> [T] where T: NSManagedObject {
+        
+        let fetchRequest: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))
+        fetchRequest.fetchOffset = 0;
+        fetchRequest.fetchLimit = 5;
+        
+        let sort = NSSortDescriptor(key: #keyPath(MyWord.creationDate), ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        
+        do {
+            return try viewContext.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+    }
+    
     static func byDate<T>(dat: String) -> [T] where T: NSManagedObject {
         
         let fetchRequest: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))

@@ -10,12 +10,21 @@ import CoreData
 
 class MyWordListViewModel: ObservableObject {
     @Published var myWordAllEntries = [MyWordViewModel]()
+    @Published var myWordRecentEntries = [MyWordViewModel]()
     
     func getAllMyWordEntries() {
         let myWordEntries : [MyWord] = MyWord.all()
 
         DispatchQueue.main.async {
             self.myWordAllEntries = myWordEntries.map(MyWordViewModel.init)
+        }
+    }
+    
+    func getRecentWordEntries() {
+        let wordEntries : [MyWord] = MyWord.getRecentFiveRecords()
+
+        DispatchQueue.main.async {
+            self.myWordRecentEntries = wordEntries.map(MyWordViewModel.init)
         }
     }
     

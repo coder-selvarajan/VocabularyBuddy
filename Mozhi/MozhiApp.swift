@@ -12,7 +12,7 @@ struct MozhiApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
-                .environment(\.colorScheme, .light)
+//                .environment(\.colorScheme, .light)
         }
     }
 }
