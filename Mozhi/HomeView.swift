@@ -10,11 +10,25 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var myWordListVM = MyWordListViewModel()
     @State var selection: Int? = nil
+    @State var showList: Int? = nil
     
     func delete(at indexes: IndexSet) {
         //        if let first = indexes.first {
         //            //
         //        }
+    }
+    
+    var Footer: some View {
+        NavigationLink(destination: WordList(), tag: 1, selection: $showList) {
+            Button(action: {
+                // Show word list
+                self.showList = 1
+            }, label: {
+                Text("Show All")
+                    .foregroundColor(.blue)
+                    .padding(.bottom, 7)
+            })
+        }
     }
     
     var body: some View {
@@ -25,7 +39,7 @@ struct HomeView: View {
                 ZStack {
                     List { //(myWordListVM.myWordAllEntries, id: \.id) { myword in
                         
-                        Section(header: Text("Vocabulary"), footer: Text("Show more").foregroundColor(Color.blue)) {
+                        Section(header: Text("Vocabulary"), footer: Footer) {
                             ForEach(myWordListVM.myWordRecentEntries, id:\.id) {myword in
                                 
                                 VStack(alignment: .leading, spacing: 10) {
@@ -47,7 +61,7 @@ struct HomeView: View {
                         }
                     }
                     .padding(0)
-                    .listStyle(.grouped)
+                    .listStyle(.insetGrouped)
                     //                .ignoresSafeArea(edges: .top)
                     .onAppear {
                         myWordListVM.getRecentWordEntries()

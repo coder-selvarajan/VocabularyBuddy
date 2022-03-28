@@ -19,6 +19,7 @@
 		707D1E8C27DE6D130020557E /* MyWordListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8B27DE6D130020557E /* MyWordListViewModel.swift */; };
 		707D1E8E27DE70290020557E /* AddMyWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8D27DE70290020557E /* AddMyWordViewModel.swift */; };
 		707D1E9027DE797D0020557E /* AddWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8F27DE797D0020557E /* AddWordView.swift */; };
+		708AEE4D27F22DC200DCB00A /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AEE4C27F22DC200DCB00A /* WordList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		707D1E8B27DE6D130020557E /* MyWordListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordListViewModel.swift; sourceTree = "<group>"; };
 		707D1E8D27DE70290020557E /* AddMyWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyWordViewModel.swift; sourceTree = "<group>"; };
 		707D1E8F27DE797D0020557E /* AddWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordView.swift; sourceTree = "<group>"; };
+		708AEE4C27F22DC200DCB00A /* WordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				707D1E7427DDD0330020557E /* Preview Content */,
 				707D1E7C27DDE4300020557E /* MozhiModel.xcdatamodeld */,
 				707D1E8F27DE797D0020557E /* AddWordView.swift */,
+				708AEE4C27F22DC200DCB00A /* WordList.swift */,
 			);
 			path = Mozhi;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				707D1E7E27DDE4300020557E /* MozhiModel.xcdatamodeld in Sources */,
+				708AEE4D27F22DC200DCB00A /* WordList.swift in Sources */,
 				707D1E7127DDD02E0020557E /* HomeView.swift in Sources */,
 				707D1E6F27DDD02E0020557E /* MozhiApp.swift in Sources */,
 				707D1E8627DDE8DE0020557E /* MyWord+Extensions.swift in Sources */,
@@ -333,7 +337,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mozhi/Preview Content\"";
-				DEVELOPMENT_TEAM = B2ML2AM8GZ;
+				DEVELOPMENT_TEAM = G6KL98HCPY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -346,7 +350,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.Mozhi;
+				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.mozhi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -362,7 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mozhi/Preview Content\"";
-				DEVELOPMENT_TEAM = B2ML2AM8GZ;
+				DEVELOPMENT_TEAM = G6KL98HCPY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -375,7 +379,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.Mozhi;
+				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.mozhi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
