@@ -14,12 +14,12 @@
 		707D1E7E27DDE4300020557E /* MozhiModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E7C27DDE4300020557E /* MozhiModel.xcdatamodeld */; };
 		707D1E8127DDE5EB0020557E /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8027DDE5EB0020557E /* CoreDataProvider.swift */; };
 		707D1E8427DDE86E0020557E /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8327DDE86E0020557E /* BaseModel.swift */; };
-		707D1E8627DDE8DE0020557E /* MyWord+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8527DDE8DE0020557E /* MyWord+Extensions.swift */; };
+		707D1E8627DDE8DE0020557E /* UserWord+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8527DDE8DE0020557E /* UserWord+Extensions.swift */; };
 		707D1E8927DE6C760020557E /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8827DE6C760020557E /* ExtensionHelper.swift */; };
-		707D1E8C27DE6D130020557E /* MyWordListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8B27DE6D130020557E /* MyWordListViewModel.swift */; };
-		707D1E8E27DE70290020557E /* AddMyWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8D27DE70290020557E /* AddMyWordViewModel.swift */; };
-		707D1E9027DE797D0020557E /* AddWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8F27DE797D0020557E /* AddWordView.swift */; };
-		708AEE4D27F22DC200DCB00A /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AEE4C27F22DC200DCB00A /* WordList.swift */; };
+		707D1E8C27DE6D130020557E /* UserWordListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8B27DE6D130020557E /* UserWordListViewModel.swift */; };
+		707D1E8E27DE70290020557E /* AddUserWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8D27DE70290020557E /* AddUserWordViewModel.swift */; };
+		707D1E9027DE797D0020557E /* AddUserWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8F27DE797D0020557E /* AddUserWordView.swift */; };
+		708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AEE4C27F22DC200DCB00A /* UserWordList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,12 +31,12 @@
 		707D1E7D27DDE4300020557E /* MozhiModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MozhiModel.xcdatamodel; sourceTree = "<group>"; };
 		707D1E8027DDE5EB0020557E /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		707D1E8327DDE86E0020557E /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
-		707D1E8527DDE8DE0020557E /* MyWord+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyWord+Extensions.swift"; sourceTree = "<group>"; };
+		707D1E8527DDE8DE0020557E /* UserWord+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserWord+Extensions.swift"; sourceTree = "<group>"; };
 		707D1E8827DE6C760020557E /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
-		707D1E8B27DE6D130020557E /* MyWordListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordListViewModel.swift; sourceTree = "<group>"; };
-		707D1E8D27DE70290020557E /* AddMyWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyWordViewModel.swift; sourceTree = "<group>"; };
-		707D1E8F27DE797D0020557E /* AddWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordView.swift; sourceTree = "<group>"; };
-		708AEE4C27F22DC200DCB00A /* WordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
+		707D1E8B27DE6D130020557E /* UserWordListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWordListViewModel.swift; sourceTree = "<group>"; };
+		707D1E8D27DE70290020557E /* AddUserWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserWordViewModel.swift; sourceTree = "<group>"; };
+		707D1E8F27DE797D0020557E /* AddUserWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserWordView.swift; sourceTree = "<group>"; };
+		708AEE4C27F22DC200DCB00A /* UserWordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWordList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,17 +69,15 @@
 		707D1E6D27DDD02E0020557E /* Mozhi */ = {
 			isa = PBXGroup;
 			children = (
+				708EC4B427F3005600B91A42 /* Screens */,
 				707D1E8A27DE6CF90020557E /* ViewModels */,
 				707D1E8727DE6C5E0020557E /* Helpers */,
 				707D1E8227DDE85D0020557E /* Models */,
 				707D1E7F27DDE5D40020557E /* Provider */,
 				707D1E6E27DDD02E0020557E /* MozhiApp.swift */,
-				707D1E7027DDD02E0020557E /* HomeView.swift */,
 				707D1E7227DDD0330020557E /* Assets.xcassets */,
 				707D1E7427DDD0330020557E /* Preview Content */,
 				707D1E7C27DDE4300020557E /* MozhiModel.xcdatamodeld */,
-				707D1E8F27DE797D0020557E /* AddWordView.swift */,
-				708AEE4C27F22DC200DCB00A /* WordList.swift */,
 			);
 			path = Mozhi;
 			sourceTree = "<group>";
@@ -104,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				707D1E8327DDE86E0020557E /* BaseModel.swift */,
-				707D1E8527DDE8DE0020557E /* MyWord+Extensions.swift */,
+				707D1E8527DDE8DE0020557E /* UserWord+Extensions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -120,10 +118,20 @@
 		707D1E8A27DE6CF90020557E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				707D1E8B27DE6D130020557E /* MyWordListViewModel.swift */,
-				707D1E8D27DE70290020557E /* AddMyWordViewModel.swift */,
+				707D1E8B27DE6D130020557E /* UserWordListViewModel.swift */,
+				707D1E8D27DE70290020557E /* AddUserWordViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		708EC4B427F3005600B91A42 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				707D1E7027DDD02E0020557E /* HomeView.swift */,
+				707D1E8F27DE797D0020557E /* AddUserWordView.swift */,
+				708AEE4C27F22DC200DCB00A /* UserWordList.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,15 +205,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				707D1E7E27DDE4300020557E /* MozhiModel.xcdatamodeld in Sources */,
-				708AEE4D27F22DC200DCB00A /* WordList.swift in Sources */,
+				708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */,
 				707D1E7127DDD02E0020557E /* HomeView.swift in Sources */,
 				707D1E6F27DDD02E0020557E /* MozhiApp.swift in Sources */,
-				707D1E8627DDE8DE0020557E /* MyWord+Extensions.swift in Sources */,
+				707D1E8627DDE8DE0020557E /* UserWord+Extensions.swift in Sources */,
 				707D1E8127DDE5EB0020557E /* CoreDataProvider.swift in Sources */,
-				707D1E9027DE797D0020557E /* AddWordView.swift in Sources */,
+				707D1E9027DE797D0020557E /* AddUserWordView.swift in Sources */,
 				707D1E8427DDE86E0020557E /* BaseModel.swift in Sources */,
-				707D1E8E27DE70290020557E /* AddMyWordViewModel.swift in Sources */,
-				707D1E8C27DE6D130020557E /* MyWordListViewModel.swift in Sources */,
+				707D1E8E27DE70290020557E /* AddUserWordViewModel.swift in Sources */,
+				707D1E8C27DE6D130020557E /* UserWordListViewModel.swift in Sources */,
 				707D1E8927DE6C760020557E /* ExtensionHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

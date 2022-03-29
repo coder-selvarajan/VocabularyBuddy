@@ -38,7 +38,7 @@ extension BaseModel {
     static func all<T>() -> [T] where T: NSManagedObject {
         
         let fetchRequest: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))
-        let sort = NSSortDescriptor(key: #keyPath(MyWord.creationDate), ascending: false)
+        let sort = NSSortDescriptor(key: #keyPath(UserWord.creationDate), ascending: false)
         fetchRequest.sortDescriptors = [sort]
         
         do {
@@ -54,7 +54,7 @@ extension BaseModel {
         fetchRequest.fetchOffset = 0;
         fetchRequest.fetchLimit = 5;
         
-        let sort = NSSortDescriptor(key: #keyPath(MyWord.creationDate), ascending: false)
+        let sort = NSSortDescriptor(key: #keyPath(UserWord.creationDate), ascending: false)
         fetchRequest.sortDescriptors = [sort]
         
         do {

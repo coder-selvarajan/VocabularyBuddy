@@ -33,23 +33,23 @@ class CoreDataProvider {
     }
     
     func saveWord(newword: String, tag: String, meaning: String, sampleSentences: String){
-        let myWord = MyWord(context: viewContext)
+        let userWord = UserWord(context: viewContext)
         
-        myWord.word = newword
-        myWord.tag = tag
-        myWord.meaning = meaning
-        myWord.sampleSentence = sampleSentences
-        myWord.creationDate = Date()
+        userWord.word = newword
+        userWord.tag = tag
+        userWord.meaning = meaning
+        userWord.sampleSentence = sampleSentences
+        userWord.creationDate = Date()
         
         do {
             try viewContext.save()
         } catch {
-            print("Failed to save myWord entry")
+            print("Failed to save userWord entry")
         }
     }
     
-    func deleteLoo(myWord: MyWord) {
-        viewContext.delete(myWord)
+    func deleteLoo(userWord: UserWord) {
+        viewContext.delete(userWord)
         do {
             try viewContext.save()
         } catch {
@@ -58,8 +58,8 @@ class CoreDataProvider {
         }
     }
     
-    func getAllMyWords() -> [MyWord] {
-        let fetchRequest : NSFetchRequest<MyWord> = MyWord.fetchRequest()
+    func getAllUserWords() -> [UserWord] {
+        let fetchRequest : NSFetchRequest<UserWord> = UserWord.fetchRequest()
         
         do {
             return try viewContext.fetch(fetchRequest)
@@ -68,7 +68,7 @@ class CoreDataProvider {
         }
     }
     
-    func updateMyWord(myWord: MyWord){
+    func updateUserWord(userWord: UserWord){
         do {
             try viewContext.save()
         } catch {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var myWordListVM = MyWordListViewModel()
+    @StateObject var userWordListVM = UserWordListViewModel()
     @State var selection: Int? = nil
     @State var showList: Int? = nil
     
@@ -37,21 +37,28 @@ struct HomeView: View {
             VStack{
                 
                 ZStack {
-                    List { //(myWordListVM.myWordAllEntries, id: \.id) { myword in
+                    List { //(userWordListVM.userWordAllEntries, id: \.id) { userword in
                         
                         Section(header: Text("Vocabulary"), footer: Footer) {
-                            ForEach(myWordListVM.myWordRecentEntries, id:\.id) {myword in
+                            ForEach(userWordListVM.userWordRecentEntries, id:\.id) {userword in
                                 
                                 VStack(alignment: .leading, spacing: 10) {
-                                    Text("\(myword.word)").font(.subheadline).bold()
-                                    Text("\(myword.meaning)").font(.subheadline)
+                                    HStack {
+                                        Text("\(userword.word)")
+                                            .font(.headline)
+                                            .bold()
+                                        Text(" (\(userword.type))  \(userword.meaning)")
+                                            .font(.subheadline)
+                                            .foregroundColor(.secondary)
+                                    }
                                 }
                             }
                             .onDelete(perform: delete)
                         }
+                        .listSectionSeparatorTint(.red)
                         
                         Section(header: Text("Sentences"),  footer: Text("Show more").foregroundColor(Color.blue)) {
-                            ForEach(myWordListVM.myWordRecentEntries, id:\.id) {word in
+                            ForEach(userWordListVM.userWordRecentEntries, id:\.id) {word in
                                 if word.sampleSentence != "" {
                                     VStack(alignment: .leading, spacing: 10) {
                                         Text("\(word.sampleSentence)").font(.subheadline).bold()
@@ -64,15 +71,15 @@ struct HomeView: View {
                     .listStyle(.insetGrouped)
                     //                .ignoresSafeArea(edges: .top)
                     .onAppear {
-                        myWordListVM.getRecentWordEntries()
-                        //myWordListVM.getAllMyWordEntries()
+                        userWordListVM.getRecentWordEntries()
+                        //userWordListVM.getAllUserWordEntries()
                     }
                     
                     VStack {
                         Spacer()
                         HStack {
                             Spacer()
-                            NavigationLink(destination: AddWordView(), tag: 1, selection: $selection) {
+                            NavigationLink(destination: AddUserWordView(), tag: 1, selection: $selection) {
                                 Button(action: {
                                     // Add new word
                                     self.selection = 1
@@ -108,7 +115,7 @@ struct HomeView: View {
                 }
                 
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-                    NavigationLink(destination: AddWordView()) {
+                    NavigationLink(destination: AddUserWordView()) {
                         Image(systemName: "plus")
                         //                            .foregroundColor(.black)
                     }

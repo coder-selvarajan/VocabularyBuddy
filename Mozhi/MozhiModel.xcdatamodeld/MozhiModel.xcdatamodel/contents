@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="MySentence" representedClassName="MySentence" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="UserSentence" representedClassName="UserSentence" syncable="YES" codeGenerationType="class">
         <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="meaning" optional="YES" attributeType="String"/>
         <attribute name="sentence" optional="YES" attributeType="String"/>
         <attribute name="tag" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="MyWord" representedClassName="MyWord" syncable="YES" codeGenerationType="class">
+    <entity name="UserWord" representedClassName="UserWord" syncable="YES" codeGenerationType="class">
         <attribute name="creationDate" optional="YES" attributeType="Date" defaultDateTimeInterval="668854200" usesScalarValueType="NO"/>
         <attribute name="meaning" optional="YES" attributeType="String"/>
         <attribute name="sampleSentence" optional="YES" attributeType="String"/>
         <attribute name="tag" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
         <attribute name="word" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="MyWord" positionX="-36" positionY="18" width="128" height="104"/>
-        <element name="MySentence" positionX="-36" positionY="54" width="128" height="89"/>
+        <element name="UserSentence" positionX="-36" positionY="54" width="128" height="89"/>
+        <element name="UserWord" positionX="-36" positionY="18" width="128" height="119"/>
     </elements>
 </model>
