@@ -11,8 +11,9 @@ struct WordList: View {
     @StateObject var userWordListVM = UserWordListViewModel()
     
     func delete(at indexes: IndexSet) {
-        if let first = indexes.first {
-            userWordListVM.userWordAllEntries.remove(at: first)
+        indexes.forEach { index in
+            let userWord = userWordListVM.userWordAllEntries[index]
+            userWordListVM.deleteWord(word: userWord)
         }
     }
 

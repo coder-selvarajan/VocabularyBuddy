@@ -9,14 +9,14 @@ import Foundation
 import CoreData
 
 class UserWordListViewModel: ObservableObject {
-    @Published var userWordAllEntries = [WordViewModel]()
-    @Published var userWordRecentEntries = [WordViewModel]()
+    @Published var userWordAllEntries = [UserWordViewModel]()
+    @Published var userWordRecentEntries = [UserWordViewModel]()
     
     func getAllUserWordEntries() {
         let userWordEntries : [UserWord] = UserWord.all()
 
         DispatchQueue.main.async {
-            self.userWordAllEntries = userWordEntries.map(WordViewModel.init)
+            self.userWordAllEntries = userWordEntries.map(UserWordViewModel.init)
         }
     }
     
@@ -24,7 +24,7 @@ class UserWordListViewModel: ObservableObject {
         let wordEntries : [UserWord] = UserWord.getRecentFiveRecords()
 
         DispatchQueue.main.async {
-            self.userWordRecentEntries = wordEntries.map(WordViewModel.init)
+            self.userWordRecentEntries = wordEntries.map(UserWordViewModel.init)
         }
     }
     
@@ -38,9 +38,19 @@ class UserWordListViewModel: ObservableObject {
         
         newWordVM.save()
     }
+    
+    func deleteWord(word: UserWordViewModel) {
+        let userWord: UserWord? = UserWord.byId(id: word.id)
+        
+        if let userWord = userWord {
+            userWord.delete()
+            getAllUserWordEntries()
+            getRecentWordEntries()
+        }
+    }
 }
 
-struct WordViewModel: Identifiable {
+struct UserWordViewModel: Identifiable {
     let userWord: UserWord
     
     var id: NSManagedObjectID {
