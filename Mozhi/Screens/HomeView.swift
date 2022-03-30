@@ -50,6 +50,7 @@ struct HomeView: View {
                                         Text(" (\(userword.type))  \(userword.meaning)")
                                             .font(.subheadline)
                                             .foregroundColor(.secondary)
+                                            .lineLimit(1)
                                     }
                                 }
                             }

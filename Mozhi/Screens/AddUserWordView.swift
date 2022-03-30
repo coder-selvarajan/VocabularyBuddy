@@ -22,29 +22,17 @@ struct AddUserWordView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        
         VStack {
-            
             Form {
                 Section {
-                    TextField("Word", text: $word)
-                    Picker("Type", selection: $type) {
+                    TextField("Word", text: $word).font(.title2)
+                    Picker(selection: $type, label: Text("Type")) {
                         Text("Noun").tag(WORD_TYPE.noun)
                         Text("Verb").tag(WORD_TYPE.verb)
                         Text("Adj").tag(WORD_TYPE.adjective)
                         Text("Adv").tag(WORD_TYPE.adverb)
                         Text("Prep").tag(WORD_TYPE.preposition)
                     }.pickerStyle(.segmented)
-                        
-                    VStack(alignment: .leading) {
-                        Text("Tag: ")
-                        TextEditor(text: $tag)
-                            .lineSpacing(20)
-                            .frame(height: 100)
-                            .padding(4)
-                            .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
-                        
-                    }.padding(.vertical, 5)
                     
                     VStack(alignment: .leading) {
                         Text("Meaning: ")
@@ -66,6 +54,16 @@ struct AddUserWordView: View {
                         
                     }.padding(.vertical, 5)
                     
+                    VStack(alignment: .leading) {
+                        Text("Tag: ")
+                        TextEditor(text: $tag)
+                            .lineSpacing(20)
+                            .frame(height: 100)
+                            .padding(4)
+                            .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
+                        
+                    }.padding(.vertical, 5)
+                    
                     Button("Save Word") {
                         userWordListVM.saveWord(word: word,
                                                 tag: tag,
@@ -76,7 +74,7 @@ struct AddUserWordView: View {
                         presentationMode.wrappedValue.dismiss()
                     }
                     .padding(.vertical)
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(.bordered)
                 }
                 
             }
