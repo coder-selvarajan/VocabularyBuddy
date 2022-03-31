@@ -1,6 +1,6 @@
 //
 //  AddUserWordView.swift
-//  Mozhi
+//  Aangilam
 //
 //  Created by Selvarajan on 14/03/22.
 //

@@ -1,6 +1,6 @@
 //
-//  MozhiApp.swift
-//  Mozhi
+//  AangilamApp.swift
+//  Aangilam
 //
 //  Created by Selvarajan on 13/03/22.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct MozhiApp: App {
+struct AangilamApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()

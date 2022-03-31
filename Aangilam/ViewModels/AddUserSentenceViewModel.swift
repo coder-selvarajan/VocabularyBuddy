@@ -1,6 +1,6 @@
 //
 //  AddUserSentenceViewModel.swift
-//  Mozhi
+//  Aangilam
 //
 //  Created by Selvarajan on 31/03/22.
 //

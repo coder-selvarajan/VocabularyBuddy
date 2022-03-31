@@ -12,11 +12,11 @@
 		70564F8627F5ABC800EBA186 /* UserSentenceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8527F5ABC800EBA186 /* UserSentenceListViewModel.swift */; };
 		70564F8827F5AC3800EBA186 /* UserSentence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8727F5AC3800EBA186 /* UserSentence+Extensions.swift */; };
 		70564F8A27F5AC7D00EBA186 /* AddUserSentenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8927F5AC7D00EBA186 /* AddUserSentenceViewModel.swift */; };
-		707D1E6F27DDD02E0020557E /* MozhiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E6E27DDD02E0020557E /* MozhiApp.swift */; };
+		707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E6E27DDD02E0020557E /* AangilamApp.swift */; };
 		707D1E7127DDD02E0020557E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E7027DDD02E0020557E /* HomeView.swift */; };
 		707D1E7327DDD0330020557E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 707D1E7227DDD0330020557E /* Assets.xcassets */; };
 		707D1E7627DDD0330020557E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 707D1E7527DDD0330020557E /* Preview Assets.xcassets */; };
-		707D1E7E27DDE4300020557E /* MozhiModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E7C27DDE4300020557E /* MozhiModel.xcdatamodeld */; };
+		707D1E7E27DDE4300020557E /* AangilamModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E7C27DDE4300020557E /* AangilamModel.xcdatamodeld */; };
 		707D1E8127DDE5EB0020557E /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8027DDE5EB0020557E /* CoreDataProvider.swift */; };
 		707D1E8427DDE86E0020557E /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8327DDE86E0020557E /* BaseModel.swift */; };
 		707D1E8627DDE8DE0020557E /* UserWord+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8527DDE8DE0020557E /* UserWord+Extensions.swift */; };
@@ -33,8 +33,8 @@
 		70564F8527F5ABC800EBA186 /* UserSentenceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSentenceListViewModel.swift; sourceTree = "<group>"; };
 		70564F8727F5AC3800EBA186 /* UserSentence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSentence+Extensions.swift"; sourceTree = "<group>"; };
 		70564F8927F5AC7D00EBA186 /* AddUserSentenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserSentenceViewModel.swift; sourceTree = "<group>"; };
-		707D1E6B27DDD02E0020557E /* Mozhi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mozhi.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		707D1E6E27DDD02E0020557E /* MozhiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MozhiApp.swift; sourceTree = "<group>"; };
+		707D1E6B27DDD02E0020557E /* Aangilam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aangilam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		707D1E6E27DDD02E0020557E /* AangilamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AangilamApp.swift; sourceTree = "<group>"; };
 		707D1E7027DDD02E0020557E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		707D1E7227DDD0330020557E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		707D1E7527DDD0330020557E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		707D1E6227DDD02E0020557E = {
 			isa = PBXGroup;
 			children = (
-				707D1E6D27DDD02E0020557E /* Mozhi */,
+				707D1E6D27DDD02E0020557E /* Aangilam */,
 				707D1E6C27DDD02E0020557E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,12 +71,12 @@
 		707D1E6C27DDD02E0020557E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				707D1E6B27DDD02E0020557E /* Mozhi.app */,
+				707D1E6B27DDD02E0020557E /* Aangilam.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		707D1E6D27DDD02E0020557E /* Mozhi */ = {
+		707D1E6D27DDD02E0020557E /* Aangilam */ = {
 			isa = PBXGroup;
 			children = (
 				708EC4B427F3005600B91A42 /* Screens */,
@@ -84,12 +84,12 @@
 				707D1E8727DE6C5E0020557E /* Helpers */,
 				707D1E8227DDE85D0020557E /* Models */,
 				707D1E7F27DDE5D40020557E /* Provider */,
-				707D1E6E27DDD02E0020557E /* MozhiApp.swift */,
+				707D1E6E27DDD02E0020557E /* AangilamApp.swift */,
 				707D1E7227DDD0330020557E /* Assets.xcassets */,
 				707D1E7427DDD0330020557E /* Preview Content */,
-				707D1E7C27DDE4300020557E /* MozhiModel.xcdatamodeld */,
+				707D1E7C27DDE4300020557E /* AangilamModel.xcdatamodeld */,
 			);
-			path = Mozhi;
+			path = Aangilam;
 			sourceTree = "<group>";
 		};
 		707D1E7427DDD0330020557E /* Preview Content */ = {
@@ -152,9 +152,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		707D1E6A27DDD02E0020557E /* Mozhi */ = {
+		707D1E6A27DDD02E0020557E /* Aangilam */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 707D1E7927DDD0330020557E /* Build configuration list for PBXNativeTarget "Mozhi" */;
+			buildConfigurationList = 707D1E7927DDD0330020557E /* Build configuration list for PBXNativeTarget "Aangilam" */;
 			buildPhases = (
 				707D1E6727DDD02E0020557E /* Sources */,
 				707D1E6827DDD02E0020557E /* Frameworks */,
@@ -164,9 +164,9 @@
 			);
 			dependencies = (
 			);
-			name = Mozhi;
+			name = Aangilam;
 			productName = Mozhi;
-			productReference = 707D1E6B27DDD02E0020557E /* Mozhi.app */;
+			productReference = 707D1E6B27DDD02E0020557E /* Aangilam.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -184,7 +184,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 707D1E6627DDD02E0020557E /* Build configuration list for PBXProject "Mozhi" */;
+			buildConfigurationList = 707D1E6627DDD02E0020557E /* Build configuration list for PBXProject "Aangilam" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -197,7 +197,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				707D1E6A27DDD02E0020557E /* Mozhi */,
+				707D1E6A27DDD02E0020557E /* Aangilam */,
 			);
 		};
 /* End PBXProject section */
@@ -220,11 +220,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				70564F8427F5AAEE00EBA186 /* AddUserSentenceView.swift in Sources */,
-				707D1E7E27DDE4300020557E /* MozhiModel.xcdatamodeld in Sources */,
+				707D1E7E27DDE4300020557E /* AangilamModel.xcdatamodeld in Sources */,
 				70564F8A27F5AC7D00EBA186 /* AddUserSentenceViewModel.swift in Sources */,
 				708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */,
 				707D1E7127DDD02E0020557E /* HomeView.swift in Sources */,
-				707D1E6F27DDD02E0020557E /* MozhiApp.swift in Sources */,
+				707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */,
 				707D1E8627DDE8DE0020557E /* UserWord+Extensions.swift in Sources */,
 				70564F8327F5AAEE00EBA186 /* UserSentenceList.swift in Sources */,
 				707D1E8127DDE5EB0020557E /* CoreDataProvider.swift in Sources */,
@@ -364,7 +364,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Mozhi/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Aangilam/Preview Content\"";
 				DEVELOPMENT_TEAM = G6KL98HCPY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -378,8 +378,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.mozhi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.aangilam;
+				PRODUCT_NAME = Aangilam;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -393,7 +393,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Mozhi/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Aangilam/Preview Content\"";
 				DEVELOPMENT_TEAM = G6KL98HCPY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -407,8 +407,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.mozhi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.aangilam;
+				PRODUCT_NAME = Aangilam;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -418,7 +418,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		707D1E6627DDD02E0020557E /* Build configuration list for PBXProject "Mozhi" */ = {
+		707D1E6627DDD02E0020557E /* Build configuration list for PBXProject "Aangilam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				707D1E7727DDD0330020557E /* Debug */,
@@ -427,7 +427,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		707D1E7927DDD0330020557E /* Build configuration list for PBXNativeTarget "Mozhi" */ = {
+		707D1E7927DDD0330020557E /* Build configuration list for PBXNativeTarget "Aangilam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				707D1E7A27DDD0330020557E /* Debug */,
@@ -439,13 +439,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		707D1E7C27DDE4300020557E /* MozhiModel.xcdatamodeld */ = {
+		707D1E7C27DDE4300020557E /* AangilamModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				707D1E7D27DDE4300020557E /* MozhiModel.xcdatamodel */,
 			);
 			currentVersion = 707D1E7D27DDE4300020557E /* MozhiModel.xcdatamodel */;
-			path = MozhiModel.xcdatamodeld;
+			path = AangilamModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

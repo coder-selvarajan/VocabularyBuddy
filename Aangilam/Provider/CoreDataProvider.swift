@@ -1,6 +1,6 @@
 //
 //  CoreDataProvider.swift
-//  Mozhi
+//  Aangilam
 //
 //  Created by Selvarajan on 13/03/22.
 //
@@ -17,7 +17,7 @@ class CoreDataProvider {
     
     private init() {
         
-        persistentContainer = NSPersistentContainer(name: "MozhiModel")
+        persistentContainer = NSPersistentContainer(name: "AangilamModel")
         persistentContainer.loadPersistentStores { (description, error) in
             if let error = error {
                 fatalError("Failed to initialize Core Data \(error)")

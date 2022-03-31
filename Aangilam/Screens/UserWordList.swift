@@ -1,6 +1,6 @@
 //
 //  WordList.swift
-//  Mozhi
+//  Aangilam
 //
 //  Created by Selvarajan on 28/03/22.
 //

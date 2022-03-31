@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Mozhi
+//  Aangilam
 //
 //  Created by Selvarajan on 13/03/22.
 //
@@ -159,7 +159,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .navigationTitle("Mozhi")
+            .navigationTitle("Aangilam")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
