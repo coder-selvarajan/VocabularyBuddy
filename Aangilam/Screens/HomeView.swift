@@ -53,6 +53,20 @@ struct HomeView: View {
                 ZStack {
                     List { //(userWordListVM.userWordAllEntries, id: \.id) { userword in
                         
+//                        HStack {
+//                            Rectangle()
+//                                .frame(width: 100, height: 75, alignment: .leading)
+//                                .padding(10)
+//                                .foregroundColor(.blue).opacity(0.25)
+//                                .cornerRadius(20)
+//
+//                            Rectangle()
+//                                .frame(width: 100, height: 75, alignment: .leading)
+//                                .padding(10)
+//                                .foregroundColor(.green).opacity(0.25)
+//                                .cornerRadius(20)
+//                        }.listStyle(.plain)
+                        
                         Section(header: Text("Words"), footer: WordListFooter) {
                             ForEach(userWordListVM.userWordRecentEntries, id:\.id) {userword in
                                 
@@ -76,6 +90,10 @@ struct HomeView: View {
                             ForEach(userSentenceListVM.userSentenceRecentEntries, id:\.id) {sentence in
                                 Text("\(sentence.sentence)").font(.subheadline)
                             }
+                        }
+                        
+                        Section(header: Text("Phrases"),  footer: Text("Show All")) {
+                            Text("No Data").font(.subheadline).foregroundColor(.gray)
                         }
                     }
                     .padding(0)
