@@ -2,7 +2,6 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="UserSentence" representedClassName="UserSentence" syncable="YES" codeGenerationType="class">
         <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="meaning" optional="YES" attributeType="String"/>
         <attribute name="sentence" optional="YES" attributeType="String"/>
         <attribute name="tag" optional="YES" attributeType="String"/>
     </entity>
@@ -15,7 +14,7 @@
         <attribute name="word" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="UserSentence" positionX="-36" positionY="54" width="128" height="89"/>
+        <element name="UserSentence" positionX="-36" positionY="54" width="128" height="74"/>
         <element name="UserWord" positionX="-36" positionY="18" width="128" height="119"/>
     </elements>
 </model>

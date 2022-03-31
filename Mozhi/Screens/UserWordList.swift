@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WordList: View {
+struct UserWordList: View {
     @StateObject var userWordListVM = UserWordListViewModel()
     
     func delete(at indexes: IndexSet) {
@@ -43,8 +43,8 @@ struct WordList: View {
     }
 }
 
-struct WordList_Previews: PreviewProvider {
+struct UserWordList_Previews: PreviewProvider {
     static var previews: some View {
-        WordList()
+        UserWordList()
     }
 }

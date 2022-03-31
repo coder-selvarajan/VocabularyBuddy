@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var userWordListVM = UserWordListViewModel()
+    @StateObject var userSentenceListVM = UserSentenceListViewModel()
     @State var selection: Int? = nil
     @State var showList: Int? = nil
     
@@ -18,11 +19,24 @@ struct HomeView: View {
         //        }
     }
     
-    var Footer: some View {
-        NavigationLink(destination: WordList(), tag: 1, selection: $showList) {
+    var WordListFooter: some View {
+        NavigationLink(destination: UserWordList(), tag: 1, selection: $showList) {
             Button(action: {
                 // Show word list
                 self.showList = 1
+            }, label: {
+                Text("Show All")
+                    .foregroundColor(.blue)
+                    .padding(.bottom, 7)
+            })
+        }
+    }
+    
+    var SentenceListFooter: some View {
+        NavigationLink(destination: UserSentenceList(), tag: 2, selection: $showList) {
+            Button(action: {
+                // Show sentence list
+                self.showList = 2
             }, label: {
                 Text("Show All")
                     .foregroundColor(.blue)
@@ -39,7 +53,7 @@ struct HomeView: View {
                 ZStack {
                     List { //(userWordListVM.userWordAllEntries, id: \.id) { userword in
                         
-                        Section(header: Text("Vocabulary"), footer: Footer) {
+                        Section(header: Text("Words"), footer: WordListFooter) {
                             ForEach(userWordListVM.userWordRecentEntries, id:\.id) {userword in
                                 
                                 VStack(alignment: .leading, spacing: 10) {
@@ -58,13 +72,9 @@ struct HomeView: View {
                         }
                         .listSectionSeparatorTint(.red)
                         
-                        Section(header: Text("Sentences"),  footer: Text("Show more").foregroundColor(Color.blue)) {
-                            ForEach(userWordListVM.userWordRecentEntries, id:\.id) {word in
-                                if word.sampleSentence != "" {
-                                    VStack(alignment: .leading, spacing: 10) {
-                                        Text("\(word.sampleSentence)").font(.subheadline).bold()
-                                    }
-                                }
+                        Section(header: Text("Sentences"),  footer: SentenceListFooter) {
+                            ForEach(userSentenceListVM.userSentenceRecentEntries, id:\.id) {sentence in
+                                Text("\(sentence.sentence)").font(.subheadline)
                             }
                         }
                     }
@@ -73,6 +83,7 @@ struct HomeView: View {
                     //                .ignoresSafeArea(edges: .top)
                     .onAppear {
                         userWordListVM.getRecentWordEntries()
+                        userSentenceListVM.getRecentSentenceEntries()
                         //userWordListVM.getAllUserWordEntries()
                     }
                     
@@ -80,25 +91,69 @@ struct HomeView: View {
                         Spacer()
                         HStack {
                             Spacer()
+                                                        
                             NavigationLink(destination: AddUserWordView(), tag: 1, selection: $selection) {
                                 Button(action: {
                                     // Add new word
                                     self.selection = 1
-                                }, label: {
-                                    Text("+")
-                                        .font(.system(.largeTitle))
-                                        .frame(width: 77, height: 70)
-                                        .foregroundColor(Color.white)
-                                        .padding(.bottom, 7)
-                                })
+                                }) {
+                                    Text("+W")
+                                        .font(.headline)
+//                                    Image(systemName: "plus")
+//                                        .font(.title)
+                                }
+                                .padding(15)
+                                .foregroundColor(Color.white)
+                                .background(Color.indigo)
+                                .cornerRadius(8)
+                            }
+                            .padding(.trailing, 5)
+                            .shadow(color: Color.black.opacity(0.3),
+                                    radius: 3,
+                                    x: 3,
+                                    y: 3)
+                            
+                            NavigationLink(destination: AddUserSentenceView(), tag: 2, selection: $selection) {
+                                Button(action: {
+                                    // Add new word
+                                    self.selection = 2
+                                }) {
+                                    Text("+S")
+                                        .font(.headline)
+//                                    Image(systemName: "plus")
+//                                        .font(.title)
+                                }
+                                .padding(15)
+                                .foregroundColor(Color.white)
                                 .background(Color.blue)
-                                .cornerRadius(38.5)
-                                .padding()
-                                .shadow(color: Color.black.opacity(0.3),
-                                        radius: 3,
-                                        x: 3,
-                                        y: 3)
-                            } .ignoresSafeArea()
+                                .cornerRadius(8)
+                            }
+                            .padding(.trailing, 5)
+                            .shadow(color: Color.black.opacity(0.3),
+                                    radius: 3,
+                                    x: 3,
+                                    y: 3)
+                            
+                            NavigationLink(destination: AddUserSentenceView(), tag: 2, selection: $selection) {
+                                Button(action: {
+                                    // Add new word
+                                    self.selection = 2
+                                }) {
+                                    Text("+P")
+                                        .font(.headline)
+//                                    Image(systemName: "plus")
+//                                        .font(.title)
+                                }
+                                .padding(15)
+                                .foregroundColor(Color.white)
+                                .background(Color.green)
+                                .cornerRadius(8)
+                            }
+                            .padding(.trailing, 20)
+                            .shadow(color: Color.black.opacity(0.3),
+                                    radius: 3,
+                                    x: 3,
+                                    y: 3)
                             
                         }
                     }
@@ -116,7 +171,7 @@ struct HomeView: View {
                 }
                 
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-                    NavigationLink(destination: AddUserWordView()) {
+                    NavigationLink(destination: AddUserSentenceView()) {
                         Image(systemName: "plus")
                         //                            .foregroundColor(.black)
                     }
