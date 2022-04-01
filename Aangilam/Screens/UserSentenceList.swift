@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UserSentenceList: View {
     @StateObject var userSentenceListVM = UserSentenceListViewModel()
+    @State private var searchText = ""
     
     func delete(at indexes: IndexSet) {
         indexes.forEach { index in
@@ -19,7 +20,7 @@ struct UserSentenceList: View {
 
     var body: some View {
         List {
-            ForEach(userSentenceListVM.userSentenceAllEntries, id:\.id) {usersentence in
+            ForEach(searchResults, id:\.id) {usersentence in
                 VStack(alignment: .leading, spacing: 10) {
                     Text("\(usersentence.sentence)")
                         .font(.headline)
@@ -30,8 +31,17 @@ struct UserSentenceList: View {
         }
         .listStyle(.plain)
         .navigationTitle(Text("Your Sentence List"))
+        .searchable(text: $searchText)
         .onAppear {
             userSentenceListVM.getAllUserSentenceEntries()
+        }
+    }
+    
+    var searchResults: [UserSentenceViewModel] {
+        if searchText.isEmpty {
+            return userSentenceListVM.userSentenceAllEntries
+        } else {
+            return userSentenceListVM.userSentenceAllEntries.filter { $0.sentence.contains(searchText) }
         }
     }
 }

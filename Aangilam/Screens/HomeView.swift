@@ -189,7 +189,7 @@ struct HomeView: View {
                 }
                 
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-                    NavigationLink(destination: AddUserSentenceView()) {
+                    NavigationLink(destination: Test()) {
                         Image(systemName: "plus")
                         //                            .foregroundColor(.black)
                     }
