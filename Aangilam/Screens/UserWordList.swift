@@ -36,7 +36,7 @@ struct UserWordList: View {
             .onDelete(perform: delete)
         }
         .listStyle(.grouped)
-        .navigationTitle(Text("Your Word List"))
+        .navigationTitle(Text("Word List"))
         .searchable(text: $searchText)
         .onAppear {
             userWordListVM.getAllUserWordEntries()
@@ -51,7 +51,6 @@ struct UserWordList: View {
         }
     }
 }
-
 
 struct UserWordList_Previews: PreviewProvider {
     static var previews: some View {

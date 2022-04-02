@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var userWordListVM = UserWordListViewModel()
     @StateObject var userSentenceListVM = UserSentenceListViewModel()
+    @StateObject var userPhraseListVM = UserPhraseListViewModel()
     @State var selection: Int? = nil
     @State var showList: Int? = nil
     
@@ -37,6 +38,19 @@ struct HomeView: View {
             Button(action: {
                 // Show sentence list
                 self.showList = 2
+            }, label: {
+                Text("Show All")
+                    .foregroundColor(.blue)
+                    .padding(.bottom, 7)
+            })
+        }
+    }
+    
+    var PhraseListFooter: some View {
+        NavigationLink(destination: UserPhraseList(), tag: 3, selection: $showList) {
+            Button(action: {
+                // Show phrase list
+                self.showList = 3
             }, label: {
                 Text("Show All")
                     .foregroundColor(.blue)
@@ -92,8 +106,10 @@ struct HomeView: View {
                             }
                         }
                         
-                        Section(header: Text("Phrases"),  footer: Text("Show All")) {
-                            Text("No Data").font(.subheadline).foregroundColor(.gray)
+                        Section(header: Text("Phrases / Idioms"),  footer: PhraseListFooter) {
+                            ForEach(userPhraseListVM.userPhraseRecentEntries, id:\.id) {phrase in
+                                Text("\(phrase.phrase)").font(.subheadline)
+                            }
                         }
                     }
                     .padding(0)
@@ -102,7 +118,7 @@ struct HomeView: View {
                     .onAppear {
                         userWordListVM.getRecentWordEntries()
                         userSentenceListVM.getRecentSentenceEntries()
-                        //userWordListVM.getAllUserWordEntries()
+                        userPhraseListVM.getRecentPhraseEntries()
                     }
                     
                     VStack {
@@ -152,10 +168,10 @@ struct HomeView: View {
                                     x: 3,
                                     y: 3)
                             
-                            NavigationLink(destination: AddUserSentenceView(), tag: 2, selection: $selection) {
+                            NavigationLink(destination: AddUserPhraseView(), tag: 3, selection: $selection) {
                                 Button(action: {
                                     // Add new word
-                                    self.selection = 2
+                                    self.selection = 3
                                 }) {
                                     Text("+P")
                                         .font(.headline)

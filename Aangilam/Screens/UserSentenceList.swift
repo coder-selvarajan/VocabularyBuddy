@@ -30,7 +30,7 @@ struct UserSentenceList: View {
             .onDelete(perform: delete)
         }
         .listStyle(.plain)
-        .navigationTitle(Text("Your Sentence List"))
+        .navigationTitle(Text("Sentence List"))
         .searchable(text: $searchText)
         .onAppear {
             userSentenceListVM.getAllUserSentenceEntries()

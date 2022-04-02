@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="UserPhrase" representedClassName="UserPhrase" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="Date" defaultDateTimeInterval="670609800" usesScalarValueType="NO"/>
+        <attribute name="example" optional="YES" attributeType="String"/>
+        <attribute name="meaning" optional="YES" attributeType="String"/>
+        <attribute name="phrase" optional="YES" attributeType="String"/>
+        <attribute name="tag" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="UserSentence" representedClassName="UserSentence" syncable="YES" codeGenerationType="class">
         <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="sentence" optional="YES" attributeType="String"/>
@@ -16,5 +23,6 @@
     <elements>
         <element name="UserSentence" positionX="-36" positionY="54" width="128" height="74"/>
         <element name="UserWord" positionX="-36" positionY="18" width="128" height="119"/>
+        <element name="UserPhrase" positionX="-36" positionY="63" width="128" height="104"/>
     </elements>
 </model>
