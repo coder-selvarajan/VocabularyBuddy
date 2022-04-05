@@ -67,19 +67,47 @@ struct HomeView: View {
                 ZStack {
                     List { //(userWordListVM.userWordAllEntries, id: \.id) { userword in
                         
-//                        HStack {
-//                            Rectangle()
-//                                .frame(width: 100, height: 75, alignment: .leading)
-//                                .padding(10)
-//                                .foregroundColor(.blue).opacity(0.25)
-//                                .cornerRadius(20)
-//
-//                            Rectangle()
-//                                .frame(width: 100, height: 75, alignment: .leading)
-//                                .padding(10)
-//                                .foregroundColor(.green).opacity(0.25)
-//                                .cornerRadius(20)
-//                        }.listStyle(.plain)
+                        ScrollView (.horizontal, showsIndicators: false) {
+                            HStack {
+                                Button(action: {
+                                    //
+                                }) {
+                                    ZStack {
+                                        Rectangle()
+                                            .frame(width: 150, height: 85, alignment: .leading)
+                                        //                                    .padding(10)
+                                            .foregroundColor(.pink).opacity(0.35)
+                                            .cornerRadius(5)
+                                        
+                                        Text("Flash Card")
+                                            .font(.title2)
+                                            .foregroundColor(.black)
+                                            .frame(width: 80, height: 120, alignment: .center)
+                                    }
+                                }
+                                
+                                Button(action: {
+                                    //
+                                }) {
+                                    ZStack {
+                                        Rectangle()
+                                            .frame(width: 150, height: 85, alignment: .leading)
+                                            .padding(10)
+                                            .foregroundColor(.orange).opacity(0.35)
+                                            .cornerRadius(5)
+                                        Text("Random Pick")
+                                            .font(.title2)
+                                            .foregroundColor(.black)
+                                            .frame(width: 80, height: 120, alignment: .center)
+                                    }
+                                }
+                                
+                            }
+                            .padding(0)
+                        }
+                        .padding(0)
+                        .listRowBackground(Color.clear)
+                        
                         
                         Section(header: Text("Words"), footer: WordListFooter) {
                             ForEach(userWordListVM.userWordRecentEntries, id:\.id) {userword in
@@ -125,7 +153,7 @@ struct HomeView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                                                        
+                            
                             NavigationLink(destination: AddUserWordView(), tag: 1, selection: $selection) {
                                 Button(action: {
                                     // Add new word
@@ -133,8 +161,8 @@ struct HomeView: View {
                                 }) {
                                     Text("+W")
                                         .font(.headline)
-//                                    Image(systemName: "plus")
-//                                        .font(.title)
+                                    //                                    Image(systemName: "plus")
+                                    //                                        .font(.title)
                                 }
                                 .padding(15)
                                 .foregroundColor(Color.white)
@@ -154,8 +182,8 @@ struct HomeView: View {
                                 }) {
                                     Text("+S")
                                         .font(.headline)
-//                                    Image(systemName: "plus")
-//                                        .font(.title)
+                                    //                                    Image(systemName: "plus")
+                                    //                                        .font(.title)
                                 }
                                 .padding(15)
                                 .foregroundColor(Color.white)
@@ -175,8 +203,8 @@ struct HomeView: View {
                                 }) {
                                     Text("+P")
                                         .font(.headline)
-//                                    Image(systemName: "plus")
-//                                        .font(.title)
+                                    //                                    Image(systemName: "plus")
+                                    //                                        .font(.title)
                                 }
                                 .padding(15)
                                 .foregroundColor(Color.white)

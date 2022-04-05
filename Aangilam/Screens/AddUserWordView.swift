@@ -7,25 +7,42 @@
 
 import SwiftUI
 
-enum WORD_TYPE : String {
-    case noun = "n", verb = "v", adjective = "adj", adverb = "adv", preposition = "pre";
-}
+
 
 struct AddUserWordView: View {
     @StateObject var userWordListVM = UserWordListViewModel()
-    
+    @State private var mode: String = "New"
     @State private var word: String = ""
     @State private var type: WORD_TYPE = WORD_TYPE.noun
     @State private var tag: String = ""
     @State private var sampleSentence: String = ""
     @State private var meaning: String = ""
+    
     @Environment(\.presentationMode) var presentationMode
+    
+//    init(){
+//        // default constructor
+//    }
+//    
+//    init(mode1: String,
+//         word1: String,
+//         type1: WORD_TYPE,
+//         tag1: String,
+//         sampleSentence1: String,
+//         meaning1: String){
+//        mode = mode1
+//        word = word1
+//        type = type1
+//        tag = tag1
+//        sampleSentence = sampleSentence1
+//        meaning = meaning1
+//    }
     
     var body: some View {
         VStack {
             Form {
                 Section {
-                    TextField("Word", text: $word).font(.title2)
+                    TextField("Word \(mode)", text: $word).font(.title2)
                     Picker(selection: $type, label: Text("Type")) {
                         Text("Noun").tag(WORD_TYPE.noun)
                         Text("Verb").tag(WORD_TYPE.verb)

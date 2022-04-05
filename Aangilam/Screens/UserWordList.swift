@@ -21,17 +21,21 @@ struct UserWordList: View {
     var body: some View {
         List {
             ForEach(searchResults, id:\.id) {userword in
-                VStack(alignment: .leading, spacing: 10) {
-                    HStack {
-                        Text("\(userword.word)")
-                            .font(.headline)
-                            .bold()
-                        Text(" (\(userword.type))")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
-                    Text("\(userword.meaning)").font(.subheadline).foregroundColor(.secondary)
-                }
+                NavigationLink(
+                    destination: AddUserWordView(),
+                    label: {
+                        VStack(alignment: .leading, spacing: 10) {
+                            HStack {
+                                Text("\(userword.word)")
+                                    .font(.headline)
+                                    .bold()
+                                Text(" (\(userword.type))")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                            Text("\(userword.meaning)").font(.subheadline).foregroundColor(.secondary)
+                        }
+                    })
             }
             .onDelete(perform: delete)
         }
