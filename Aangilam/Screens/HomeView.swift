@@ -69,8 +69,9 @@ struct HomeView: View {
                         
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
-                                Button(action: {
-                                    //
+                                NavigationLink(destination: FlipCardGame(), tag: 11, selection: $selection) {
+                                    Button(action: {
+                                        self.selection = 11
                                 }) {
                                     ZStack {
                                         Rectangle()
@@ -79,13 +80,13 @@ struct HomeView: View {
                                             .foregroundColor(.pink).opacity(0.35)
                                             .cornerRadius(5)
                                         
-                                        Text("Flash Card")
+                                        Text("Flip Card")
                                             .font(.title2)
                                             .foregroundColor(.black)
                                             .frame(width: 80, height: 120, alignment: .center)
                                     }
                                 }
-                                
+                                }
                                 Button(action: {
                                     //
                                 }) {

@@ -27,6 +27,8 @@
 		707D1E9027DE797D0020557E /* AddUserWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8F27DE797D0020557E /* AddUserWordView.swift */; };
 		708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AEE4C27F22DC200DCB00A /* UserWordList.swift */; };
 		709A281127F6ED300018FC37 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709A281027F6ED300018FC37 /* Test.swift */; };
+		70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85D27FD60CF00618D66 /* FlipView.swift */; };
+		70A6B86027FD654E00618D66 /* FlipCardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85F27FD654E00618D66 /* FlipCardGame.swift */; };
 		70DFA4C027F8B28D007FADB1 /* UserPhrase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */; };
 		70DFA4C327F8B2DC007FADB1 /* AddUserPhraseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4C127F8B2DC007FADB1 /* AddUserPhraseViewModel.swift */; };
 		70DFA4C427F8B2DC007FADB1 /* UserPhraseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4C227F8B2DC007FADB1 /* UserPhraseListViewModel.swift */; };
@@ -56,6 +58,8 @@
 		707D1E8F27DE797D0020557E /* AddUserWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserWordView.swift; sourceTree = "<group>"; };
 		708AEE4C27F22DC200DCB00A /* UserWordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWordList.swift; sourceTree = "<group>"; };
 		709A281027F6ED300018FC37 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		70A6B85D27FD60CF00618D66 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
+		70A6B85F27FD654E00618D66 /* FlipCardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipCardGame.swift; sourceTree = "<group>"; };
 		70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPhrase+Extensions.swift"; sourceTree = "<group>"; };
 		70DFA4C127F8B2DC007FADB1 /* AddUserPhraseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserPhraseViewModel.swift; sourceTree = "<group>"; };
 		70DFA4C227F8B2DC007FADB1 /* UserPhraseListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPhraseListViewModel.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				707D1E8F27DE797D0020557E /* AddUserWordView.swift */,
 				708AEE4C27F22DC200DCB00A /* UserWordList.swift */,
 				709A281027F6ED300018FC37 /* Test.swift */,
+				70A6B85D27FD60CF00618D66 /* FlipView.swift */,
+				70A6B85F27FD654E00618D66 /* FlipCardGame.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -252,6 +258,7 @@
 				70DFA4C427F8B2DC007FADB1 /* UserPhraseListViewModel.swift in Sources */,
 				707D1E7127DDD02E0020557E /* HomeView.swift in Sources */,
 				707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */,
+				70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */,
 				707D1E8627DDE8DE0020557E /* UserWord+Extensions.swift in Sources */,
 				70564F8327F5AAEE00EBA186 /* UserSentenceList.swift in Sources */,
 				707D1E8127DDE5EB0020557E /* CoreDataProvider.swift in Sources */,
@@ -260,6 +267,7 @@
 				70564F8627F5ABC800EBA186 /* UserSentenceListViewModel.swift in Sources */,
 				70DFA4C027F8B28D007FADB1 /* UserPhrase+Extensions.swift in Sources */,
 				70564F8827F5AC3800EBA186 /* UserSentence+Extensions.swift in Sources */,
+				70A6B86027FD654E00618D66 /* FlipCardGame.swift in Sources */,
 				707D1E8E27DE70290020557E /* AddUserWordViewModel.swift in Sources */,
 				707D1E8C27DE6D130020557E /* UserWordListViewModel.swift in Sources */,
 				707D1E8927DE6C760020557E /* ExtensionHelper.swift in Sources */,
