@@ -28,6 +28,13 @@ class UserWordListViewModel: ObservableObject {
         }
     }
     
+    func pickRandomWord() -> UserWordViewModel {
+        print(userWordAllEntries.count)
+        let randomNumber: Int = Int.random(in: 1..<userWordAllEntries.count)
+        let word = userWordAllEntries[randomNumber]
+        return word
+    }
+    
     func saveWord(word: String, tag: String, meaning: String, sampleSentence: String, type: String){
         let newWordVM = AddUserWordViewModel()
         newWordVM.word = word

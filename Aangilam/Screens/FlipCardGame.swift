@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FlipCardGame: View {
+    @StateObject var userWordListVM = UserWordListViewModel()
     @State var word: String = "Enchanting"
     @State var meaning: String = "Feeling of extreme happiness"
     
@@ -24,8 +25,9 @@ struct FlipCardGame: View {
             Spacer()
             
             Button {
-                word = "Demystify"
-                meaning = "Explaing some concepts"
+                let wordObject = userWordListVM.pickRandomWord()
+                word = wordObject.word
+                meaning = wordObject.meaning
             } label: {
                 Text("NEXT").font(.title2).foregroundColor(Color.white)
             }.padding().background(Color.pink)
@@ -34,12 +36,15 @@ struct FlipCardGame: View {
 
         }
         .navigationTitle("Flip Card Game")
-        .background(Color.pink.opacity(0.2)).ignoresSafeArea()
+        .onAppear(){
+            userWordListVM.getAllUserWordEntries()
+        }
+//        .background(Color.pink.opacity(0.2)).ignoresSafeArea()
     }
 }
 
-struct FlipCardGame_Previews: PreviewProvider {
-    static var previews: some View {
-        FlipCardGame()
-    }
-}
+//struct FlipCardGame_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FlipCardGame()
+//    }
+//}

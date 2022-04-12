@@ -33,11 +33,7 @@ struct FlipView<Front, Back>: View where Front: View, Back: View {
         .padding()
         .frame(height: 200)
         .frame(maxWidth: .infinity)
-        .background(Color.pink.opacity(0.65))
-//        .overlay(
-//            Rectangle()
-//                .stroke(Color.gray, lineWidth: 1)
-//        )
+        .background(Color.gray.opacity(0.2))
         .padding()
         .onTapGesture {
             flipFlashcard()

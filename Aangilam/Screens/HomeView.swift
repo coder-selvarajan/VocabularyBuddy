@@ -75,14 +75,13 @@ struct HomeView: View {
                                 }) {
                                     ZStack {
                                         Rectangle()
-                                            .frame(width: 150, height: 85, alignment: .leading)
-                                        //                                    .padding(10)
-                                            .foregroundColor(.pink).opacity(0.35)
-                                            .cornerRadius(5)
+                                            .foregroundColor(.pink)
+                                            .frame(width: 140, height: 80, alignment: .leading)
+                                            .cornerRadius(10)
                                         
                                         Text("Flip Card")
                                             .font(.title2)
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.white)
                                             .frame(width: 80, height: 120, alignment: .center)
                                     }
                                 }
@@ -92,13 +91,14 @@ struct HomeView: View {
                                 }) {
                                     ZStack {
                                         Rectangle()
-                                            .frame(width: 150, height: 85, alignment: .leading)
+                                            .foregroundColor(.orange)
+                                            .frame(width: 140, height: 80, alignment: .leading)
+                                            .cornerRadius(10)
                                             .padding(10)
-                                            .foregroundColor(.orange).opacity(0.35)
-                                            .cornerRadius(5)
+                                            
                                         Text("Random Pick")
                                             .font(.title2)
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.white)
                                             .frame(width: 80, height: 120, alignment: .center)
                                     }
                                 }
