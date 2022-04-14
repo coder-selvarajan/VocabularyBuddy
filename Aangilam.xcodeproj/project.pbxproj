@@ -29,6 +29,7 @@
 		709A281127F6ED300018FC37 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709A281027F6ED300018FC37 /* Test.swift */; };
 		70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85D27FD60CF00618D66 /* FlipView.swift */; };
 		70A6B86027FD654E00618D66 /* FlipCardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85F27FD654E00618D66 /* FlipCardGame.swift */; };
+		70A745FF2808A7F5005892E1 /* RandomSentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A745FE2808A7F5005892E1 /* RandomSentenceView.swift */; };
 		70DFA4C027F8B28D007FADB1 /* UserPhrase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */; };
 		70DFA4C327F8B2DC007FADB1 /* AddUserPhraseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4C127F8B2DC007FADB1 /* AddUserPhraseViewModel.swift */; };
 		70DFA4C427F8B2DC007FADB1 /* UserPhraseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4C227F8B2DC007FADB1 /* UserPhraseListViewModel.swift */; };
@@ -60,6 +61,7 @@
 		709A281027F6ED300018FC37 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		70A6B85D27FD60CF00618D66 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		70A6B85F27FD654E00618D66 /* FlipCardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipCardGame.swift; sourceTree = "<group>"; };
+		70A745FE2808A7F5005892E1 /* RandomSentenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomSentenceView.swift; sourceTree = "<group>"; };
 		70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPhrase+Extensions.swift"; sourceTree = "<group>"; };
 		70DFA4C127F8B2DC007FADB1 /* AddUserPhraseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserPhraseViewModel.swift; sourceTree = "<group>"; };
 		70DFA4C227F8B2DC007FADB1 /* UserPhraseListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPhraseListViewModel.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				709A281027F6ED300018FC37 /* Test.swift */,
 				70A6B85D27FD60CF00618D66 /* FlipView.swift */,
 				70A6B85F27FD654E00618D66 /* FlipCardGame.swift */,
+				70A745FE2808A7F5005892E1 /* RandomSentenceView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				7013929727FC01FB00DA7DDF /* Global.swift in Sources */,
 				70DFA4C327F8B2DC007FADB1 /* AddUserPhraseViewModel.swift in Sources */,
 				70564F8A27F5AC7D00EBA186 /* AddUserSentenceViewModel.swift in Sources */,
+				70A745FF2808A7F5005892E1 /* RandomSentenceView.swift in Sources */,
 				708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */,
 				709A281127F6ED300018FC37 /* Test.swift in Sources */,
 				70DFA4C427F8B2DC007FADB1 /* UserPhraseListViewModel.swift in Sources */,

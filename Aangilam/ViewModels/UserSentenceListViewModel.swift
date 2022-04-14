@@ -28,6 +28,12 @@ class UserSentenceListViewModel: ObservableObject {
         }
     }
     
+    func pickRandomSentence() -> UserSentenceViewModel {
+        let randomNumber: Int = Int.random(in: 1..<userSentenceAllEntries.count)
+        let sentence = userSentenceAllEntries[randomNumber]
+        return sentence
+    }
+    
     func saveSentence(sentence: String, tag: String){
         let newSentenceVM = AddUserSentenceViewModel()
         newSentenceVM.tag = tag

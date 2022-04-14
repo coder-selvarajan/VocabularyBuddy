@@ -30,12 +30,12 @@ struct FlipCardGame: View {
                 meaning = wordObject.meaning
             } label: {
                 Text("NEXT").font(.title2).foregroundColor(Color.white)
-            }.padding().background(Color.pink)
+            }.padding().background(Color.mint).cornerRadius(10)
             
             Spacer()
 
         }
-        .navigationTitle("Flip Card Game")
+        .navigationTitle("Word Flip Game")
         .onAppear(){
             userWordListVM.getAllUserWordEntries()
         }

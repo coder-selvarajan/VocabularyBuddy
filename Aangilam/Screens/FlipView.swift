@@ -31,14 +31,16 @@ struct FlipView<Front, Back>: View where Front: View, Back: View {
         }
         .rotation3DEffect(.degrees(contentRotation), axis: (x: 0, y: 1, z: 0))
         .padding()
-        .frame(height: 200)
+        .frame(height: 300)
         .frame(maxWidth: .infinity)
+        .cornerRadius(15)
         .background(Color.gray.opacity(0.2))
         .padding()
         .onTapGesture {
             flipFlashcard()
         }
         .rotation3DEffect(.degrees(flashcardRotation), axis: (x: 0, y: 1, z: 0))
+        
     }
     
     func flipFlashcard() {

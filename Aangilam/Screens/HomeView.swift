@@ -65,41 +65,43 @@ struct HomeView: View {
             VStack{
                 
                 ZStack {
-                    List { //(userWordListVM.userWordAllEntries, id: \.id) { userword in
+                    List {
                         
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
                                 NavigationLink(destination: FlipCardGame(), tag: 11, selection: $selection) {
                                     Button(action: {
                                         self.selection = 11
-                                }) {
-                                    ZStack {
-                                        Rectangle()
-                                            .foregroundColor(.pink)
-                                            .frame(width: 140, height: 80, alignment: .leading)
-                                            .cornerRadius(10)
-                                        
-                                        Text("Flip Card")
-                                            .font(.title2)
-                                            .foregroundColor(.white)
-                                            .frame(width: 80, height: 120, alignment: .center)
+                                    }) {
+                                        ZStack {
+                                            Rectangle()
+                                                .foregroundColor(.mint)
+                                                .frame(width: 140, height: 80, alignment: .leading)
+                                                .cornerRadius(10)
+                                            
+                                            Text("Word Flip")
+                                                .font(.title2)
+                                                .foregroundColor(.white)
+                                                .frame(width: 100, height: 120, alignment: .center)
+                                        }
                                     }
                                 }
-                                }
-                                Button(action: {
-                                    //
-                                }) {
-                                    ZStack {
-                                        Rectangle()
-                                            .foregroundColor(.orange)
-                                            .frame(width: 140, height: 80, alignment: .leading)
-                                            .cornerRadius(10)
-                                            .padding(10)
+                                NavigationLink(destination: RandomSentenceView(), tag: 12, selection: $selection) {
+                                    Button(action: {
+                                        self.selection = 12
+                                    }) {
+                                        ZStack {
+                                            Rectangle()
+                                                .foregroundColor(.cyan)
+                                                .frame(width: 140, height: 80, alignment: .leading)
+                                                .cornerRadius(10)
+                                                .padding(10)
                                             
-                                        Text("Random Pick")
-                                            .font(.title2)
-                                            .foregroundColor(.white)
-                                            .frame(width: 80, height: 120, alignment: .center)
+                                            Text("Random Sentences")
+                                                .font(.title3)
+                                                .foregroundColor(.white)
+                                                .frame(width: 100, height: 120, alignment: .center)
+                                        }
                                     }
                                 }
                                 
