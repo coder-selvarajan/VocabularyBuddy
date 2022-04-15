@@ -73,38 +73,28 @@ struct HomeView: View {
                                     Button(action: {
                                         self.selection = 11
                                     }) {
-                                        ZStack {
-                                            Rectangle()
-                                                .foregroundColor(.mint)
-                                                .frame(width: 140, height: 80, alignment: .leading)
-                                                .cornerRadius(10)
-                                            
-                                            Text("Word Flip")
-                                                .font(.title2)
-                                                .foregroundColor(.white)
-                                                .frame(width: 100, height: 120, alignment: .center)
-                                        }
+                                        Text("Word Flip")
+                                            .font(.title2)
+                                            .foregroundColor(.white)
+                                            .frame(width: 140, height: 80, alignment: .center)
+                                            .background(
+                                                LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.9), .indigo.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
+                                            ).cornerRadius(10)
                                     }
                                 }
                                 NavigationLink(destination: RandomSentenceView(), tag: 12, selection: $selection) {
                                     Button(action: {
                                         self.selection = 12
                                     }) {
-                                        ZStack {
-                                            Rectangle()
-                                                .foregroundColor(.cyan)
-                                                .frame(width: 140, height: 80, alignment: .leading)
-                                                .cornerRadius(10)
-                                                .padding(10)
-                                            
-                                            Text("Random Sentences")
-                                                .font(.title3)
-                                                .foregroundColor(.white)
-                                                .frame(width: 100, height: 120, alignment: .center)
-                                        }
+                                        Text("Random Sentences")
+                                            .font(.title3)
+                                            .foregroundColor(.white)
+                                            .frame(width: 140, height: 80, alignment: .center)
+                                            .background(
+                                                LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.9), .blue.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
+                                            ).cornerRadius(10)
                                     }
                                 }
-                                
                             }
                             .padding(0)
                         }
