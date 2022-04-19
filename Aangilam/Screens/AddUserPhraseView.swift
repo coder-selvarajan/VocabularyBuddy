@@ -15,12 +15,18 @@ struct AddUserPhraseView: View {
     @State private var example: String = ""
     @State private var meaning: String = ""
     @Environment(\.presentationMode) var presentationMode
+    enum FocusField: Hashable {
+        case field
+    }
     
+    @FocusState private var focusedField: FocusField?
     var body: some View {
         VStack {
             Form {
                 Section {
-                    TextField("Phrase / Idiom", text: $phrase).font(.title2)
+                    TextField("Phrase / Idiom", text: $phrase)
+                        .font(.title2)
+                        .focused($focusedField, equals: .field)
                     
                     VStack(alignment: .leading) {
                         Text("Meaning: ")
@@ -52,18 +58,29 @@ struct AddUserPhraseView: View {
                         
                     }.padding(.vertical, 5)
                     
-                    Button("Save Phrase/Idiom") {
+                    Button(action: {
                         userPhraseListVM.savePhrase(phrase: phrase,
                                                 tag: tag,
                                                 meaning: meaning,
-                                                example: example )
-                        
+                                                example: example)
                         presentationMode.wrappedValue.dismiss()
-                    }
-                    .padding(.vertical)
-                    .buttonStyle(.bordered)
+                    }, label: {
+                        Text("Save Phrase/Idiom")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame (height: 55)
+                            .frame (maxWidth: .infinity)
+                            .background (Color.cyan)
+                            .cornerRadius(10)
+                    })
                 }
                 
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    /// Anything over 0.5 seems to work
+                    self.focusedField = .field
+                }
             }
             
         }

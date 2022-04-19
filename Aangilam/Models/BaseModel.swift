@@ -83,7 +83,6 @@ extension BaseModel {
         let endDate:NSDate = dateFormatter.date(from: todate)! as NSDate
         fetchRequest.predicate = NSPredicate(format: "(creationDate >= %@) AND (creationDate <= %@)", startDate, endDate)
 
-    
         do {
             return try viewContext.fetch(fetchRequest)
         } catch {
@@ -99,7 +98,5 @@ extension BaseModel {
             print(error)
             return nil
         }
-        
     }
-    
 }

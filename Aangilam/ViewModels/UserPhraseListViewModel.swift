@@ -9,14 +9,14 @@ import Foundation
 import CoreData
 
 class UserPhraseListViewModel: ObservableObject {
-    @Published var userPhraseAllEntries = [UserPhraseViewModel]()
-    @Published var userPhraseRecentEntries = [UserPhraseViewModel]()
+    @Published var userPhraseAllEntries = [UserPhrase]()
+    @Published var userPhraseRecentEntries = [UserPhrase]()
     
     func getAllUserPhraseEntries() {
         let userPhraseEntries : [UserPhrase] = UserPhrase.all()
 
         DispatchQueue.main.async {
-            self.userPhraseAllEntries = userPhraseEntries.map(UserPhraseViewModel.init)
+            self.userPhraseAllEntries = userPhraseEntries //.map(UserPhraseViewModel.init)
         }
     }
     
@@ -24,22 +24,23 @@ class UserPhraseListViewModel: ObservableObject {
         let PhraseEntries : [UserPhrase] = UserPhrase.getRecentFiveRecords()
 
         DispatchQueue.main.async {
-            self.userPhraseRecentEntries = PhraseEntries.map(UserPhraseViewModel.init)
+            self.userPhraseRecentEntries = PhraseEntries //.map(UserPhraseViewModel.init)
         }
     }
     
     func savePhrase(phrase: String, tag: String, meaning: String, example: String){
-        let newPhraseVM = AddUserPhraseViewModel()
-        newPhraseVM.phrase = phrase
-        newPhraseVM.tag = tag
-        newPhraseVM.meaning = meaning
-        newPhraseVM.example = example
+        let userPhrase = UserPhrase(context: UserPhrase.viewContext)
+        userPhrase.creationDate = Date()
+        userPhrase.phrase = phrase
+        userPhrase.tag = tag
+        userPhrase.example = example
+        userPhrase.meaning = meaning
         
-        newPhraseVM.save()
+        userPhrase.save()
     }
     
-    func deletePhrase(phrase: UserPhraseViewModel) {
-        let userPhrase: UserPhrase? = UserPhrase.byId(id: phrase.id)
+    func deletePhrase(phrase: UserPhrase) {
+        let userPhrase: UserPhrase? = UserPhrase.byId(id: phrase.objectID)
         
         if let userPhrase = userPhrase {
             userPhrase.delete()
@@ -49,31 +50,3 @@ class UserPhraseListViewModel: ObservableObject {
     }
 }
 
-struct UserPhraseViewModel: Identifiable {
-    let userPhrase: UserPhrase
-    
-    var id: NSManagedObjectID {
-        return userPhrase.objectID
-    }
-    
-    var creationDate: Date {
-        return userPhrase.creationDate ?? Date()
-    }
-    
-    var phrase: String {
-        return userPhrase.phrase ?? ""
-    }
- 
-    var tag: String {
-        return userPhrase.tag ?? ""
-    }
-    
-    var example: String {
-        return userPhrase.example ?? ""
-    }
-    
-    var meaning: String {
-        return userPhrase.meaning ?? ""
-    }
-    
-}

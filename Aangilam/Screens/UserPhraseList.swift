@@ -20,12 +20,12 @@ struct UserPhraseList: View {
     
     var body: some View {
         List {
-            ForEach(searchResults, id:\.id) {userPhrase in
+            ForEach(searchResults, id:\.objectID) {userPhrase in
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("\(userPhrase.phrase)")
+                    Text("\(userPhrase.phrase ?? "")")
                         .font(.headline)
                         .bold()
-                    Text("\(userPhrase.meaning)").font(.subheadline).foregroundColor(.secondary)
+                    Text("\(userPhrase.meaning ?? "")").font(.subheadline).foregroundColor(.secondary)
                 }
             }
             .onDelete(perform: delete)
@@ -38,11 +38,11 @@ struct UserPhraseList: View {
         }
     }
     
-    var searchResults: [UserPhraseViewModel] {
+    var searchResults: [UserPhrase] {
         if searchText.isEmpty {
             return userPhraseListVM.userPhraseAllEntries
         } else {
-            return userPhraseListVM.userPhraseAllEntries.filter { $0.phrase.contains(searchText) }
+            return userPhraseListVM.userPhraseAllEntries.filter { $0.phrase!.contains(searchText) }
         }
     }
 }

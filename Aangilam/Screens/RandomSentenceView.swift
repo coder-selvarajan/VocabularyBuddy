@@ -20,18 +20,22 @@ struct RandomSentenceView: View {
             } back: {
 //                Text("\(meaning)")
             }
-
             Spacer()
             
-            Button {
+            Button(action: {
                 let sentenceObject = userSentenceListVM.pickRandomSentence()
-                sentence = sentenceObject.sentence
-            } label: {
-                Text("Pick next").font(.title2).foregroundColor(Color.white)
-            }.padding().background(Color.cyan).cornerRadius(10)
-            
+                sentence = sentenceObject.sentence ?? ""
+            }, label: {
+                Text("Pick Next")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame (height: 55)
+                    .frame (maxWidth: .infinity)
+                    .background (Color.blue)
+                    .cornerRadius(10)
+            })
+            .padding()
             Spacer()
-
         }
         .navigationTitle("Random Pick")
         .onAppear(){

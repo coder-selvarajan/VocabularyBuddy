@@ -24,14 +24,20 @@ struct FlipCardGame: View {
 
             Spacer()
             
-            Button {
+            Button(action: {
                 let wordObject = userWordListVM.pickRandomWord()
-                word = wordObject.word
-                meaning = wordObject.meaning
-            } label: {
-                Text("NEXT").font(.title2).foregroundColor(Color.white)
-            }.padding().background(Color.mint).cornerRadius(10)
-            
+                word = wordObject.word ?? ""
+                meaning = wordObject.meaning ?? ""
+            }, label: {
+                Text("Next Flip")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame (height: 55)
+                    .frame (maxWidth: .infinity)
+                    .background (Color.indigo)
+                     .cornerRadius(10)
+            })
+            .padding()
             Spacer()
 
         }

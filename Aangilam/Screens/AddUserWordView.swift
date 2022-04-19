@@ -20,36 +20,19 @@ struct AddUserWordView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-//    init(){
-//        // default constructor
-//    }
-//    
-//    init(mode1: String,
-//         word1: String,
-//         type1: WORD_TYPE,
-//         tag1: String,
-//         sampleSentence1: String,
-//         meaning1: String){
-//        mode = mode1
-//        word = word1
-//        type = type1
-//        tag = tag1
-//        sampleSentence = sampleSentence1
-//        meaning = meaning1
-//    }
+    enum FocusField: Hashable {
+        case field
+    }
     
+    @FocusState private var focusedField: FocusField?
+
     var body: some View {
         VStack {
             Form {
                 Section {
-                    TextField("Word \(mode)", text: $word).font(.title2)
-                    Picker(selection: $type, label: Text("Type")) {
-                        Text("Noun").tag(WORD_TYPE.noun)
-                        Text("Verb").tag(WORD_TYPE.verb)
-                        Text("Adj").tag(WORD_TYPE.adjective)
-                        Text("Adv").tag(WORD_TYPE.adverb)
-                        Text("Prep").tag(WORD_TYPE.preposition)
-                    }.pickerStyle(.segmented)
+                    TextField("Word \(mode)", text: $word)
+                        .font(.title2)
+                        .focused($focusedField, equals: .field)
                     
                     VStack(alignment: .leading) {
                         Text("Meaning: ")
@@ -81,21 +64,31 @@ struct AddUserWordView: View {
                         
                     }.padding(.vertical, 5)
                     
-                    Button("Save Word") {
+                    Button(action: {
                         userWordListVM.saveWord(word: word,
                                                 tag: tag,
                                                 meaning: meaning,
-                                                sampleSentence: sampleSentence,
-                                                type: type.rawValue )
+                                                sampleSentence: sampleSentence)
                         
                         presentationMode.wrappedValue.dismiss()
-                    }
-                    .padding(.vertical)
-                    .buttonStyle(.bordered)
+                    }, label: {
+                        Text("Save Word")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame (height: 55)
+                            .frame (maxWidth: .infinity)
+                            .background (Color.indigo)
+                            .cornerRadius(10)
+                    })
+                    
                 }
-                
             }
-            
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    /// Anything over 0.5 seems to work
+                    self.focusedField = .field
+                }
+            }
         }
         
     }

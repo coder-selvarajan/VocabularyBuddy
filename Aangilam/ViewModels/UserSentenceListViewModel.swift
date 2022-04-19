@@ -9,14 +9,14 @@ import Foundation
 import CoreData
 
 class UserSentenceListViewModel: ObservableObject {
-    @Published var userSentenceAllEntries = [UserSentenceViewModel]()
-    @Published var userSentenceRecentEntries = [UserSentenceViewModel]()
+    @Published var userSentenceAllEntries = [UserSentence]()
+    @Published var userSentenceRecentEntries = [UserSentence]()
     
     func getAllUserSentenceEntries() {
         let userSentenceEntries : [UserSentence] = UserSentence.all()
 
         DispatchQueue.main.async {
-            self.userSentenceAllEntries = userSentenceEntries.map(UserSentenceViewModel.init)
+            self.userSentenceAllEntries = userSentenceEntries //.map(UserSentenceViewModel.init)
         }
     }
     
@@ -24,51 +24,32 @@ class UserSentenceListViewModel: ObservableObject {
         let SentenceEntries : [UserSentence] = UserSentence.getRecentFiveRecords()
 
         DispatchQueue.main.async {
-            self.userSentenceRecentEntries = SentenceEntries.map(UserSentenceViewModel.init)
+            self.userSentenceRecentEntries = SentenceEntries //.map(UserSentenceViewModel.init)
         }
     }
     
-    func pickRandomSentence() -> UserSentenceViewModel {
+    func pickRandomSentence() -> UserSentence {
         let randomNumber: Int = Int.random(in: 1..<userSentenceAllEntries.count)
         let sentence = userSentenceAllEntries[randomNumber]
         return sentence
     }
     
     func saveSentence(sentence: String, tag: String){
-        let newSentenceVM = AddUserSentenceViewModel()
-        newSentenceVM.tag = tag
-        newSentenceVM.sentence = sentence
+        let userSentence = UserSentence(context: UserSentence.viewContext)
+        userSentence.creationDate = Date()
+        userSentence.tag = tag
+        userSentence.sentence = sentence
         
-        newSentenceVM.save()
+        userSentence.save()
     }
     
-    func deleteSentence(sentence: UserSentenceViewModel) {
-        let userSentence: UserSentence? = UserSentence.byId(id: sentence.id)
+    func deleteSentence(sentence: UserSentence) {
+        let userSentence: UserSentence? = UserSentence.byId(id: sentence.objectID)
         
         if let userSentence = userSentence {
             userSentence.delete()
             getAllUserSentenceEntries()
             getRecentSentenceEntries()
         }
-    }
-}
-
-struct UserSentenceViewModel: Identifiable {
-    let userSentence: UserSentence
-    
-    var id: NSManagedObjectID {
-        return userSentence.objectID
-    }
-    
-    var creationDate: Date {
-        return userSentence.creationDate ?? Date()
-    }
-    
-    var sentence: String {
-        return userSentence.sentence ?? ""
-    }
- 
-    var tag: String {
-        return userSentence.tag ?? ""
     }
 }

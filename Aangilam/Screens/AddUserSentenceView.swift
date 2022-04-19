@@ -14,6 +14,12 @@ struct AddUserSentenceView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    enum FocusField: Hashable {
+        case field
+    }
+    
+    @FocusState private var focusedField: FocusField?
+    
     var body: some View {
         VStack {
             Form {
@@ -25,7 +31,7 @@ struct AddUserSentenceView: View {
                             .frame(height: 100)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
-                        
+                            .focused($focusedField, equals: .field)
                     }.padding(.vertical, 5)
                     
                     VStack(alignment: .leading) {
@@ -38,15 +44,25 @@ struct AddUserSentenceView: View {
                         
                     }.padding(.vertical, 5)
                     
-                    Button("Save Sentence") {
+                    Button(action: {
                         userSentenceListVM.saveSentence(sentence: sentence, tag: tag)
-                        
                         presentationMode.wrappedValue.dismiss()
-                    }
-                    .padding(.vertical)
-                    .buttonStyle(.bordered)
+                    }, label: {
+                        Text("Save Sentence")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame (height: 55)
+                            .frame (maxWidth: .infinity)
+                            .background (Color.blue)
+                             .cornerRadius(10)
+                    })
                 }
-                
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    /// Anything over 0.5 seems to work
+                    self.focusedField = .field
+                }
             }
             
         }

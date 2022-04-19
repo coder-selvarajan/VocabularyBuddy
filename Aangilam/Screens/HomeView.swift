@@ -13,6 +13,7 @@ struct HomeView: View {
     @StateObject var userPhraseListVM = UserPhraseListViewModel()
     @State var selection: Int? = nil
     @State var showList: Int? = nil
+    @State private var searchText = ""
     
     func delete(at indexes: IndexSet) {
         //        if let first = indexes.first {
@@ -61,11 +62,26 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            
             VStack{
-                
                 ZStack {
                     List {
+                        
+                        HStack {
+                            TextField("Search...", text: $searchText)
+                                .font(.title3)
+                                .padding(10)
+                                .background(.gray.opacity(0.1))
+                            Spacer()
+                            Image(systemName: "magnifyingglass.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: SwiftUI.ContentMode.fit)
+                                .frame(width: 40, height: 40)
+                                .foregroundColor(.mint)
+                            
+                        }
+                        .padding(.vertical, 20)
+                        .listRowBackground(Color.clear)
+                        
                         
                         ScrollView (.horizontal, showsIndicators: false) {
                             HStack {
@@ -103,14 +119,14 @@ struct HomeView: View {
                         
                         
                         Section(header: Text("Words"), footer: WordListFooter) {
-                            ForEach(userWordListVM.userWordRecentEntries, id:\.id) {userword in
+                            ForEach(userWordListVM.userWordRecentEntries, id:\.objectID) {userword in
                                 
                                 VStack(alignment: .leading, spacing: 10) {
                                     HStack {
-                                        Text("\(userword.word)")
+                                        Text("\(userword.word!)")
                                             .font(.headline)
                                             .bold()
-                                        Text(" (\(userword.type))  \(userword.meaning)")
+                                        Text(" \(userword.meaning ?? "")")
                                             .font(.subheadline)
                                             .foregroundColor(.secondary)
                                             .lineLimit(1)
@@ -122,14 +138,14 @@ struct HomeView: View {
                         .listSectionSeparatorTint(.red)
                         
                         Section(header: Text("Sentences"),  footer: SentenceListFooter) {
-                            ForEach(userSentenceListVM.userSentenceRecentEntries, id:\.id) {sentence in
-                                Text("\(sentence.sentence)").font(.subheadline)
+                            ForEach(userSentenceListVM.userSentenceRecentEntries, id:\.objectID) {sentence in
+                                Text("\(sentence.sentence ?? "")").font(.subheadline)
                             }
                         }
                         
                         Section(header: Text("Phrases / Idioms"),  footer: PhraseListFooter) {
-                            ForEach(userPhraseListVM.userPhraseRecentEntries, id:\.id) {phrase in
-                                Text("\(phrase.phrase)").font(.subheadline)
+                            ForEach(userPhraseListVM.userPhraseRecentEntries, id:\.objectID) {phrase in
+                                Text("\(phrase.phrase ?? "")").font(.subheadline)
                             }
                         }
                     }
@@ -141,6 +157,7 @@ struct HomeView: View {
                         userSentenceListVM.getRecentSentenceEntries()
                         userPhraseListVM.getRecentPhraseEntries()
                     }
+                    .ignoresSafeArea(.all, edges: .bottom)
                     
                     VStack {
                         Spacer()
@@ -201,7 +218,7 @@ struct HomeView: View {
                                 }
                                 .padding(15)
                                 .foregroundColor(Color.white)
-                                .background(Color.green)
+                                .background(Color.cyan)
                                 .cornerRadius(8)
                             }
                             .padding(.trailing, 20)
@@ -213,7 +230,9 @@ struct HomeView: View {
                         }
                     }
                 }
+                .padding(0)
             }
+            .padding(0)
             .navigationTitle("Aangilam")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

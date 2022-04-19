@@ -20,20 +20,20 @@ struct UserWordList: View {
     
     var body: some View {
         List {
-            ForEach(searchResults, id:\.id) {userword in
+            ForEach(searchResults, id:\.objectID) {userword in
                 NavigationLink(
                     destination: AddUserWordView(),
                     label: {
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
-                                Text("\(userword.word)")
+                                Text("\(userword.word ?? "")")
                                     .font(.headline)
                                     .bold()
-                                Text(" (\(userword.type))")
+                                Text(" (\(userword.type ?? ""))")
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                             }
-                            Text("\(userword.meaning)").font(.subheadline).foregroundColor(.secondary)
+                            Text("\(userword.meaning ?? "")").font(.subheadline).foregroundColor(.secondary)
                         }
                     })
             }
@@ -47,11 +47,11 @@ struct UserWordList: View {
         }
     }
     
-    var searchResults: [UserWordViewModel] {
+    var searchResults: [UserWord] {
         if searchText.isEmpty {
             return userWordListVM.userWordAllEntries
         } else {
-            return userWordListVM.userWordAllEntries.filter { $0.word.contains(searchText) }
+            return userWordListVM.userWordAllEntries.filter { $0.word!.contains(searchText) }
         }
     }
 }

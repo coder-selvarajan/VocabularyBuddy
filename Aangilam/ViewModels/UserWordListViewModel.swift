@@ -9,14 +9,14 @@ import Foundation
 import CoreData
 
 class UserWordListViewModel: ObservableObject {
-    @Published var userWordAllEntries = [UserWordViewModel]()
-    @Published var userWordRecentEntries = [UserWordViewModel]()
+    @Published var userWordAllEntries = [UserWord]()
+    @Published var userWordRecentEntries = [UserWord]()
     
     func getAllUserWordEntries() {
         let userWordEntries : [UserWord] = UserWord.all()
 
         DispatchQueue.main.async {
-            self.userWordAllEntries = userWordEntries.map(UserWordViewModel.init)
+            self.userWordAllEntries = userWordEntries //.map(UserWordViewModel.init)
         }
     }
     
@@ -24,30 +24,30 @@ class UserWordListViewModel: ObservableObject {
         let wordEntries : [UserWord] = UserWord.getRecentFiveRecords()
 
         DispatchQueue.main.async {
-            self.userWordRecentEntries = wordEntries.map(UserWordViewModel.init)
+            self.userWordRecentEntries = wordEntries //.map(UserWordViewModel.init)
         }
     }
     
-    func pickRandomWord() -> UserWordViewModel {
+    func pickRandomWord() -> UserWord {
         print(userWordAllEntries.count)
         let randomNumber: Int = Int.random(in: 1..<userWordAllEntries.count)
         let word = userWordAllEntries[randomNumber]
         return word
     }
     
-    func saveWord(word: String, tag: String, meaning: String, sampleSentence: String, type: String){
-        let newWordVM = AddUserWordViewModel()
-        newWordVM.word = word
-        newWordVM.tag = tag
-        newWordVM.meaning = meaning
-        newWordVM.sampleSentence = sampleSentence
-        newWordVM.type = type
+    func saveWord(word: String, tag: String, meaning: String, sampleSentence: String){
+        let userWord = UserWord(context: UserWord.viewContext)
+        userWord.creationDate = Date()
+        userWord.word = word
+        userWord.tag = tag
+        userWord.sampleSentence = sampleSentence
+        userWord.meaning = meaning
         
-        newWordVM.save()
+        userWord.save()
     }
     
-    func deleteWord(word: UserWordViewModel) {
-        let userWord: UserWord? = UserWord.byId(id: word.id)
+    func deleteWord(word: UserWord) {
+        let userWord: UserWord? = UserWord.byId(id: word.objectID)
         
         if let userWord = userWord {
             userWord.delete()
@@ -57,35 +57,34 @@ class UserWordListViewModel: ObservableObject {
     }
 }
 
-struct UserWordViewModel: Identifiable {
-    let userWord: UserWord
-    
-    var id: NSManagedObjectID {
-        return userWord.objectID
-    }
-    
-    var creationDate: Date {
-        return userWord.creationDate ?? Date()
-    }
-    
-    var word: String {
-        return userWord.word ?? ""
-    }
- 
-    var tag: String {
-        return userWord.tag ?? ""
-    }
-    
-    var sampleSentence: String {
-        return userWord.sampleSentence ?? ""
-    }
-    
-    var meaning: String {
-        return userWord.meaning ?? ""
-    }
-    
-    var type: String {
-        return userWord.type ?? ""
-    }
-    
-}
+//struct UserWordViewModel: Identifiable {
+//    let userWord: UserWord
+//
+//    var id: NSManagedObjectID {
+//        return userWord.objectID
+//    }
+//
+//    var creationDate: Date {
+//        return userWord.creationDate ?? Date()
+//    }
+//
+//    var word: String {
+//        return userWord.word ?? ""
+//    }
+//
+//    var tag: String {
+//        return userWord.tag ?? ""
+//    }
+//
+//    var sampleSentence: String {
+//        return userWord.sampleSentence ?? ""
+//    }
+//
+//    var meaning: String {
+//        return userWord.meaning ?? ""
+//    }
+//
+//    var type: String {
+//        return userWord.type ?? ""
+//    }
+//}
