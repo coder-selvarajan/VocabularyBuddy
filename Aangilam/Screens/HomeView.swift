@@ -72,12 +72,13 @@ struct HomeView: View {
                                 .padding(10)
                                 .background(.gray.opacity(0.1))
                             Spacer()
-                            Image(systemName: "magnifyingglass.circle.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: SwiftUI.ContentMode.fit)
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(.mint)
-                            
+                            NavigationLink(destination: Dictionary()) {
+                                Image(systemName: "magnifyingglass.circle.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: SwiftUI.ContentMode.fit)
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(.mint)
+                            }
                         }
                         .padding(.vertical, 20)
                         .listRowBackground(Color.clear)
@@ -157,7 +158,8 @@ struct HomeView: View {
                         userSentenceListVM.getRecentSentenceEntries()
                         userPhraseListVM.getRecentPhraseEntries()
                     }
-                    .ignoresSafeArea(.all, edges: .bottom)
+//                    .ignoresSafeArea(.container, edges: .top)
+//                    .ignoresSafeArea(.all, edges: .bottom)
                     
                     VStack {
                         Spacer()

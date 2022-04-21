@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7013929727FC01FB00DA7DDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013929627FC01FB00DA7DDF /* Global.swift */; };
+		703052D628112405004FD5D2 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703052D528112405004FD5D2 /* Dictionary.swift */; };
+		703052D82811318C004FD5D2 /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703052D72811318C004FD5D2 /* Words.swift */; };
 		70564F8327F5AAEE00EBA186 /* UserSentenceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8127F5AAEE00EBA186 /* UserSentenceList.swift */; };
 		70564F8427F5AAEE00EBA186 /* AddUserSentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8227F5AAEE00EBA186 /* AddUserSentenceView.swift */; };
 		70564F8627F5ABC800EBA186 /* UserSentenceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8527F5ABC800EBA186 /* UserSentenceListViewModel.swift */; };
@@ -36,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		7013929627FC01FB00DA7DDF /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		703052D528112405004FD5D2 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		703052D72811318C004FD5D2 /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
 		70564F8127F5AAEE00EBA186 /* UserSentenceList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSentenceList.swift; sourceTree = "<group>"; };
 		70564F8227F5AAEE00EBA186 /* AddUserSentenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserSentenceView.swift; sourceTree = "<group>"; };
 		70564F8527F5ABC800EBA186 /* UserSentenceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSentenceListViewModel.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				707D1E8527DDE8DE0020557E /* UserWord+Extensions.swift */,
 				70564F8727F5AC3800EBA186 /* UserSentence+Extensions.swift */,
 				70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */,
+				703052D72811318C004FD5D2 /* Words.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				70A6B85D27FD60CF00618D66 /* FlipView.swift */,
 				70A6B85F27FD654E00618D66 /* FlipCardGame.swift */,
 				70A745FE2808A7F5005892E1 /* RandomSentenceView.swift */,
+				703052D528112405004FD5D2 /* Dictionary.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 				708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */,
 				709A281127F6ED300018FC37 /* Test.swift in Sources */,
 				70DFA4C427F8B2DC007FADB1 /* UserPhraseListViewModel.swift in Sources */,
+				703052D82811318C004FD5D2 /* Words.swift in Sources */,
 				707D1E7127DDD02E0020557E /* HomeView.swift in Sources */,
 				707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */,
 				70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */,
@@ -265,6 +272,7 @@
 				707D1E8127DDE5EB0020557E /* CoreDataProvider.swift in Sources */,
 				707D1E9027DE797D0020557E /* AddUserWordView.swift in Sources */,
 				707D1E8427DDE86E0020557E /* BaseModel.swift in Sources */,
+				703052D628112405004FD5D2 /* Dictionary.swift in Sources */,
 				70564F8627F5ABC800EBA186 /* UserSentenceListViewModel.swift in Sources */,
 				70DFA4C027F8B28D007FADB1 /* UserPhrase+Extensions.swift in Sources */,
 				70564F8827F5AC3800EBA186 /* UserSentence+Extensions.swift in Sources */,
