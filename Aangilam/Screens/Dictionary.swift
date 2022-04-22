@@ -10,12 +10,14 @@ import SwiftUI
 
 class vmDictionary : ObservableObject {
     @Published var wordInfo: WordElement?
+    @Published var isFetching: Bool = false
     
     func fetchData(inputWord: String) {
         if inputWord != "" {
             let stringURL = "https://api.dictionaryapi.dev/api/v2/entries/en/\(inputWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))"
             guard let url = URL(string: stringURL) else {
                 print("Invalid URL")
+                self.isFetching = false
                 return
             }
             var request = URLRequest(url: url)
@@ -23,6 +25,7 @@ class vmDictionary : ObservableObject {
             
             URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
                 guard let data = data, error == nil else {
+                    self?.isFetching = false
                     return
                 }
                 do {
@@ -30,7 +33,7 @@ class vmDictionary : ObservableObject {
                     let decodedData = try JSONDecoder().decode(Words.self, from: data)
                     DispatchQueue.main.async {
                         self?.wordInfo = decodedData.first!
-                        print(self?.wordInfo?.meanings.description ?? "")
+                        self?.isFetching = false
                     }
                     
                 } catch {
@@ -65,120 +68,96 @@ struct Dictionary: View {
     @State private var partOfSpeech: PartOfSpeech = .unknown
     @State private var showingAlert = false
     @StateObject var vmDict = vmDictionary()
+    enum FocusField: Hashable {
+        case search
+    }
+    @FocusState private var focusedField: FocusField?
     
     var body: some View {
-        VStack {
-            HStack {
-                TextField("Search...", text: $searchText)
-                    .font(.title3)
-                    .padding(10)
-                    .background(.gray.opacity(0.1))
-                Spacer()
-                Button  {
-                    vmDict.fetchData(inputWord: searchText)
-                    
-                } label: {
-                    Image(systemName: "magnifyingglass.circle.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: SwiftUI.ContentMode.fit)
-                        .frame(width: 40, height: 40)
-                        .foregroundColor(.mint)
-                }
-            }
-            .padding(20)
-            
-            Spacer()
-            
-            Section {
-                if vmDict.wordInfo != nil {
-                    WordCard(
-                        wordMeanings: vmDict.wordInfo!.meanings, tapGesture: { descriptionStr, partOfSpeechStr in
-                            descriptionField = descriptionStr
-                            
-                            switch partOfSpeechStr {
-                            case "noun":
-                                partOfSpeech = .noun
-                            case "verb":
-                                partOfSpeech = .verb
-                            case "adjective":
-                                partOfSpeech = .adjective
-                            case "adverb":
-                                partOfSpeech = .adverb
-                            case "exclamation":
-                                partOfSpeech = .exclamation
-                            case "conjunction":
-                                partOfSpeech = .conjunction
-                            case "pronoun":
-                                partOfSpeech = .pronoun
-                            case "number":
-                                partOfSpeech = .number
-                            default:
-                                partOfSpeech = .unknown
-                            }
-                        })
-                }
-            }
-        }
-    }
-}
-
-struct WordCard: View {
-    @State private var wordClassSelection = 0
-    @State private var partOfSpeech = ""
-    var wordMeanings: [Meaning]
-    var indices: Range<Array<Definition>.Index> {
-        wordMeanings[wordClassSelection].definitions.indices
-    }
-    var definitions: [Definition] {
-        wordMeanings[wordClassSelection].definitions
-    }
-    var tapGesture: (String, String) -> Void
-    
-    var body: some View {
-        
-        VStack(alignment: .leading) {
-            Picker(selection: $wordClassSelection) {
-                ForEach(wordMeanings.indices, id: \.self) { index in
-                    Text("\(wordMeanings[index].partOfSpeech)")
-                }
-            } label: {
-                Text("selection")
-            }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding(.horizontal)
-            
-            TabView() {
-                ForEach(indices, id: \.self) { index in
-                    ScrollView {
-                        VStack(alignment: .leading) {
-                            if !definitions[index].definition.isEmpty {
-                                Divider()
-                                Text("**Definition \(index + 1):** \(definitions[index].definition)")
-                                    .onTapGesture {
-                                        partOfSpeech = wordMeanings[wordClassSelection].partOfSpeech
-                                        tapGesture(definitions[index].definition, partOfSpeech)
-                                    }
-                                
-                            }
-                            if definitions[index].example != nil {
-                                Divider()
-                                Text("**Example:** \(definitions[index].example!)")
-                            }
-                            if !definitions[index].synonyms.isEmpty {
-                                Divider()
-                                Text("**Synonyms:** \(definitions[index].synonyms.joined(separator: ", "))")
-                            }
-                            if !definitions[index].antonyms.isEmpty {
-                                Divider()
-                                Text("**Antonyms:** \(definitions[index].antonyms.joined(separator: ", "))")
-                            }
+        VStack(alignment: HorizontalAlignment.leading) {
+            ScrollView {
+                HStack {
+                    TextField("Search...", text: $searchText)
+                        .font(.title3)
+                        .padding(10)
+                        .background(.gray.opacity(0.1))
+                        .cornerRadius(10)
+                        .focused($focusedField, equals: .search)
+                        .submitLabel(SubmitLabel.search)
+                        .onSubmit {
+                            vmDict.isFetching = true
+                            vmDict.fetchData(inputWord: searchText)
                         }
-                    }
-                    .padding(.horizontal)
+                }
+                .padding(15)
+                
+                if (vmDict.isFetching) {
+                    Text("Loading definition...")
+                        .padding()
+                        .foregroundColor(.gray)
+                }
+                
+                if vmDict.wordInfo != nil {
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text(vmDict.wordInfo?.word ?? "")
+                            .font(.title)
+                            .foregroundColor(.indigo)
+                        
+                        Text("**Phonetics :** \(vmDict.wordInfo?.phonetic ?? "") ")
+                        
+                        HStack(spacing: 10) {
+                            Text("Pronunciation ")
+                            Image(systemName: "play.circle")
+                        }
+                        
+                        Divider()
+                        Text("Meaning :").font(.title3)
+                        Text("\(extractMeaning(meanings: vmDict.wordInfo!.meanings))")
+                        Divider()
+                        Text("Example :").font(.title3)
+                        Text("\(extractExmple(meanings: vmDict.wordInfo!.meanings))")
+                    }.padding()
                 }
             }
-            .tabViewStyle(.page)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    /// Anything over 0.5 seems to work
+                    self.focusedField = .search
+                }
+            }
         }
+    }
+    
+    func extractMeaning(meanings: [Meaning]) -> String {
+        var result: String = ""
+        
+        for meaning in meanings {
+            if (result != "") { //just adding line break for next partOfSpeech meaning
+                result += "\n\n"
+            }
+            result += meaning.partOfSpeech + "  -  "
+            for definition in meaning.definitions {
+                result += definition.definition + " "
+            }
+        }
+        return result
+    }
+    
+    func extractExmple(meanings: [Meaning]) -> String {
+        var result: String = ""
+        
+        for meaning in meanings {
+            if (result != "") { //just adding line break for next partOfSpeech example
+                result += "\n\n"
+            }
+            result += meaning.partOfSpeech + "  -  "
+            for definition in meaning.definitions {
+                if let example = definition.example {
+                    result += example + " "
+                }
+            }
+        }
+        return result
     }
 }
 

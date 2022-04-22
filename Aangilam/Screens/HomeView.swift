@@ -65,61 +65,86 @@ struct HomeView: View {
             VStack{
                 ZStack {
                     List {
-                        
-                        HStack {
-                            TextField("Search...", text: $searchText)
-                                .font(.title3)
-                                .padding(10)
-                                .background(.gray.opacity(0.1))
-                            Spacer()
-                            NavigationLink(destination: Dictionary()) {
-                                Image(systemName: "magnifyingglass.circle.fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: SwiftUI.ContentMode.fit)
-                                    .frame(width: 40, height: 40)
-                                    .foregroundColor(.mint)
-                            }
+                        Section {
+                            ZStack {
+                                NavigationLink(destination:
+                                                Dictionary()
+                                ) {
+                                    EmptyView()
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                .opacity(0.0)
+                                
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(.gray.opacity(0.2))
+//                                    .stroke(lineWidth: 2)
+                                
+                                HStack {
+                                    Text("Search meaning for words here...")
+                                        .font(.headline)
+                                        .padding()
+                                        .foregroundColor(.gray)
+                                    Spacer()
+                                    Image(systemName: "magnifyingglass")
+                                        .padding(.horizontal, 10)
+                                        .foregroundColor(.gray)
+                                }
+                                
+                            }.padding(0)
                         }
-                        .padding(.vertical, 20)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                         .listRowBackground(Color.clear)
                         
-                        
-                        ScrollView (.horizontal, showsIndicators: false) {
-                            HStack {
-                                NavigationLink(destination: FlipCardGame(), tag: 11, selection: $selection) {
-                                    Button(action: {
-                                        self.selection = 11
-                                    }) {
-                                        Text("Word Flip")
-                                            .font(.title2)
-                                            .foregroundColor(.white)
-                                            .frame(width: 140, height: 80, alignment: .center)
-                                            .background(
-                                                LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.9), .indigo.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
-                                            ).cornerRadius(10)
+                        Section(header: Text("Word games").padding(.horizontal, 15)) {
+                            ScrollView (.horizontal, showsIndicators: false) {
+                                HStack {
+                                    NavigationLink(destination: FlipCardGame(), tag: 11, selection: $selection) {
+                                        Button(action: {
+                                            self.selection = 11
+                                        }) {
+                                            Text("Word \n Finder")
+                                                .font(.title3)
+                                                .foregroundColor(.white)
+                                                .frame(width: 140, height: 80, alignment: .center)
+                                                .background(
+                                                    LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.9), .indigo.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
+                                                ).cornerRadius(10)
+                                        }
+                                    }
+                                    NavigationLink(destination: FlipCardGame(), tag: 11, selection: $selection) {
+                                        Button(action: {
+                                            self.selection = 11
+                                        }) {
+                                            Text("What Do \n You Mean")
+                                                .font(.title3)
+                                                .foregroundColor(.white)
+                                                .frame(width: 140, height: 80, alignment: .center)
+                                                .background(
+                                                    LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.9), .blue.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
+                                                ).cornerRadius(10)
+                                        }
+                                    }
+                                    NavigationLink(destination: RandomSentenceView(), tag: 12, selection: $selection) {
+                                        Button(action: {
+                                            self.selection = 12
+                                        }) {
+                                            Text("Random \n Picker")
+                                                .font(.title3)
+                                                .foregroundColor(.white)
+                                                .frame(width: 140, height: 80, alignment: .center)
+                                                .background(
+                                                    LinearGradient(gradient: Gradient(colors: [.teal, .teal.opacity(0.9), .teal.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
+                                                ).cornerRadius(10)
+                                        }
                                     }
                                 }
-                                NavigationLink(destination: RandomSentenceView(), tag: 12, selection: $selection) {
-                                    Button(action: {
-                                        self.selection = 12
-                                    }) {
-                                        Text("Random Sentences")
-                                            .font(.title3)
-                                            .foregroundColor(.white)
-                                            .frame(width: 140, height: 80, alignment: .center)
-                                            .background(
-                                                LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.9), .blue.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
-                                            ).cornerRadius(10)
-                                    }
-                                }
+                                .padding(0)
                             }
-                            .padding(0)
                         }
-                        .padding(0)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .listRowBackground(Color.clear)
                         
-                        
-                        Section(header: Text("Words"), footer: WordListFooter) {
+                        Section(header: Text("Recent Words"), footer: WordListFooter) {
                             ForEach(userWordListVM.userWordRecentEntries, id:\.objectID) {userword in
                                 
                                 VStack(alignment: .leading, spacing: 10) {
@@ -136,15 +161,37 @@ struct HomeView: View {
                             }
                             .onDelete(perform: delete)
                         }
-                        .listSectionSeparatorTint(.red)
+                        .listSectionSeparatorTint(.indigo)
                         
-                        Section(header: Text("Sentences"),  footer: SentenceListFooter) {
+                        Section() {
+                            Button(action: {
+                                self.selection = 11
+                            }) {
+                                HStack(spacing: 20) {
+                                    Image(systemName: "list.bullet.rectangle.fill")
+                                        .resizable()
+                                        .frame(width: 40, height: 40)
+                                    Text("500+ Common English Words")
+                                        .font(.headline)
+                                }.accentColor(.teal)
+                            }
+                            .frame(maxWidth:.infinity, minHeight: 60)
+                            .cornerRadius(10)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.teal.opacity(0.5), lineWidth: 1)
+                            )
+                        }
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        .listRowBackground(Color.clear)
+                        
+                        Section(header: Text("Recent Sentences"),  footer: SentenceListFooter) {
                             ForEach(userSentenceListVM.userSentenceRecentEntries, id:\.objectID) {sentence in
                                 Text("\(sentence.sentence ?? "")").font(.subheadline)
                             }
                         }
                         
-                        Section(header: Text("Phrases / Idioms"),  footer: PhraseListFooter) {
+                        Section(header: Text("Recent Phrases / Idioms"),  footer: PhraseListFooter) {
                             ForEach(userPhraseListVM.userPhraseRecentEntries, id:\.objectID) {phrase in
                                 Text("\(phrase.phrase ?? "")").font(.subheadline)
                             }
@@ -158,8 +205,8 @@ struct HomeView: View {
                         userSentenceListVM.getRecentSentenceEntries()
                         userPhraseListVM.getRecentPhraseEntries()
                     }
-//                    .ignoresSafeArea(.container, edges: .top)
-//                    .ignoresSafeArea(.all, edges: .bottom)
+                    //                    .ignoresSafeArea(.container, edges: .top)
+                    //                    .ignoresSafeArea(.all, edges: .bottom)
                     
                     VStack {
                         Spacer()

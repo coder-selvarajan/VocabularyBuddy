@@ -21,7 +21,7 @@ class UserPhraseListViewModel: ObservableObject {
     }
     
     func getRecentPhraseEntries() {
-        let PhraseEntries : [UserPhrase] = UserPhrase.getRecentFiveRecords()
+        let PhraseEntries : [UserPhrase] = UserPhrase.getRecentRecords(limit: 3)
 
         DispatchQueue.main.async {
             self.userPhraseRecentEntries = PhraseEntries //.map(UserPhraseViewModel.init)

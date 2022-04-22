@@ -21,7 +21,7 @@ class UserWordListViewModel: ObservableObject {
     }
     
     func getRecentWordEntries() {
-        let wordEntries : [UserWord] = UserWord.getRecentFiveRecords()
+        let wordEntries : [UserWord] = UserWord.getRecentRecords(limit: 4)
 
         DispatchQueue.main.async {
             self.userWordRecentEntries = wordEntries //.map(UserWordViewModel.init)

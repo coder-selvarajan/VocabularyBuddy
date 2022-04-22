@@ -21,7 +21,7 @@ class UserSentenceListViewModel: ObservableObject {
     }
     
     func getRecentSentenceEntries() {
-        let SentenceEntries : [UserSentence] = UserSentence.getRecentFiveRecords()
+        let SentenceEntries : [UserSentence] = UserSentence.getRecentRecords(limit: 3)
 
         DispatchQueue.main.async {
             self.userSentenceRecentEntries = SentenceEntries //.map(UserSentenceViewModel.init)
