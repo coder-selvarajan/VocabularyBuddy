@@ -29,11 +29,30 @@ class UserWordListViewModel: ObservableObject {
     }
     
     func pickRandomWord() -> UserWord {
-        print(userWordAllEntries.count)
         let randomNumber: Int = Int.random(in: 1..<userWordAllEntries.count)
         let word = userWordAllEntries[randomNumber]
         return word
     }
+    
+    func pickRandomWords(_ count: Int) -> [UserWord] {
+        var randomNumber: Int = 0
+        var indexes = [Int]()
+        var userWords = [UserWord]()
+        
+        for _ in 1...count {
+            if (indexes.count > 0)
+            {
+                randomNumber = (1..<userWordAllEntries.count).random(without: indexes)
+            }
+            else {
+                randomNumber = Int.random(in: 1..<userWordAllEntries.count)
+            }
+            indexes.append(randomNumber)
+            userWords.append(userWordAllEntries[randomNumber])
+        }
+        return userWords
+    }
+    
     
     func saveWord(word: String, tag: String, meaning: String, sampleSentence: String){
         let userWord = UserWord(context: UserWord.viewContext)

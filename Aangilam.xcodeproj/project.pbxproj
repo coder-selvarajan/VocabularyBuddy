@@ -14,6 +14,7 @@
 		70564F8427F5AAEE00EBA186 /* AddUserSentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8227F5AAEE00EBA186 /* AddUserSentenceView.swift */; };
 		70564F8627F5ABC800EBA186 /* UserSentenceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8527F5ABC800EBA186 /* UserSentenceListViewModel.swift */; };
 		70564F8827F5AC3800EBA186 /* UserSentence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8727F5AC3800EBA186 /* UserSentence+Extensions.swift */; };
+		706E56AD281476FD000AC324 /* WordFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706E56AC281476FD000AC324 /* WordFinder.swift */; };
 		707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E6E27DDD02E0020557E /* AangilamApp.swift */; };
 		707D1E7127DDD02E0020557E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E7027DDD02E0020557E /* HomeView.swift */; };
 		707D1E7327DDD0330020557E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 707D1E7227DDD0330020557E /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		70564F8227F5AAEE00EBA186 /* AddUserSentenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserSentenceView.swift; sourceTree = "<group>"; };
 		70564F8527F5ABC800EBA186 /* UserSentenceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSentenceListViewModel.swift; sourceTree = "<group>"; };
 		70564F8727F5AC3800EBA186 /* UserSentence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSentence+Extensions.swift"; sourceTree = "<group>"; };
+		706E56AC281476FD000AC324 /* WordFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordFinder.swift; sourceTree = "<group>"; };
 		707D1E6B27DDD02E0020557E /* Aangilam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aangilam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		707D1E6E27DDD02E0020557E /* AangilamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AangilamApp.swift; sourceTree = "<group>"; };
 		707D1E7027DDD02E0020557E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				70564F8227F5AAEE00EBA186 /* AddUserSentenceView.swift */,
 				70564F8127F5AAEE00EBA186 /* UserSentenceList.swift */,
 				707D1E7027DDD02E0020557E /* HomeView.swift */,
+				706E56AC281476FD000AC324 /* WordFinder.swift */,
 				707D1E8F27DE797D0020557E /* AddUserWordView.swift */,
 				708AEE4C27F22DC200DCB00A /* UserWordList.swift */,
 				709A281027F6ED300018FC37 /* Test.swift */,
@@ -263,6 +266,7 @@
 				708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */,
 				709A281127F6ED300018FC37 /* Test.swift in Sources */,
 				70DFA4C427F8B2DC007FADB1 /* UserPhraseListViewModel.swift in Sources */,
+				706E56AD281476FD000AC324 /* WordFinder.swift in Sources */,
 				703052D82811318C004FD5D2 /* Words.swift in Sources */,
 				707D1E7127DDD02E0020557E /* HomeView.swift in Sources */,
 				707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */,

@@ -58,7 +58,6 @@ enum PartOfSpeech: String, CaseIterable {
     case unknown
 }
 
-
 struct Dictionary: View {
     @State var dictionaryJson: [String] = []
     @State var filteredItems: [String] = []
@@ -111,10 +110,10 @@ struct Dictionary: View {
                         }
                         
                         Divider()
-                        Text("Meaning :").font(.title3)
+                        Text("Meaning:").font(.title3)
                         Text("\(extractMeaning(meanings: vmDict.wordInfo!.meanings))")
                         Divider()
-                        Text("Example :").font(.title3)
+                        Text("Example Usage:").font(.title3)
                         Text("\(extractExmple(meanings: vmDict.wordInfo!.meanings))")
                     }.padding()
                 }
@@ -135,7 +134,7 @@ struct Dictionary: View {
             if (result != "") { //just adding line break for next partOfSpeech meaning
                 result += "\n\n"
             }
-            result += meaning.partOfSpeech + "  -  "
+            result += meaning.partOfSpeech + " -  "
             for definition in meaning.definitions {
                 result += definition.definition + " "
             }
@@ -145,16 +144,17 @@ struct Dictionary: View {
     
     func extractExmple(meanings: [Meaning]) -> String {
         var result: String = ""
+        var sentences: String = ""
         
         for meaning in meanings {
-            if (result != "") { //just adding line break for next partOfSpeech example
-                result += "\n\n"
-            }
-            result += meaning.partOfSpeech + "  -  "
             for definition in meaning.definitions {
                 if let example = definition.example {
-                    result += example + " "
+                    sentences += "  - " + example + " \n"
                 }
+            }
+            if (sentences != "") {
+                result += "(as " + meaning.partOfSpeech + "): \n" + sentences + "\n"
+                sentences = ""
             }
         }
         return result

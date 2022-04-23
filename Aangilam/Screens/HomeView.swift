@@ -95,47 +95,52 @@ struct HomeView: View {
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                         .listRowBackground(Color.clear)
                         
-                        Section(header: Text("Word games").padding(.horizontal, 15)) {
+                        Section(header: Text("Gamify your learning").padding(.horizontal, 15)) {
                             ScrollView (.horizontal, showsIndicators: false) {
                                 HStack {
-                                    NavigationLink(destination: FlipCardGame(), tag: 11, selection: $selection) {
+                                    NavigationLink(destination: WordFinder(), tag: 11, selection: $selection) {
                                         Button(action: {
                                             self.selection = 11
                                         }) {
-                                            Text("Word \n Finder")
-                                                .font(.title3)
-                                                .foregroundColor(.white)
-                                                .frame(width: 140, height: 80, alignment: .center)
-                                                .background(
-                                                    LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.9), .indigo.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
-                                                ).cornerRadius(10)
+                                            VStack(alignment: SwiftUI.HorizontalAlignment.leading){
+                                                Text("Word Finder").font(.title3).foregroundColor(.white)
+                                                Text("by meaning")
+                                                    .font(.subheadline).foregroundColor(.white.opacity(0.6))
+                                            }.foregroundColor(.white)
                                         }
+                                        .frame(width: 140, height: 80, alignment: .center)
+                                        .background(
+                                            LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.9), .indigo.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
+                                            ).cornerRadius(10)
                                     }
-                                    NavigationLink(destination: FlipCardGame(), tag: 11, selection: $selection) {
-                                        Button(action: {
-                                            self.selection = 11
-                                        }) {
-                                            Text("What Do \n You Mean")
-                                                .font(.title3)
-                                                .foregroundColor(.white)
-                                                .frame(width: 140, height: 80, alignment: .center)
-                                                .background(
-                                                    LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.9), .blue.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
-                                                ).cornerRadius(10)
-                                        }
-                                    }
-                                    NavigationLink(destination: RandomSentenceView(), tag: 12, selection: $selection) {
+                                    NavigationLink(destination: FlipCardGame(), tag: 12, selection: $selection) {
                                         Button(action: {
                                             self.selection = 12
                                         }) {
-                                            Text("Random \n Picker")
-                                                .font(.title3)
-                                                .foregroundColor(.white)
-                                                .frame(width: 140, height: 80, alignment: .center)
-                                                .background(
-                                                    LinearGradient(gradient: Gradient(colors: [.teal, .teal.opacity(0.9), .teal.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
-                                                ).cornerRadius(10)
+                                            VStack(alignment: SwiftUI.HorizontalAlignment.leading){
+                                                Text("Pick Meaning").font(.title3).foregroundColor(.white)
+                                                Text("by word").font(.subheadline).foregroundColor(.white.opacity(0.6))
+                                            }
                                         }
+                                        .frame(width: 140, height: 80, alignment: .center)
+                                        .background(
+                                            LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.9), .blue.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
+                                        ).cornerRadius(10)
+                                    }
+                                    NavigationLink(destination: RandomSentenceView(), tag: 13, selection: $selection) {
+                                        Button(action: {
+                                            self.selection = 13
+                                        }) {
+                                            VStack(alignment: SwiftUI.HorizontalAlignment.leading){
+                                                Text("Flash Card").font(.title3).foregroundColor(.white)
+                                                Text("word, sentence")
+                                                    .font(.subheadline).foregroundColor(.white.opacity(0.6))
+                                            }.foregroundColor(.white)
+                                        }
+                                        .frame(width: 140, height: 80, alignment: .center)
+                                        .background(
+                                            LinearGradient(gradient: Gradient(colors: [.teal, .teal.opacity(0.9), .teal.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
+                                        ).cornerRadius(10)
                                     }
                                 }
                                 .padding(0)
@@ -171,15 +176,19 @@ struct HomeView: View {
                                     Image(systemName: "list.bullet.rectangle.fill")
                                         .resizable()
                                         .frame(width: 40, height: 40)
-                                    Text("500+ Common English Words")
-                                        .font(.headline)
-                                }.accentColor(.teal)
+                                    VStack(alignment: .leading) {
+                                        Text("500+ Common English Words")
+                                            .font(.headline)
+                                        Text("Neither basic nor advanced")
+                                            .font(.subheadline).foregroundColor(.gray)
+                                    }
+                                }.accentColor(.indigo)
                             }
                             .frame(maxWidth:.infinity, minHeight: 60)
                             .cornerRadius(10)
                             .background(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.teal.opacity(0.5), lineWidth: 1)
+                                    .stroke(.indigo.opacity(0.7), lineWidth: 1)
                             )
                         }
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
