@@ -38,8 +38,10 @@ class UserWordListViewModel: ObservableObject {
         var randomNumber: Int = 0
         var indexes = [Int]()
         var userWords = [UserWord]()
+        var i : Int = 0
         
-        for _ in 1...count {
+//        for _ in 1...count {
+        while (true) {
             if (indexes.count > 0)
             {
                 randomNumber = (1..<userWordAllEntries.count).random(without: indexes)
@@ -47,8 +49,14 @@ class UserWordListViewModel: ObservableObject {
             else {
                 randomNumber = Int.random(in: 1..<userWordAllEntries.count)
             }
-            indexes.append(randomNumber)
-            userWords.append(userWordAllEntries[randomNumber])
+            if (userWordAllEntries[randomNumber].meaning != "") {
+                indexes.append(randomNumber)
+                userWords.append(userWordAllEntries[randomNumber])
+                i += 1
+            }
+            if (i >= count) {
+                break
+            }
         }
         return userWords
     }

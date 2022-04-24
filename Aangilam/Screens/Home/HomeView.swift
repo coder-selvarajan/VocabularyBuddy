@@ -98,7 +98,7 @@ struct HomeView: View {
                         Section(header: Text("Gamify your learning").padding(.horizontal, 15)) {
                             ScrollView (.horizontal, showsIndicators: false) {
                                 HStack {
-                                    NavigationLink(destination: WordFinder(), tag: 11, selection: $selection) {
+                                    NavigationLink(destination: FlipCardGame(), tag: 11, selection: $selection) {
                                         Button(action: {
                                             self.selection = 11
                                         }) {
@@ -113,7 +113,7 @@ struct HomeView: View {
                                             LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.9), .indigo.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
                                             ).cornerRadius(10)
                                     }
-                                    NavigationLink(destination: FlipCardGame(), tag: 12, selection: $selection) {
+                                    NavigationLink(destination: PickMeaningHome(), tag: 12, selection: $selection) {
                                         Button(action: {
                                             self.selection = 12
                                         }) {

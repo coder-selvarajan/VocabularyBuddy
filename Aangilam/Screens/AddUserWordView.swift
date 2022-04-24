@@ -11,7 +11,6 @@ import SwiftUI
 
 struct AddUserWordView: View {
     @StateObject var userWordListVM = UserWordListViewModel()
-    @State private var mode: String = "New"
     @State private var word: String = ""
     @State private var type: WORD_TYPE = WORD_TYPE.noun
     @State private var tag: String = ""
@@ -30,7 +29,7 @@ struct AddUserWordView: View {
         VStack {
             Form {
                 Section {
-                    TextField("Word \(mode)", text: $word)
+                    TextField("Your Word Here", text: $word)
                         .font(.title2)
                         .focused($focusedField, equals: .field)
                     
