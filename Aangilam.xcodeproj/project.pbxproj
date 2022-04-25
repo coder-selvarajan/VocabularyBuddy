@@ -15,6 +15,7 @@
 		70564F8427F5AAEE00EBA186 /* AddUserSentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8227F5AAEE00EBA186 /* AddUserSentenceView.swift */; };
 		70564F8627F5ABC800EBA186 /* UserSentenceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8527F5ABC800EBA186 /* UserSentenceListViewModel.swift */; };
 		70564F8827F5AC3800EBA186 /* UserSentence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8727F5AC3800EBA186 /* UserSentence+Extensions.swift */; };
+		706316982816D78F008FC5E9 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 706316972816D78F008FC5E9 /* ConfettiSwiftUI */; };
 		706E56AD281476FD000AC324 /* PickMeaning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706E56AC281476FD000AC324 /* PickMeaning.swift */; };
 		707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E6E27DDD02E0020557E /* AangilamApp.swift */; };
 		707D1E7127DDD02E0020557E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E7027DDD02E0020557E /* HomeView.swift */; };
@@ -76,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				706316982816D78F008FC5E9 /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +224,9 @@
 			dependencies = (
 			);
 			name = Aangilam;
+			packageProductDependencies = (
+				706316972816D78F008FC5E9 /* ConfettiSwiftUI */,
+			);
 			productName = Mozhi;
 			productReference = 707D1E6B27DDD02E0020557E /* Aangilam.app */;
 			productType = "com.apple.product-type.application";
@@ -250,6 +255,9 @@
 				Base,
 			);
 			mainGroup = 707D1E6227DDD02E0020557E;
+			packageReferences = (
+				706316962816D78F008FC5E9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+			);
 			productRefGroup = 707D1E6C27DDD02E0020557E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -505,6 +513,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		706316962816D78F008FC5E9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		706316972816D78F008FC5E9 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 706316962816D78F008FC5E9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		707D1E7C27DDE4300020557E /* AangilamModel.xcdatamodeld */ = {

@@ -103,7 +103,7 @@ struct HomeView: View {
                                             self.selection = 11
                                         }) {
                                             VStack(alignment: SwiftUI.HorizontalAlignment.leading){
-                                                Text("Word Finder").font(.title3).foregroundColor(.white)
+                                                Text("Word Finder").font(.headline).foregroundColor(.white)
                                                 Text("by meaning")
                                                     .font(.subheadline).foregroundColor(.white.opacity(0.6))
                                             }.foregroundColor(.white)
@@ -118,7 +118,7 @@ struct HomeView: View {
                                             self.selection = 12
                                         }) {
                                             VStack(alignment: SwiftUI.HorizontalAlignment.leading){
-                                                Text("Pick Meaning").font(.title3).foregroundColor(.white)
+                                                Text("Meaning Picker").font(.headline).foregroundColor(.white)
                                                 Text("by word").font(.subheadline).foregroundColor(.white.opacity(0.6))
                                             }
                                         }
@@ -132,7 +132,7 @@ struct HomeView: View {
                                             self.selection = 13
                                         }) {
                                             VStack(alignment: SwiftUI.HorizontalAlignment.leading){
-                                                Text("Flash Card").font(.title3).foregroundColor(.white)
+                                                Text("Flash Card").font(.headline).foregroundColor(.white)
                                                 Text("word, sentence")
                                                     .font(.subheadline).foregroundColor(.white.opacity(0.6))
                                             }.foregroundColor(.white)
