@@ -222,68 +222,115 @@ struct HomeView: View {
                         HStack {
                             Spacer()
                             
-                            NavigationLink(destination: AddUserWordView(), tag: 1, selection: $selection) {
+                            NavigationLink(destination: AddUserWordView(), tag: 1, selection: $selection) { EmptyView() }
+                            NavigationLink(destination: AddUserSentenceView(), tag: 2, selection: $selection) { EmptyView() }
+                            
+                            NavigationLink(destination: AddUserPhraseView(), tag: 3, selection: $selection) { EmptyView() }
+                                
+                            Menu {
                                 Button(action: {
-                                    // Add new word
                                     self.selection = 1
                                 }) {
-                                    Text("+W")
-                                        .font(.headline)
-                                    //                                    Image(systemName: "plus")
-                                    //                                        .font(.title)
-                                }
-                                .padding(15)
-                                .foregroundColor(Color.white)
-                                .background(Color.indigo)
-                                .cornerRadius(8)
-                            }
-                            .padding(.trailing, 5)
-                            .shadow(color: Color.black.opacity(0.3),
-                                    radius: 3,
-                                    x: 3,
-                                    y: 3)
-                            
-                            NavigationLink(destination: AddUserSentenceView(), tag: 2, selection: $selection) {
+                                    Text("Word")
+                                }.padding()
+                                
                                 Button(action: {
                                     // Add new word
                                     self.selection = 2
                                 }) {
-                                    Text("+S")
-                                        .font(.headline)
-                                    //                                    Image(systemName: "plus")
-                                    //                                        .font(.title)
-                                }
-                                .padding(15)
-                                .foregroundColor(Color.white)
-                                .background(Color.blue)
-                                .cornerRadius(8)
-                            }
-                            .padding(.trailing, 5)
-                            .shadow(color: Color.black.opacity(0.3),
-                                    radius: 3,
-                                    x: 3,
-                                    y: 3)
-                            
-                            NavigationLink(destination: AddUserPhraseView(), tag: 3, selection: $selection) {
+                                    Text("Sentence")
+                                }.padding()
+                                
                                 Button(action: {
                                     // Add new word
                                     self.selection = 3
                                 }) {
-                                    Text("+P")
-                                        .font(.headline)
-                                    //                                    Image(systemName: "plus")
-                                    //                                        .font(.title)
+                                    Button(action: {}) {
+                                        Text("Phrase/Idiom")
+                                    }
+                                }.padding()
+                            } label: {
+                                ZStack {
+                                    LinearGradient(gradient: Gradient(colors: [.indigo, .blue]), startPoint: .top, endPoint: .bottom)
+                                        .frame(width: 65, height: 65)
+                                        .cornerRadius(10)
+                                    
+//                                    RoundedRectangle(cornerRadius: 8)
+//                                        .foregroundColor(.indigo)
+                                    
+                                    Image(systemName: "plus")
+                                        .foregroundColor(.white)
+                                        .font(.title)
                                 }
-                                .padding(15)
-                                .foregroundColor(Color.white)
-                                .background(Color.cyan)
-                                .cornerRadius(8)
+                                .padding(.trailing, 20)
+                                .shadow(color: Color.black.opacity(0.4),
+                                         radius: 3,
+                                         x: 3,
+                                         y: 3)
                             }
-                            .padding(.trailing, 20)
-                            .shadow(color: Color.black.opacity(0.3),
-                                    radius: 3,
-                                    x: 3,
-                                    y: 3)
+                            
+//                            NavigationLink(destination: AddUserWordView(), tag: 1, selection: $selection) {
+//                                Button(action: {
+//                                    // Add new word
+//                                    self.selection = 1
+//                                }) {
+//                                    Text("+W")
+//                                        .font(.headline)
+//                                    //                                    Image(systemName: "plus")
+//                                    //                                        .font(.title)
+//                                }
+//                                .padding(15)
+//                                .foregroundColor(Color.white)
+//                                .background(Color.indigo)
+//                                .cornerRadius(8)
+//                            }
+//                            .padding(.trailing, 5)
+//                            .shadow(color: Color.black.opacity(0.3),
+//                                    radius: 3,
+//                                    x: 3,
+//                                    y: 3)
+//
+//                            NavigationLink(destination: AddUserSentenceView(), tag: 2, selection: $selection) {
+//                                Button(action: {
+//                                    // Add new word
+//                                    self.selection = 2
+//                                }) {
+//                                    Text("+S")
+//                                        .font(.headline)
+//                                    //                                    Image(systemName: "plus")
+//                                    //                                        .font(.title)
+//                                }
+//                                .padding(15)
+//                                .foregroundColor(Color.white)
+//                                .background(Color.blue)
+//                                .cornerRadius(8)
+//                            }
+//                            .padding(.trailing, 5)
+//                            .shadow(color: Color.black.opacity(0.3),
+//                                    radius: 3,
+//                                    x: 3,
+//                                    y: 3)
+//
+//                            NavigationLink(destination: AddUserPhraseView(), tag: 3, selection: $selection) {
+//                                Button(action: {
+//                                    // Add new word
+//                                    self.selection = 3
+//                                }) {
+//                                    Text("+P")
+//                                        .font(.headline)
+//                                    //                                    Image(systemName: "plus")
+//                                    //                                        .font(.title)
+//                                }
+//                                .padding(15)
+//                                .foregroundColor(Color.white)
+//                                .background(Color.cyan)
+//                                .cornerRadius(8)
+//                            }
+//                            .padding(.trailing, 20)
+//                            .shadow(color: Color.black.opacity(0.3),
+//                                    radius: 3,
+//                                    x: 3,
+//                                    y: 3)
                             
                         }
                     }

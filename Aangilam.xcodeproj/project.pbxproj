@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		701172922815BFDC00B86B45 /* PickMeaningHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701172912815BFDC00B86B45 /* PickMeaningHome.swift */; };
 		7013929727FC01FB00DA7DDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013929627FC01FB00DA7DDF /* Global.swift */; };
+		702D1FEE2818256900850091 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 702D1FED2818256900850091 /* LaunchScreen.storyboard */; };
 		703052D628112405004FD5D2 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703052D528112405004FD5D2 /* Dictionary.swift */; };
 		703052D82811318C004FD5D2 /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703052D72811318C004FD5D2 /* Words.swift */; };
 		70564F8327F5AAEE00EBA186 /* UserSentenceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8127F5AAEE00EBA186 /* UserSentenceList.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		701172912815BFDC00B86B45 /* PickMeaningHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickMeaningHome.swift; sourceTree = "<group>"; };
 		7013929627FC01FB00DA7DDF /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		702D1FED2818256900850091 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		703052D528112405004FD5D2 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		703052D72811318C004FD5D2 /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
 		70564F8127F5AAEE00EBA186 /* UserSentenceList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSentenceList.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				707D1E7227DDD0330020557E /* Assets.xcassets */,
 				707D1E7427DDD0330020557E /* Preview Content */,
 				707D1E7C27DDE4300020557E /* AangilamModel.xcdatamodeld */,
+				702D1FED2818256900850091 /* LaunchScreen.storyboard */,
 			);
 			path = Aangilam;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				702D1FEE2818256900850091 /* LaunchScreen.storyboard in Resources */,
 				707D1E7627DDD0330020557E /* Preview Assets.xcassets in Resources */,
 				707D1E7327DDD0330020557E /* Assets.xcassets in Resources */,
 			);
@@ -447,6 +451,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -476,6 +481,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
