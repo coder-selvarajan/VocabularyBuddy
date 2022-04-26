@@ -29,6 +29,9 @@ class UserSentenceListViewModel: ObservableObject {
     }
     
     func pickRandomSentence() -> UserSentence {
+        if (userSentenceAllEntries.count == 0){
+            getAllUserSentenceEntries()
+        }
         let randomNumber: Int = Int.random(in: 1..<userSentenceAllEntries.count)
         let sentence = userSentenceAllEntries[randomNumber]
         return sentence

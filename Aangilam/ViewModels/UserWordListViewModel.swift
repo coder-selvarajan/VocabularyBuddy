@@ -29,6 +29,9 @@ class UserWordListViewModel: ObservableObject {
     }
     
     func pickRandomWord() -> UserWord {
+        if (userWordAllEntries.count == 0){
+            getAllUserWordEntries()
+        }
         let randomNumber: Int = Int.random(in: 1..<userWordAllEntries.count)
         let word = userWordAllEntries[randomNumber]
         return word

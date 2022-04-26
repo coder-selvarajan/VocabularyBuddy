@@ -98,7 +98,7 @@ struct HomeView: View {
                         Section(header: Text("Gamify your learning").padding(.horizontal, 15)) {
                             ScrollView (.horizontal, showsIndicators: false) {
                                 HStack {
-                                    NavigationLink(destination: FlipCardGame(), tag: 11, selection: $selection) {
+                                    NavigationLink(destination: WordFinder(), tag: 11, selection: $selection) {
                                         Button(action: {
                                             self.selection = 11
                                         }) {
@@ -127,12 +127,12 @@ struct HomeView: View {
                                             LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.9), .blue.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
                                         ).cornerRadius(10)
                                     }
-                                    NavigationLink(destination: RandomSentenceView(), tag: 13, selection: $selection) {
+                                    NavigationLink(destination: RandomPickerView(), tag: 13, selection: $selection) {
                                         Button(action: {
                                             self.selection = 13
                                         }) {
                                             VStack(alignment: SwiftUI.HorizontalAlignment.leading){
-                                                Text("Flash Card").font(.headline).foregroundColor(.white)
+                                                Text("Random Picker").font(.headline).foregroundColor(.white)
                                                 Text("word, sentence")
                                                     .font(.subheadline).foregroundColor(.white.opacity(0.6))
                                             }.foregroundColor(.white)
@@ -295,21 +295,26 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-                    Image(systemName: "line.3.horizontal")
-                        .foregroundColor(.blue)
+                    NavigationLink(destination: Test()) {
+                    Image(systemName: "line.3.horizontal.circle")
                         .onTapGesture {
                             //looListVM.getLooEntriesFor(date: listDate)
                         }
+                    }
                 }
                 
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
                     NavigationLink(destination: Test()) {
-                        Image(systemName: "plus")
+                        Image(systemName: "gearshape.fill")
                         //                            .foregroundColor(.black)
                     }
                 }
             }
         }
+        .accentColor(.indigo)
+        //navigation-view
+//        .navigationBarBackButtonHidden(true)
+        .ignoresSafeArea()
     }
 }
 

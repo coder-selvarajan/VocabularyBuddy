@@ -32,8 +32,8 @@ struct PickMeaning: View {
                                         "circlebadge",
                                         "circlebadge"]
     
-    var endWord : [String] = ["Start Practicing", "Practice More", "Practice Hard", "Great", "Excellent", "Awesome"]
-    var endConfetti : [Int] = [0,0,0,0,1,3]
+    var endWord : [String] = ["Start Practicing", "Practice More", "Practice Hard", "Great", "Excellent", "AWESOME"]
+    var endConfetti : [Int] = [0,0,0,0,0,2]
     
     func get30Characters(_ str: String) -> String {
         return String(str.prefix(100))
@@ -221,7 +221,7 @@ struct PickMeaning: View {
                     Spacer()
                 }
                 .onAppear(){
-                    if score > 2 {
+                    if score > 3 {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             counter += 1
                         }

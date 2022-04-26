@@ -20,6 +20,15 @@ class UserPhraseListViewModel: ObservableObject {
         }
     }
     
+    func pickRandomPhrase() -> UserPhrase {
+        if (userPhraseAllEntries.count == 0){
+            getAllUserPhraseEntries()
+        }
+        let randomNumber: Int = Int.random(in: 1..<userPhraseAllEntries.count)
+        let phrase = userPhraseAllEntries[randomNumber]
+        return phrase
+    }
+    
     func getRecentPhraseEntries() {
         let PhraseEntries : [UserPhrase] = UserPhrase.getRecentRecords(limit: 3)
 

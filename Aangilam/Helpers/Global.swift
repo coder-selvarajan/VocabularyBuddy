@@ -47,3 +47,10 @@ extension Color {
         )
     }
 }
+
+extension String {
+    func trim(using characterSet: CharacterSet = .whitespacesAndNewlines) -> String {
+        return trimmingCharacters(in: characterSet)
+    }
+}
+
