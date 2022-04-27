@@ -43,68 +43,78 @@ struct PickMeaning: View {
         if !gameOver {
             ScrollView {
                 VStack {
-                    Spacer()
-                    
                     HStack {
-                        Text("Question \(currentQuestionIndex)/\(questionsCount)")
+                        Text("Question: \(currentQuestionIndex)/\(questionsCount)")
                             .font(.headline)
                         Spacer()
-                        Text("Score \(score)")
+                        Text("Score: \(score)")
                             .font(.headline)
                             .foregroundColor(.cyan)
-                    }.padding()
+                    }.padding(10)
                     
                     Divider()
                     
                     Spacer()
                     
                     if (randomWords.count > 0) {
-                        Text("Word")
+                        Text("Word:")
                             .font(.caption)
                         Text(randomWords[correctAnswerIndex].word!)
                             .font(.largeTitle)
                             .foregroundColor(.indigo)
-                        Divider()
-                        
+                            
                         Spacer()
                         
-                        Text("Choose the right meaning: ")
-                            .font(.body)
-                        ForEach(randomWords.indices, id:\.self) { index in
-                            Button {
-                                showResult = true
-                                choiceColors[correctAnswerIndex] = Color.green
-                                choiceIcons[correctAnswerIndex] = "checkmark.circle"
-                                if (index == correctAnswerIndex) {
-                                    userIsCorrect = true
-                                    score += 1
+                        Text("Choose the right meaning below: ")
+                            .font(.headline)
+                            .padding(.vertical, 15)
+                        VStack {
+                            ForEach(randomWords.indices, id:\.self) { index in
+                                Button {
+                                    showResult = true
+                                    choiceIcons[correctAnswerIndex] = "checkmark.circle"
+                                    if (index == correctAnswerIndex) {
+                                        userIsCorrect = true
+                                        score += 1
+                                        choiceColors[correctAnswerIndex] = Color.green
+                                    }
+                                    else {
+                                        userIsCorrect = false
+                                        choiceColors[index] = Color.red
+                                        choiceIcons[index] = "multiply.circle"
+                                    }
+                                } label: {
+                                    HStack(alignment: .center) {
+                                        Image(systemName: choiceIcons[index])
+                                            .resizable()
+                                            .aspectRatio(contentMode: ContentMode.fit)
+                                            .foregroundColor(.black.opacity(0.5))
+                                            .frame(width: 30)
+                                            .padding(.horizontal, 15)
+                                            .padding(.vertical, 10)
+                                        Text("\(randomWords[index].meaning ?? "")")
+                                            .lineLimit(3)
+                                            .font(.body)
+                                            .padding(.vertical, 5)
+                                            .foregroundColor(.black)
+                                            .multilineTextAlignment(TextAlignment.leading)
+                                        Spacer()
+                                    }
+                                    .padding(.horizontal, 5)
+                                    .padding(.vertical, 0)
+                                    .background(choiceColors[index])
                                 }
-                                else {
-                                    userIsCorrect = false
-                                    choiceColors[index] = Color.red
-                                    choiceIcons[index] = "multiply.circle"
-                                }
-                            } label: {
-                                HStack(alignment: .center) {
-                                    Image(systemName: choiceIcons[index])
-                                        .resizable()
-                                        .aspectRatio(contentMode: ContentMode.fit)
-                                        .foregroundColor(.black)
-                                        .frame(width: 30)
-                                        .padding(.horizontal, 15)
-                                    Text("\(randomWords[index].meaning ?? "")")
-                                        .lineLimit(3)
-                                        .font(.body)
-                                        .padding(.vertical, 10)
-                                        .foregroundColor(.black)
-                                        .multilineTextAlignment(TextAlignment.leading)
-                                    Spacer()
-                                }
-                                .background(choiceColors[index]) // Color(hex: "F5F5F5"))
-                                .cornerRadius(8)
-                                .padding(.horizontal, 20)
-                            }.disabled(showResult)
+                                .padding(0)
+                                .disabled(showResult)
+                                
+                                Divider()
+                            }
                         }
+                        .background(Color(hex: "ececec"))
+                        .cornerRadius(10)
+                        .padding(.horizontal, 15)
+                        
+                        
                         if (showResult) {
                             if (userIsCorrect) {
                                 Text("Correct answer")

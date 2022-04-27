@@ -164,7 +164,7 @@ struct HomeView: View {
                                     }
                                 }
                             }
-                            .onDelete(perform: delete)
+//                            .onDelete(perform: delete)
                         }
                         .listSectionSeparatorTint(.indigo)
                         
@@ -207,15 +207,13 @@ struct HomeView: View {
                         }
                     }
                     .padding(0)
+                    .padding(.top, -15)
                     .listStyle(.insetGrouped)
-                    //                .ignoresSafeArea(edges: .top)
                     .onAppear {
                         userWordListVM.getRecentWordEntries()
                         userSentenceListVM.getRecentSentenceEntries()
                         userPhraseListVM.getRecentPhraseEntries()
                     }
-                    //                    .ignoresSafeArea(.container, edges: .top)
-                    //                    .ignoresSafeArea(.all, edges: .bottom)
                     
                     VStack {
                         Spacer()
@@ -224,7 +222,6 @@ struct HomeView: View {
                             
                             NavigationLink(destination: AddUserWordView(), tag: 1, selection: $selection) { EmptyView() }
                             NavigationLink(destination: AddUserSentenceView(), tag: 2, selection: $selection) { EmptyView() }
-                            
                             NavigationLink(destination: AddUserPhraseView(), tag: 3, selection: $selection) { EmptyView() }
                                 
                             Menu {
@@ -254,10 +251,6 @@ struct HomeView: View {
                                     LinearGradient(gradient: Gradient(colors: [.indigo, .blue]), startPoint: .top, endPoint: .bottom)
                                         .frame(width: 65, height: 65)
                                         .cornerRadius(10)
-                                    
-//                                    RoundedRectangle(cornerRadius: 8)
-//                                        .foregroundColor(.indigo)
-                                    
                                     Image(systemName: "plus")
                                         .foregroundColor(.white)
                                         .font(.title)
@@ -268,70 +261,6 @@ struct HomeView: View {
                                          x: 3,
                                          y: 3)
                             }
-                            
-//                            NavigationLink(destination: AddUserWordView(), tag: 1, selection: $selection) {
-//                                Button(action: {
-//                                    // Add new word
-//                                    self.selection = 1
-//                                }) {
-//                                    Text("+W")
-//                                        .font(.headline)
-//                                    //                                    Image(systemName: "plus")
-//                                    //                                        .font(.title)
-//                                }
-//                                .padding(15)
-//                                .foregroundColor(Color.white)
-//                                .background(Color.indigo)
-//                                .cornerRadius(8)
-//                            }
-//                            .padding(.trailing, 5)
-//                            .shadow(color: Color.black.opacity(0.3),
-//                                    radius: 3,
-//                                    x: 3,
-//                                    y: 3)
-//
-//                            NavigationLink(destination: AddUserSentenceView(), tag: 2, selection: $selection) {
-//                                Button(action: {
-//                                    // Add new word
-//                                    self.selection = 2
-//                                }) {
-//                                    Text("+S")
-//                                        .font(.headline)
-//                                    //                                    Image(systemName: "plus")
-//                                    //                                        .font(.title)
-//                                }
-//                                .padding(15)
-//                                .foregroundColor(Color.white)
-//                                .background(Color.blue)
-//                                .cornerRadius(8)
-//                            }
-//                            .padding(.trailing, 5)
-//                            .shadow(color: Color.black.opacity(0.3),
-//                                    radius: 3,
-//                                    x: 3,
-//                                    y: 3)
-//
-//                            NavigationLink(destination: AddUserPhraseView(), tag: 3, selection: $selection) {
-//                                Button(action: {
-//                                    // Add new word
-//                                    self.selection = 3
-//                                }) {
-//                                    Text("+P")
-//                                        .font(.headline)
-//                                    //                                    Image(systemName: "plus")
-//                                    //                                        .font(.title)
-//                                }
-//                                .padding(15)
-//                                .foregroundColor(Color.white)
-//                                .background(Color.cyan)
-//                                .cornerRadius(8)
-//                            }
-//                            .padding(.trailing, 20)
-//                            .shadow(color: Color.black.opacity(0.3),
-//                                    radius: 3,
-//                                    x: 3,
-//                                    y: 3)
-                            
                         }
                     }
                 }
@@ -342,11 +271,9 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-                    NavigationLink(destination: Test()) {
+                    NavigationLink(destination: Test2()) {
                     Image(systemName: "line.3.horizontal.circle")
-                        .onTapGesture {
-                            //looListVM.getLooEntriesFor(date: listDate)
-                        }
+                        
                     }
                 }
                 
