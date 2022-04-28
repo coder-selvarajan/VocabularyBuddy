@@ -1,7 +1,7 @@
 # Aangilam
-Language learning app
+Vocabulary builder cum dictionary app for English.
 
-The main purpose of this app is to keep track of new vocabulary and sentences in a language. Also provide few ways to practice the knowledge. 
+The purpose of this app is to keep track of new vocabulary that the user is learning and make him practice the same with intuitive word games. It gives a free dictionary to search among 250000 words. 
 
 Technology: SwiftUI
 
