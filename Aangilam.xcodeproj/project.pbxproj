@@ -34,6 +34,7 @@
 		70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85D27FD60CF00618D66 /* FlipView.swift */; };
 		70A6B86027FD654E00618D66 /* WordFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85F27FD654E00618D66 /* WordFinder.swift */; };
 		70A745FF2808A7F5005892E1 /* RandomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A745FE2808A7F5005892E1 /* RandomPickerView.swift */; };
+		70BA45DB281B13FC00F112D0 /* ViewUserWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */; };
 		70DFA4C027F8B28D007FADB1 /* UserPhrase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */; };
 		70DFA4C427F8B2DC007FADB1 /* UserPhraseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4C227F8B2DC007FADB1 /* UserPhraseListViewModel.swift */; };
 		70DFA4C727F8B2E4007FADB1 /* UserPhraseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4C527F8B2E4007FADB1 /* UserPhraseList.swift */; };
@@ -69,6 +70,7 @@
 		70A6B85D27FD60CF00618D66 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		70A6B85F27FD654E00618D66 /* WordFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordFinder.swift; sourceTree = "<group>"; };
 		70A745FE2808A7F5005892E1 /* RandomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPickerView.swift; sourceTree = "<group>"; };
+		70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserWord.swift; sourceTree = "<group>"; };
 		70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPhrase+Extensions.swift"; sourceTree = "<group>"; };
 		70DFA4C227F8B2DC007FADB1 /* UserPhraseListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPhraseListViewModel.swift; sourceTree = "<group>"; };
 		70DFA4C527F8B2E4007FADB1 /* UserPhraseList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPhraseList.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				708AEE4C27F22DC200DCB00A /* UserWordList.swift */,
 				709A281027F6ED300018FC37 /* Test.swift */,
 				70FEB4B628190F80000EEB6D /* Test2.swift */,
+				70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70BA45DB281B13FC00F112D0 /* ViewUserWord.swift in Sources */,
 				70DFA4C827F8B2E4007FADB1 /* AddUserPhraseView.swift in Sources */,
 				70564F8427F5AAEE00EBA186 /* AddUserSentenceView.swift in Sources */,
 				70DFA4C727F8B2E4007FADB1 /* UserPhraseList.swift in Sources */,

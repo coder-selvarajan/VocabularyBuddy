@@ -22,7 +22,7 @@ struct UserWordList: View {
         List {
             ForEach(searchResults, id:\.objectID) {userword in
                 NavigationLink(
-                    destination: AddUserWordView(),
+                    destination: ViewUserWord(word: userword),
                     label: {
                         HStack {
                             Text("\(userword.word ?? "")")
