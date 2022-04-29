@@ -22,30 +22,40 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AANGILAM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJr-Yd-SGN">
-                                <rect key="frame" x="129.5" y="518" width="155" height="37"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="joq-0c-CK0">
-                                <rect key="frame" x="157" y="398.5" width="100" height="99"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zo4-Tw-3vX">
+                                <rect key="frame" x="152" y="393" width="110" height="110"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="RTe-5o-FgI"/>
+                                    <constraint firstAttribute="height" constant="110" id="Y1G-z5-ADQ"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="joq-0c-CK0">
+                                <rect key="frame" x="157" y="398" width="100" height="100"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Nfs-IQ-dee"/>
                                     <constraint firstAttribute="height" constant="100" id="jp1-Pj-yeU"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AANGILAM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJr-Yd-SGN">
+                                <rect key="frame" x="129.5" y="528" width="155" height="37"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                         <constraints>
                             <constraint firstItem="joq-0c-CK0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2ix-dW-KPu"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
+                            <constraint firstItem="QJr-Yd-SGN" firstAttribute="top" secondItem="zo4-Tw-3vX" secondAttribute="bottom" constant="25" id="PGI-a2-5ts"/>
                             <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
-                            <constraint firstItem="QJr-Yd-SGN" firstAttribute="top" secondItem="joq-0c-CK0" secondAttribute="bottom" constant="20" id="TvQ-cs-Fex"/>
                             <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
+                            <constraint firstItem="zo4-Tw-3vX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="cRS-yV-zbC"/>
+                            <constraint firstItem="zo4-Tw-3vX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="g97-fw-YKU"/>
                             <constraint firstItem="joq-0c-CK0" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="gNo-4v-zfg"/>
                             <constraint firstItem="QJr-Yd-SGN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="yOq-Hl-ezY"/>
                         </constraints>
@@ -57,7 +67,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="book.circle" catalog="system" width="128" height="121"/>
+        <image name="Logo" width="1024" height="1024"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
