@@ -53,4 +53,3 @@ extension String {
         return trimmingCharacters(in: characterSet)
     }
 }
-

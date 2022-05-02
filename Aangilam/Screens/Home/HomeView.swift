@@ -289,6 +289,7 @@ struct HomeView: View {
         //navigation-view
 //        .navigationBarBackButtonHidden(true)
         .ignoresSafeArea()
+        .overlay(SplashScreen())
     }
 }
 
