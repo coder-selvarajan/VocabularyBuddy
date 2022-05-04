@@ -59,6 +59,7 @@ enum PartOfSpeech: String, CaseIterable {
 }
 
 struct Dictionary: View {
+    @StateObject var userWordListVM = UserWordListViewModel()
     @State var dictionaryJson: [String] = []
     @State var filteredItems: [String] = []
     @State private var searchText = ""
@@ -71,6 +72,7 @@ struct Dictionary: View {
         case search
     }
     @FocusState private var focusedField: FocusField?
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading) {
@@ -115,6 +117,22 @@ struct Dictionary: View {
                         Divider()
                         Text("Example Usage:").font(.title3)
                         Text("\(extractExmple(meanings: vmDict.wordInfo!.meanings))")
+                        
+                        Button(action: {
+                            userWordListVM.saveWord(word: vmDict.wordInfo?.word ?? "",
+                                                    tag: "from Dictionary",
+                                                    meaning: extractMeaning(meanings: vmDict.wordInfo!.meanings),
+                                                    sampleSentence: extractExmple(meanings: vmDict.wordInfo!.meanings))
+                            presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            Text("Save this Word")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .frame (height: 55)
+                                .frame (maxWidth: .infinity)
+                                .background (Color.indigo)
+                                .cornerRadius(10)
+                        })
                     }.padding()
                 }
             }

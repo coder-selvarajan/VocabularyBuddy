@@ -11,6 +11,7 @@ import SwiftUI
 
 struct AddUserWordView: View {
     @StateObject var userWordListVM = UserWordListViewModel()
+    
     @State private var word: String = ""
     @State private var type: WORD_TYPE = WORD_TYPE.noun
     @State private var tag: String = ""
