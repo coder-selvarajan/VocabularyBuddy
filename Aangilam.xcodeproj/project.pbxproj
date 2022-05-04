@@ -10,7 +10,6 @@
 		700BD178282058770069967F /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700BD177282058770069967F /* SplashScreen.swift */; };
 		701172922815BFDC00B86B45 /* PickMeaningHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701172912815BFDC00B86B45 /* PickMeaningHome.swift */; };
 		7013929727FC01FB00DA7DDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013929627FC01FB00DA7DDF /* Global.swift */; };
-		702D1FEE2818256900850091 /* NoLaunchingScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 702D1FED2818256900850091 /* NoLaunchingScreen.storyboard */; };
 		703052D628112405004FD5D2 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703052D528112405004FD5D2 /* Dictionary.swift */; };
 		703052D82811318C004FD5D2 /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703052D72811318C004FD5D2 /* Words.swift */; };
 		70564F8327F5AAEE00EBA186 /* UserSentenceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8127F5AAEE00EBA186 /* UserSentenceList.swift */; };
@@ -31,6 +30,7 @@
 		707D1E8C27DE6D130020557E /* UserWordListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8B27DE6D130020557E /* UserWordListViewModel.swift */; };
 		707D1E9027DE797D0020557E /* AddUserWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8F27DE797D0020557E /* AddUserWordView.swift */; };
 		708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AEE4C27F22DC200DCB00A /* UserWordList.swift */; };
+		7098F9062821AB3100FCBD24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7098F9052821AB3100FCBD24 /* LaunchScreen.storyboard */; };
 		709A281127F6ED300018FC37 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709A281027F6ED300018FC37 /* Test.swift */; };
 		70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85D27FD60CF00618D66 /* FlipView.swift */; };
 		70A6B86027FD654E00618D66 /* WordFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85F27FD654E00618D66 /* WordFinder.swift */; };
@@ -48,7 +48,6 @@
 		700BD17928205C8D0069967F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		701172912815BFDC00B86B45 /* PickMeaningHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickMeaningHome.swift; sourceTree = "<group>"; };
 		7013929627FC01FB00DA7DDF /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		702D1FED2818256900850091 /* NoLaunchingScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoLaunchingScreen.storyboard; sourceTree = "<group>"; };
 		703052D528112405004FD5D2 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		703052D72811318C004FD5D2 /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
 		70564F8127F5AAEE00EBA186 /* UserSentenceList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSentenceList.swift; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		707D1E8B27DE6D130020557E /* UserWordListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWordListViewModel.swift; sourceTree = "<group>"; };
 		707D1E8F27DE797D0020557E /* AddUserWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserWordView.swift; sourceTree = "<group>"; };
 		708AEE4C27F22DC200DCB00A /* UserWordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWordList.swift; sourceTree = "<group>"; };
+		7098F9052821AB3100FCBD24 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		709A281027F6ED300018FC37 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		70A6B85D27FD60CF00618D66 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		70A6B85F27FD654E00618D66 /* WordFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordFinder.swift; sourceTree = "<group>"; };
@@ -151,8 +151,8 @@
 				707D1E7227DDD0330020557E /* Assets.xcassets */,
 				707D1E7427DDD0330020557E /* Preview Content */,
 				707D1E7C27DDE4300020557E /* AangilamModel.xcdatamodeld */,
-				702D1FED2818256900850091 /* NoLaunchingScreen.storyboard */,
 				700BD177282058770069967F /* SplashScreen.swift */,
+				7098F9052821AB3100FCBD24 /* LaunchScreen.storyboard */,
 			);
 			path = Aangilam;
 			sourceTree = "<group>";
@@ -286,7 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				702D1FEE2818256900850091 /* NoLaunchingScreen.storyboard in Resources */,
+				7098F9062821AB3100FCBD24 /* LaunchScreen.storyboard in Resources */,
 				707D1E7627DDD0330020557E /* Preview Assets.xcassets in Resources */,
 				707D1E7327DDD0330020557E /* Assets.xcassets in Resources */,
 			);
@@ -465,6 +465,7 @@
 				INFOPLIST_FILE = Aangilam/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -494,6 +495,7 @@
 				INFOPLIST_FILE = Aangilam/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

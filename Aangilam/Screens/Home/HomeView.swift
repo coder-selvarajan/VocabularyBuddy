@@ -272,8 +272,7 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
                     NavigationLink(destination: Test2()) {
-                    Image(systemName: "line.3.horizontal.circle")
-                        
+                        Image(systemName: "line.3.horizontal.circle")
                     }
                 }
                 
@@ -286,10 +285,16 @@ struct HomeView: View {
             }
         }
         .accentColor(.indigo)
-        //navigation-view
-//        .navigationBarBackButtonHidden(true)
         .ignoresSafeArea()
-        .overlay(SplashScreen())
+        .onAppear(){
+            do {
+                //to show launch screen atleast for one second
+//                sleep(1)
+                let ms = 1000
+                usleep(useconds_t(600 * ms))
+            }
+        }
+//        .overlay(SplashScreen())
     }
 }
 
