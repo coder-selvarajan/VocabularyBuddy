@@ -23,40 +23,55 @@ struct HomeView: View {
     
     var WordListFooter: some View {
         NavigationLink(destination: UserWordList(), tag: 1, selection: $showList) {
-            Button(action: {
-                // Show word list
-                self.showList = 1
-            }, label: {
-                Text("Show All")
-                    .foregroundColor(.blue)
-                    .padding(.bottom, 7)
-            })
+            if (userWordListVM.userWordRecentEntries.count > 0) {
+                Button(action: {
+                    // Show word list
+                    self.showList = 1
+                }, label: {
+                    Text("Show All")
+                        .foregroundColor(.blue)
+                        .padding(.bottom, 7)
+                })
+            }
+            else {
+                EmptyView()
+            }
         }
     }
     
     var SentenceListFooter: some View {
         NavigationLink(destination: UserSentenceList(), tag: 2, selection: $showList) {
-            Button(action: {
-                // Show sentence list
-                self.showList = 2
-            }, label: {
-                Text("Show All")
-                    .foregroundColor(.blue)
-                    .padding(.bottom, 7)
-            })
+            if (userSentenceListVM.userSentenceRecentEntries.count > 0) {
+                Button(action: {
+                    // Show sentence list
+                    self.showList = 2
+                }, label: {
+                    Text("Show All")
+                        .foregroundColor(.blue)
+                        .padding(.bottom, 7)
+                })
+            }
+            else {
+                EmptyView()
+            }
         }
     }
     
     var PhraseListFooter: some View {
         NavigationLink(destination: UserPhraseList(), tag: 3, selection: $showList) {
-            Button(action: {
-                // Show phrase list
-                self.showList = 3
-            }, label: {
-                Text("Show All")
-                    .foregroundColor(.blue)
-                    .padding(.bottom, 7)
-            })
+            if (userPhraseListVM.userPhraseRecentEntries.count > 0) {
+                Button(action: {
+                    // Show phrase list
+                    self.showList = 3
+                }, label: {
+                    Text("Show All")
+                        .foregroundColor(.blue)
+                        .padding(.bottom, 7)
+                })
+            }
+            else {
+                EmptyView()
+            }
         }
     }
     
@@ -95,6 +110,7 @@ struct HomeView: View {
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                         .listRowBackground(Color.clear)
                         
+                        // Game section
                         Section(header: Text("Gamify your learning").padding(.horizontal, 15)) {
                             ScrollView (.horizontal, showsIndicators: false) {
                                 HStack {
@@ -139,7 +155,7 @@ struct HomeView: View {
                                         }
                                         .frame(width: 140, height: 80, alignment: .center)
                                         .background(
-                                            LinearGradient(gradient: Gradient(colors: [.teal, .teal.opacity(0.9), .teal.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
+                                            LinearGradient(gradient: Gradient(colors: [.cyan, .cyan.opacity(0.9), .cyan.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
                                         ).cornerRadius(10)
                                     }
                                 }
@@ -149,25 +165,44 @@ struct HomeView: View {
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .listRowBackground(Color.clear)
                         
+                        //Recent Words
                         Section(header: Text("Recent Words"), footer: WordListFooter) {
-                            ForEach(userWordListVM.userWordRecentEntries, id:\.objectID) {userword in
-                                
-                                VStack(alignment: .leading, spacing: 10) {
-                                    HStack {
-                                        Text("\(userword.word!)")
-                                            .font(.headline)
-                                            .bold()
-                                        Text(" \(userword.meaning ?? "")")
-                                            .font(.subheadline)
-                                            .foregroundColor(.secondary)
-                                            .lineLimit(1)
+                            if (userWordListVM.userWordRecentEntries.count == 0) {
+                                VStack(alignment: .leading){
+                                    Text("No words are added yet.")
+                                        .font(.footnote)
+                                        .padding(.vertical, 10)
+                                    Button {
+                                        //
+                                    } label: {
+                                        Text("+ Add your first word")
+                                            .font(.footnote)
+                                            .foregroundColor(.indigo)
+                                            .padding(.bottom, 10)
+                                    }
+                                }
+                            }
+                            else {
+                                ForEach(userWordListVM.userWordRecentEntries, id:\.objectID) {userword in
+                                    
+                                    VStack(alignment: .leading, spacing: 10) {
+                                        HStack {
+                                            Text("\(userword.word!)")
+                                                .font(.headline)
+                                                .bold()
+                                            Text(" \(userword.meaning ?? "")")
+                                                .font(.subheadline)
+                                                .foregroundColor(.secondary)
+                                                .lineLimit(1)
+                                        }
                                     }
                                 }
                             }
 //                            .onDelete(perform: delete)
                         }
-                        .listSectionSeparatorTint(.indigo)
+//                        .listSectionSeparatorTint(.indigo)
                         
+                        //Common English Words
                         Section() {
                             Button(action: {
                                 self.selection = 11
@@ -194,15 +229,51 @@ struct HomeView: View {
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .listRowBackground(Color.clear)
                         
+                        //Recent Sentences
                         Section(header: Text("Recent Sentences"),  footer: SentenceListFooter) {
-                            ForEach(userSentenceListVM.userSentenceRecentEntries, id:\.objectID) {sentence in
-                                Text("\(sentence.sentence ?? "")").font(.subheadline)
+                            if (userSentenceListVM.userSentenceRecentEntries.count == 0) {
+                                VStack(alignment: .leading){
+                                    Text("No sentences are added yet.")
+                                        .font(.footnote)
+                                        .padding(.vertical, 10)
+                                    Button {
+                                        //
+                                    } label: {
+                                        Text("+ Add your first sentence")
+                                            .font(.footnote)
+                                            .foregroundColor(.blue)
+                                            .padding(.bottom, 10)
+                                    }
+                                }
+                            }
+                            else {
+                                ForEach(userSentenceListVM.userSentenceRecentEntries, id:\.objectID) {sentence in
+                                    Text("\(sentence.sentence ?? "")").font(.subheadline)
+                                }
                             }
                         }
                         
+                        //Recent Phrases / Idioms
                         Section(header: Text("Recent Phrases / Idioms"),  footer: PhraseListFooter) {
-                            ForEach(userPhraseListVM.userPhraseRecentEntries, id:\.objectID) {phrase in
-                                Text("\(phrase.phrase ?? "")").font(.subheadline)
+                            if (userPhraseListVM.userPhraseRecentEntries.count == 0) {
+                                VStack(alignment: .leading){
+                                    Text("No phrases/idioms are added yet.")
+                                        .font(.footnote)
+                                        .padding(.vertical, 10)
+                                    Button {
+                                        //
+                                    } label: {
+                                        Text("+ Add your first phrase/idiom")
+                                            .font(.footnote)
+                                            .foregroundColor(.blue)
+                                            .padding(.bottom, 10)
+                                    }
+                                }
+                            }
+                            else {
+                                ForEach(userPhraseListVM.userPhraseRecentEntries, id:\.objectID) {phrase in
+                                    Text("\(phrase.phrase ?? "")").font(.subheadline)
+                                }
                             }
                         }
                     }
