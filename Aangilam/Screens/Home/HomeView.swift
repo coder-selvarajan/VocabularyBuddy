@@ -5,6 +5,7 @@
 //  Created by Selvarajan on 13/03/22.
 //
 
+import Foundation
 import SwiftUI
 
 struct HomeView: View {
@@ -14,6 +15,7 @@ struct HomeView: View {
     @State var selection: Int? = nil
     @State var showList: Int? = nil
     @State private var searchText = ""
+    @State var appTheme: String = "dark"
     
     func delete(at indexes: IndexSet) {
         //        if let first = indexes.first {
@@ -349,10 +351,12 @@ struct HomeView: View {
                 }
                 
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-                    NavigationLink(destination: Test()) {
+                    Button(action: {
+                        appTheme = appTheme == "dark" ? "light" : "dark"
+                    }, label: {
                         Image(systemName: "gearshape.fill")
-                        //                            .foregroundColor(.black)
-                    }
+                    })
+                    
                 }
             }
         }
@@ -366,6 +370,7 @@ struct HomeView: View {
                 usleep(useconds_t(600 * ms))
             }
         }
+        .environment(\.colorScheme, appTheme == "light" ? .light : .dark)
 //        .overlay(SplashScreen())
     }
 }

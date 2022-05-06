@@ -11,19 +11,13 @@ struct EditUserWordView: View {
     @Binding var userWord: UserWord
     @Environment(\.presentationMode) var presentationMode
     
-    enum FocusField: Hashable {
-        case field
-    }
-    
-    @FocusState private var focusedField: FocusField?
-    
     var body: some View {
+        
         VStack {
             Form {
                 Section {
                     TextField("Your Word Here", text: $userWord.word.toUnwrapped(defaultValue: ""))
                         .font(.title2)
-                        .focused($focusedField, equals: .field)
                     
                     VStack(alignment: .leading) {
                         Text("Meaning: ")
@@ -66,13 +60,7 @@ struct EditUserWordView: View {
                     })
                 }
             }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                    /// Anything over 0.5 seems to work
-                    self.focusedField = .field
-                }
-            }
-        }
+        } //VStack
     }
 }
 
