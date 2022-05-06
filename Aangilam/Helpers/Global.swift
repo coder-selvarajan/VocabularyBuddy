@@ -53,3 +53,10 @@ extension String {
         return trimmingCharacters(in: characterSet)
     }
 }
+
+//to bind the optional core data property to views
+extension Binding {
+     func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
+        Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })
+    }
+}

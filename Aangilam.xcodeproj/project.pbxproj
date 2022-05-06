@@ -17,6 +17,7 @@
 		70564F8627F5ABC800EBA186 /* UserSentenceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8527F5ABC800EBA186 /* UserSentenceListViewModel.swift */; };
 		70564F8827F5AC3800EBA186 /* UserSentence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8727F5AC3800EBA186 /* UserSentence+Extensions.swift */; };
 		706316982816D78F008FC5E9 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 706316972816D78F008FC5E9 /* ConfettiSwiftUI */; };
+		7066A9C028250C39008BCAB1 /* EditUserWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7066A9BF28250C39008BCAB1 /* EditUserWordView.swift */; };
 		706E56AD281476FD000AC324 /* PickMeaning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706E56AC281476FD000AC324 /* PickMeaning.swift */; };
 		707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E6E27DDD02E0020557E /* AangilamApp.swift */; };
 		707D1E7127DDD02E0020557E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E7027DDD02E0020557E /* HomeView.swift */; };
@@ -54,6 +55,7 @@
 		70564F8227F5AAEE00EBA186 /* AddUserSentenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserSentenceView.swift; sourceTree = "<group>"; };
 		70564F8527F5ABC800EBA186 /* UserSentenceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSentenceListViewModel.swift; sourceTree = "<group>"; };
 		70564F8727F5AC3800EBA186 /* UserSentence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSentence+Extensions.swift"; sourceTree = "<group>"; };
+		7066A9BF28250C39008BCAB1 /* EditUserWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserWordView.swift; sourceTree = "<group>"; };
 		706E56AC281476FD000AC324 /* PickMeaning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickMeaning.swift; sourceTree = "<group>"; };
 		707D1E6B27DDD02E0020557E /* Aangilam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aangilam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		707D1E6E27DDD02E0020557E /* AangilamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AangilamApp.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				709A281027F6ED300018FC37 /* Test.swift */,
 				70FEB4B628190F80000EEB6D /* Test2.swift */,
 				70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */,
+				7066A9BF28250C39008BCAB1 /* EditUserWordView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				709A281127F6ED300018FC37 /* Test.swift in Sources */,
 				70DFA4C427F8B2DC007FADB1 /* UserPhraseListViewModel.swift in Sources */,
 				706E56AD281476FD000AC324 /* PickMeaning.swift in Sources */,
+				7066A9C028250C39008BCAB1 /* EditUserWordView.swift in Sources */,
 				703052D82811318C004FD5D2 /* Words.swift in Sources */,
 				707D1E7127DDD02E0020557E /* HomeView.swift in Sources */,
 				707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */,

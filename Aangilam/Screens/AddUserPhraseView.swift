@@ -31,8 +31,7 @@ struct AddUserPhraseView: View {
                     VStack(alignment: .leading) {
                         Text("Meaning: ")
                         TextEditor(text: $meaning)
-                            .lineSpacing(20)
-                            .frame(height: 100)
+                            .frame(height: 140)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
                         
@@ -41,8 +40,7 @@ struct AddUserPhraseView: View {
                     VStack(alignment: .leading) {
                         Text("Example: ")
                         TextEditor(text: $example)
-                            .lineSpacing(20)
-                            .frame(height: 100)
+                            .frame(height: 120)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
                         
@@ -51,7 +49,6 @@ struct AddUserPhraseView: View {
                     VStack(alignment: .leading) {
                         Text("Tag: ")
                         TextEditor(text: $tag)
-                            .lineSpacing(20)
                             .frame(height: 100)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))

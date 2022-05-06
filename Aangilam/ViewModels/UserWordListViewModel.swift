@@ -64,6 +64,9 @@ class UserWordListViewModel: ObservableObject {
         return userWords
     }
     
+    func updateWord(word: UserWord) {
+        word.save()
+    }
     
     func saveWord(word: String, tag: String, meaning: String, sampleSentence: String){
         let userWord = UserWord(context: UserWord.viewContext)

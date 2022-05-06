@@ -27,7 +27,6 @@ struct AddUserSentenceView: View {
                     VStack(alignment: .leading) {
                         Text("Sentence: ")
                         TextEditor(text: $sentence)
-                            .lineSpacing(20)
                             .frame(height: 100)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
@@ -37,7 +36,6 @@ struct AddUserSentenceView: View {
                     VStack(alignment: .leading) {
                         Text("Tag: ")
                         TextEditor(text: $tag)
-                            .lineSpacing(20)
                             .frame(height: 100)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))

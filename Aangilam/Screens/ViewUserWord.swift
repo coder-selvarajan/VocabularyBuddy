@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ViewUserWord: View {
     @State var word: UserWord
+    @State var selection: Int? = nil
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -29,6 +30,23 @@ struct ViewUserWord: View {
                 .padding(.bottom, 10)
             Text("\(word.sampleSentence ?? "")")
             
+            NavigationLink(destination: EditUserWordView(userWord: $word),
+                           tag: 1,
+                           selection: $selection) {
+                EmptyView()
+            }
+            
+            Button {
+                selection = 1
+            } label: {
+                Text("Edit Word")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame (height: 55)
+                    .frame (maxWidth: .infinity)
+                    .background (Color.indigo)
+                    .cornerRadius(10)
+            }
             Spacer()
         }
         .padding()

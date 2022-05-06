@@ -28,7 +28,7 @@ struct HomeView: View {
                     // Show word list
                     self.showList = 1
                 }, label: {
-                    Text("Show All")
+                    Text("View All ")
                         .foregroundColor(.blue)
                         .padding(.bottom, 7)
                 })
@@ -46,7 +46,7 @@ struct HomeView: View {
                     // Show sentence list
                     self.showList = 2
                 }, label: {
-                    Text("Show All")
+                    Text("View All ")
                         .foregroundColor(.blue)
                         .padding(.bottom, 7)
                 })
@@ -64,7 +64,7 @@ struct HomeView: View {
                     // Show phrase list
                     self.showList = 3
                 }, label: {
-                    Text("Show All")
+                    Text("View All ")
                         .foregroundColor(.blue)
                         .padding(.bottom, 7)
                 })
@@ -169,11 +169,11 @@ struct HomeView: View {
                         Section(header: Text("Recent Words"), footer: WordListFooter) {
                             if (userWordListVM.userWordRecentEntries.count == 0) {
                                 VStack(alignment: .leading){
-                                    Text("No words are added yet.")
+                                    Text("No words yet.")
                                         .font(.footnote)
                                         .padding(.vertical, 10)
                                     Button {
-                                        //
+                                        self.selection = 1
                                     } label: {
                                         Text("+ Add your first word")
                                             .font(.footnote)
@@ -185,22 +185,23 @@ struct HomeView: View {
                             else {
                                 ForEach(userWordListVM.userWordRecentEntries, id:\.objectID) {userword in
                                     
-                                    VStack(alignment: .leading, spacing: 10) {
-                                        HStack {
-                                            Text("\(userword.word!)")
-                                                .font(.headline)
-                                                .bold()
-                                            Text(" \(userword.meaning ?? "")")
-                                                .font(.subheadline)
-                                                .foregroundColor(.secondary)
-                                                .lineLimit(1)
-                                        }
-                                    }
+                                    NavigationLink(
+                                        destination: ViewUserWord(word: userword),
+                                        label: {
+                                            HStack {
+                                                Text("\(userword.word!)")
+                                                    .font(.headline)
+                                                    .bold()
+                                                Text(" \(userword.meaning ?? "")")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.secondary)
+                                                    .lineLimit(1)
+                                            }
+                                            .padding(.vertical, 10)
+                                        })
                                 }
                             }
-//                            .onDelete(perform: delete)
                         }
-//                        .listSectionSeparatorTint(.indigo)
                         
                         //Common English Words
                         Section() {
@@ -233,11 +234,11 @@ struct HomeView: View {
                         Section(header: Text("Recent Sentences"),  footer: SentenceListFooter) {
                             if (userSentenceListVM.userSentenceRecentEntries.count == 0) {
                                 VStack(alignment: .leading){
-                                    Text("No sentences are added yet.")
+                                    Text("No sentences yet.")
                                         .font(.footnote)
                                         .padding(.vertical, 10)
                                     Button {
-                                        //
+                                        self.selection = 2
                                     } label: {
                                         Text("+ Add your first sentence")
                                             .font(.footnote)
@@ -257,11 +258,11 @@ struct HomeView: View {
                         Section(header: Text("Recent Phrases / Idioms"),  footer: PhraseListFooter) {
                             if (userPhraseListVM.userPhraseRecentEntries.count == 0) {
                                 VStack(alignment: .leading){
-                                    Text("No phrases/idioms are added yet.")
+                                    Text("No phrases/idioms yet.")
                                         .font(.footnote)
                                         .padding(.vertical, 10)
                                     Button {
-                                        //
+                                        self.selection = 3
                                     } label: {
                                         Text("+ Add your first phrase/idiom")
                                             .font(.footnote)

@@ -1,23 +1,14 @@
 //
-//  AddUserWordView.swift
+//  EditUserWordView.swift
 //  Aangilam
 //
-//  Created by Selvarajan on 14/03/22.
+//  Created by Selvarajan on 06/05/22.
 //
 
 import SwiftUI
 
-
-
-struct AddUserWordView: View {
-    @StateObject var userWordListVM = UserWordListViewModel()
-    
-    @State private var word: String = ""
-    @State private var type: WORD_TYPE = WORD_TYPE.noun
-    @State private var tag: String = ""
-    @State private var sampleSentence: String = ""
-    @State private var meaning: String = ""
-    
+struct EditUserWordView: View {
+    @Binding var userWord: UserWord
     @Environment(\.presentationMode) var presentationMode
     
     enum FocusField: Hashable {
@@ -25,18 +16,18 @@ struct AddUserWordView: View {
     }
     
     @FocusState private var focusedField: FocusField?
-
+    
     var body: some View {
         VStack {
             Form {
                 Section {
-                    TextField("Your Word Here", text: $word)
+                    TextField("Your Word Here", text: $userWord.word.toUnwrapped(defaultValue: ""))
                         .font(.title2)
                         .focused($focusedField, equals: .field)
                     
                     VStack(alignment: .leading) {
                         Text("Meaning: ")
-                        TextEditor(text: $meaning)
+                        TextEditor(text: $userWord.meaning.toUnwrapped(defaultValue: ""))
                             .frame(height: 140)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
@@ -45,7 +36,7 @@ struct AddUserWordView: View {
                     
                     VStack(alignment: .leading) {
                         Text("Sample Sentences: ")
-                        TextEditor(text: $sampleSentence)
+                        TextEditor(text: $userWord.sampleSentence.toUnwrapped(defaultValue: ""))
                             .frame(height: 120)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
@@ -54,7 +45,7 @@ struct AddUserWordView: View {
                     
                     VStack(alignment: .leading) {
                         Text("Tag: ")
-                        TextEditor(text: $tag)
+                        TextEditor(text: $userWord.tag.toUnwrapped(defaultValue: ""))
                             .frame(height: 100)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
@@ -62,14 +53,10 @@ struct AddUserWordView: View {
                     }.padding(.vertical, 5)
                     
                     Button(action: {
-                        userWordListVM.saveWord(word: word,
-                                                tag: tag,
-                                                meaning: meaning,
-                                                sampleSentence: sampleSentence)
-                        
+                        userWord.save()
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        Text("Save Word")
+                        Text("Update Word")
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame (height: 55)
@@ -77,7 +64,6 @@ struct AddUserWordView: View {
                             .background (Color.indigo)
                             .cornerRadius(10)
                     })
-                    
                 }
             }
             .onAppear {
@@ -87,12 +73,11 @@ struct AddUserWordView: View {
                 }
             }
         }
-        
     }
 }
 
-struct AddWord_Previews: PreviewProvider {
-    static var previews: some View {
-        AddUserWordView()
-    }
-}
+//struct EditUserWordView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditUserWordView()
+//    }
+//}
