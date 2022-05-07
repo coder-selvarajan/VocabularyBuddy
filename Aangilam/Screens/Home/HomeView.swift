@@ -82,6 +82,7 @@ struct HomeView: View {
             VStack{
                 ZStack {
                     List {
+                        //Search bar
                         Section {
                             ZStack {
                                 NavigationLink(destination:
@@ -94,7 +95,6 @@ struct HomeView: View {
                                 
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundColor(.gray.opacity(0.2))
-//                                    .stroke(lineWidth: 2)
                                 
                                 HStack {
                                     Text("Search meaning for words here...")
@@ -168,16 +168,16 @@ struct HomeView: View {
                         .listRowBackground(Color.clear)
                         
                         //Recent Words
-                        Section(header: Text("Recent Words"), footer: WordListFooter) {
+                        Section(header: Text("Your Recent Words"), footer: WordListFooter) {
                             if (userWordListVM.userWordRecentEntries.count == 0) {
                                 VStack(alignment: .leading){
-                                    Text("No words yet.")
-                                        .font(.footnote)
-                                        .padding(.vertical, 10)
+//                                    Text("No words yet.")
+//                                        .font(.footnote)
+//                                        .padding(.vertical, 10)
                                     Button {
                                         self.selection = 1
                                     } label: {
-                                        Text("+ Add your first word")
+                                        Text("No words yet. \nClick here to add your first word")
                                             .font(.footnote)
                                             .foregroundColor(.indigo)
                                             .padding(.bottom, 10)
@@ -215,37 +215,36 @@ struct HomeView: View {
                                         .resizable()
                                         .frame(width: 40, height: 40)
                                     VStack(alignment: .leading) {
-                                        Text("500+ Common English Words")
+                                        Text("500+ Intermediate Vocabulary")
                                             .font(.headline)
-                                        Text("Neither basic nor advanced")
-                                            .font(.subheadline).foregroundColor(.gray)
+                                        Text("Verbs, Adjectives, Adverbs")
+                                            .font(.subheadline).foregroundColor(.secondary)
                                     }
+                                    Spacer()
                                 }.accentColor(.indigo)
+                                    .padding(.leading)
                             }
                             .frame(maxWidth:.infinity, minHeight: 60)
                             .cornerRadius(10)
                             .background(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.indigo.opacity(0.7), lineWidth: 1)
+                                    .stroke(.indigo.opacity(0.7), lineWidth: 0)
                             )
                         }
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .listRowBackground(Color.clear)
+//                        .listRowBackground(Color.clear)
                         
                         //Recent Sentences
                         Section(header: Text("Recent Sentences"),  footer: SentenceListFooter) {
                             if (userSentenceListVM.userSentenceRecentEntries.count == 0) {
                                 VStack(alignment: .leading){
-                                    Text("No sentences yet.")
-                                        .font(.footnote)
-                                        .padding(.vertical, 10)
                                     Button {
                                         self.selection = 2
                                     } label: {
-                                        Text("+ Add your first sentence")
+                                        Text("No sentences yet. \nClick here add your first sentence")
                                             .font(.footnote)
                                             .foregroundColor(.blue)
-                                            .padding(.bottom, 10)
+                                            .padding(.vertical, 10)
                                     }
                                 }
                             }
@@ -260,16 +259,13 @@ struct HomeView: View {
                         Section(header: Text("Recent Phrases / Idioms"),  footer: PhraseListFooter) {
                             if (userPhraseListVM.userPhraseRecentEntries.count == 0) {
                                 VStack(alignment: .leading){
-                                    Text("No phrases/idioms yet.")
-                                        .font(.footnote)
-                                        .padding(.vertical, 10)
                                     Button {
                                         self.selection = 3
                                     } label: {
-                                        Text("+ Add your first phrase/idiom")
+                                        Text("No phrases/idioms yet. \nClick here to add your first phrase/idiom")
                                             .font(.footnote)
                                             .foregroundColor(.blue)
-                                            .padding(.bottom, 10)
+                                            .padding(.vertical, 10)
                                     }
                                 }
                             }
