@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="SearchHistory" representedClassName="SearchHistory" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="Date" defaultDateTimeInterval="673898100" usesScalarValueType="NO"/>
+        <attribute name="word" attributeType="String"/>
+    </entity>
     <entity name="UserPhrase" representedClassName="UserPhrase" syncable="YES" codeGenerationType="class">
         <attribute name="creationDate" optional="YES" attributeType="Date" defaultDateTimeInterval="670609800" usesScalarValueType="NO"/>
         <attribute name="example" optional="YES" attributeType="String"/>
@@ -21,8 +25,9 @@
         <attribute name="word" optional="YES" attributeType="String"/>
     </entity>
     <elements>
+        <element name="UserPhrase" positionX="-36" positionY="63" width="128" height="104"/>
         <element name="UserSentence" positionX="-36" positionY="54" width="128" height="74"/>
         <element name="UserWord" positionX="-36" positionY="18" width="128" height="119"/>
-        <element name="UserPhrase" positionX="-36" positionY="63" width="128" height="104"/>
+        <element name="SearchHistory" positionX="-36" positionY="81" width="128" height="59"/>
     </elements>
 </model>

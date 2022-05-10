@@ -19,22 +19,24 @@ struct ViewUserSentence: View {
                 .foregroundColor(.blue)
             Text("\(userSentence.sentence ?? "")")
                 .font(.title2)
+                .padding(.bottom)
                 
             if (userSentence.tag != nil && !userSentence.tag!.isEmpty) {
                 Divider()
                 Text("Tag:")
                     .font(.headline)
-                    .padding(.top, 10)
                     .foregroundColor(.blue)
                 
                 Text("\(userSentence.tag ?? "")")
             }
             
-            NavigationLink(destination: EditUserSentence(),
+            NavigationLink(destination: EditUserSentence(userSentence: $userSentence),
                            tag: 1,
                            selection: $selection) {
                 EmptyView()
             }
+            
+            Divider()
             
             Button {
                 selection = 1

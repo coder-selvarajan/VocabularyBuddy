@@ -20,13 +20,15 @@ struct ViewUserWord: View {
             Text("Definition:")
                 .font(.headline)
                 .padding(.top, 10)
+                .padding(.bottom, 5)
                 .foregroundColor(.blue)
             Text("\(word.meaning ?? "")")
+                .padding(.bottom)
             
             if (word.sampleSentence != nil && !word.sampleSentence!.isEmpty) {
                 Text("Example usage:")
                     .font(.headline)
-                    .padding(.top, 20)
+                    .padding(.bottom)
                     .foregroundColor(.blue)
                 Text("\(word.sampleSentence ?? "")")
             }
@@ -36,6 +38,8 @@ struct ViewUserWord: View {
                            selection: $selection) {
                 EmptyView()
             }
+            
+            Divider()
             
             Button {
                 selection = 1

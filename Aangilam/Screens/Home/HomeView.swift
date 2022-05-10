@@ -97,7 +97,7 @@ struct HomeView: View {
                                     .foregroundColor(.gray.opacity(0.2))
                                 
                                 HStack {
-                                    Text("Search meaning for words here...")
+                                    Text("Search definition for words...")
                                         .font(.headline)
                                         .padding()
                                         .foregroundColor(.gray)
