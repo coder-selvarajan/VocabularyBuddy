@@ -35,3 +35,36 @@ struct Phonetic: Codable {
 }
 
 typealias Words = [WordElement]
+
+func extractMeaning(meanings: [Meaning]) -> String {
+    var result: String = ""
+    
+    for meaning in meanings {
+        if (result != "") { //just adding line break for next partOfSpeech meaning
+            result += "\n\n"
+        }
+        result += meaning.partOfSpeech + " -  "
+        for definition in meaning.definitions {
+            result += definition.definition + " "
+        }
+    }
+    return result
+}
+
+func extractExmple(meanings: [Meaning]) -> String {
+    var result: String = ""
+    var sentences: String = ""
+    
+    for meaning in meanings {
+        for definition in meaning.definitions {
+            if let example = definition.example {
+                sentences += "  - " + example + " \n"
+            }
+        }
+        if (sentences != "") {
+            result += "(as " + meaning.partOfSpeech + "): \n" + sentences + "\n"
+            sentences = ""
+        }
+    }
+    return result
+}

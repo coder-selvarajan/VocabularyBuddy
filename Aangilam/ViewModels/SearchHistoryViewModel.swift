@@ -28,11 +28,12 @@ class SearchHistoryViewModel: ObservableObject {
         }
     }
     
-    func saveSearchEntry(word: String){
+    func saveSearchEntry(word: String, definition: String){
         let searchEntry = SearchHistory(context: SearchHistory.viewContext)
         
         searchEntry.creationDate = Date()
         searchEntry.word = word
+        searchEntry.definition = definition
         
         searchEntry.save()
     }

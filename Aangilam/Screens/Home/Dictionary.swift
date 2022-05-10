@@ -37,7 +37,7 @@ class vmDictionary : ObservableObject {
                         self?.definitionFound = true
                         
                         //saving the search entry in core data
-                        searchHistoryVM.saveSearchEntry(word: inputWord)
+                        searchHistoryVM.saveSearchEntry(word: inputWord, definition: extractMeaning(meanings: decodedData.first!.meanings))
                     }
                     
                 } catch {
@@ -71,7 +71,7 @@ struct Dictionary: View {
     @StateObject var searchHistoryVM = SearchHistoryViewModel()
     @State var dictionaryJson: [String] = []
     @State var filteredItems: [String] = []
-    @State private var searchText = "grace"
+    @State private var searchText = ""
     @State var word: WordElement?
     @State private var descriptionField = ""
     @State private var partOfSpeech: PartOfSpeech = .unknown
@@ -95,7 +95,7 @@ struct Dictionary: View {
         VStack(alignment: HorizontalAlignment.leading) {
             ScrollView {
                 HStack {
-                    TextField("Search...", text: $searchText)
+                    TextField("Search definition for words...", text: $searchText)
                         .font(.title3)
                         .padding()
                         .background(.gray.opacity(0.1))
@@ -117,6 +117,11 @@ struct Dictionary: View {
                                     searchText = searchterm.word ?? ""
                                     searchSubmit()
                                 }
+                            Text(searchterm.definition ?? "")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .lineLimit(1)
+                            
                             Spacer()
                             Image(systemName: "xmark")
                                 .foregroundColor(.secondary)
@@ -193,39 +198,6 @@ struct Dictionary: View {
                 }
             }
         }
-    }
-    
-    func extractMeaning(meanings: [Meaning]) -> String {
-        var result: String = ""
-        
-        for meaning in meanings {
-            if (result != "") { //just adding line break for next partOfSpeech meaning
-                result += "\n\n"
-            }
-            result += meaning.partOfSpeech + " -  "
-            for definition in meaning.definitions {
-                result += definition.definition + " "
-            }
-        }
-        return result
-    }
-    
-    func extractExmple(meanings: [Meaning]) -> String {
-        var result: String = ""
-        var sentences: String = ""
-        
-        for meaning in meanings {
-            for definition in meaning.definitions {
-                if let example = definition.example {
-                    sentences += "  - " + example + " \n"
-                }
-            }
-            if (sentences != "") {
-                result += "(as " + meaning.partOfSpeech + "): \n" + sentences + "\n"
-                sentences = ""
-            }
-        }
-        return result
     }
 }
 
