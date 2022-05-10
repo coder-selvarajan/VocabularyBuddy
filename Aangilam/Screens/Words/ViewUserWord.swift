@@ -15,20 +15,21 @@ struct ViewUserWord: View {
         VStack(alignment: .leading) {
             Text("\(word.word ?? "")")
                 .font(.title)
-                .foregroundColor(.indigo)
             
             Divider()
-            Text("Meaning:")
-                .font(.title2)
-                .padding(.vertical, 10)
+            Text("Definition:")
+                .font(.headline)
+                .padding(.top, 10)
+                .foregroundColor(.blue)
             Text("\(word.meaning ?? "")")
             
-//            Divider()
-            Text("Example usage:")
-                .font(.title2)
-                .padding(.top, 20)
-                .padding(.bottom, 10)
-            Text("\(word.sampleSentence ?? "")")
+            if (word.sampleSentence != nil && !word.sampleSentence!.isEmpty) {
+                Text("Example usage:")
+                    .font(.headline)
+                    .padding(.top, 20)
+                    .foregroundColor(.blue)
+                Text("\(word.sampleSentence ?? "")")
+            }
             
             NavigationLink(destination: EditUserWordView(userWord: $word),
                            tag: 1,
@@ -46,7 +47,7 @@ struct ViewUserWord: View {
                     .frame (maxWidth: .infinity)
                     .background (Color.indigo)
                     .cornerRadius(10)
-            }
+            }.padding(.top, 25)
             Spacer()
         }
         .padding()

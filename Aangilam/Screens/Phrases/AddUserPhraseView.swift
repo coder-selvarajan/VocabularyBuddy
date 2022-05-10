@@ -13,7 +13,7 @@ struct AddUserPhraseView: View {
     @State private var phrase: String = ""
     @State private var tag: String = ""
     @State private var example: String = ""
-    @State private var meaning: String = ""
+    @State private var definition: String = ""
     @Environment(\.presentationMode) var presentationMode
     enum FocusField: Hashable {
         case field
@@ -29,8 +29,8 @@ struct AddUserPhraseView: View {
                         .focused($focusedField, equals: .field)
                     
                     VStack(alignment: .leading) {
-                        Text("Meaning: ")
-                        TextEditor(text: $meaning)
+                        Text("Definition: ")
+                        TextEditor(text: $definition)
                             .frame(height: 140)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
@@ -58,7 +58,7 @@ struct AddUserPhraseView: View {
                     Button(action: {
                         userPhraseListVM.savePhrase(phrase: phrase,
                                                 tag: tag,
-                                                meaning: meaning,
+                                                meaning: definition,
                                                 example: example)
                         presentationMode.wrappedValue.dismiss()
                     }, label: {

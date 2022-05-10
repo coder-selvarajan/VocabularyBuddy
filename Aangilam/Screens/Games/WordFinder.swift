@@ -10,7 +10,7 @@ import SwiftUI
 struct WordFinder: View {
     @StateObject var userWordListVM = UserWordListViewModel()
     @State var word: String = ""
-    @State var meaning: String = ""
+    @State var definition: String = ""
     @State var userWord: String = ""
     @State var success: Bool = false
     @State var showResult: Bool = false
@@ -52,7 +52,7 @@ struct WordFinder: View {
                     Divider()
                     
                     VStack {
-                        Text("\(meaning)")
+                        Text("\(definition)")
                             .font(.body)
                             .lineLimit(5)
                     }
@@ -128,7 +128,7 @@ struct WordFinder: View {
                         success = false
                         let wordObject = userWordListVM.pickRandomWord()
                         word = wordObject.word ?? ""
-                        meaning = wordObject.meaning ?? ""
+                        definition = wordObject.meaning ?? ""
                         currentQuestionIndex += 1
                     }, label: {
                         HStack {
@@ -155,7 +155,7 @@ struct WordFinder: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         let wordObject = userWordListVM.pickRandomWord()
                         word = wordObject.word ?? ""
-                        meaning = wordObject.meaning ?? ""
+                        definition = wordObject.meaning ?? ""
                     }
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
@@ -189,7 +189,7 @@ struct WordFinder: View {
                             success = false
                             let wordObject = userWordListVM.pickRandomWord()
                             word = wordObject.word ?? ""
-                            meaning = wordObject.meaning ?? ""
+                            definition = wordObject.meaning ?? ""
                             currentQuestionIndex = 1
                             score = 0
                             gameOver = false

@@ -16,7 +16,7 @@ struct RandomPickerView: View {
     @State private var type: Int = 1
     
     @State private var randomVocabulary: String = ""
-    @State private var meaning: String = ""
+    @State private var definition: String = ""
     
     var body: some View {
         VStack {
@@ -31,14 +31,14 @@ struct RandomPickerView: View {
             .padding()
             .onChange(of: type, perform: { value in
                 randomVocabulary = ""
-                meaning = ""
+                definition = ""
             })
             
             FlipView {
                 Text("\(randomVocabulary)")
                     .font(.title3)
             } back: {
-                Text("\(meaning)")
+                Text("\(definition)")
                     .cornerRadius(10)
             }
             if (randomVocabulary != "") {
@@ -53,7 +53,7 @@ struct RandomPickerView: View {
                 if type == 1 { // "word"
                     let wordObject = userWordListVM.pickRandomWord()
                     randomVocabulary = wordObject.word ?? ""
-                    meaning = wordObject.meaning ?? ""
+                    definition = wordObject.meaning ?? ""
                 }
                 if type == 2 { // "sentence"
                     let sentenceObject = userSentenceListVM.pickRandomSentence()
@@ -62,7 +62,7 @@ struct RandomPickerView: View {
                 if type == 3 { // "phrase"
                     let phraseObject = userPhraseListVM.pickRandomPhrase()
                     randomVocabulary = phraseObject.phrase ?? ""
-                    meaning = phraseObject.meaning ?? ""
+                    definition = phraseObject.meaning ?? ""
                 }
             }, label: {
                 HStack {

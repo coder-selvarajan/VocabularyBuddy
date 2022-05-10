@@ -170,7 +170,7 @@ struct PickMeaning: View {
                     Spacer()
                     
                 }
-                .navigationTitle("Choose the Meaning")
+                .navigationTitle("Choose the Definition")
                 .onAppear(){
                     vmWordList.getAllUserWordEntries()
                     

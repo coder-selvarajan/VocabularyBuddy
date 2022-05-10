@@ -121,8 +121,8 @@ struct HomeView: View {
                                             self.selection = 11
                                         }) {
                                             VStack(alignment: SwiftUI.HorizontalAlignment.leading){
-                                                Text("Word Finder").font(.headline).foregroundColor(.white)
-                                                Text("by meaning")
+                                                Text("Find Word").font(.headline).foregroundColor(.white)
+                                                Text("by definition")
                                                     .font(.subheadline).foregroundColor(.white.opacity(0.6))
                                             }.foregroundColor(.white)
                                         }
@@ -136,7 +136,7 @@ struct HomeView: View {
                                             self.selection = 12
                                         }) {
                                             VStack(alignment: SwiftUI.HorizontalAlignment.leading){
-                                                Text("Meaning Picker").font(.headline).foregroundColor(.white)
+                                                Text("Pick Definition").font(.headline).foregroundColor(.white)
                                                 Text("by word").font(.subheadline).foregroundColor(.white.opacity(0.6))
                                             }
                                         }
@@ -167,13 +167,10 @@ struct HomeView: View {
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .listRowBackground(Color.clear)
                         
-                        //Recent Words
+                        //Your Recent Words
                         Section(header: Text("Your Recent Words"), footer: WordListFooter) {
                             if (userWordListVM.userWordRecentEntries.count == 0) {
                                 VStack(alignment: .leading){
-//                                    Text("No words yet.")
-//                                        .font(.footnote)
-//                                        .padding(.vertical, 10)
                                     Button {
                                         self.selection = 1
                                     } label: {
@@ -186,21 +183,17 @@ struct HomeView: View {
                             }
                             else {
                                 ForEach(userWordListVM.userWordRecentEntries, id:\.objectID) {userword in
-                                    
-                                    NavigationLink(
-                                        destination: ViewUserWord(word: userword),
-                                        label: {
-                                            HStack {
-                                                Text("\(userword.word!)")
-                                                    .font(.headline)
-                                                    .bold()
-                                                Text(" \(userword.meaning ?? "")")
-                                                    .font(.subheadline)
-                                                    .foregroundColor(.secondary)
-                                                    .lineLimit(1)
-                                            }
-                                            .padding(.vertical, 10)
-                                        })
+                                    HStack {
+                                        Text("\(userword.word!)")
+                                            .font(.headline)
+                                            .bold()
+                                        Text(" \(userword.meaning ?? "")")
+                                            .font(.subheadline)
+                                            .foregroundColor(.secondary)
+                                            .lineLimit(1)
+                                    }
+                                    .padding(.vertical, 10)
+                                    .background(NavigationLink("", destination: ViewUserWord(word: userword)).opacity(0))
                                 }
                             }
                         }
@@ -250,7 +243,12 @@ struct HomeView: View {
                             }
                             else {
                                 ForEach(userSentenceListVM.userSentenceRecentEntries, id:\.objectID) {sentence in
-                                    Text("\(sentence.sentence ?? "")").font(.subheadline)
+                                    HStack {
+                                        Text("\(sentence.sentence ?? "")")
+                                            .font(.subheadline)
+                                    }
+                                    .background(NavigationLink("", destination: ViewUserSentence(userSentence: sentence))
+                                        .opacity(0))
                                 }
                             }
                         }
@@ -359,12 +357,11 @@ struct HomeView: View {
         .accentColor(.indigo)
         .ignoresSafeArea()
         .onAppear(){
-            do {
-                //to show launch screen atleast for one second
-//                sleep(1)
-                let ms = 1000
-                usleep(useconds_t(600 * ms))
-            }
+//            do {
+//                //to show launch screen atleast for one second
+//                let ms = 1000
+//                usleep(useconds_t(600 * ms))
+//            }
         }
         .environment(\.colorScheme, appTheme == "light" ? .light : .dark)
 //        .overlay(SplashScreen())

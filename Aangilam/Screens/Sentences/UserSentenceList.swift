@@ -21,11 +21,17 @@ struct UserSentenceList: View {
     var body: some View {
         List {
             ForEach(searchResults, id:\.objectID) {usersentence in
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("\(usersentence.sentence ?? "")")
-                        .font(.headline)
-                    Text("\(usersentence.tag ?? "")").font(.subheadline).foregroundColor(.secondary)
-                }
+                NavigationLink(
+                    destination: ViewUserSentence(userSentence: usersentence),
+                    label: {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("\(usersentence.sentence ?? "")")
+                                .font(.headline)
+                            if (usersentence.tag != nil && !usersentence.tag!.isEmpty) {
+                                Text("\(usersentence.tag ?? "")").font(.subheadline).foregroundColor(.secondary)
+                            }
+                        }.padding(.vertical, 10)
+                    })
             }
             .onDelete(perform: delete)
         }

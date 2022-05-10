@@ -112,7 +112,7 @@ struct Dictionary: View {
                         }
                         
                         Divider()
-                        Text("Meaning:").font(.title3)
+                        Text("Definition:").font(.title3)
                         Text("\(extractMeaning(meanings: vmDict.wordInfo!.meanings))")
                         Divider()
                         Text("Example Usage:").font(.title3)
