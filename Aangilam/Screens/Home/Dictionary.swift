@@ -66,6 +66,34 @@ enum PartOfSpeech: String, CaseIterable {
     case unknown
 }
 
+struct ClearButton: ViewModifier
+{
+    @Binding var text: String
+    @FocusState var searchIsFocused: Bool
+    public func body(content: Content) -> some View
+    {
+        ZStack(alignment: .trailing)
+        {
+            content
+
+            if !text.isEmpty
+            {
+                Button(action:
+                {
+                    self.text = ""
+                    self.searchIsFocused = true
+                })
+                {
+                    Image(systemName: "xmark")
+                        .foregroundColor(Color(UIColor.opaqueSeparator))
+                        .font(.headline)
+                }
+                .padding(.trailing, 3)
+            }
+        }
+    }
+}
+
 struct Dictionary: View {
     @StateObject var userWordListVM = UserWordListViewModel()
     @StateObject var searchHistoryVM = SearchHistoryViewModel()
@@ -78,10 +106,8 @@ struct Dictionary: View {
     @State private var showingAlert = false
     @State private var searchStarted = false
     @StateObject var vmDict = vmDictionary()
-    enum FocusField: Hashable {
-        case search
-    }
-    @FocusState private var focusedField: FocusField?
+    @FocusState private var searchIsFocused: Bool
+    
     @Environment(\.presentationMode) var presentationMode
     
     func searchSubmit() {
@@ -95,46 +121,72 @@ struct Dictionary: View {
         VStack(alignment: HorizontalAlignment.leading) {
             ScrollView {
                 HStack {
-                    TextField("Search definition for words...", text: $searchText)
-                        .font(.title3)
-                        .padding()
+                    TextField("Search words in dictionary...", text: $searchText)
+                        .modifier(ClearButton(text: $searchText, searchIsFocused: _searchIsFocused))
+                        .font(.headline)
+                        .padding(.horizontal, 15)
+                        .padding(.vertical, 15)
                         .background(.gray.opacity(0.1))
                         .cornerRadius(10)
-                        .focused($focusedField, equals: .search)
+                        .focused($searchIsFocused)
                         .submitLabel(SubmitLabel.search)
                         .onSubmit {
                             searchSubmit()
                         }
-                }.padding()
+                    
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text("Cancel")
+                    }
+                    .padding(.leading, 10)
+
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 10)
                 
                 if (!searchStarted) {
                     //Display previous search terms here
                     ForEach(searchHistoryVM.searchHistoryRecentEntries, id:\.objectID) { searchterm in
                         HStack {
-                            Text(searchterm.word ?? "")
-                                .font(.callout)
-                                .onTapGesture {
-                                    searchText = searchterm.word ?? ""
-                                    searchSubmit()
-                                }
-                            Text(searchterm.definition ?? "")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                                .lineLimit(1)
+                            HStack{
+                                Text(searchterm.word ?? "")
+                                    .font(.callout)
+                                
+                                Text(searchterm.definition ?? "")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .lineLimit(1)
+                            }.onTapGesture {
+                                searchText = searchterm.word ?? ""
+                                searchSubmit()
+                                searchIsFocused = false
+                            }
                             
                             Spacer()
                             Image(systemName: "xmark")
-                                .foregroundColor(.secondary)
+                                .foregroundColor(Color(UIColor.opaqueSeparator))
                                 .font(.footnote)
                                 .onTapGesture {
                                     searchHistoryVM.deleteSearchEntry(searchEntry: searchterm)
                                 }
                         }
-                        .padding(.horizontal)
+                        .padding(.horizontal, 15)
                         .padding(.horizontal)
                         
                         Divider().padding(.horizontal)
                     }
+                    if (searchHistoryVM.searchHistoryRecentEntries.count > 0) {
+                        Button {
+                            // clearing off the history
+                            searchHistoryVM.deleteAll()
+                        } label: {
+                            Text("Clear History")
+                                .foregroundColor(.red.opacity(0.8))
+                                .font(.footnote)
+                        }.padding()
+                    }
+
                 }
                 
                 if (vmDict.isFetching) {
@@ -151,7 +203,7 @@ struct Dictionary: View {
                     }
                 }
                 
-                if vmDict.wordInfo != nil {
+                if !vmDict.isFetching && vmDict.wordInfo != nil {
                     VStack(alignment: .leading, spacing: 15) {
                         Text(vmDict.wordInfo?.word.capitalized ?? "")
                             .font(.largeTitle)
@@ -192,9 +244,10 @@ struct Dictionary: View {
             }
             .onAppear {
                 searchHistoryVM.getRecentSearchEntries()
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.55) {
                     /// Anything over 0.5 seems to work
-                    self.focusedField = .search
+                    self.searchIsFocused = true
                 }
             }
         }

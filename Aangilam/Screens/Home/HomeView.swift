@@ -97,10 +97,10 @@ struct HomeView: View {
                                     .foregroundColor(.gray.opacity(0.2))
                                 
                                 HStack {
-                                    Text("Search definition for words...")
+                                    Text("Search words in dictionary...")
                                         .font(.headline)
                                         .padding()
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(.secondary)
                                     Spacer()
                                     Image(systemName: "magnifyingglass")
                                         .padding(.horizontal, 10)

@@ -36,7 +36,6 @@ extension BaseModel {
     }
     
     static func all<T>() -> [T] where T: NSManagedObject {
-        
         let fetchRequest: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))
         let sort = NSSortDescriptor(key: #keyPath(UserWord.creationDate), ascending: false)
         fetchRequest.sortDescriptors = [sort]
@@ -49,7 +48,6 @@ extension BaseModel {
     }
     
     static func getRecentRecords<T>(limit: Int) -> [T] where T: NSManagedObject {
-        
         let fetchRequest: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))
         fetchRequest.fetchOffset = 0;
         fetchRequest.fetchLimit = limit;
@@ -83,13 +81,8 @@ extension BaseModel {
     static func byDate<T>(dat: String) -> [T] where T: NSManagedObject {
         
         let fetchRequest: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))
-        
-//        println(self.appdel.fromdate) // prints 2015-09-25
-//        println(self.appdel.todate) // prints 2015-09-26
-
         let fromdate = "\(dat) 00:00" // add hours and mins to fromdate
         let todate = "\(dat) 23:59" // add hours and mins to todate
-
         
         fetchRequest.returnsObjectsAsFaults = false
         let dateFormatter = DateFormatter()
