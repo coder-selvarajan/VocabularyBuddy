@@ -17,12 +17,6 @@ struct HomeView: View {
     @State private var searchText = ""
     @State var appTheme: String = "dark"
     
-    func delete(at indexes: IndexSet) {
-        //        if let first = indexes.first {
-        //            //
-        //        }
-    }
-    
     var WordListFooter: some View {
         NavigationLink(destination: UserWordList(), tag: 1, selection: $showList) {
             if (userWordListVM.userWordRecentEntries.count > 0) {
@@ -116,35 +110,6 @@ struct HomeView: View {
                         Section(header: Text("Gamify your learning").padding(.horizontal, 15)) {
                             ScrollView (.horizontal, showsIndicators: false) {
                                 HStack {
-                                    NavigationLink(destination: WordFinder(), tag: 11, selection: $selection) {
-                                        Button(action: {
-                                            self.selection = 11
-                                        }) {
-                                            VStack(alignment: SwiftUI.HorizontalAlignment.leading){
-                                                Text("Find Word").font(.headline).foregroundColor(.white)
-                                                Text("by definition")
-                                                    .font(.subheadline).foregroundColor(.white.opacity(0.6))
-                                            }.foregroundColor(.white)
-                                        }
-                                        .frame(width: 140, height: 80, alignment: .center)
-                                        .background(
-                                            LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.9), .indigo.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
-                                            ).cornerRadius(10)
-                                    }
-                                    NavigationLink(destination: PickMeaningHome(), tag: 12, selection: $selection) {
-                                        Button(action: {
-                                            self.selection = 12
-                                        }) {
-                                            VStack(alignment: SwiftUI.HorizontalAlignment.leading){
-                                                Text("Pick Definition").font(.headline).foregroundColor(.white)
-                                                Text("by word").font(.subheadline).foregroundColor(.white.opacity(0.6))
-                                            }
-                                        }
-                                        .frame(width: 140, height: 80, alignment: .center)
-                                        .background(
-                                            LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.9), .blue.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
-                                        ).cornerRadius(10)
-                                    }
                                     NavigationLink(destination: RandomPickerView(), tag: 13, selection: $selection) {
                                         Button(action: {
                                             self.selection = 13
@@ -155,7 +120,39 @@ struct HomeView: View {
                                                     .font(.subheadline).foregroundColor(.white.opacity(0.6))
                                             }.foregroundColor(.white)
                                         }
-                                        .frame(width: 140, height: 80, alignment: .center)
+                                        .frame(width: 160, height: 80, alignment: .center)
+                                        .background(
+                                            LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.9), .indigo.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
+                                        ).cornerRadius(10)
+                                        
+                                    }
+                                    
+                                    NavigationLink(destination: PickMeaningHome(), tag: 12, selection: $selection) {
+                                        Button(action: {
+                                            self.selection = 12
+                                        }) {
+                                            VStack(alignment: SwiftUI.HorizontalAlignment.leading){
+                                                Text("Find  Definition").font(.headline).foregroundColor(.white)
+                                                Text("by word").font(.subheadline).foregroundColor(.white.opacity(0.6))
+                                            }
+                                        }
+                                        .frame(width: 150, height: 80, alignment: .center)
+                                        .background(
+                                            LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.9), .blue.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
+                                        ).cornerRadius(10)
+                                    }
+                                    
+                                    NavigationLink(destination: WordFinder(), tag: 11, selection: $selection) {
+                                        Button(action: {
+                                            self.selection = 11
+                                        }) {
+                                            VStack(alignment: SwiftUI.HorizontalAlignment.leading){
+                                                Text("Spell Word").font(.headline).foregroundColor(.white)
+                                                Text("by definition")
+                                                    .font(.subheadline).foregroundColor(.white.opacity(0.6))
+                                            }.foregroundColor(.white)
+                                        }
+                                        .frame(width: 150, height: 80, alignment: .center)
                                         .background(
                                             LinearGradient(gradient: Gradient(colors: [.cyan, .cyan.opacity(0.9), .cyan.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
                                         ).cornerRadius(10)
@@ -225,7 +222,6 @@ struct HomeView: View {
                             )
                         }
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-//                        .listRowBackground(Color.clear)
                         
                         //Recent Sentences
                         Section(header: Text("Recent Sentences"),  footer: SentenceListFooter) {
@@ -269,7 +265,10 @@ struct HomeView: View {
                             }
                             else {
                                 ForEach(userPhraseListVM.userPhraseRecentEntries, id:\.objectID) {phrase in
-                                    Text("\(phrase.phrase ?? "")").font(.subheadline)
+                                    HStack {
+                                        Text("\(phrase.phrase ?? "")").font(.subheadline)
+                                    }.background(NavigationLink("", destination: ViewPhrase(userPhrase: phrase))
+                                        .opacity(0))
                                 }
                             }
                         }
@@ -291,7 +290,7 @@ struct HomeView: View {
                             NavigationLink(destination: AddUserWordView(), tag: 1, selection: $selection) { EmptyView() }
                             NavigationLink(destination: AddUserSentenceView(), tag: 2, selection: $selection) { EmptyView() }
                             NavigationLink(destination: AddUserPhraseView(), tag: 3, selection: $selection) { EmptyView() }
-                                
+                            
                             Menu {
                                 Button(action: {
                                     self.selection = 1
@@ -325,9 +324,9 @@ struct HomeView: View {
                                 }
                                 .padding(.trailing, 20)
                                 .shadow(color: Color.black.opacity(0.4),
-                                         radius: 3,
-                                         x: 3,
-                                         y: 3)
+                                        radius: 3,
+                                        x: 3,
+                                        y: 3)
                             }
                         }
                     }
@@ -357,14 +356,14 @@ struct HomeView: View {
         .accentColor(.indigo)
         .ignoresSafeArea()
         .onAppear(){
-//            do {
-//                //to show launch screen atleast for one second
-//                let ms = 1000
-//                usleep(useconds_t(600 * ms))
-//            }
+            //            do {
+            //                //to show launch screen atleast for one second
+            //                let ms = 1000
+            //                usleep(useconds_t(600 * ms))
+            //            }
         }
         .environment(\.colorScheme, appTheme == "light" ? .light : .dark)
-//        .overlay(SplashScreen())
+        //        .overlay(SplashScreen())
     }
 }
 

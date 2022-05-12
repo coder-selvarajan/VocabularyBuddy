@@ -124,6 +124,7 @@ struct Dictionary: View {
                     TextField("Search words in dictionary...", text: $searchText)
                         .modifier(ClearButton(text: $searchText, searchIsFocused: _searchIsFocused))
                         .font(.headline)
+                        .autocapitalization(UITextAutocapitalizationType.none)
                         .padding(.horizontal, 15)
                         .padding(.vertical, 15)
                         .background(.gray.opacity(0.1))
@@ -205,7 +206,7 @@ struct Dictionary: View {
                 
                 if !vmDict.isFetching && vmDict.wordInfo != nil {
                     VStack(alignment: .leading, spacing: 15) {
-                        Text(vmDict.wordInfo?.word.capitalized ?? "")
+                        Text(vmDict.wordInfo?.word ?? "")
                             .font(.largeTitle)
                         
                         HStack(spacing: 15) {

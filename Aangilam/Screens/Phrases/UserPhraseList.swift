@@ -21,12 +21,16 @@ struct UserPhraseList: View {
     var body: some View {
         List {
             ForEach(searchResults, id:\.objectID) {userPhrase in
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("\(userPhrase.phrase ?? "")")
-                        .font(.headline)
-                        .bold()
-                    Text("\(userPhrase.meaning ?? "")").font(.subheadline).foregroundColor(.secondary)
-                }
+                NavigationLink(
+                    destination: ViewPhrase(userPhrase: userPhrase),
+                    label: {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("\(userPhrase.phrase ?? "")")
+                                .font(.headline)
+                                .bold()
+                            Text("\(userPhrase.meaning ?? "")").font(.subheadline).foregroundColor(.secondary)
+                        }
+                    })
             }
             .onDelete(perform: delete)
         }

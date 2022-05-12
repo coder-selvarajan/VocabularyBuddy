@@ -33,6 +33,7 @@ struct AddUserWordView: View {
                     TextField("Your Word Here", text: $word)
                         .font(.title2)
                         .focused($focusedField, equals: .field)
+                        .autocapitalization(UITextAutocapitalizationType.none)
                     
                     VStack(alignment: .leading) {
                         Text("Definition: ")

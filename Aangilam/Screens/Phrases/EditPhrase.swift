@@ -1,14 +1,14 @@
 //
-//  EditUserWordView.swift
+//  EditPhrase.swift
 //  Aangilam
 //
-//  Created by Selvarajan on 06/05/22.
+//  Created by Selvarajan on 12/05/22.
 //
 
 import SwiftUI
 
-struct EditUserWordView: View {
-    @Binding var userWord: UserWord
+struct EditPhrase: View {
+    @Binding var userPhrase: UserPhrase
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -16,12 +16,12 @@ struct EditUserWordView: View {
         VStack {
             Form {
                 Section {
-                    TextField("Your Word Here", text: $userWord.word.toUnwrapped(defaultValue: ""))
+                    TextField("Your Phrase/Idiom Here", text: $userPhrase.phrase.toUnwrapped(defaultValue: ""))
                         .font(.title2)
                     
                     VStack(alignment: .leading) {
-                        Text("Definition: ")
-                        TextEditor(text: $userWord.meaning.toUnwrapped(defaultValue: ""))
+                        Text("Meaning: ")
+                        TextEditor(text: $userPhrase.meaning.toUnwrapped(defaultValue: ""))
                             .frame(height: 140)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
@@ -29,8 +29,8 @@ struct EditUserWordView: View {
                     }.padding(.vertical, 5)
                     
                     VStack(alignment: .leading) {
-                        Text("Sample Sentences: ")
-                        TextEditor(text: $userWord.sampleSentence.toUnwrapped(defaultValue: ""))
+                        Text("Example: ")
+                        TextEditor(text: $userPhrase.example.toUnwrapped(defaultValue: ""))
                             .frame(height: 120)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
@@ -39,7 +39,7 @@ struct EditUserWordView: View {
                     
                     VStack(alignment: .leading) {
                         Text("Tag: ")
-                        TextEditor(text: $userWord.tag.toUnwrapped(defaultValue: ""))
+                        TextEditor(text: $userPhrase.tag.toUnwrapped(defaultValue: ""))
                             .frame(height: 100)
                             .padding(4)
                             .background(RoundedRectangle(cornerRadius: 8).stroke(.gray).opacity(0.5))
@@ -47,10 +47,10 @@ struct EditUserWordView: View {
                     }.padding(.vertical, 5)
                     
                     Button(action: {
-                        userWord.save()
+                        userPhrase.save()
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        Text("Update Word")
+                        Text("Update Phrase/Idiom")
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame (height: 55)
@@ -64,8 +64,20 @@ struct EditUserWordView: View {
     }
 }
 
-//struct EditUserWordView_Previews: PreviewProvider {
+
+
+
+
+
+
+
+
+
+
+
+
+//struct EditPhrase_Previews: PreviewProvider {
 //    static var previews: some View {
-//        EditUserWordView()
+//        EditPhrase()
 //    }
 //}

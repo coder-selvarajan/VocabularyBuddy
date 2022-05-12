@@ -45,7 +45,7 @@ struct EditUserSentence: View {
                             .frame (maxWidth: .infinity)
                             .background (Color.indigo)
                             .cornerRadius(10)
-                    })
+                    }).padding(.vertical)
                 }
             }
         } //VStack

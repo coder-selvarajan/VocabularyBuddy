@@ -16,6 +16,7 @@ struct ViewUserSentence: View {
             Text("Sentence:")
                 .font(.headline)
                 .padding(.top)
+                .padding(.bottom, 2)
                 .foregroundColor(.blue)
             Text("\(userSentence.sentence ?? "")")
                 .font(.title2)
@@ -26,8 +27,10 @@ struct ViewUserSentence: View {
                 Text("Tag:")
                     .font(.headline)
                     .foregroundColor(.blue)
+                    .padding(.bottom, 2)
                 
                 Text("\(userSentence.tag ?? "")")
+                    .padding(.bottom)
             }
             
             NavigationLink(destination: EditUserSentence(userSentence: $userSentence),
