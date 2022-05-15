@@ -18,7 +18,7 @@ struct ViewPhrase: View {
             
             Divider()
             
-            Text("Meaning:")
+            Text("Definition:")
                 .font(.headline)
                 .padding(.top, 10)
                 .padding(.bottom, 2)
@@ -27,7 +27,7 @@ struct ViewPhrase: View {
                 .padding(.bottom)
             
             if (userPhrase.example != nil && !userPhrase.example!.isEmpty) {
-                Text("Example :")
+                Text("Example:")
                     .font(.headline)
                     .padding(.bottom, 2)
                     .foregroundColor(.blue)
@@ -36,7 +36,7 @@ struct ViewPhrase: View {
             }
             
             if (userPhrase.tag != nil && !userPhrase.tag!.isEmpty) {
-                Text("Tag :")
+                Text("Tags:")
                     .font(.headline)
                     .padding(.bottom, 2)
                     .foregroundColor(.blue)

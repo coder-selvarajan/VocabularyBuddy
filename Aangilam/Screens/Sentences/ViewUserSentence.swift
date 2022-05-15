@@ -24,7 +24,7 @@ struct ViewUserSentence: View {
                 
             if (userSentence.tag != nil && !userSentence.tag!.isEmpty) {
                 Divider()
-                Text("Tag:")
+                Text("Tags:")
                     .font(.headline)
                     .foregroundColor(.blue)
                     .padding(.bottom, 2)

@@ -37,6 +37,7 @@ struct AddUserWordView: View {
                     
                     VStack(alignment: .leading) {
                         Text("Definition: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $definition)
                             .frame(height: 140)
                             .padding(4)
@@ -45,7 +46,8 @@ struct AddUserWordView: View {
                     }.padding(.vertical, 5)
                     
                     VStack(alignment: .leading) {
-                        Text("Sample Sentences: ")
+                        Text("Example Usage: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $sampleSentence)
                             .frame(height: 120)
                             .padding(4)
@@ -54,7 +56,8 @@ struct AddUserWordView: View {
                     }.padding(.vertical, 5)
                     
                     VStack(alignment: .leading) {
-                        Text("Tag: ")
+                        Text("Tags: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $tag)
                             .frame(height: 100)
                             .padding(4)

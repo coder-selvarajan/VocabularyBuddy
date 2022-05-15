@@ -24,7 +24,7 @@ class UserPhraseListViewModel: ObservableObject {
         if (userPhraseAllEntries.count == 0){
             getAllUserPhraseEntries()
         }
-        let randomNumber: Int = Int.random(in: 1..<userPhraseAllEntries.count)
+        let randomNumber: Int = Int.random(in: 0..<userPhraseAllEntries.count)
         let phrase = userPhraseAllEntries[randomNumber]
         return phrase
     }

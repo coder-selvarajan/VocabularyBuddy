@@ -32,7 +32,7 @@ class UserSentenceListViewModel: ObservableObject {
         if (userSentenceAllEntries.count == 0){
             getAllUserSentenceEntries()
         }
-        let randomNumber: Int = Int.random(in: 1..<userSentenceAllEntries.count)
+        let randomNumber: Int = Int.random(in: 0..<userSentenceAllEntries.count)
         let sentence = userSentenceAllEntries[randomNumber]
         return sentence
     }

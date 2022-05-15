@@ -21,6 +21,7 @@ struct EditUserWordView: View {
                     
                     VStack(alignment: .leading) {
                         Text("Definition: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $userWord.meaning.toUnwrapped(defaultValue: ""))
                             .frame(height: 140)
                             .padding(4)
@@ -29,7 +30,8 @@ struct EditUserWordView: View {
                     }.padding(.vertical, 5)
                     
                     VStack(alignment: .leading) {
-                        Text("Sample Sentences: ")
+                        Text("Example Usage: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $userWord.sampleSentence.toUnwrapped(defaultValue: ""))
                             .frame(height: 120)
                             .padding(4)
@@ -38,7 +40,8 @@ struct EditUserWordView: View {
                     }.padding(.vertical, 5)
                     
                     VStack(alignment: .leading) {
-                        Text("Tag: ")
+                        Text("Tags: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $userWord.tag.toUnwrapped(defaultValue: ""))
                             .frame(height: 100)
                             .padding(4)

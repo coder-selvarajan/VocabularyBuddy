@@ -20,7 +20,8 @@ struct EditPhrase: View {
                         .font(.title2)
                     
                     VStack(alignment: .leading) {
-                        Text("Meaning: ")
+                        Text("Definition: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $userPhrase.meaning.toUnwrapped(defaultValue: ""))
                             .frame(height: 140)
                             .padding(4)
@@ -30,6 +31,7 @@ struct EditPhrase: View {
                     
                     VStack(alignment: .leading) {
                         Text("Example: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $userPhrase.example.toUnwrapped(defaultValue: ""))
                             .frame(height: 120)
                             .padding(4)
@@ -38,7 +40,8 @@ struct EditPhrase: View {
                     }.padding(.vertical, 5)
                     
                     VStack(alignment: .leading) {
-                        Text("Tag: ")
+                        Text("Tags: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $userPhrase.tag.toUnwrapped(defaultValue: ""))
                             .frame(height: 100)
                             .padding(4)

@@ -18,52 +18,63 @@ struct RandomPickerView: View {
     @State private var randomVocabulary: String = ""
     @State private var definition: String = ""
     
+    
+    func pickItem() {
+        if type == 1 { // "word"
+            let wordObject = userWordListVM.pickRandomWord()
+            randomVocabulary = wordObject.word ?? ""
+            definition = wordObject.meaning ?? ""
+        }
+        if type == 2 { // "sentence"
+            let sentenceObject = userSentenceListVM.pickRandomSentence()
+            randomVocabulary = sentenceObject.sentence ?? ""
+        }
+        if type == 3 { // "phrase"
+            let phraseObject = userPhraseListVM.pickRandomPhrase()
+            randomVocabulary = phraseObject.phrase ?? ""
+            definition = phraseObject.meaning ?? ""
+        }
+    }
+    
     var body: some View {
         VStack {
             Spacer()
             
             Picker("", selection: $type) {
-                Text("Word").tag(1)
-                Text("Sentence").tag(2)
-                Text("Phrase/Idiom").tag(3)
+                Text("Word")
+                    .padding()
+                    .tag(1)
+                Text("Sentence").padding().tag(2)
+                Text("Phrase/Idiom").padding().tag(3)
             }
             .pickerStyle(.segmented)
             .padding()
             .onChange(of: type, perform: { value in
                 randomVocabulary = ""
                 definition = ""
+                
+                pickItem()
             })
             
             FlipView {
                 Text("\(randomVocabulary)")
-                    .font(.title3)
+                    .font(type == 1 ? .title : .title3)
             } back: {
                 Text("\(definition)")
                     .cornerRadius(10)
             }
-            if (randomVocabulary != "") {
-                Text("Flip the box to see the meaning, but before you do, Guess")
+            if (randomVocabulary != "" && type != 2) {
+                Text("Tap to flip")
+                    .font(.caption)
                     .padding(.horizontal, 40)
-                    .padding(.vertical, 10)
+//                    .padding(.vertical, 10)
+                    .foregroundColor(.gray)
             }
             
             Spacer()
             
             Button(action: {
-                if type == 1 { // "word"
-                    let wordObject = userWordListVM.pickRandomWord()
-                    randomVocabulary = wordObject.word ?? ""
-                    definition = wordObject.meaning ?? ""
-                }
-                if type == 2 { // "sentence"
-                    let sentenceObject = userSentenceListVM.pickRandomSentence()
-                    randomVocabulary = sentenceObject.sentence ?? ""
-                }
-                if type == 3 { // "phrase"
-                    let phraseObject = userPhraseListVM.pickRandomPhrase()
-                    randomVocabulary = phraseObject.phrase ?? ""
-                    definition = phraseObject.meaning ?? ""
-                }
+                pickItem()
             }, label: {
                 HStack {
                     Image(systemName: "arrow.clockwise")
@@ -86,6 +97,12 @@ struct RandomPickerView: View {
             userWordListVM.getAllUserWordEntries()
             userSentenceListVM.getAllUserSentenceEntries()
             userPhraseListVM.getAllUserPhraseEntries()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                pickItem()
+            }
+            
+            
         }
     }
 }

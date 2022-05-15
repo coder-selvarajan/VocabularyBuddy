@@ -26,6 +26,7 @@ struct AddUserSentenceView: View {
                 Section {
                     VStack(alignment: .leading) {
                         Text("Sentence: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $sentence)
                             .frame(height: 100)
                             .padding(4)
@@ -34,7 +35,8 @@ struct AddUserSentenceView: View {
                     }.padding(.vertical, 5)
                     
                     VStack(alignment: .leading) {
-                        Text("Tag: ")
+                        Text("Tags: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $tag)
                             .frame(height: 100)
                             .padding(4)

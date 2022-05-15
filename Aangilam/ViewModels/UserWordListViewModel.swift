@@ -32,7 +32,7 @@ class UserWordListViewModel: ObservableObject {
         if (userWordAllEntries.count == 0){
             getAllUserWordEntries()
         }
-        let randomNumber: Int = Int.random(in: 1..<userWordAllEntries.count)
+        let randomNumber: Int = Int.random(in: 0..<userWordAllEntries.count)
         let word = userWordAllEntries[randomNumber]
         return word
     }

@@ -196,32 +196,59 @@ struct HomeView: View {
                         }
                         
                         //Common English Words
-                        Section() {
+                        Section(header: Text("Resources").padding(.horizontal, 15)) {
                             Button(action: {
                                 self.selection = 11
                             }) {
                                 HStack(spacing: 20) {
-                                    Image(systemName: "list.bullet.rectangle.fill")
+                                    Image(systemName: "character.book.closed.fill")
                                         .resizable()
-                                        .frame(width: 40, height: 40)
+                                        .frame(width: 20, height: 25)
+                                        .foregroundColor(.indigo)
+                                    
                                     VStack(alignment: .leading) {
                                         Text("500+ Intermediate Vocabulary")
                                             .font(.headline)
+                                            .foregroundColor(.primary)
                                         Text("Verbs, Adjectives, Adverbs")
                                             .font(.subheadline).foregroundColor(.secondary)
                                     }
                                     Spacer()
-                                }.accentColor(.indigo)
-                                    .padding(.leading)
+                                }
+                                .padding(.leading)
                             }
                             .frame(maxWidth:.infinity, minHeight: 60)
-                            .cornerRadius(10)
                             .background(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.indigo.opacity(0.7), lineWidth: 0)
+                                    .stroke(.indigo.opacity(0.7), lineWidth: 2)
+                            )
+                            .padding(.bottom)
+                            
+                            Button(action: {
+                                self.selection = 11
+                            }) {
+                                HStack(spacing: 20) {
+                                    Image(systemName: "text.book.closed.fill")
+                                        .resizable()
+                                        .frame(width: 20, height: 25)
+                                        .foregroundColor(.indigo)
+                                    VStack(alignment: .leading) {
+                                        Text("100+ Intermediate Phrases")
+                                            .font(.headline)
+                                            .foregroundColor(.primary)
+                                    }
+                                    Spacer()
+                                }
+                                .padding(.leading)
+                            }
+                            .frame(maxWidth:.infinity, minHeight: 60)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.indigo.opacity(0.7), lineWidth: 2)
                             )
                         }
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        .listRowBackground(Color.clear)
                         
                         //Recent Sentences
                         Section(header: Text("Recent Sentences"),  footer: SentenceListFooter) {

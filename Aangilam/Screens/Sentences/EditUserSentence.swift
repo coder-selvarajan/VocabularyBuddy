@@ -19,6 +19,7 @@ struct EditUserSentence: View {
                     
                     VStack(alignment: .leading) {
                         Text("Sentence: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $userSentence.sentence.toUnwrapped(defaultValue: ""))
                             .frame(height: 100)
                             .padding(4)
@@ -26,7 +27,8 @@ struct EditUserSentence: View {
                     }.padding(.vertical, 5)
                     
                     VStack(alignment: .leading) {
-                        Text("Tag: ")
+                        Text("Tags: ")
+                            .foregroundColor(.blue)
                         TextEditor(text: $userSentence.tag.toUnwrapped(defaultValue: ""))
                             .frame(height: 100)
                             .padding(4)
