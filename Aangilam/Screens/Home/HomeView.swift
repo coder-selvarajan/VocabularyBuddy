@@ -77,7 +77,7 @@ struct HomeView: View {
                 ZStack {
                     List {
                         //Search bar
-                        Section {
+                        Section(footer: EmptyView().padding(0)) {
                             ZStack {
                                 NavigationLink(destination:
                                                 Dictionary()
@@ -103,40 +103,172 @@ struct HomeView: View {
                                 
                             }.padding(0)
                         }
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        .listRowBackground(Color.clear)
+                        
+                        //Resources
+                        Section() { //header: Text("Resources").padding(.horizontal, 15)) {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(alignment: .top, spacing: 20) {
+                                    Button {
+                                        //
+                                    } label: {
+                                        VStack(alignment: .center, spacing: 15) {
+                                            Text("Verb")
+                                                .font(.subheadline)
+                                                .foregroundColor(.white)
+                                                .shadow(color: Color.black.opacity(0.4),
+                                                        radius: 2,
+                                                        x: 3,
+                                                        y: 3)
+                                                .padding(20)
+                                                .background(
+                                                    LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.8), .indigo.opacity(0.4)]), startPoint: .topLeading , endPoint: .bottomTrailing)
+                                                )
+                                                .clipShape(Circle())
+                                            
+                                            Text("Intermediate \nVerbs")
+                                                .font(.caption)
+                                                .foregroundColor(.primary)
+                                        }
+                                    }
+                                    
+                                    Button {
+                                        //
+                                    } label: {
+                                        VStack(alignment: .center, spacing: 15) {
+                                            Text("Adj")
+                                                .font(.subheadline)
+                                                .foregroundColor(.white)
+                                                .shadow(color: Color.black.opacity(0.4),
+                                                        radius: 2,
+                                                        x: 3,
+                                                        y: 3)
+                                                .padding(20)
+                                                .background(
+                                                    LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.8), .blue.opacity(0.4)]), startPoint: .topLeading , endPoint: .bottomTrailing)
+                                                )
+                                                .clipShape(Circle())
+                                            
+                                            Text("Common \nAdjectives")
+                                                .font(.caption)
+                                                .foregroundColor(.primary)
+                                            
+                                        }
+                                    }
+                                    
+                                    Button {
+                                        //
+                                    } label: {
+                                        VStack(alignment: .center, spacing: 15) {
+                                            Text("Adv")
+                                                .font(.subheadline)
+                                                .foregroundColor(.white)
+                                                .shadow(color: Color.black.opacity(0.4),
+                                                        radius: 2,
+                                                        x: 3,
+                                                        y: 3)
+                                                .padding(20)
+                                                .background(
+                                                    LinearGradient(gradient: Gradient(colors: [.cyan, .cyan.opacity(0.8), .cyan.opacity(0.4)]), startPoint: .topLeading , endPoint: .bottomTrailing)
+                                                )
+                                                .clipShape(Circle())
+                                            
+                                            Text("Common \nAdverbs")
+                                                .font(.caption)
+                                                .foregroundColor(.primary)
+                                            
+                                        }
+                                    }
+                                    
+                                    Button {
+                                        //
+                                    } label: {
+                                        VStack(alignment: .center, spacing: 15) {
+                                            Text("Ph")
+                                                .font(.subheadline)
+                                                .foregroundColor(.white)
+                                                .shadow(color: Color.black.opacity(0.4),
+                                                        radius: 2,
+                                                        x: 3,
+                                                        y: 3)
+                                                .padding(20)
+                                                .background(
+                                                    LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.8), .indigo.opacity(0.4)]), startPoint: .topLeading , endPoint: .bottomTrailing)
+                                                )
+                                                .clipShape(Circle())
+                                            
+                                            Text("Useful \nPhrases")
+                                                .font(.caption)
+                                                .foregroundColor(.primary)
+                                            
+                                        }
+                                    }
+                                    
+                                    Button {
+                                        //
+                                    } label: {
+                                        VStack(alignment: .center, spacing: 15) {
+                                            Text("Id")
+                                                .font(.subheadline)
+                                                .foregroundColor(.white)
+                                                .shadow(color: Color.black.opacity(0.4),
+                                                        radius: 2,
+                                                        x: 3,
+                                                        y: 3)
+                                                .padding(20)
+                                                .background(
+                                                    LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.8), .blue.opacity(0.4)]), startPoint: .topLeading , endPoint: .bottomTrailing)
+                                                )
+                                                .clipShape(Circle())
+                                            
+                                            Text("Useful \nIdioms")
+                                                .font(.caption)
+                                                .foregroundColor(.primary)
+                                            
+                                        }
+                                    }
+                                }.padding(.bottom, 10)
+                            }
+                        }
+                        .padding(.top, 0)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .listRowBackground(Color.clear)
                         
                         // Game section
                         Section(header: Text("Gamify your learning").padding(.horizontal, 15)) {
                             ScrollView (.horizontal, showsIndicators: false) {
-                                HStack {
+                                HStack(spacing: 10) {
                                     NavigationLink(destination: RandomPickerView(), tag: 13, selection: $selection) {
                                         Button(action: {
                                             self.selection = 13
                                         }) {
                                             VStack(alignment: SwiftUI.HorizontalAlignment.leading){
-                                                Text("Random Picker").font(.headline).foregroundColor(.white)
+                                                Text("Randomizer")
+                                                    .font(.callout).bold()
+                                                    .foregroundColor(.white)
                                                 Text("word, sentence")
-                                                    .font(.subheadline).foregroundColor(.white.opacity(0.6))
+                                                    .font(.footnote).foregroundColor(.white.opacity(0.6))
                                             }.foregroundColor(.white)
                                         }
-                                        .frame(width: 160, height: 80, alignment: .center)
+                                        .frame(width: 145, height: 75, alignment: .center)
                                         .background(
                                             LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.9), .indigo.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
                                         ).cornerRadius(10)
-                                        
                                     }
                                     
-                                    NavigationLink(destination: PickMeaningHome(), tag: 12, selection: $selection) {
+                                    NavigationLink(destination: PickDefinitionHome(), tag: 12, selection: $selection) {
                                         Button(action: {
                                             self.selection = 12
                                         }) {
                                             VStack(alignment: SwiftUI.HorizontalAlignment.leading){
-                                                Text("Find  Definition").font(.headline).foregroundColor(.white)
-                                                Text("by word").font(.subheadline).foregroundColor(.white.opacity(0.6))
+                                                Text("Pick Definition")
+                                                    .font(.callout).bold()
+                                                    .foregroundColor(.white)
+                                                Text("by word").font(.footnote).foregroundColor(.white.opacity(0.6))
                                             }
                                         }
-                                        .frame(width: 150, height: 80, alignment: .center)
+                                        .frame(width: 145, height: 75, alignment: .center)
                                         .background(
                                             LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.9), .blue.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
                                         ).cornerRadius(10)
@@ -147,14 +279,16 @@ struct HomeView: View {
                                             self.selection = 11
                                         }) {
                                             VStack(alignment: SwiftUI.HorizontalAlignment.leading){
-                                                Text("Spell Word").font(.headline).foregroundColor(.white)
+                                                Text("Spell Word")
+                                                    .font(.callout).bold()
+                                                    .foregroundColor(.white)
                                                 Text("by definition")
-                                                    .font(.subheadline).foregroundColor(.white.opacity(0.6))
+                                                    .font(.footnote).foregroundColor(.white.opacity(0.6))
                                             }.foregroundColor(.white)
                                         }
-                                        .frame(width: 150, height: 80, alignment: .center)
+                                        .frame(width: 145, height: 75, alignment: .center)
                                         .background(
-                                            LinearGradient(gradient: Gradient(colors: [.cyan, .cyan.opacity(0.9), .cyan.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
+                                            LinearGradient(gradient: Gradient(colors: [.teal, .teal.opacity(0.9), .teal.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
                                         ).cornerRadius(10)
                                     }
                                 }
@@ -195,6 +329,7 @@ struct HomeView: View {
                             }
                         }
                         
+                        
                         //Common English Words
                         Section(header: Text("Resources").padding(.horizontal, 15)) {
                             Button(action: {
@@ -218,37 +353,13 @@ struct HomeView: View {
                                 .padding(.leading)
                             }
                             .frame(maxWidth:.infinity, minHeight: 60)
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.indigo.opacity(0.7), lineWidth: 2)
-                            )
-                            .padding(.bottom)
-                            
-                            Button(action: {
-                                self.selection = 11
-                            }) {
-                                HStack(spacing: 20) {
-                                    Image(systemName: "text.book.closed.fill")
-                                        .resizable()
-                                        .frame(width: 20, height: 25)
-                                        .foregroundColor(.indigo)
-                                    VStack(alignment: .leading) {
-                                        Text("100+ Intermediate Phrases")
-                                            .font(.headline)
-                                            .foregroundColor(.primary)
-                                    }
-                                    Spacer()
-                                }
-                                .padding(.leading)
-                            }
-                            .frame(maxWidth:.infinity, minHeight: 60)
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.indigo.opacity(0.7), lineWidth: 2)
-                            )
+                            //                            .background(
+                            //                                RoundedRectangle(cornerRadius: 10)
+                            //                                    .stroke(.indigo.opacity(0.7), lineWidth: 0)
+                            //                            )
                         }
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .listRowBackground(Color.clear)
+                        //                        .listRowBackground(Color.clear)
                         
                         //Recent Sentences
                         Section(header: Text("Recent Sentences"),  footer: SentenceListFooter) {
@@ -343,7 +454,7 @@ struct HomeView: View {
                             } label: {
                                 ZStack {
                                     LinearGradient(gradient: Gradient(colors: [.indigo, .blue]), startPoint: .top, endPoint: .bottom)
-                                        .frame(width: 65, height: 65)
+                                        .frame(width: 55, height: 55)
                                         .cornerRadius(10)
                                     Image(systemName: "plus")
                                         .foregroundColor(.white)

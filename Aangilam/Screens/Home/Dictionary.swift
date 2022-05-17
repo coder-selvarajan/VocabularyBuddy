@@ -26,7 +26,6 @@ class vmDictionary : ObservableObject {
             
             URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
                 guard let data = data, error == nil else {
-                    self?.isFetching = false
                     return
                 }
                 do {

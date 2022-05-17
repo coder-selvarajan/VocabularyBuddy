@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		700BD178282058770069967F /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700BD177282058770069967F /* SplashScreen.swift */; };
-		701172922815BFDC00B86B45 /* PickMeaningHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701172912815BFDC00B86B45 /* PickMeaningHome.swift */; };
+		701172922815BFDC00B86B45 /* PickDefinitionHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701172912815BFDC00B86B45 /* PickDefinitionHome.swift */; };
 		7013929727FC01FB00DA7DDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013929627FC01FB00DA7DDF /* Global.swift */; };
 		702584E2282CB5B700B6FF20 /* ViewPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702584E1282CB5B700B6FF20 /* ViewPhrase.swift */; };
 		702584E4282CB5C200B6FF20 /* EditPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702584E3282CB5C200B6FF20 /* EditPhrase.swift */; };
@@ -53,7 +53,7 @@
 /* Begin PBXFileReference section */
 		700BD177282058770069967F /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		700BD17928205C8D0069967F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		701172912815BFDC00B86B45 /* PickMeaningHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickMeaningHome.swift; sourceTree = "<group>"; };
+		701172912815BFDC00B86B45 /* PickDefinitionHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDefinitionHome.swift; sourceTree = "<group>"; };
 		7013929627FC01FB00DA7DDF /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		702584E1282CB5B700B6FF20 /* ViewPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPhrase.swift; sourceTree = "<group>"; };
 		702584E3282CB5C200B6FF20 /* EditPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhrase.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 				70A6B85D27FD60CF00618D66 /* FlipView.swift */,
 				70A6B85F27FD654E00618D66 /* WordFinder.swift */,
 				70A745FE2808A7F5005892E1 /* RandomPickerView.swift */,
-				701172912815BFDC00B86B45 /* PickMeaningHome.swift */,
+				701172912815BFDC00B86B45 /* PickDefinitionHome.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 				702584E4282CB5C200B6FF20 /* EditPhrase.swift in Sources */,
 				70564F8427F5AAEE00EBA186 /* AddUserSentenceView.swift in Sources */,
 				70DFA4C727F8B2E4007FADB1 /* UserPhraseList.swift in Sources */,
-				701172922815BFDC00B86B45 /* PickMeaningHome.swift in Sources */,
+				701172922815BFDC00B86B45 /* PickDefinitionHome.swift in Sources */,
 				707D1E7E27DDE4300020557E /* AangilamModel.xcdatamodeld in Sources */,
 				7013929727FC01FB00DA7DDF /* Global.swift in Sources */,
 				70A745FF2808A7F5005892E1 /* RandomPickerView.swift in Sources */,
