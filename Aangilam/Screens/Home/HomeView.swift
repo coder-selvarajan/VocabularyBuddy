@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import UIKit
 
 struct HomeView: View {
     @StateObject var userWordListVM = UserWordListViewModel()
@@ -274,7 +275,7 @@ struct HomeView: View {
                                         ).cornerRadius(10)
                                     }
                                     
-                                    NavigationLink(destination: WordFinder(), tag: 11, selection: $selection) {
+                                    NavigationLink(destination: SpellWord(), tag: 11, selection: $selection) {
                                         Button(action: {
                                             self.selection = 11
                                         }) {
@@ -329,7 +330,6 @@ struct HomeView: View {
                             }
                         }
                         
-                        
                         //Common English Words
                         Section(header: Text("Resources").padding(.horizontal, 15)) {
                             Button(action: {
@@ -361,6 +361,30 @@ struct HomeView: View {
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                         //                        .listRowBackground(Color.clear)
                         
+                        //Recent Phrases / Idioms
+                        Section(header: Text("Recent Phrases / Idioms"),  footer: PhraseListFooter) {
+                            if (userPhraseListVM.userPhraseRecentEntries.count == 0) {
+                                VStack(alignment: .leading){
+                                    Button {
+                                        self.selection = 3
+                                    } label: {
+                                        Text("No phrases/idioms yet. \nClick here to add your first phrase/idiom")
+                                            .font(.footnote)
+                                            .foregroundColor(.blue)
+                                            .padding(.vertical, 10)
+                                    }
+                                }
+                            }
+                            else {
+                                ForEach(userPhraseListVM.userPhraseRecentEntries, id:\.objectID) {phrase in
+                                    HStack {
+                                        Text("\(phrase.phrase ?? "")").font(.subheadline)
+                                    }.background(NavigationLink("", destination: ViewPhrase(userPhrase: phrase))
+                                        .opacity(0))
+                                }
+                            }
+                        }
+                        
                         //Recent Sentences
                         Section(header: Text("Recent Sentences"),  footer: SentenceListFooter) {
                             if (userSentenceListVM.userSentenceRecentEntries.count == 0) {
@@ -387,29 +411,6 @@ struct HomeView: View {
                             }
                         }
                         
-                        //Recent Phrases / Idioms
-                        Section(header: Text("Recent Phrases / Idioms"),  footer: PhraseListFooter) {
-                            if (userPhraseListVM.userPhraseRecentEntries.count == 0) {
-                                VStack(alignment: .leading){
-                                    Button {
-                                        self.selection = 3
-                                    } label: {
-                                        Text("No phrases/idioms yet. \nClick here to add your first phrase/idiom")
-                                            .font(.footnote)
-                                            .foregroundColor(.blue)
-                                            .padding(.vertical, 10)
-                                    }
-                                }
-                            }
-                            else {
-                                ForEach(userPhraseListVM.userPhraseRecentEntries, id:\.objectID) {phrase in
-                                    HStack {
-                                        Text("\(phrase.phrase ?? "")").font(.subheadline)
-                                    }.background(NavigationLink("", destination: ViewPhrase(userPhrase: phrase))
-                                        .opacity(0))
-                                }
-                            }
-                        }
                     }
                     .padding(0)
                     .padding(.top, -15)
@@ -483,6 +484,12 @@ struct HomeView: View {
                 
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
                     Button(action: {
+                        if appTheme == "dark" {
+                            UIApplication.shared.setStatusBarStyle(.darkContent, animated: true)
+                        }
+                        else {
+                            UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
+                        }
                         appTheme = appTheme == "dark" ? "light" : "dark"
                     }, label: {
                         Image(systemName: "gearshape.fill")

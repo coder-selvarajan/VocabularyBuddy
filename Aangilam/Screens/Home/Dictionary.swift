@@ -12,9 +12,12 @@ class vmDictionary : ObservableObject {
     @Published var wordInfo: WordElement?
     @Published var isFetching: Bool = false
     @Published var definitionFound: Bool?
+    @Published var dataDump: String?
     
     func fetchData(inputWord: String, searchHistoryVM: SearchHistoryViewModel) {
         if inputWord != "" {
+            // 2. google search
+            // https://www.google.co.in/search?q=contemporary+meaning
             let stringURL = "https://api.dictionaryapi.dev/api/v2/entries/en/\(inputWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))"
             guard let url = URL(string: stringURL) else {
                 print("Invalid URL")
@@ -38,7 +41,6 @@ class vmDictionary : ObservableObject {
                         //saving the search entry in core data
                         searchHistoryVM.saveSearchEntry(word: inputWord, definition: extractMeaning(meanings: decodedData.first!.meanings))
                     }
-                    
                 } catch {
                     DispatchQueue.main.async {
                         self?.isFetching = false
@@ -51,6 +53,31 @@ class vmDictionary : ObservableObject {
         }
     }
     
+    func fetchFromGoogle(inputWord: String, searchHistoryVM: SearchHistoryViewModel) {
+        if inputWord != "" {
+            // 2. google search
+            // https://www.google.co.in/search?q=contemporary+meaning
+            let stringURL = "https://www.google.co.in/search?q=\(inputWord.lowercased())+meaning"
+            guard let url = URL(string: stringURL) else {
+                print("Invalid URL")
+                self.isFetching = false
+                return
+            }
+            var request = URLRequest(url: url)
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+                guard let data = data, error == nil else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self?.dataDump = String(decoding: data, as: UTF8.self)
+                    self?.isFetching = false
+                    self?.definitionFound = true
+                }
+            }.resume()
+        }
+    }
 }
 
 enum PartOfSpeech: String, CaseIterable {
@@ -106,14 +133,22 @@ struct Dictionary: View {
     @State private var searchStarted = false
     @StateObject var vmDict = vmDictionary()
     @FocusState private var searchIsFocused: Bool
+    @State private var dictType = 1
     
     @Environment(\.presentationMode) var presentationMode
     
-    func searchSubmit() {
+    func searchSubmit2FreeApi() {
         searchStarted = true
         vmDict.definitionFound = nil
         vmDict.isFetching = true
         vmDict.fetchData(inputWord: searchText, searchHistoryVM: searchHistoryVM)
+    }
+    
+    func searchSubmit2Google() {
+        searchStarted = true
+        vmDict.definitionFound = nil
+        vmDict.isFetching = true
+        vmDict.fetchFromGoogle(inputWord: searchText, searchHistoryVM: searchHistoryVM)
     }
     
     var body: some View {
@@ -131,7 +166,7 @@ struct Dictionary: View {
                         .focused($searchIsFocused)
                         .submitLabel(SubmitLabel.search)
                         .onSubmit {
-                            searchSubmit()
+                            searchSubmit2FreeApi()
                         }
                     
                     Button {
@@ -159,7 +194,7 @@ struct Dictionary: View {
                                     .lineLimit(1)
                             }.onTapGesture {
                                 searchText = searchterm.word ?? ""
-                                searchSubmit()
+                                searchSubmit2FreeApi()
                                 searchIsFocused = false
                             }
                             
@@ -205,40 +240,72 @@ struct Dictionary: View {
                 
                 if !vmDict.isFetching && vmDict.wordInfo != nil {
                     VStack(alignment: .leading, spacing: 15) {
-                        Text(vmDict.wordInfo?.word ?? "")
-                            .font(.largeTitle)
                         
-                        HStack(spacing: 15) {
-                            Text("Phonetics:").font(.headline).foregroundColor(.blue)
-                            Text("\(vmDict.wordInfo?.phonetic ?? "") ")
-                            Image(systemName: "play.circle")
-                        }.padding(.top, 0)
+                        Picker("", selection: $dictType) {
+                            Text("Free Dict Api")
+                                .tag(1)
+                            Text("Google - Oxford").tag(2)
+                            Text("Wikipedia").tag(3)
+                        }
+                        .pickerStyle(.segmented)
+//                        .background(.indigo)
+                        .cornerRadius(8)
+                        .padding(.bottom)
+                        .onChange(of: dictType, perform: { value in
+
+                            if value == 2 {
+                                // then do google search
+                                searchSubmit2Google()
+                            }
+                        })
                         
-                        Divider()
-                        Text("Definition:").font(.headline).foregroundColor(.blue)
-                        Text("\(extractMeaning(meanings: vmDict.wordInfo!.meanings))").padding(.top, 0)
-                        Divider()
-                        
-                        if (extractExmple(meanings: vmDict.wordInfo!.meanings) != "") {
-                            Text("Example Usage:").font(.headline).foregroundColor(.blue)
-                            Text("\(extractExmple(meanings: vmDict.wordInfo!.meanings))").padding(.top, 0)
+                        if dictType == 1 {
+                                Text(vmDict.wordInfo?.word ?? "")
+                                    .font(.largeTitle)
+                                
+                                HStack(spacing: 15) {
+                                    Text("Phonetics:").font(.headline).foregroundColor(.blue)
+                                    Text("\(vmDict.wordInfo?.phonetic ?? "") ")
+                                    Image(systemName: "play.circle")
+                                }.padding(.top, 0)
+                                
+                                Divider()
+                                Text("Definition:").font(.headline).foregroundColor(.blue)
+                                Text("\(extractMeaning(meanings: vmDict.wordInfo!.meanings))").padding(.top, 0)
+                                Divider()
+                                
+                                if (extractExmple(meanings: vmDict.wordInfo!.meanings) != "") {
+                                    Text("Example Usage:").font(.headline).foregroundColor(.blue)
+                                    Text("\(extractExmple(meanings: vmDict.wordInfo!.meanings))").padding(.top, 0)
+                                }
+                                
+                                Button(action: {
+                                    userWordListVM.saveWord(word: vmDict.wordInfo?.word ?? "",
+                                                            tag: "from Dictionary",
+                                                            meaning: extractMeaning(meanings: vmDict.wordInfo!.meanings),
+                                                            sampleSentence: extractExmple(meanings: vmDict.wordInfo!.meanings))
+                                    presentationMode.wrappedValue.dismiss()
+                                }, label: {
+                                    Text("+ Add this word to my list")
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                        .frame (height: 55)
+                                        .frame (maxWidth: .infinity)
+                                        .background (Color.indigo)
+                                        .cornerRadius(10)
+                                })
                         }
                         
-                        Button(action: {
-                            userWordListVM.saveWord(word: vmDict.wordInfo?.word ?? "",
-                                                    tag: "from Dictionary",
-                                                    meaning: extractMeaning(meanings: vmDict.wordInfo!.meanings),
-                                                    sampleSentence: extractExmple(meanings: vmDict.wordInfo!.meanings))
-                            presentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            Text("+ Add this word to my list")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .frame (height: 55)
-                                .frame (maxWidth: .infinity)
-                                .background (Color.indigo)
-                                .cornerRadius(10)
-                        })
+                        if dictType == 2 {
+                            Text("Google search result here")
+                            
+                            Text(vmDict.dataDump ?? "")
+                                .padding()
+                        }
+
+                        if dictType == 3 {
+                            Text("Wikipedia search result here")
+                        }
                     }.padding()
                 }
             }

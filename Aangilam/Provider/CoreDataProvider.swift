@@ -11,18 +11,21 @@ import SwiftUI
 
 class CoreDataProvider {
     
-    let persistentContainer: NSPersistentContainer
+    let persistentContainer: NSPersistentCloudKitContainer
     
     static let shared = CoreDataProvider()
     
     private init() {
         
-        persistentContainer = NSPersistentContainer(name: "AangilamModel")
+        persistentContainer = NSPersistentCloudKitContainer(name: "AangilamModel")
         persistentContainer.loadPersistentStores { (description, error) in
             if let error = error {
                 fatalError("Failed to initialize Core Data \(error)")
             }
         }
+        
+        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+        persistentContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         
 //        let directories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
 //        print(directories[0])

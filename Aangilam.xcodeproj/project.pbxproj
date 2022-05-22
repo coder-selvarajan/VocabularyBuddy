@@ -12,6 +12,7 @@
 		7013929727FC01FB00DA7DDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013929627FC01FB00DA7DDF /* Global.swift */; };
 		702584E2282CB5B700B6FF20 /* ViewPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702584E1282CB5B700B6FF20 /* ViewPhrase.swift */; };
 		702584E4282CB5C200B6FF20 /* EditPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702584E3282CB5C200B6FF20 /* EditPhrase.swift */; };
+		70268C7B2837692800F6F0B1 /* Dictionary2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70268C7A2837692800F6F0B1 /* Dictionary2.swift */; };
 		703052D628112405004FD5D2 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703052D528112405004FD5D2 /* Dictionary.swift */; };
 		703052D82811318C004FD5D2 /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703052D72811318C004FD5D2 /* Words.swift */; };
 		703311B8282A50E300F2E17E /* ViewUserSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703311B7282A50E300F2E17E /* ViewUserSentence.swift */; };
@@ -39,8 +40,9 @@
 		708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AEE4C27F22DC200DCB00A /* UserWordList.swift */; };
 		7098F9062821AB3100FCBD24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7098F9052821AB3100FCBD24 /* LaunchScreen.storyboard */; };
 		709A281127F6ED300018FC37 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709A281027F6ED300018FC37 /* Test.swift */; };
+		709F859F2838166E002CC860 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709F859E2838166E002CC860 /* CloudKit.framework */; };
 		70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85D27FD60CF00618D66 /* FlipView.swift */; };
-		70A6B86027FD654E00618D66 /* WordFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85F27FD654E00618D66 /* WordFinder.swift */; };
+		70A6B86027FD654E00618D66 /* SpellWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85F27FD654E00618D66 /* SpellWord.swift */; };
 		70A745FF2808A7F5005892E1 /* RandomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A745FE2808A7F5005892E1 /* RandomPickerView.swift */; };
 		70BA45DB281B13FC00F112D0 /* ViewUserWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */; };
 		70DFA4C027F8B28D007FADB1 /* UserPhrase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */; };
@@ -57,6 +59,7 @@
 		7013929627FC01FB00DA7DDF /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		702584E1282CB5B700B6FF20 /* ViewPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPhrase.swift; sourceTree = "<group>"; };
 		702584E3282CB5C200B6FF20 /* EditPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhrase.swift; sourceTree = "<group>"; };
+		70268C7A2837692800F6F0B1 /* Dictionary2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary2.swift; sourceTree = "<group>"; };
 		703052D528112405004FD5D2 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		703052D72811318C004FD5D2 /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
 		703311B7282A50E300F2E17E /* ViewUserSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserSentence.swift; sourceTree = "<group>"; };
@@ -84,8 +87,10 @@
 		708AEE4C27F22DC200DCB00A /* UserWordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWordList.swift; sourceTree = "<group>"; };
 		7098F9052821AB3100FCBD24 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		709A281027F6ED300018FC37 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		709F859C28381668002CC860 /* Aangilam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Aangilam.entitlements; sourceTree = "<group>"; };
+		709F859E2838166E002CC860 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		70A6B85D27FD60CF00618D66 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
-		70A6B85F27FD654E00618D66 /* WordFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordFinder.swift; sourceTree = "<group>"; };
+		70A6B85F27FD654E00618D66 /* SpellWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellWord.swift; sourceTree = "<group>"; };
 		70A745FE2808A7F5005892E1 /* RandomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPickerView.swift; sourceTree = "<group>"; };
 		70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserWord.swift; sourceTree = "<group>"; };
 		70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPhrase+Extensions.swift"; sourceTree = "<group>"; };
@@ -101,6 +106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				706316982816D78F008FC5E9 /* ConfettiSwiftUI in Frameworks */,
+				709F859F2838166E002CC860 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,7 +118,7 @@
 			children = (
 				706E56AC281476FD000AC324 /* PickMeaning.swift */,
 				70A6B85D27FD60CF00618D66 /* FlipView.swift */,
-				70A6B85F27FD654E00618D66 /* WordFinder.swift */,
+				70A6B85F27FD654E00618D66 /* SpellWord.swift */,
 				70A745FE2808A7F5005892E1 /* RandomPickerView.swift */,
 				701172912815BFDC00B86B45 /* PickDefinitionHome.swift */,
 			);
@@ -124,6 +130,7 @@
 			children = (
 				707D1E7027DDD02E0020557E /* HomeView.swift */,
 				703052D528112405004FD5D2 /* Dictionary.swift */,
+				70268C7A2837692800F6F0B1 /* Dictionary2.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -173,6 +180,7 @@
 			children = (
 				707D1E6D27DDD02E0020557E /* Aangilam */,
 				707D1E6C27DDD02E0020557E /* Products */,
+				709F859D2838166E002CC860 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,6 +195,7 @@
 		707D1E6D27DDD02E0020557E /* Aangilam */ = {
 			isa = PBXGroup;
 			children = (
+				709F859C28381668002CC860 /* Aangilam.entitlements */,
 				700BD17928205C8D0069967F /* Info.plist */,
 				7044F388280C74C0007B6DDE /* Service */,
 				708EC4B427F3005600B91A42 /* Screens */,
@@ -265,6 +274,14 @@
 				70FEB4B628190F80000EEB6D /* Test2.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		709F859D2838166E002CC860 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				709F859E2838166E002CC860 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,8 +393,9 @@
 				70564F8627F5ABC800EBA186 /* UserSentenceListViewModel.swift in Sources */,
 				70DFA4C027F8B28D007FADB1 /* UserPhrase+Extensions.swift in Sources */,
 				70564F8827F5AC3800EBA186 /* UserSentence+Extensions.swift in Sources */,
-				70A6B86027FD654E00618D66 /* WordFinder.swift in Sources */,
+				70A6B86027FD654E00618D66 /* SpellWord.swift in Sources */,
 				707553A5282ADED200BC74A8 /* SearchHistoryViewModel.swift in Sources */,
+				70268C7B2837692800F6F0B1 /* Dictionary2.swift in Sources */,
 				702584E2282CB5B700B6FF20 /* ViewPhrase.swift in Sources */,
 				707D1E8C27DE6D130020557E /* UserWordListViewModel.swift in Sources */,
 				707D1E8927DE6C760020557E /* ExtensionHelper.swift in Sources */,
@@ -508,6 +526,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Aangilam/Aangilam.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Aangilam/Preview Content\"";
@@ -538,6 +557,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Aangilam/Aangilam.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Aangilam/Preview Content\"";

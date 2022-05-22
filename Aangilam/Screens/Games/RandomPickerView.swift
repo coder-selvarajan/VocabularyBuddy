@@ -43,8 +43,8 @@ struct RandomPickerView: View {
             Picker("", selection: $type) {
                 Text("Word")
                     .tag(1)
-                Text("Sentence").tag(2)
                 Text("Phrase/Idiom").tag(3)
+                Text("Sentence").tag(2)
             }
             .pickerStyle(.segmented)
             .padding()
@@ -85,7 +85,7 @@ struct RandomPickerView: View {
                 .padding()
                 .foregroundColor(.white)
                 .frame (height: 55)
-                .background (Color.blue)
+                .background (Color.indigo)
                 .cornerRadius(10)
             })
             .padding()

@@ -3,7 +3,7 @@
     <entity name="SearchHistory" representedClassName="SearchHistory" syncable="YES" codeGenerationType="class">
         <attribute name="creationDate" optional="YES" attributeType="Date" defaultDateTimeInterval="673898100" usesScalarValueType="NO"/>
         <attribute name="definition" optional="YES" attributeType="String"/>
-        <attribute name="word" attributeType="String"/>
+        <attribute name="word" attributeType="String" defaultValueString="word"/>
     </entity>
     <entity name="UserPhrase" representedClassName="UserPhrase" syncable="YES" codeGenerationType="class">
         <attribute name="creationDate" optional="YES" attributeType="Date" defaultDateTimeInterval="670609800" usesScalarValueType="NO"/>

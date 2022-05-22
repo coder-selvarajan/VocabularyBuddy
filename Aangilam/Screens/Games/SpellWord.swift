@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WordFinder: View {
+struct SpellWord: View {
     @StateObject var userWordListVM = UserWordListViewModel()
     @State var word: String = ""
     @State var definition: String = ""
@@ -74,7 +74,7 @@ struct WordFinder: View {
                             .submitLabel(SubmitLabel.go)
                             .onSubmit {
                                 showResult = true
-                                if (word.trim() == userWord.trim()) {
+                                if (word.lowercased().trim() == userWord.lowercased().trim()) {
                                     success = true
                                     score += 1
                                 }
