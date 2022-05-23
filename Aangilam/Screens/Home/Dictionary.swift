@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftSoup
 
 class vmDictionary : ObservableObject {
     @Published var wordInfo: WordElement?
@@ -53,11 +54,47 @@ class vmDictionary : ObservableObject {
         }
     }
     
+    func fetchFromWordsApi(inputWord: String) {
+        
+        let headers = [
+            "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com",
+            "X-RapidAPI-Key": "d2b600d481mshbdab0e8414fa85ep1847a5jsn554b275028b4"
+        ]
+
+        let request = NSMutableURLRequest(url: NSURL(string: "https://wordsapiv1.p.rapidapi.com/words/\(inputWord.lowercased().trim())/definitions")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+
+//        let session = URLSession.shared
+        
+        URLSession.shared.dataTask(with: request as URLRequest) { [weak self] data, response, error in
+            
+//        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            guard let data = data, error == nil else {
+                return
+            }
+            if let httpResponse = response as? HTTPURLResponse {
+                DispatchQueue.main.async {
+                    print(httpResponse)
+                    self?.dataDump = String(data: data, encoding: String.Encoding.utf8)
+                    self?.isFetching = false
+                    self?.definitionFound = true
+                }
+            }
+            
+        }.resume()
+
+//        dataTask.resume()
+        
+    }
+    
     func fetchFromGoogle(inputWord: String, searchHistoryVM: SearchHistoryViewModel) {
         if inputWord != "" {
             // 2. google search
             // https://www.google.co.in/search?q=contemporary+meaning
-            let stringURL = "https://www.google.co.in/search?q=\(inputWord.lowercased())+meaning"
+            let stringURL = "https://www.google.co.in/search?q=\(inputWord.lowercased().trim())+meaning"
             guard let url = URL(string: stringURL) else {
                 print("Invalid URL")
                 self.isFetching = false
@@ -71,7 +108,21 @@ class vmDictionary : ObservableObject {
                     return
                 }
                 DispatchQueue.main.async {
-                    self?.dataDump = String(decoding: data, as: UTF8.self)
+                    
+//                    do {
+                        var htmlString = String(decoding: data, as: UTF8.self)
+                        let doc = try! SwiftSoup.parse(htmlString) // init SwiftSoup object
+//                        doc.select("meta").remove()                // css query to select, then remove
+//                        try! htmlString = doc.outerHtml()
+                        try! htmlString = doc.body()!.text()
+                    
+//                    }
+//                    catch {
+//                        //
+//                    }
+                    
+//                    self?.dataDump = String(decoding: data, as: UTF8.self)
+                    self?.dataDump = htmlString
                     self?.isFetching = false
                     self?.definitionFound = true
                 }
@@ -149,6 +200,13 @@ struct Dictionary: View {
         vmDict.definitionFound = nil
         vmDict.isFetching = true
         vmDict.fetchFromGoogle(inputWord: searchText, searchHistoryVM: searchHistoryVM)
+    }
+    
+    func searchSubmit2WordsApi() {
+        searchStarted = true
+        vmDict.definitionFound = nil
+        vmDict.isFetching = true
+        vmDict.fetchFromWordsApi(inputWord: searchText)
     }
     
     var body: some View {
@@ -245,7 +303,8 @@ struct Dictionary: View {
                             Text("Free Dict Api")
                                 .tag(1)
                             Text("Google - Oxford").tag(2)
-                            Text("Wikipedia").tag(3)
+                            Text("WordsApi").tag(3)
+                            Text("Wikipedia").tag(4)
                         }
                         .pickerStyle(.segmented)
 //                        .background(.indigo)
@@ -256,6 +315,11 @@ struct Dictionary: View {
                             if value == 2 {
                                 // then do google search
                                 searchSubmit2Google()
+                            }
+                            
+                            if value == 3 {
+                                // then do WordsApi fetch
+                                searchSubmit2WordsApi()
                             }
                         })
                         
@@ -297,14 +361,15 @@ struct Dictionary: View {
                         }
                         
                         if dictType == 2 {
-                            Text("Google search result here")
-                            
+                            Text("Google result here")
                             Text(vmDict.dataDump ?? "")
                                 .padding()
                         }
 
                         if dictType == 3 {
-                            Text("Wikipedia search result here")
+                            Text("WordsApi Definition")
+                            Text(vmDict.dataDump ?? "")
+                                .padding()
                         }
                     }.padding()
                 }

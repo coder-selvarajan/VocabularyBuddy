@@ -17,6 +17,7 @@
 		703052D82811318C004FD5D2 /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703052D72811318C004FD5D2 /* Words.swift */; };
 		703311B8282A50E300F2E17E /* ViewUserSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703311B7282A50E300F2E17E /* ViewUserSentence.swift */; };
 		703311BA282A529B00F2E17E /* EditUserSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703311B9282A529B00F2E17E /* EditUserSentence.swift */; };
+		70448D65283B559900713B6C /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 70448D64283B559900713B6C /* SwiftSoup */; };
 		70564F8327F5AAEE00EBA186 /* UserSentenceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8127F5AAEE00EBA186 /* UserSentenceList.swift */; };
 		70564F8427F5AAEE00EBA186 /* AddUserSentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8227F5AAEE00EBA186 /* AddUserSentenceView.swift */; };
 		70564F8627F5ABC800EBA186 /* UserSentenceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8527F5ABC800EBA186 /* UserSentenceListViewModel.swift */; };
@@ -107,6 +108,7 @@
 			files = (
 				706316982816D78F008FC5E9 /* ConfettiSwiftUI in Frameworks */,
 				709F859F2838166E002CC860 /* CloudKit.framework in Frameworks */,
+				70448D65283B559900713B6C /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +304,7 @@
 			name = Aangilam;
 			packageProductDependencies = (
 				706316972816D78F008FC5E9 /* ConfettiSwiftUI */,
+				70448D64283B559900713B6C /* SwiftSoup */,
 			);
 			productName = Mozhi;
 			productReference = 707D1E6B27DDD02E0020557E /* Aangilam.app */;
@@ -333,6 +336,7 @@
 			mainGroup = 707D1E6227DDD02E0020557E;
 			packageReferences = (
 				706316962816D78F008FC5E9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				70448D63283B559900713B6C /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 707D1E6C27DDD02E0020557E /* Products */;
 			projectDirPath = "";
@@ -607,6 +611,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		70448D63283B559900713B6C /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		706316962816D78F008FC5E9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
@@ -618,6 +630,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		70448D64283B559900713B6C /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70448D63283B559900713B6C /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
 		706316972816D78F008FC5E9 /* ConfettiSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 706316962816D78F008FC5E9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;

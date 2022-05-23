@@ -64,8 +64,8 @@ struct PickMeaning: View {
                             .foregroundColor(.indigo)
                             
                         Spacer()
-                        
-                        Text("Choose the right meaning below: ")
+                        // Choose the definition that best matches the word below:
+                        Text("Choose the definition that best matches the word below: ")
                             .font(.headline)
                             .padding(.vertical, 15)
                         VStack {

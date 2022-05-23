@@ -330,36 +330,36 @@ struct HomeView: View {
                             }
                         }
                         
-                        //Common English Words
-                        Section(header: Text("Resources").padding(.horizontal, 15)) {
-                            Button(action: {
-                                self.selection = 11
-                            }) {
-                                HStack(spacing: 20) {
-                                    Image(systemName: "character.book.closed.fill")
-                                        .resizable()
-                                        .frame(width: 20, height: 25)
-                                        .foregroundColor(.indigo)
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text("500+ Intermediate Vocabulary")
-                                            .font(.headline)
-                                            .foregroundColor(.primary)
-                                        Text("Verbs, Adjectives, Adverbs")
-                                            .font(.subheadline).foregroundColor(.secondary)
-                                    }
-                                    Spacer()
-                                }
-                                .padding(.leading)
-                            }
-                            .frame(maxWidth:.infinity, minHeight: 60)
-                            //                            .background(
-                            //                                RoundedRectangle(cornerRadius: 10)
-                            //                                    .stroke(.indigo.opacity(0.7), lineWidth: 0)
-                            //                            )
-                        }
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        //                        .listRowBackground(Color.clear)
+//                        //Common English Words
+//                        Section(header: Text("Resources").padding(.horizontal, 15)) {
+//                            Button(action: {
+//                                self.selection = 11
+//                            }) {
+//                                HStack(spacing: 20) {
+//                                    Image(systemName: "character.book.closed.fill")
+//                                        .resizable()
+//                                        .frame(width: 20, height: 25)
+//                                        .foregroundColor(.indigo)
+//
+//                                    VStack(alignment: .leading) {
+//                                        Text("500+ Intermediate Vocabulary")
+//                                            .font(.headline)
+//                                            .foregroundColor(.primary)
+//                                        Text("Verbs, Adjectives, Adverbs")
+//                                            .font(.subheadline).foregroundColor(.secondary)
+//                                    }
+//                                    Spacer()
+//                                }
+//                                .padding(.leading)
+//                            }
+//                            .frame(maxWidth:.infinity, minHeight: 60)
+//                            //                            .background(
+//                            //                                RoundedRectangle(cornerRadius: 10)
+//                            //                                    .stroke(.indigo.opacity(0.7), lineWidth: 0)
+//                            //                            )
+//                        }
+//                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+//                        //                        .listRowBackground(Color.clear)
                         
                         //Recent Phrases / Idioms
                         Section(header: Text("Recent Phrases / Idioms"),  footer: PhraseListFooter) {
