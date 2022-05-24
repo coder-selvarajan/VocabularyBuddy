@@ -41,10 +41,13 @@
 		708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AEE4C27F22DC200DCB00A /* UserWordList.swift */; };
 		7098F9062821AB3100FCBD24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7098F9052821AB3100FCBD24 /* LaunchScreen.storyboard */; };
 		709A281127F6ED300018FC37 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709A281027F6ED300018FC37 /* Test.swift */; };
+		709C69E9283D61F200FA9D37 /* libLexicontext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 709C69E6283D61F100FA9D37 /* libLexicontext.a */; settings = {ATTRIBUTES = (Weak, ); }; };
+		709C69EA283D61F200FA9D37 /* LexicontextAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 709C69E8283D61F200FA9D37 /* LexicontextAssets.bundle */; };
 		709F859F2838166E002CC860 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709F859E2838166E002CC860 /* CloudKit.framework */; };
 		70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85D27FD60CF00618D66 /* FlipView.swift */; };
 		70A6B86027FD654E00618D66 /* SpellWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85F27FD654E00618D66 /* SpellWord.swift */; };
 		70A745FF2808A7F5005892E1 /* RandomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A745FE2808A7F5005892E1 /* RandomPickerView.swift */; };
+		70B61CFB283C9FD60097E5A6 /* WordsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B61CFA283C9FD60097E5A6 /* WordsApi.swift */; };
 		70BA45DB281B13FC00F112D0 /* ViewUserWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */; };
 		70DFA4C027F8B28D007FADB1 /* UserPhrase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */; };
 		70DFA4C427F8B2DC007FADB1 /* UserPhraseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4C227F8B2DC007FADB1 /* UserPhraseListViewModel.swift */; };
@@ -88,11 +91,17 @@
 		708AEE4C27F22DC200DCB00A /* UserWordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWordList.swift; sourceTree = "<group>"; };
 		7098F9052821AB3100FCBD24 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		709A281027F6ED300018FC37 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		709C69E1283D5E6200FA9D37 /* libLexicontext.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLexicontext.a; path = ../../Dictionaries/LexiContext/libLexicontext.a; sourceTree = "<group>"; };
+		709C69E6283D61F100FA9D37 /* libLexicontext.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLexicontext.a; sourceTree = "<group>"; };
+		709C69E7283D61F100FA9D37 /* Lexicontext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lexicontext.h; sourceTree = "<group>"; };
+		709C69E8283D61F200FA9D37 /* LexicontextAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LexicontextAssets.bundle; sourceTree = "<group>"; };
 		709F859C28381668002CC860 /* Aangilam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Aangilam.entitlements; sourceTree = "<group>"; };
 		709F859E2838166E002CC860 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		70A6B85D27FD60CF00618D66 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		70A6B85F27FD654E00618D66 /* SpellWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellWord.swift; sourceTree = "<group>"; };
 		70A745FE2808A7F5005892E1 /* RandomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPickerView.swift; sourceTree = "<group>"; };
+		70B61CFA283C9FD60097E5A6 /* WordsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsApi.swift; sourceTree = "<group>"; };
+		70B61CFC283D13740097E5A6 /* Lexicontext-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lexicontext-Bridging-Header.h"; sourceTree = "<group>"; };
 		70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserWord.swift; sourceTree = "<group>"; };
 		70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPhrase+Extensions.swift"; sourceTree = "<group>"; };
 		70DFA4C227F8B2DC007FADB1 /* UserPhraseListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPhraseListViewModel.swift; sourceTree = "<group>"; };
@@ -107,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				706316982816D78F008FC5E9 /* ConfettiSwiftUI in Frameworks */,
+				709C69E9283D61F200FA9D37 /* libLexicontext.a in Frameworks */,
 				709F859F2838166E002CC860 /* CloudKit.framework in Frameworks */,
 				70448D65283B559900713B6C /* SwiftSoup in Frameworks */,
 			);
@@ -131,8 +141,10 @@
 			isa = PBXGroup;
 			children = (
 				707D1E7027DDD02E0020557E /* HomeView.swift */,
+				703052D72811318C004FD5D2 /* Words.swift */,
 				703052D528112405004FD5D2 /* Dictionary.swift */,
 				70268C7A2837692800F6F0B1 /* Dictionary2.swift */,
+				70B61CFA283C9FD60097E5A6 /* WordsApi.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -197,20 +209,22 @@
 		707D1E6D27DDD02E0020557E /* Aangilam */ = {
 			isa = PBXGroup;
 			children = (
+				70B61D02283D15930097E5A6 /* LexiContext */,
 				709F859C28381668002CC860 /* Aangilam.entitlements */,
-				700BD17928205C8D0069967F /* Info.plist */,
-				7044F388280C74C0007B6DDE /* Service */,
-				708EC4B427F3005600B91A42 /* Screens */,
-				707D1E8A27DE6CF90020557E /* ViewModels */,
-				707D1E8727DE6C5E0020557E /* Helpers */,
-				707D1E8227DDE85D0020557E /* Models */,
-				707D1E7F27DDE5D40020557E /* Provider */,
 				707D1E6E27DDD02E0020557E /* AangilamApp.swift */,
-				707D1E7227DDD0330020557E /* Assets.xcassets */,
-				707D1E7427DDD0330020557E /* Preview Content */,
 				707D1E7C27DDE4300020557E /* AangilamModel.xcdatamodeld */,
-				700BD177282058770069967F /* SplashScreen.swift */,
+				707D1E7227DDD0330020557E /* Assets.xcassets */,
+				707D1E8727DE6C5E0020557E /* Helpers */,
+				700BD17928205C8D0069967F /* Info.plist */,
 				7098F9052821AB3100FCBD24 /* LaunchScreen.storyboard */,
+				707D1E8227DDE85D0020557E /* Models */,
+				707D1E7427DDD0330020557E /* Preview Content */,
+				707D1E7F27DDE5D40020557E /* Provider */,
+				708EC4B427F3005600B91A42 /* Screens */,
+				7044F388280C74C0007B6DDE /* Service */,
+				700BD177282058770069967F /* SplashScreen.swift */,
+				707D1E8A27DE6CF90020557E /* ViewModels */,
+				70B61CFC283D13740097E5A6 /* Lexicontext-Bridging-Header.h */,
 			);
 			path = Aangilam;
 			sourceTree = "<group>";
@@ -238,7 +252,6 @@
 				707D1E8527DDE8DE0020557E /* UserWord+Extensions.swift */,
 				70564F8727F5AC3800EBA186 /* UserSentence+Extensions.swift */,
 				70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */,
-				703052D72811318C004FD5D2 /* Words.swift */,
 				707553A6282ADFCB00BC74A8 /* SearchHistory+Extensions.swift */,
 			);
 			path = Models;
@@ -281,9 +294,20 @@
 		709F859D2838166E002CC860 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				709C69E1283D5E6200FA9D37 /* libLexicontext.a */,
 				709F859E2838166E002CC860 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		70B61D02283D15930097E5A6 /* LexiContext */ = {
+			isa = PBXGroup;
+			children = (
+				709C69E7283D61F100FA9D37 /* Lexicontext.h */,
+				709C69E8283D61F200FA9D37 /* LexicontextAssets.bundle */,
+				709C69E6283D61F100FA9D37 /* libLexicontext.a */,
+			);
+			path = LexiContext;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +378,7 @@
 			files = (
 				7098F9062821AB3100FCBD24 /* LaunchScreen.storyboard in Resources */,
 				707D1E7627DDD0330020557E /* Preview Assets.xcassets in Resources */,
+				709C69EA283D61F200FA9D37 /* LexicontextAssets.bundle in Resources */,
 				707D1E7327DDD0330020557E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +414,7 @@
 				70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */,
 				707D1E8627DDE8DE0020557E /* UserWord+Extensions.swift in Sources */,
 				70564F8327F5AAEE00EBA186 /* UserSentenceList.swift in Sources */,
+				70B61CFB283C9FD60097E5A6 /* WordsApi.swift in Sources */,
 				707D1E8127DDE5EB0020557E /* CoreDataProvider.swift in Sources */,
 				703311BA282A529B00F2E17E /* EditUserSentence.swift in Sources */,
 				707D1E9027DE797D0020557E /* AddUserWordView.swift in Sources */,
@@ -547,10 +573,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Aangilam/LexiContext",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.aangilam;
 				PRODUCT_NAME = Aangilam;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Aangilam/Lexicontext-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -578,10 +610,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Aangilam/LexiContext",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.aangilam;
 				PRODUCT_NAME = Aangilam;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Aangilam/Lexicontext-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -110,7 +110,7 @@ struct HomeView: View {
                         //Resources
                         Section() { //header: Text("Resources").padding(.horizontal, 15)) {
                             ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(alignment: .top, spacing: 20) {
+                                HStack(alignment: .top, spacing: 25) {
                                     Button {
                                         //
                                     } label: {
@@ -122,14 +122,14 @@ struct HomeView: View {
                                                         radius: 2,
                                                         x: 3,
                                                         y: 3)
-                                                .padding(20)
+                                                .padding(23)
                                                 .background(
                                                     LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.8), .indigo.opacity(0.4)]), startPoint: .topLeading , endPoint: .bottomTrailing)
                                                 )
                                                 .clipShape(Circle())
                                             
                                             Text("Intermediate \nVerbs")
-                                                .font(.caption)
+                                                .font(.subheadline)
                                                 .foregroundColor(.primary)
                                         }
                                     }
@@ -145,14 +145,14 @@ struct HomeView: View {
                                                         radius: 2,
                                                         x: 3,
                                                         y: 3)
-                                                .padding(20)
+                                                .padding(23)
                                                 .background(
                                                     LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.8), .blue.opacity(0.4)]), startPoint: .topLeading , endPoint: .bottomTrailing)
                                                 )
                                                 .clipShape(Circle())
                                             
                                             Text("Common \nAdjectives")
-                                                .font(.caption)
+                                                .font(.subheadline)
                                                 .foregroundColor(.primary)
                                             
                                         }
@@ -169,14 +169,14 @@ struct HomeView: View {
                                                         radius: 2,
                                                         x: 3,
                                                         y: 3)
-                                                .padding(20)
+                                                .padding(23)
                                                 .background(
                                                     LinearGradient(gradient: Gradient(colors: [.cyan, .cyan.opacity(0.8), .cyan.opacity(0.4)]), startPoint: .topLeading , endPoint: .bottomTrailing)
                                                 )
                                                 .clipShape(Circle())
                                             
                                             Text("Common \nAdverbs")
-                                                .font(.caption)
+                                                .font(.subheadline)
                                                 .foregroundColor(.primary)
                                             
                                         }
@@ -193,14 +193,14 @@ struct HomeView: View {
                                                         radius: 2,
                                                         x: 3,
                                                         y: 3)
-                                                .padding(20)
+                                                .padding(23)
                                                 .background(
                                                     LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.8), .indigo.opacity(0.4)]), startPoint: .topLeading , endPoint: .bottomTrailing)
                                                 )
                                                 .clipShape(Circle())
                                             
                                             Text("Useful \nPhrases")
-                                                .font(.caption)
+                                                .font(.subheadline)
                                                 .foregroundColor(.primary)
                                             
                                         }
@@ -217,14 +217,14 @@ struct HomeView: View {
                                                         radius: 2,
                                                         x: 3,
                                                         y: 3)
-                                                .padding(20)
+                                                .padding(23)
                                                 .background(
                                                     LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.8), .blue.opacity(0.4)]), startPoint: .topLeading , endPoint: .bottomTrailing)
                                                 )
                                                 .clipShape(Circle())
                                             
                                             Text("Useful \nIdioms")
-                                                .font(.caption)
+                                                .font(.subheadline)
                                                 .foregroundColor(.primary)
                                             
                                         }
@@ -252,7 +252,7 @@ struct HomeView: View {
                                                     .font(.footnote).foregroundColor(.white.opacity(0.6))
                                             }.foregroundColor(.white)
                                         }
-                                        .frame(width: 145, height: 75, alignment: .center)
+                                        .frame(width: 155, height: 75, alignment: .center)
                                         .background(
                                             LinearGradient(gradient: Gradient(colors: [.indigo, .indigo.opacity(0.9), .indigo.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
                                         ).cornerRadius(10)
@@ -269,7 +269,7 @@ struct HomeView: View {
                                                 Text("by word").font(.footnote).foregroundColor(.white.opacity(0.6))
                                             }
                                         }
-                                        .frame(width: 145, height: 75, alignment: .center)
+                                        .frame(width: 155, height: 75, alignment: .center)
                                         .background(
                                             LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.9), .blue.opacity(0.55)]), startPoint: .top, endPoint: .bottom)
                                         ).cornerRadius(10)
@@ -287,7 +287,7 @@ struct HomeView: View {
                                                     .font(.footnote).foregroundColor(.white.opacity(0.6))
                                             }.foregroundColor(.white)
                                         }
-                                        .frame(width: 145, height: 75, alignment: .center)
+                                        .frame(width: 155, height: 75, alignment: .center)
                                         .background(
                                             LinearGradient(gradient: Gradient(colors: [.teal, .teal.opacity(0.9), .teal.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
                                         ).cornerRadius(10)
@@ -455,7 +455,7 @@ struct HomeView: View {
                             } label: {
                                 ZStack {
                                     LinearGradient(gradient: Gradient(colors: [.indigo, .blue]), startPoint: .top, endPoint: .bottom)
-                                        .frame(width: 55, height: 55)
+                                        .frame(width: 65, height: 65)
                                         .cornerRadius(10)
                                     Image(systemName: "plus")
                                         .foregroundColor(.white)

@@ -9,11 +9,22 @@ import Foundation
 import SwiftUI
 import SwiftSoup
 
+//struct displayModel : Codable {
+//    let word: String
+//    let definition: String
+//    let example: String?
+//    let type: String?
+//    let tag: String?
+//}
+
+
 class vmDictionary : ObservableObject {
     @Published var wordInfo: WordElement?
     @Published var isFetching: Bool = false
     @Published var definitionFound: Bool?
     @Published var dataDump: String?
+    
+    @Published var wordsApiResponse: WordsApiResponse?
     
     func fetchData(inputWord: String, searchHistoryVM: SearchHistoryViewModel) {
         if inputWord != "" {
@@ -55,39 +66,38 @@ class vmDictionary : ObservableObject {
     }
     
     func fetchFromWordsApi(inputWord: String) {
-        
         let headers = [
             "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com",
             "X-RapidAPI-Key": "d2b600d481mshbdab0e8414fa85ep1847a5jsn554b275028b4"
         ]
 
-        let request = NSMutableURLRequest(url: NSURL(string: "https://wordsapiv1.p.rapidapi.com/words/\(inputWord.lowercased().trim())/definitions")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://wordsapiv1.p.rapidapi.com/words/\(inputWord.lowercased().trim())")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
 
-//        let session = URLSession.shared
-        
         URLSession.shared.dataTask(with: request as URLRequest) { [weak self] data, response, error in
-            
-//        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             guard let data = data, error == nil else {
                 return
             }
-            if let httpResponse = response as? HTTPURLResponse {
-                DispatchQueue.main.async {
-                    print(httpResponse)
-                    self?.dataDump = String(data: data, encoding: String.Encoding.utf8)
-                    self?.isFetching = false
-                    self?.definitionFound = true
+            if let _ = response as? HTTPURLResponse {
+                do {
+                    let decodedData = try JSONDecoder().decode(WordsApiResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        self?.wordsApiResponse = decodedData
+                        self?.isFetching = false
+                        self?.definitionFound = true
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        self?.isFetching = false
+                        self?.definitionFound = false
+                    }
+                    print(error)
                 }
             }
-            
         }.resume()
-
-//        dataTask.resume()
-        
     }
     
     func fetchFromGoogle(inputWord: String, searchHistoryVM: SearchHistoryViewModel) {
@@ -186,6 +196,8 @@ struct Dictionary: View {
     @FocusState private var searchIsFocused: Bool
     @State private var dictType = 1
     
+    @State var displayDifinition: String = ""
+    
     @Environment(\.presentationMode) var presentationMode
     
     func searchSubmit2FreeApi() {
@@ -224,6 +236,11 @@ struct Dictionary: View {
                         .focused($searchIsFocused)
                         .submitLabel(SubmitLabel.search)
                         .onSubmit {
+                            dictType = 1
+                            
+                            vmDict.wordsApiResponse = nil
+                            vmDict.dataDump = nil
+                            
                             searchSubmit2FreeApi()
                         }
                     
@@ -298,30 +315,80 @@ struct Dictionary: View {
                 
                 if !vmDict.isFetching && vmDict.wordInfo != nil {
                     VStack(alignment: .leading, spacing: 15) {
-                        
-                        Picker("", selection: $dictType) {
-                            Text("Free Dict Api")
-                                .tag(1)
-                            Text("Google - Oxford").tag(2)
-                            Text("WordsApi").tag(3)
-                            Text("Wikipedia").tag(4)
+//                        Divider()
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                Button {
+                                    dictType = 1
+                                } label: {
+                                    VStack{
+                                        Text("DictionaryApi")
+                                        Rectangle().frame(height: 1)
+                                            .foregroundColor(dictType == 1 ? .indigo : .clear)
+                                    }
+                                }
+                                .padding(.trailing)
+                                .foregroundColor(dictType == 1 ? .indigo : .secondary)
+                                
+                                Button {
+                                    if (vmDict.wordsApiResponse == nil) {
+                                        // Do WordsApi fetch
+                                        searchSubmit2WordsApi()
+                                    }
+                                    
+                                    dictType = 2
+                                } label: {
+                                    VStack{
+                                        Text("WordsApi")
+                                        Rectangle().frame(height: 1)
+                                            .foregroundColor(dictType == 2 ? .indigo : .clear)
+                                    }
+                                }
+                                .padding(.trailing)
+                                .foregroundColor(dictType == 2 ? .indigo : .secondary)
+                                
+                                Button {
+                                    if (vmDict.dataDump == nil) {
+                                        // Do google search
+                                        searchSubmit2Google()
+                                    }
+                                    
+                                    dictType = 3
+                                } label: {
+                                    VStack{
+                                        Text("Google")
+                                        Rectangle().frame(height: 1)
+                                            .foregroundColor(dictType == 3 ? .indigo : .clear)
+                                    }
+                                }
+                                .padding(.trailing)
+                                .foregroundColor(dictType == 3 ? .indigo : .secondary)
+                                
+                                Button {
+                                    dictType = 4
+                                    
+                                    let dictionary = Lexicontext.sharedDictionary()
+//                                    let definition = dictionary?.definition(for: searchText)
+                                    displayDifinition =  dictionary?.definition(for: searchText) ?? ""
+                                    
+                                    
+                                    print(displayDifinition)
+                                    
+                                } label: {
+                                    VStack{
+                                        Text("LexiContext")
+                                        Rectangle().frame(height: 1)
+                                            .foregroundColor(dictType == 4 ? .indigo : .clear)
+                                    }
+                                }
+                                .padding(.trailing)
+                                .foregroundColor(dictType == 4 ? .indigo : .secondary)
+                            }
+                            .foregroundColor(.primary)
+                            .font(.subheadline)
                         }
-                        .pickerStyle(.segmented)
-//                        .background(.indigo)
-                        .cornerRadius(8)
-                        .padding(.bottom)
-                        .onChange(of: dictType, perform: { value in
-
-                            if value == 2 {
-                                // then do google search
-                                searchSubmit2Google()
-                            }
-                            
-                            if value == 3 {
-                                // then do WordsApi fetch
-                                searchSubmit2WordsApi()
-                            }
-                        })
+                        
+                        Divider()
                         
                         if dictType == 1 {
                                 Text(vmDict.wordInfo?.word ?? "")
@@ -361,16 +428,74 @@ struct Dictionary: View {
                         }
                         
                         if dictType == 2 {
+                            Text(vmDict.wordsApiResponse?.word ?? "")
+                                .font(.largeTitle)
+                            
+                            HStack(spacing: 15) {
+                                Text("Phonetics:").font(.headline).foregroundColor(.blue)
+                                if (vmDict.wordsApiResponse != nil) {
+                                    Text("\(vmDict.wordsApiResponse?.pronunciation.all ?? "") ")
+                                }
+                            }.padding(.top, 0)
+                            
+                            Divider()
+                            Text("Definition:").font(.headline).foregroundColor(.blue)
+                            if (vmDict.wordsApiResponse != nil) {
+                                Text("\(extractDefinitionFrom(wordsApiResults: vmDict.wordsApiResponse!.results))").padding(.top, 0)
+                            }
+                            Divider()
+                            
+                            if (extractExmple(meanings: vmDict.wordInfo!.meanings) != "") {
+                                Text("Example Usage:").font(.headline).foregroundColor(.blue)
+                                if (vmDict.wordsApiResponse != nil) {
+                                    Text("\(extractExampleFrom(wordsApiResults: vmDict.wordsApiResponse!.results))").padding(.top, 0)
+                                }
+                            }
+                            
+                            Button(action: {
+                                if (vmDict.wordsApiResponse != nil) {
+                                    userWordListVM.saveWord(word: vmDict.wordsApiResponse!.word,
+                                                            tag: "WordsApi",
+                                                            meaning: extractDefinitionFrom(wordsApiResults: vmDict.wordsApiResponse!.results),
+                                                            sampleSentence: extractExampleFrom(wordsApiResults: vmDict.wordsApiResponse!.results))
+                                }
+                                presentationMode.wrappedValue.dismiss()
+                            }, label: {
+                                Text("+ Add this word to my list")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .frame (height: 55)
+                                    .frame (maxWidth: .infinity)
+                                    .background (Color.indigo)
+                                    .cornerRadius(10)
+                            })
+                            
+                        }
+                        
+                        if dictType == 3 {
                             Text("Google result here")
                             Text(vmDict.dataDump ?? "")
                                 .padding()
                         }
 
-                        if dictType == 3 {
-                            Text("WordsApi Definition")
-                            Text(vmDict.dataDump ?? "")
-                                .padding()
+                        if dictType == 4 {
+                            
+                            Text(searchText)
+                                .font(.largeTitle)
+                            
+//                            HStack(spacing: 15) {
+//                                Text("Phonetics:").font(.headline).foregroundColor(.blue)
+//                                if (vmDict.wordsApiResponse != nil) {
+//                                    Text("\(vmDict.wordsApiResponse?.pronunciation.all ?? "") ")
+//                                }
+//                            }.padding(.top, 0)
+                            
+                            Divider()
+                            Text("Definition:").font(.headline).foregroundColor(.blue)
+                            Text("\(displayDifinition)").padding(.top, 0)
+                            Divider()
                         }
+                        
                     }.padding()
                 }
             }
