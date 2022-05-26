@@ -46,6 +46,29 @@ struct Test2: View {
                 }
             }
         }
+        .onAppear(){
+            //
+//            let data: Data // received from a network request, for example
+//            let json = try? JSONSerialization.jsonObject(with: data, options: [])
+            
+            
+            if let path = Bundle.main.path(forResource: "websters_dictionary", ofType: "json") {
+                do {
+                      let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                      let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                    
+                    if let jsonResult = jsonResult as? [String: Any], let item = jsonResult["act"] as? String {
+                        print(item)
+                    }
+                      
+//                    if let jsonResult = jsonResult as? Dictionary, let person = jsonResult["person"] as? [Any] {
+//                                // do stuff
+//                      }
+                  } catch {
+                       // handle error
+                  }
+            }
+        }
     }
 }
 
