@@ -25,6 +25,9 @@
 		706316982816D78F008FC5E9 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 706316972816D78F008FC5E9 /* ConfettiSwiftUI */; };
 		7066A9C028250C39008BCAB1 /* EditUserWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7066A9BF28250C39008BCAB1 /* EditUserWordView.swift */; };
 		706E56AD281476FD000AC324 /* PickMeaning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706E56AC281476FD000AC324 /* PickMeaning.swift */; };
+		706FE9BF284084C700A8A1C5 /* TA_dictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = 706FE9BD284084C700A8A1C5 /* TA_dictionary.json */; };
+		706FE9C0284084C700A8A1C5 /* TA_Wordlist.json in Resources */ = {isa = PBXBuildFile; fileRef = 706FE9BE284084C700A8A1C5 /* TA_Wordlist.json */; };
+		706FE9C22840862B00A8A1C5 /* TamilApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706FE9C12840862B00A8A1C5 /* TamilApi.swift */; };
 		707553A5282ADED200BC74A8 /* SearchHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707553A4282ADED200BC74A8 /* SearchHistoryViewModel.swift */; };
 		707553A7282ADFCB00BC74A8 /* SearchHistory+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707553A6282ADFCB00BC74A8 /* SearchHistory+Extensions.swift */; };
 		707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E6E27DDD02E0020557E /* AangilamApp.swift */; };
@@ -45,6 +48,7 @@
 		70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85D27FD60CF00618D66 /* FlipView.swift */; };
 		70A6B86027FD654E00618D66 /* SpellWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85F27FD654E00618D66 /* SpellWord.swift */; };
 		70A745FF2808A7F5005892E1 /* RandomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A745FE2808A7F5005892E1 /* RandomPickerView.swift */; };
+		70B4E8D32841130C0004A05B /* OwlBotApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B4E8D22841130C0004A05B /* OwlBotApi.swift */; };
 		70B61CFB283C9FD60097E5A6 /* WordsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B61CFA283C9FD60097E5A6 /* WordsApi.swift */; };
 		70BA45DB281B13FC00F112D0 /* ViewUserWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */; };
 		70CABBF6283EB2E00030B9C6 /* websters_dictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = 70CABBF5283EB2E00030B9C6 /* websters_dictionary.json */; };
@@ -73,6 +77,9 @@
 		70564F8727F5AC3800EBA186 /* UserSentence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSentence+Extensions.swift"; sourceTree = "<group>"; };
 		7066A9BF28250C39008BCAB1 /* EditUserWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserWordView.swift; sourceTree = "<group>"; };
 		706E56AC281476FD000AC324 /* PickMeaning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickMeaning.swift; sourceTree = "<group>"; };
+		706FE9BD284084C700A8A1C5 /* TA_dictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TA_dictionary.json; sourceTree = "<group>"; };
+		706FE9BE284084C700A8A1C5 /* TA_Wordlist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TA_Wordlist.json; sourceTree = "<group>"; };
+		706FE9C12840862B00A8A1C5 /* TamilApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamilApi.swift; sourceTree = "<group>"; };
 		707553A4282ADED200BC74A8 /* SearchHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewModel.swift; sourceTree = "<group>"; };
 		707553A6282ADFCB00BC74A8 /* SearchHistory+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHistory+Extensions.swift"; sourceTree = "<group>"; };
 		707D1E6B27DDD02E0020557E /* Aangilam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aangilam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +103,7 @@
 		70A6B85D27FD60CF00618D66 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		70A6B85F27FD654E00618D66 /* SpellWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellWord.swift; sourceTree = "<group>"; };
 		70A745FE2808A7F5005892E1 /* RandomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPickerView.swift; sourceTree = "<group>"; };
+		70B4E8D22841130C0004A05B /* OwlBotApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwlBotApi.swift; sourceTree = "<group>"; };
 		70B61CFA283C9FD60097E5A6 /* WordsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsApi.swift; sourceTree = "<group>"; };
 		70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserWord.swift; sourceTree = "<group>"; };
 		70CABBF5283EB2E00030B9C6 /* websters_dictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = websters_dictionary.json; sourceTree = "<group>"; };
@@ -147,6 +155,8 @@
 				703052D528112405004FD5D2 /* Dictionary.swift */,
 				70B61CFA283C9FD60097E5A6 /* WordsApi.swift */,
 				7021B53C2840116D00DB8EBB /* DictionaryViewModel.swift */,
+				706FE9C12840862B00A8A1C5 /* TamilApi.swift */,
+				70B4E8D22841130C0004A05B /* OwlBotApi.swift */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
@@ -211,7 +221,7 @@
 		707D1E6D27DDD02E0020557E /* Aangilam */ = {
 			isa = PBXGroup;
 			children = (
-				70B61D02283D15930097E5A6 /* Dictionary */,
+				70B61D02283D15930097E5A6 /* OfflineDict */,
 				709F859C28381668002CC860 /* Aangilam.entitlements */,
 				707D1E6E27DDD02E0020557E /* AangilamApp.swift */,
 				707D1E7C27DDE4300020557E /* AangilamModel.xcdatamodeld */,
@@ -302,12 +312,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		70B61D02283D15930097E5A6 /* Dictionary */ = {
+		70B61D02283D15930097E5A6 /* OfflineDict */ = {
 			isa = PBXGroup;
 			children = (
+				706FE9BD284084C700A8A1C5 /* TA_dictionary.json */,
+				706FE9BE284084C700A8A1C5 /* TA_Wordlist.json */,
 				70CABBF5283EB2E00030B9C6 /* websters_dictionary.json */,
 			);
-			path = Dictionary;
+			path = OfflineDict;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,7 +390,9 @@
 			files = (
 				70CABBF6283EB2E00030B9C6 /* websters_dictionary.json in Resources */,
 				7098F9062821AB3100FCBD24 /* LaunchScreen.storyboard in Resources */,
+				706FE9BF284084C700A8A1C5 /* TA_dictionary.json in Resources */,
 				707D1E7627DDD0330020557E /* Preview Assets.xcassets in Resources */,
+				706FE9C0284084C700A8A1C5 /* TA_Wordlist.json in Resources */,
 				707D1E7327DDD0330020557E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +414,7 @@
 				701172922815BFDC00B86B45 /* PickDefinitionHome.swift in Sources */,
 				707D1E7E27DDE4300020557E /* AangilamModel.xcdatamodeld in Sources */,
 				7013929727FC01FB00DA7DDF /* Global.swift in Sources */,
+				706FE9C22840862B00A8A1C5 /* TamilApi.swift in Sources */,
 				70A745FF2808A7F5005892E1 /* RandomPickerView.swift in Sources */,
 				707553A7282ADFCB00BC74A8 /* SearchHistory+Extensions.swift in Sources */,
 				708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */,
@@ -415,6 +430,7 @@
 				707D1E8627DDE8DE0020557E /* UserWord+Extensions.swift in Sources */,
 				70564F8327F5AAEE00EBA186 /* UserSentenceList.swift in Sources */,
 				70B61CFB283C9FD60097E5A6 /* WordsApi.swift in Sources */,
+				70B4E8D32841130C0004A05B /* OwlBotApi.swift in Sources */,
 				707D1E8127DDE5EB0020557E /* CoreDataProvider.swift in Sources */,
 				703311BA282A529B00F2E17E /* EditUserSentence.swift in Sources */,
 				707D1E9027DE797D0020557E /* AddUserWordView.swift in Sources */,

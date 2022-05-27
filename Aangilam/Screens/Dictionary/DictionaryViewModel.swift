@@ -12,10 +12,14 @@ class vmDictionary : ObservableObject {
     @Published var wordInfo: WordElement?
     @Published var isFetching: Bool = false
     @Published var definitionFound: Bool?
-    @Published var dataDump: String?
+    
     @Published var searchWord: String = ""
+    
     @Published var wordsApiResponse: WordsApiResponse?
     @Published var webstersResponse: String?
+    @Published var tamilResponse: String?
+    @Published var owlbotResponse: OwlbotResponse?
+    @Published var googleDataDump: String?
     
     func fetchData(inputWord: String, searchHistoryVM: SearchHistoryViewModel) {
         if inputWord != "" {
@@ -123,7 +127,7 @@ class vmDictionary : ObservableObject {
 //                    }
                     
 //                    self?.dataDump = String(decoding: data, as: UTF8.self)
-                    self?.dataDump = htmlString
+                    self?.googleDataDump = htmlString
                     self?.isFetching = false
                     self?.definitionFound = true
                 }
@@ -178,5 +182,73 @@ class vmDictionary : ObservableObject {
             self.isFetching = false
             self.definitionFound = false
         }
+    }
+    
+    func fetchFromTamil(inputWord: String) {
+        searchWord = inputWord
+        
+        if let path = Bundle.main.path(forResource: "TA_dictionary", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                
+                let tamilDict = try JSONDecoder().decode([TamilMeaning].self, from: data)
+                let item = tamilDict.filter {  $0.eng == inputWord }
+                if item.count > 0 {
+                    print(item.first!.tamil)
+                    DispatchQueue.main.async {
+                        self.tamilResponse = item.first!.tamil
+                        self.isFetching = false
+                        self.definitionFound = true
+                    }
+                    return
+                }
+                else {
+                    // word not found.. handle it accordingly
+                }
+                
+            } catch {
+                // handle error
+                DispatchQueue.main.async {
+                    self.isFetching = false
+                    self.definitionFound = false
+                }
+                print(error)
+                return
+            }
+        }
+        
+        DispatchQueue.main.async {
+            self.isFetching = false
+            self.definitionFound = false
+        }
+    }
+    
+    func fetchFromOwlBot(inputWord: String) {
+        var request = URLRequest(url: URL(string: "https://owlbot.info/api/v4/dictionary/\(inputWord)")!,timeoutInterval: Double.infinity)
+        request.addValue("Token fb9e439649e48d68ceb626bf4bd7a535ca9ae347", forHTTPHeaderField: "Authorization")
+
+        request.httpMethod = "GET"
+
+        URLSession.shared.dataTask(with: request as URLRequest) { [weak self] data, response, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            if let _ = response as? HTTPURLResponse {
+                do {
+                    let decodedData = try JSONDecoder().decode(OwlbotResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        self?.owlbotResponse = decodedData
+                        self?.isFetching = false
+                        self?.definitionFound = true
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        self?.isFetching = false
+                        self?.definitionFound = false
+                    }
+                    print(error)
+                }
+            }
+        }.resume()
     }
 }

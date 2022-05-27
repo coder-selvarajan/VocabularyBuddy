@@ -108,7 +108,10 @@ struct Dictionary: View {
                             dictType = 1
                             
                             vmDict.wordsApiResponse = nil
-                            vmDict.dataDump = nil
+                            vmDict.googleDataDump = nil
+                            vmDict.webstersResponse = nil
+                            vmDict.tamilResponse = nil
+                            vmDict.owlbotResponse = nil
                             
                             searchSubmit2FreeApi()
                         }
@@ -186,6 +189,8 @@ struct Dictionary: View {
                     VStack(alignment: .leading, spacing: 15) {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
+                                
+                                //Free Dictionary Api
                                 Button {
                                     dictType = 1
                                 } label: {
@@ -197,6 +202,54 @@ struct Dictionary: View {
                                 }
                                 .padding(.trailing)
                                 .foregroundColor(dictType == 1 ? .indigo : .secondary)
+                                
+                                // Tamil
+                                Button {
+                                    if (vmDict.tamilResponse == nil) {
+                                        DispatchQueue.main.async {
+                                            // Do Websters Dictionary fetch
+                                            searchStarted = true
+                                            vmDict.definitionFound = nil
+                                            vmDict.isFetching = true
+                                        }
+                                        vmDict.fetchFromTamil(inputWord: searchText)
+                                    }
+                                    
+                                    dictType = 5
+                                    
+                                } label: {
+                                    VStack{
+                                        Text("Tamil")
+                                        Rectangle().frame(height: 1)
+                                            .foregroundColor(dictType == 5 ? .indigo : .clear)
+                                    }
+                                }
+                                .padding(.trailing)
+                                .foregroundColor(dictType == 5 ? .indigo : .secondary)
+                                
+                                // OwlBot
+                                Button {
+                                    if (vmDict.owlbotResponse == nil) {
+                                        DispatchQueue.main.async {
+                                            // Do Websters Dictionary fetch
+                                            searchStarted = true
+                                            vmDict.definitionFound = nil
+                                            vmDict.isFetching = true
+                                        }
+                                        vmDict.fetchFromOwlBot(inputWord: searchText)
+                                    }
+                                    
+                                    dictType = 6
+                                    
+                                } label: {
+                                    VStack{
+                                        Text("OwlBot")
+                                        Rectangle().frame(height: 1)
+                                            .foregroundColor(dictType == 6 ? .indigo : .clear)
+                                    }
+                                }
+                                .padding(.trailing)
+                                .foregroundColor(dictType == 6 ? .indigo : .secondary)
                                 
                                 // Websters Dictionary
                                 Button {
@@ -240,7 +293,7 @@ struct Dictionary: View {
                                 
                                 //Google
                                 Button {
-                                    if (vmDict.dataDump == nil) {
+                                    if (vmDict.googleDataDump == nil) {
                                         // Do google search
                                         searchSubmit2Google()
                                     }
@@ -345,13 +398,12 @@ struct Dictionary: View {
                                     .background (Color.indigo)
                                     .cornerRadius(10)
                             })
-                            
                         }
                         
                         // Google
                         if dictType == 3 {
                             Text("Google result here")
-                            Text(vmDict.dataDump ?? "")
+                            Text(vmDict.googleDataDump ?? "")
                                 .padding()
                         }
 
@@ -383,6 +435,82 @@ struct Dictionary: View {
                                     .background (Color.indigo)
                                     .cornerRadius(10)
                             })
+                        }
+                        
+                        // Tamil Dictionary - from local json file
+                        if dictType == 5 {
+                            
+                            Text(vmDict.searchWord)
+                                .font(.largeTitle)
+                                
+                            Divider()
+                            Text("Definition:").font(.headline).foregroundColor(.blue)
+                            Text("\(vmDict.tamilResponse ?? "")").padding(.top, 0)
+                            Divider()
+                            
+                            Button(action: {
+                                if (vmDict.tamilResponse != nil) {
+                                    userWordListVM.saveWord(word: vmDict.searchWord,
+                                                            tag: "Websters",
+                                                            meaning: vmDict.tamilResponse!,
+                                                            sampleSentence: "")
+                                }
+                                presentationMode.wrappedValue.dismiss()
+                            }, label: {
+                                Text("+ Add this word to my vocabulary")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .frame (height: 55)
+                                    .frame (maxWidth: .infinity)
+                                    .background (Color.indigo)
+                                    .cornerRadius(10)
+                            })
+                        }
+                        
+                        // OwlBot
+                        if dictType == 6 {
+                            Text(vmDict.owlbotResponse?.word ?? "")
+                                .font(.largeTitle)
+                            
+                            HStack(spacing: 15) {
+                                Text("Phonetics:").font(.headline).foregroundColor(.blue)
+                                if (vmDict.owlbotResponse != nil) {
+                                    Text("\(vmDict.owlbotResponse?.pronunciation ?? "") ")
+                                }
+                            }.padding(.top, 0)
+                            
+                            Divider()
+                            Text("Definition:").font(.headline).foregroundColor(.blue)
+                            if (vmDict.owlbotResponse != nil) {
+                                Text("\(extractDefinitionFromOwlBot(owlbotResponse: vmDict.owlbotResponse!))").padding(.top, 0)
+                            }
+                            Divider()
+                            
+                            if (extractExampleFromOwlBot(owlbotResponse: vmDict.owlbotResponse!) != "") {
+                                Text("Example Usage:").font(.headline).foregroundColor(.blue)
+                                if (vmDict.owlbotResponse != nil) {
+                                    Text("\(extractExampleFromOwlBot(owlbotResponse: vmDict.owlbotResponse!))").padding(.top, 0)
+                                }
+                            }
+                            
+                            Button(action: {
+                                if (vmDict.owlbotResponse != nil) {
+                                    userWordListVM.saveWord(word: vmDict.owlbotResponse!.word ?? "",
+                                                            tag: "OwlBot",
+                                                            meaning: extractDefinitionFromOwlBot(owlbotResponse: vmDict.owlbotResponse!),
+                                                            sampleSentence: extractDefinitionFromOwlBot(owlbotResponse: vmDict.owlbotResponse!))
+                                }
+                                presentationMode.wrappedValue.dismiss()
+                            }, label: {
+                                Text("+ Add this word to my vocabulary")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .frame (height: 55)
+                                    .frame (maxWidth: .infinity)
+                                    .background (Color.indigo)
+                                    .cornerRadius(10)
+                            })
+                            
                         }
                         
                     }.padding()
