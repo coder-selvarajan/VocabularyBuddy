@@ -98,7 +98,7 @@ struct HomeView: View {
                                         .foregroundColor(.secondary)
                                     Spacer()
                                     Image(systemName: "magnifyingglass")
-                                        .padding(.horizontal, 10)
+                                        .padding(.horizontal)
                                         .foregroundColor(.gray)
                                 }
                                 

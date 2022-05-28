@@ -90,6 +90,8 @@ struct Dictionary: View {
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading) {
             ScrollView {
+                
+                // Search textbox
                 HStack {
                     TextField("Search words in dictionary...", text: $searchText)
                         .modifier(ClearButton(text: $searchText, searchIsFocused: _searchIsFocused))
@@ -124,6 +126,7 @@ struct Dictionary: View {
                 .padding(.horizontal)
                 .padding(.vertical, 10)
                 
+                // initial state - searchtext box and history display
                 if (!searchStarted) {
                     //Display previous search terms here
                     ForEach(searchHistoryVM.searchHistoryRecentEntries, id:\.objectID) { searchterm in
@@ -174,164 +177,169 @@ struct Dictionary: View {
                                 .font(.footnote)
                         }.padding()
                     }
+                }
+                
+                VStack(alignment: .leading, spacing: 15) {
                     
-                }
-                
-                if (vmDict.isFetching) {
-                    Text("Loading definition...")
-                        .padding()
-                        .foregroundColor(.gray)
-                }
-                
-                if !vmDict.isFetching {
-                    VStack(alignment: .leading, spacing: 15) {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                
-                                //Free Dictionary Api
-                                Button {
-                                    dictType = 1
-                                } label: {
-                                    VStack{
-                                        Text("DictionaryApi")
-                                        Rectangle().frame(height: 1)
-                                            .foregroundColor(dictType == 1 ? .indigo : .clear)
-                                    }
+                    // Dictionary list
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            
+                            //Free Dictionary Api
+                            Button {
+                                dictType = 1
+                            } label: {
+                                VStack{
+                                    Text("DictionaryApi")
+                                    Rectangle().frame(height: 1)
+                                        .foregroundColor(dictType == 1 ? .indigo : .clear)
                                 }
-                                .padding(.trailing)
-                                .foregroundColor(dictType == 1 ? .indigo : .secondary)
-                                
-                                // Tamil
-                                Button {
-                                    if (vmDict.tamilResponse == nil) {
-                                        DispatchQueue.main.async {
-                                            // Do Websters Dictionary fetch
-                                            searchStarted = true
-                                            vmDict.definitionFound = nil
-                                            vmDict.isFetching = true
-                                        }
-                                        vmDict.fetchFromTamil(inputWord: searchText)
-                                    }
-                                    
-                                    dictType = 5
-                                    
-                                } label: {
-                                    VStack{
-                                        Text("Tamil")
-                                        Rectangle().frame(height: 1)
-                                            .foregroundColor(dictType == 5 ? .indigo : .clear)
-                                    }
-                                }
-                                .padding(.trailing)
-                                .foregroundColor(dictType == 5 ? .indigo : .secondary)
-                                
-                                // OwlBot
-                                Button {
-                                    if (vmDict.owlbotResponse == nil) {
-                                        DispatchQueue.main.async {
-                                            // Do Websters Dictionary fetch
-                                            searchStarted = true
-                                            vmDict.definitionFound = nil
-                                            vmDict.isFetching = true
-                                        }
-                                        vmDict.fetchFromOwlBot(inputWord: searchText)
-                                    }
-                                    
-                                    dictType = 6
-                                    
-                                } label: {
-                                    VStack{
-                                        Text("OwlBot")
-                                        Rectangle().frame(height: 1)
-                                            .foregroundColor(dictType == 6 ? .indigo : .clear)
-                                    }
-                                }
-                                .padding(.trailing)
-                                .foregroundColor(dictType == 6 ? .indigo : .secondary)
-                                
-                                // Websters Dictionary
-                                Button {
-                                    if (vmDict.webstersResponse == nil) {
+                            }
+                            .padding(.trailing)
+                            .foregroundColor(dictType == 1 ? .indigo : .secondary)
+                            
+                            // Tamil
+                            Button {
+                                if (vmDict.tamilResponse == nil) {
+                                    DispatchQueue.main.async {
                                         // Do Websters Dictionary fetch
                                         searchStarted = true
                                         vmDict.definitionFound = nil
                                         vmDict.isFetching = true
-                                        vmDict.fetchFromWebsters(inputWord: searchText)
                                     }
-                                    
-                                    dictType = 4
-                                    
-                                } label: {
-                                    VStack{
-                                        Text("Websters")
-                                        Rectangle().frame(height: 1)
-                                            .foregroundColor(dictType == 4 ? .indigo : .clear)
-                                    }
-                                }
-                                .padding(.trailing)
-                                .foregroundColor(dictType == 4 ? .indigo : .secondary)
-                                
-                                // WordsApi
-                                Button {
-                                    if (vmDict.wordsApiResponse == nil) {
-                                        // Do WordsApi fetch
-                                        searchSubmit2WordsApi()
-                                    }
-                                    
-                                    dictType = 2
-                                } label: {
-                                    VStack{
-                                        Text("WordsApi")
-                                        Rectangle().frame(height: 1)
-                                            .foregroundColor(dictType == 2 ? .indigo : .clear)
-                                    }
-                                }
-                                .padding(.trailing)
-                                .foregroundColor(dictType == 2 ? .indigo : .secondary)
-                                
-                                //Google
-                                Button {
-                                    showGoogleWebView.toggle()
-                                    dictType = 3
-                                } label: {
-                                    VStack{
-                                        Text("Google Search")
-                                        Rectangle().frame(height: 1)
-                                            .foregroundColor(dictType == 3 ? .indigo : .clear)
-                                    }
-                                }
-                                .padding(.trailing)
-                                .foregroundColor(dictType == 3 ? .indigo : .secondary)
-                                .sheet(isPresented: $showGoogleWebView) {
-                                    UIWebView(url: URL(string: "https://www.google.co.in/search?q=define+\(searchText.lowercased().trim())")!)
+                                    vmDict.fetchFromTamil(inputWord: searchText)
                                 }
                                 
-                                //https://en.wiktionary.org/wiki/astonishing
-                                //Wikipedia
-                                Button {
-                                    showWikipediaWebView.toggle()
-                                    
-                                    dictType = 7
-                                } label: {
-                                    VStack{
-                                        Text("Wikipedia")
-                                        Rectangle().frame(height: 1)
-                                            .foregroundColor(dictType == 7 ? .indigo : .clear)
-                                    }
-                                }
-                                .padding(.trailing)
-                                .foregroundColor(dictType == 7 ? .indigo : .secondary)
-                                .sheet(isPresented: $showWikipediaWebView) {
-                                    UIWebView(url: URL(string: "https://en.wiktionary.org/wiki/\(searchText.lowercased().trim())")!)
-                                }
+                                dictType = 5
                                 
+                            } label: {
+                                VStack{
+                                    Text("Tamil")
+                                    Rectangle().frame(height: 1)
+                                        .foregroundColor(dictType == 5 ? .indigo : .clear)
+                                }
                             }
-                            .foregroundColor(.primary)
-                            .font(.subheadline)
+                            .padding(.trailing)
+                            .foregroundColor(dictType == 5 ? .indigo : .secondary)
+                            
+                            // OwlBot
+                            Button {
+                                if (vmDict.owlbotResponse == nil) {
+                                    DispatchQueue.main.async {
+                                        // Do Websters Dictionary fetch
+                                        searchStarted = true
+                                        vmDict.definitionFound = nil
+                                        vmDict.isFetching = true
+                                    }
+                                    vmDict.fetchFromOwlBot(inputWord: searchText)
+                                }
+                                
+                                dictType = 6
+                                
+                            } label: {
+                                VStack{
+                                    Text("OwlBot")
+                                    Rectangle().frame(height: 1)
+                                        .foregroundColor(dictType == 6 ? .indigo : .clear)
+                                }
+                            }
+                            .padding(.trailing)
+                            .foregroundColor(dictType == 6 ? .indigo : .secondary)
+                            
+                            // Websters Dictionary
+                            Button {
+                                if (vmDict.webstersResponse == nil) {
+                                    // Do Websters Dictionary fetch
+                                    searchStarted = true
+                                    vmDict.definitionFound = nil
+                                    vmDict.isFetching = true
+                                    vmDict.fetchFromWebsters(inputWord: searchText)
+                                }
+                                
+                                dictType = 4
+                                
+                            } label: {
+                                VStack{
+                                    Text("Websters")
+                                    Rectangle().frame(height: 1)
+                                        .foregroundColor(dictType == 4 ? .indigo : .clear)
+                                }
+                            }
+                            .padding(.trailing)
+                            .foregroundColor(dictType == 4 ? .indigo : .secondary)
+                            
+                            // WordsApi
+                            Button {
+                                if (vmDict.wordsApiResponse == nil) {
+                                    // Do WordsApi fetch
+                                    searchSubmit2WordsApi()
+                                }
+                                
+                                dictType = 2
+                            } label: {
+                                VStack{
+                                    Text("WordsApi")
+                                    Rectangle().frame(height: 1)
+                                        .foregroundColor(dictType == 2 ? .indigo : .clear)
+                                }
+                            }
+                            .padding(.trailing)
+                            .foregroundColor(dictType == 2 ? .indigo : .secondary)
+                            
+                            //Google
+                            Button {
+                                showGoogleWebView.toggle()
+                                dictType = 3
+                            } label: {
+                                VStack{
+                                    Text("Google Search")
+                                    Rectangle().frame(height: 1)
+                                        .foregroundColor(dictType == 3 ? .indigo : .clear)
+                                }
+                            }
+                            .padding(.trailing)
+                            .foregroundColor(dictType == 3 ? .indigo : .secondary)
+                            .sheet(isPresented: $showGoogleWebView) {
+                                UIWebView(url: URL(string: "https://www.google.co.in/search?q=define+\(searchText.lowercased().trim())")!)
+                            }
+                            
+                            //https://en.wiktionary.org/wiki/astonishing
+                            //Wikipedia
+                            Button {
+                                showWikipediaWebView.toggle()
+                                
+                                dictType = 7
+                            } label: {
+                                VStack{
+                                    Text("Wikipedia")
+                                    Rectangle().frame(height: 1)
+                                        .foregroundColor(dictType == 7 ? .indigo : .clear)
+                                }
+                            }
+                            .padding(.trailing)
+                            .foregroundColor(dictType == 7 ? .indigo : .secondary)
+                            .sheet(isPresented: $showWikipediaWebView) {
+                                UIWebView(url: URL(string: "https://en.wiktionary.org/wiki/\(searchText.lowercased().trim())")!)
+                            }
+                            
                         }
-                        
-                        Divider()
-                        
+                        .foregroundColor(.primary)
+                        .font(.subheadline)
+                    }
+                    
+                    Divider()
+                    
+                    if (vmDict.isFetching) {
+                        HStack {
+                            Spacer()
+                            Text("Loading definition...")
+                                .padding()
+                                .foregroundColor(.gray)
+                            Spacer()
+                        }
+                    }
+                    
+                    if !vmDict.isFetching {
                         // Free Dictionary Api
                         if dictType == 1 {
                             
@@ -372,9 +380,11 @@ struct Dictionary: View {
                                 })
                             }
                             else { //if no response found
-                                Text("No definition is found for '**\(searchText)**'")
-                                    .padding()
-                                    .foregroundColor(.red)
+                                if searchText != "" {
+                                    Text("No definition is found for '**\(searchText)**'")
+                                        .padding()
+                                        .foregroundColor(.red)
+                                }
                             }
                         }
                         
@@ -429,7 +439,7 @@ struct Dictionary: View {
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                     .padding()
-                                    
+                                
                                 Button(action: {
                                     //
                                 }, label: {
@@ -451,7 +461,7 @@ struct Dictionary: View {
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                     .padding()
-                                    
+                                
                                 Button(action: {
                                     //
                                 }, label: {
@@ -579,9 +589,9 @@ struct Dictionary: View {
                                     .foregroundColor(.red)
                             }
                         }
-                        
-                    }.padding()
-                }
+                    }
+                }.padding()
+                
             }
             .onAppear {
                 searchHistoryVM.getRecentSearchEntries()
