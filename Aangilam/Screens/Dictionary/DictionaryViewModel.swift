@@ -23,8 +23,6 @@ class vmDictionary : ObservableObject {
     
     func fetchData(inputWord: String, searchHistoryVM: SearchHistoryViewModel) {
         if inputWord != "" {
-            // 2. google search
-            // https://www.google.co.in/search?q=contemporary+meaning
             let stringURL = "https://api.dictionaryapi.dev/api/v2/entries/en/\(inputWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))"
             guard let url = URL(string: stringURL) else {
                 print("Invalid URL")
@@ -95,46 +93,6 @@ class vmDictionary : ObservableObject {
         }.resume()
     }
     
-    func fetchFromGoogle(inputWord: String, searchHistoryVM: SearchHistoryViewModel) {
-        if inputWord != "" {
-            // 2. google search
-            // https://www.google.co.in/search?q=contemporary+meaning
-            let stringURL = "https://www.google.co.in/search?q=\(inputWord.lowercased().trim())+meaning"
-            guard let url = URL(string: stringURL) else {
-                print("Invalid URL")
-                self.isFetching = false
-                return
-            }
-            var request = URLRequest(url: url)
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-            
-            URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-                guard let data = data, error == nil else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    
-//                    do {
-                        var htmlString = String(decoding: data, as: UTF8.self)
-                        let doc = try! SwiftSoup.parse(htmlString) // init SwiftSoup object
-//                        doc.select("meta").remove()                // css query to select, then remove
-//                        try! htmlString = doc.outerHtml()
-                        try! htmlString = doc.body()!.text()
-                    
-//                    }
-//                    catch {
-//                        //
-//                    }
-                    
-//                    self?.dataDump = String(decoding: data, as: UTF8.self)
-                    self?.googleDataDump = htmlString
-                    self?.isFetching = false
-                    self?.definitionFound = true
-                }
-            }.resume()
-        }
-    }
-    
     func fetchFromWebsters(inputWord: String) {
         searchWord = inputWord
         
@@ -166,7 +124,6 @@ class vmDictionary : ObservableObject {
                     }
                     return
                 }
-                  
               } catch {
                    // handle error
                   DispatchQueue.main.async {
@@ -205,7 +162,6 @@ class vmDictionary : ObservableObject {
                 else {
                     // word not found.. handle it accordingly
                 }
-                
             } catch {
                 // handle error
                 DispatchQueue.main.async {
@@ -224,7 +180,13 @@ class vmDictionary : ObservableObject {
     }
     
     func fetchFromOwlBot(inputWord: String) {
-        var request = URLRequest(url: URL(string: "https://owlbot.info/api/v4/dictionary/\(inputWord)")!,timeoutInterval: Double.infinity)
+        let stringURL = "https://owlbot.info/api/v4/dictionary/\(inputWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))"
+        guard let url = URL(string: stringURL) else {
+            print("Invalid URL")
+            self.isFetching = false
+            return
+        }
+        var request = URLRequest(url: url, timeoutInterval: Double.infinity)
         request.addValue("Token fb9e439649e48d68ceb626bf4bd7a535ca9ae347", forHTTPHeaderField: "Authorization")
 
         request.httpMethod = "GET"

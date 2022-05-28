@@ -30,11 +30,11 @@ struct ClearButton: ViewModifier
         ZStack(alignment: .trailing)
         {
             content
-
+            
             if !text.isEmpty
             {
                 Button(action:
-                {
+                        {
                     self.text = ""
                     self.searchIsFocused = true
                 })
@@ -66,6 +66,8 @@ struct Dictionary: View {
     @State private var dictType = 1
     
     @State var displayDifinition: String = ""
+    @State private var showGoogleWebView = false
+    @State private var showWikipediaWebView = false
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -73,20 +75,15 @@ struct Dictionary: View {
         searchStarted = true
         vmDict.definitionFound = nil
         vmDict.isFetching = true
+        vmDict.wordInfo = nil
         vmDict.fetchData(inputWord: searchText, searchHistoryVM: searchHistoryVM)
-    }
-    
-    func searchSubmit2Google() {
-        searchStarted = true
-        vmDict.definitionFound = nil
-        vmDict.isFetching = true
-        vmDict.fetchFromGoogle(inputWord: searchText, searchHistoryVM: searchHistoryVM)
     }
     
     func searchSubmit2WordsApi() {
         searchStarted = true
         vmDict.definitionFound = nil
         vmDict.isFetching = true
+        vmDict.wordsApiResponse = nil
         vmDict.fetchFromWordsApi(inputWord: searchText)
     }
     
@@ -122,7 +119,7 @@ struct Dictionary: View {
                         Text("Cancel")
                     }
                     .padding(.leading, 10)
-
+                    
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 10)
@@ -141,6 +138,15 @@ struct Dictionary: View {
                                     .lineLimit(1)
                             }.onTapGesture {
                                 searchText = searchterm.word ?? ""
+                                
+                                dictType = 1
+                                
+                                vmDict.wordsApiResponse = nil
+                                vmDict.googleDataDump = nil
+                                vmDict.webstersResponse = nil
+                                vmDict.tamilResponse = nil
+                                vmDict.owlbotResponse = nil
+                                
                                 searchSubmit2FreeApi()
                                 searchIsFocused = false
                             }
@@ -168,7 +174,7 @@ struct Dictionary: View {
                                 .font(.footnote)
                         }.padding()
                     }
-
+                    
                 }
                 
                 if (vmDict.isFetching) {
@@ -177,15 +183,7 @@ struct Dictionary: View {
                         .foregroundColor(.gray)
                 }
                 
-                if let defFound = vmDict.definitionFound {
-                    if (!defFound) {
-                        Text("No definition found for '**\(searchText)**'")
-                            .padding()
-                            .foregroundColor(.red)
-                    }
-                }
-                
-                if !vmDict.isFetching && vmDict.wordInfo != nil {
+                if !vmDict.isFetching {
                     VStack(alignment: .leading, spacing: 15) {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
@@ -293,22 +291,39 @@ struct Dictionary: View {
                                 
                                 //Google
                                 Button {
-                                    if (vmDict.googleDataDump == nil) {
-                                        // Do google search
-                                        searchSubmit2Google()
-                                    }
-                                    
+                                    showGoogleWebView.toggle()
                                     dictType = 3
                                 } label: {
                                     VStack{
-                                        Text("Google")
+                                        Text("Google Search")
                                         Rectangle().frame(height: 1)
                                             .foregroundColor(dictType == 3 ? .indigo : .clear)
                                     }
                                 }
                                 .padding(.trailing)
                                 .foregroundColor(dictType == 3 ? .indigo : .secondary)
+                                .sheet(isPresented: $showGoogleWebView) {
+                                    UIWebView(url: URL(string: "https://www.google.co.in/search?q=define+\(searchText.lowercased().trim())")!)
+                                }
                                 
+                                //https://en.wiktionary.org/wiki/astonishing
+                                //Wikipedia
+                                Button {
+                                    showWikipediaWebView.toggle()
+                                    
+                                    dictType = 7
+                                } label: {
+                                    VStack{
+                                        Text("Wikipedia")
+                                        Rectangle().frame(height: 1)
+                                            .foregroundColor(dictType == 7 ? .indigo : .clear)
+                                    }
+                                }
+                                .padding(.trailing)
+                                .foregroundColor(dictType == 7 ? .indigo : .secondary)
+                                .sheet(isPresented: $showWikipediaWebView) {
+                                    UIWebView(url: URL(string: "https://en.wiktionary.org/wiki/\(searchText.lowercased().trim())")!)
+                                }
                                 
                             }
                             .foregroundColor(.primary)
@@ -319,6 +334,8 @@ struct Dictionary: View {
                         
                         // Free Dictionary Api
                         if dictType == 1 {
+                            
+                            if vmDict.wordInfo != nil {
                                 Text(vmDict.wordInfo?.word ?? "")
                                     .font(.largeTitle)
                                 
@@ -353,164 +370,214 @@ struct Dictionary: View {
                                         .background (Color.indigo)
                                         .cornerRadius(10)
                                 })
+                            }
+                            else { //if no response found
+                                Text("No definition is found for '**\(searchText)**'")
+                                    .padding()
+                                    .foregroundColor(.red)
+                            }
                         }
                         
                         // WordsApi
                         if dictType == 2 {
-                            Text(vmDict.wordsApiResponse?.word ?? "")
-                                .font(.largeTitle)
-                            
-                            HStack(spacing: 15) {
-                                Text("Phonetics:").font(.headline).foregroundColor(.blue)
-                                if (vmDict.wordsApiResponse != nil) {
+                            if vmDict.wordsApiResponse != nil {
+                                Text(vmDict.wordsApiResponse?.word ?? "")
+                                    .font(.largeTitle)
+                                
+                                HStack(spacing: 15) {
+                                    Text("Phonetics:").font(.headline).foregroundColor(.blue)
                                     Text("\(vmDict.wordsApiResponse?.pronunciation.all ?? "") ")
-                                }
-                            }.padding(.top, 0)
-                            
-                            Divider()
-                            Text("Definition:").font(.headline).foregroundColor(.blue)
-                            if (vmDict.wordsApiResponse != nil) {
+                                }.padding(.top, 0)
+                                
+                                Divider()
+                                Text("Definition:").font(.headline).foregroundColor(.blue)
                                 Text("\(extractDefinitionFrom(wordsApiResults: vmDict.wordsApiResponse!.results))").padding(.top, 0)
-                            }
-                            Divider()
-                            
-                            if (extractExmple(meanings: vmDict.wordInfo!.meanings) != "") {
-                                Text("Example Usage:").font(.headline).foregroundColor(.blue)
-                                if (vmDict.wordsApiResponse != nil) {
+                                Divider()
+                                
+                                if (extractExmple(meanings: vmDict.wordInfo!.meanings) != "") {
+                                    Text("Example Usage:").font(.headline).foregroundColor(.blue)
                                     Text("\(extractExampleFrom(wordsApiResults: vmDict.wordsApiResponse!.results))").padding(.top, 0)
                                 }
-                            }
-                            
-                            Button(action: {
-                                if (vmDict.wordsApiResponse != nil) {
+                                
+                                Button(action: {
                                     userWordListVM.saveWord(word: vmDict.wordsApiResponse!.word,
                                                             tag: "WordsApi",
                                                             meaning: extractDefinitionFrom(wordsApiResults: vmDict.wordsApiResponse!.results),
                                                             sampleSentence: extractExampleFrom(wordsApiResults: vmDict.wordsApiResponse!.results))
-                                }
-                                presentationMode.wrappedValue.dismiss()
-                            }, label: {
-                                Text("+ Add this word to my vocabulary")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .frame (height: 55)
-                                    .frame (maxWidth: .infinity)
-                                    .background (Color.indigo)
-                                    .cornerRadius(10)
-                            })
+                                    presentationMode.wrappedValue.dismiss()
+                                }, label: {
+                                    Text("+ Add this word to my vocabulary")
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                        .frame (height: 55)
+                                        .frame (maxWidth: .infinity)
+                                        .background (Color.indigo)
+                                        .cornerRadius(10)
+                                })
+                            }
+                            else { //if no response found
+                                Text("No definition is found for '**\(searchText)**'")
+                                    .padding()
+                                    .foregroundColor(.red)
+                            }
                         }
                         
                         // Google
-                        if dictType == 3 {
-                            Text("Google result here")
-                            Text(vmDict.googleDataDump ?? "")
-                                .padding()
+                        if dictType == 3 && searchText != "" {
+                            VStack {
+                                Text("You may copy the content from the webpage and add a word.")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                    .padding()
+                                    
+                                Button(action: {
+                                    //
+                                }, label: {
+                                    Text("+ Goto to Add Word Screen")
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                        .frame (height: 55)
+                                        .frame (maxWidth: .infinity)
+                                        .background (Color.indigo)
+                                        .cornerRadius(10)
+                                })
+                            }
                         }
-
+                        
+                        // Wikipedia
+                        if dictType == 7 && searchText != "" {
+                            VStack {
+                                Text("You may copy the content from the webpage and add a word.")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                    .padding()
+                                    
+                                Button(action: {
+                                    //
+                                }, label: {
+                                    Text("+ Goto to Add Word Screen")
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                        .frame (height: 55)
+                                        .frame (maxWidth: .infinity)
+                                        .background (Color.indigo)
+                                        .cornerRadius(10)
+                                })
+                            }
+                        }
+                        
                         // Websters Dictionary - from local json file
                         if dictType == 4 {
-                            
-                            Text(vmDict.searchWord)
-                                .font(.largeTitle)
+                            if vmDict.webstersResponse != nil {
                                 
-                            Divider()
-                            Text("Definition:").font(.headline).foregroundColor(.blue)
-                            Text("\(vmDict.webstersResponse ?? "")").padding(.top, 0)
-                            Divider()
-                            
-                            Button(action: {
-                                if (vmDict.webstersResponse != nil) {
+                                Text(vmDict.searchWord)
+                                    .font(.largeTitle)
+                                
+                                Divider()
+                                Text("Definition:").font(.headline).foregroundColor(.blue)
+                                Text("\(vmDict.webstersResponse ?? "")").padding(.top, 0)
+                                Divider()
+                                
+                                Button(action: {
                                     userWordListVM.saveWord(word: vmDict.searchWord,
                                                             tag: "Websters",
                                                             meaning: vmDict.webstersResponse!,
                                                             sampleSentence: "")
-                                }
-                                presentationMode.wrappedValue.dismiss()
-                            }, label: {
-                                Text("+ Add this word to my vocabulary")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .frame (height: 55)
-                                    .frame (maxWidth: .infinity)
-                                    .background (Color.indigo)
-                                    .cornerRadius(10)
-                            })
+                                    presentationMode.wrappedValue.dismiss()
+                                }, label: {
+                                    Text("+ Add this word to my vocabulary")
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                        .frame (height: 55)
+                                        .frame (maxWidth: .infinity)
+                                        .background (Color.indigo)
+                                        .cornerRadius(10)
+                                })
+                            }
+                            else { //if no response found
+                                Text("No definition is found for '**\(searchText)**'")
+                                    .padding()
+                                    .foregroundColor(.red)
+                            }
                         }
                         
                         // Tamil Dictionary - from local json file
                         if dictType == 5 {
-                            
-                            Text(vmDict.searchWord)
-                                .font(.largeTitle)
+                            if vmDict.tamilResponse != nil {
                                 
-                            Divider()
-                            Text("Definition:").font(.headline).foregroundColor(.blue)
-                            Text("\(vmDict.tamilResponse ?? "")").padding(.top, 0)
-                            Divider()
-                            
-                            Button(action: {
-                                if (vmDict.tamilResponse != nil) {
+                                Text(vmDict.searchWord)
+                                    .font(.largeTitle)
+                                
+                                Divider()
+                                Text("Definition:").font(.headline).foregroundColor(.blue)
+                                Text("\(vmDict.tamilResponse ?? "")").padding(.top, 0)
+                                Divider()
+                                
+                                Button(action: {
                                     userWordListVM.saveWord(word: vmDict.searchWord,
                                                             tag: "Websters",
                                                             meaning: vmDict.tamilResponse!,
                                                             sampleSentence: "")
-                                }
-                                presentationMode.wrappedValue.dismiss()
-                            }, label: {
-                                Text("+ Add this word to my vocabulary")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .frame (height: 55)
-                                    .frame (maxWidth: .infinity)
-                                    .background (Color.indigo)
-                                    .cornerRadius(10)
-                            })
+                                    presentationMode.wrappedValue.dismiss()
+                                }, label: {
+                                    Text("+ Add this word to my vocabulary")
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                        .frame (height: 55)
+                                        .frame (maxWidth: .infinity)
+                                        .background (Color.indigo)
+                                        .cornerRadius(10)
+                                })
+                            }
+                            else { //if no response found
+                                Text("No definition is found for '**\(searchText)**'")
+                                    .padding()
+                                    .foregroundColor(.red)
+                            }
                         }
                         
                         // OwlBot
                         if dictType == 6 {
-                            Text(vmDict.owlbotResponse?.word ?? "")
-                                .font(.largeTitle)
-                            
-                            HStack(spacing: 15) {
-                                Text("Phonetics:").font(.headline).foregroundColor(.blue)
-                                if (vmDict.owlbotResponse != nil) {
+                            if vmDict.owlbotResponse != nil {
+                                Text(vmDict.owlbotResponse?.word ?? "")
+                                    .font(.largeTitle)
+                                
+                                HStack(spacing: 15) {
+                                    Text("Phonetics:").font(.headline).foregroundColor(.blue)
                                     Text("\(vmDict.owlbotResponse?.pronunciation ?? "") ")
-                                }
-                            }.padding(.top, 0)
-                            
-                            Divider()
-                            Text("Definition:").font(.headline).foregroundColor(.blue)
-                            if (vmDict.owlbotResponse != nil) {
+                                }.padding(.top, 0)
+                                
+                                Divider()
+                                Text("Definition:").font(.headline).foregroundColor(.blue)
                                 Text("\(extractDefinitionFromOwlBot(owlbotResponse: vmDict.owlbotResponse!))").padding(.top, 0)
-                            }
-                            Divider()
-                            
-                            if (extractExampleFromOwlBot(owlbotResponse: vmDict.owlbotResponse!) != "") {
-                                Text("Example Usage:").font(.headline).foregroundColor(.blue)
-                                if (vmDict.owlbotResponse != nil) {
+                                Divider()
+                                
+                                if (extractExampleFromOwlBot(owlbotResponse: vmDict.owlbotResponse!) != "") {
+                                    Text("Example Usage:").font(.headline).foregroundColor(.blue)
                                     Text("\(extractExampleFromOwlBot(owlbotResponse: vmDict.owlbotResponse!))").padding(.top, 0)
                                 }
-                            }
-                            
-                            Button(action: {
-                                if (vmDict.owlbotResponse != nil) {
+                                
+                                Button(action: {
                                     userWordListVM.saveWord(word: vmDict.owlbotResponse!.word ?? "",
                                                             tag: "OwlBot",
                                                             meaning: extractDefinitionFromOwlBot(owlbotResponse: vmDict.owlbotResponse!),
                                                             sampleSentence: extractDefinitionFromOwlBot(owlbotResponse: vmDict.owlbotResponse!))
-                                }
-                                presentationMode.wrappedValue.dismiss()
-                            }, label: {
-                                Text("+ Add this word to my vocabulary")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .frame (height: 55)
-                                    .frame (maxWidth: .infinity)
-                                    .background (Color.indigo)
-                                    .cornerRadius(10)
-                            })
-                            
+                                    presentationMode.wrappedValue.dismiss()
+                                }, label: {
+                                    Text("+ Add this word to my vocabulary")
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                        .frame (height: 55)
+                                        .frame (maxWidth: .infinity)
+                                        .background (Color.indigo)
+                                        .cornerRadius(10)
+                                })
+                            }
+                            else { //if no response found
+                                Text("No definition is found for '**\(searchText)**'")
+                                    .padding()
+                                    .foregroundColor(.red)
+                            }
                         }
                         
                     }.padding()
@@ -533,4 +600,3 @@ struct Dictionary_Previews: PreviewProvider {
         Dictionary()
     }
 }
-

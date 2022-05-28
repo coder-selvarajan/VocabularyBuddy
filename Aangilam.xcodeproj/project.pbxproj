@@ -56,6 +56,7 @@
 		70DFA4C427F8B2DC007FADB1 /* UserPhraseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4C227F8B2DC007FADB1 /* UserPhraseListViewModel.swift */; };
 		70DFA4C727F8B2E4007FADB1 /* UserPhraseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4C527F8B2E4007FADB1 /* UserPhraseList.swift */; };
 		70DFA4C827F8B2E4007FADB1 /* AddUserPhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4C627F8B2E4007FADB1 /* AddUserPhraseView.swift */; };
+		70E0225528421D13009EA836 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E0225428421D13009EA836 /* WebView.swift */; };
 		70FEB4B728190F80000EEB6D /* Test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FEB4B628190F80000EEB6D /* Test2.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		70DFA4C227F8B2DC007FADB1 /* UserPhraseListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPhraseListViewModel.swift; sourceTree = "<group>"; };
 		70DFA4C527F8B2E4007FADB1 /* UserPhraseList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPhraseList.swift; sourceTree = "<group>"; };
 		70DFA4C627F8B2E4007FADB1 /* AddUserPhraseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserPhraseView.swift; sourceTree = "<group>"; };
+		70E0225428421D13009EA836 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		70FEB4B628190F80000EEB6D /* Test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +159,7 @@
 				7021B53C2840116D00DB8EBB /* DictionaryViewModel.swift */,
 				706FE9C12840862B00A8A1C5 /* TamilApi.swift */,
 				70B4E8D22841130C0004A05B /* OwlBotApi.swift */,
+				70E0225428421D13009EA836 /* WebView.swift */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				70564F8327F5AAEE00EBA186 /* UserSentenceList.swift in Sources */,
 				70B61CFB283C9FD60097E5A6 /* WordsApi.swift in Sources */,
 				70B4E8D32841130C0004A05B /* OwlBotApi.swift in Sources */,
+				70E0225528421D13009EA836 /* WebView.swift in Sources */,
 				707D1E8127DDE5EB0020557E /* CoreDataProvider.swift in Sources */,
 				703311BA282A529B00F2E17E /* EditUserSentence.swift in Sources */,
 				707D1E9027DE797D0020557E /* AddUserWordView.swift in Sources */,
