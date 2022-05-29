@@ -12,7 +12,7 @@ import SwiftUI
 struct AddUserWordView: View {
     @StateObject var userWordListVM = UserWordListViewModel()
     
-    @State private var word: String = ""
+    @State var word: String = ""
     @State private var type: WORD_TYPE = WORD_TYPE.noun
     @State private var tag: String = ""
     @State private var sampleSentence: String = ""
@@ -26,6 +26,10 @@ struct AddUserWordView: View {
     
     @FocusState private var focusedField: FocusField?
 
+    init(newWord: String) {
+        word = newWord
+    }
+    
     var body: some View {
         VStack {
             Form {
@@ -95,8 +99,8 @@ struct AddUserWordView: View {
     }
 }
 
-struct AddWord_Previews: PreviewProvider {
-    static var previews: some View {
-        AddUserWordView()
-    }
-}
+//struct AddWord_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddUserWordView()
+//    }
+//}

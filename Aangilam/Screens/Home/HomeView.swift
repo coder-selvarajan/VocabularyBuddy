@@ -426,7 +426,7 @@ struct HomeView: View {
                         HStack {
                             Spacer()
                             
-                            NavigationLink(destination: AddUserWordView(), tag: 1, selection: $selection) { EmptyView() }
+                            NavigationLink(destination: AddUserWordView(newWord: ""), tag: 1, selection: $selection) { EmptyView() }
                             NavigationLink(destination: AddUserSentenceView(), tag: 2, selection: $selection) { EmptyView() }
                             NavigationLink(destination: AddUserPhraseView(), tag: 3, selection: $selection) { EmptyView() }
                             

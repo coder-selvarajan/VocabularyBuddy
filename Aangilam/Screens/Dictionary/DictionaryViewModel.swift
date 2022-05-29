@@ -8,10 +8,18 @@
 import Foundation
 import SwiftSoup
 
+enum SearchState {
+    case initial
+    case typing
+    case submitted
+}
+
 class vmDictionary : ObservableObject {
     @Published var wordInfo: WordElement?
     @Published var isFetching: Bool = false
     @Published var definitionFound: Bool?
+    
+    @Published var searchState: SearchState = .initial
     
     @Published var searchWord: String = ""
     
