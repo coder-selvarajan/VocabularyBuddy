@@ -52,6 +52,8 @@
 		70B61CFB283C9FD60097E5A6 /* WordsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B61CFA283C9FD60097E5A6 /* WordsApi.swift */; };
 		70BA45DB281B13FC00F112D0 /* ViewUserWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */; };
 		70CABBF6283EB2E00030B9C6 /* websters_dictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = 70CABBF5283EB2E00030B9C6 /* websters_dictionary.json */; };
+		70D91AA528469E8200626632 /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D91AA428469E8200626632 /* WordList.swift */; };
+		70D91AA72846A0B200626632 /* word-list.json in Resources */ = {isa = PBXBuildFile; fileRef = 70D91AA62846A0B200626632 /* word-list.json */; };
 		70DFA4C027F8B28D007FADB1 /* UserPhrase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */; };
 		70DFA4C427F8B2DC007FADB1 /* UserPhraseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4C227F8B2DC007FADB1 /* UserPhraseListViewModel.swift */; };
 		70DFA4C727F8B2E4007FADB1 /* UserPhraseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFA4C527F8B2E4007FADB1 /* UserPhraseList.swift */; };
@@ -108,6 +110,8 @@
 		70B61CFA283C9FD60097E5A6 /* WordsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsApi.swift; sourceTree = "<group>"; };
 		70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserWord.swift; sourceTree = "<group>"; };
 		70CABBF5283EB2E00030B9C6 /* websters_dictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = websters_dictionary.json; sourceTree = "<group>"; };
+		70D91AA428469E8200626632 /* WordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
+		70D91AA62846A0B200626632 /* word-list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "word-list.json"; sourceTree = "<group>"; };
 		70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPhrase+Extensions.swift"; sourceTree = "<group>"; };
 		70DFA4C227F8B2DC007FADB1 /* UserPhraseListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPhraseListViewModel.swift; sourceTree = "<group>"; };
 		70DFA4C527F8B2E4007FADB1 /* UserPhraseList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPhraseList.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 				706FE9C12840862B00A8A1C5 /* TamilApi.swift */,
 				70B4E8D22841130C0004A05B /* OwlBotApi.swift */,
 				70E0225428421D13009EA836 /* WebView.swift */,
+				70D91AA428469E8200626632 /* WordList.swift */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 		70B61D02283D15930097E5A6 /* OfflineDict */ = {
 			isa = PBXGroup;
 			children = (
+				70D91AA62846A0B200626632 /* word-list.json */,
 				706FE9BD284084C700A8A1C5 /* TA_dictionary.json */,
 				706FE9BE284084C700A8A1C5 /* TA_Wordlist.json */,
 				70CABBF5283EB2E00030B9C6 /* websters_dictionary.json */,
@@ -392,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70CABBF6283EB2E00030B9C6 /* websters_dictionary.json in Resources */,
+				70D91AA72846A0B200626632 /* word-list.json in Resources */,
 				7098F9062821AB3100FCBD24 /* LaunchScreen.storyboard in Resources */,
 				706FE9BF284084C700A8A1C5 /* TA_dictionary.json in Resources */,
 				707D1E7627DDD0330020557E /* Preview Assets.xcassets in Resources */,
@@ -430,6 +437,7 @@
 				707D1E7127DDD02E0020557E /* HomeView.swift in Sources */,
 				707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */,
 				70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */,
+				70D91AA528469E8200626632 /* WordList.swift in Sources */,
 				707D1E8627DDE8DE0020557E /* UserWord+Extensions.swift in Sources */,
 				70564F8327F5AAEE00EBA186 /* UserSentenceList.swift in Sources */,
 				70B61CFB283C9FD60097E5A6 /* WordsApi.swift in Sources */,

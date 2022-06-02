@@ -8,26 +8,52 @@
 import Foundation
 import SwiftSoup
 
-enum SearchState {
-    case initial
-    case typing
-    case submitted
-}
+
 
 class vmDictionary : ObservableObject {
     @Published var wordInfo: WordElement?
     @Published var isFetching: Bool = false
     @Published var definitionFound: Bool?
-    
-    @Published var searchState: SearchState = .initial
-    
+//    @Published var searchState: SearchState = .initial
     @Published var searchWord: String = ""
-    
     @Published var wordsApiResponse: WordsApiResponse?
     @Published var webstersResponse: String?
     @Published var tamilResponse: String?
     @Published var owlbotResponse: OwlbotResponse?
     @Published var googleDataDump: String?
+    @Published var wordList: [WordListItem]?
+    @Published var filteredWordList: [WordListItem]?
+    
+    func getWordList() {
+        if let path = Bundle.main.path(forResource: "word-list", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                
+                let listOfWords = try JSONDecoder().decode([WordListItem].self, from: data)
+                if listOfWords.count > 0 {
+                    wordList = listOfWords
+                    
+//                    DispatchQueue.main.async {
+//                        self.wordList = listOfWords
+//                    }
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func filterWordList(searchText: String) {
+        if wordList == nil {
+            getWordList()
+        }
+        if wordList != nil {
+            let filteredWords = Array(wordList!.filter {
+                $0.word!.starts(with: searchText)
+            }.prefix(15))
+            filteredWordList = filteredWords
+        }
+    }
     
     func fetchData(inputWord: String, searchHistoryVM: SearchHistoryViewModel) {
         if inputWord != "" {
