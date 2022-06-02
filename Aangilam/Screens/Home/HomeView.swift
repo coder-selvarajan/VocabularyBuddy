@@ -13,6 +13,8 @@ struct HomeView: View {
     @StateObject var userWordListVM = UserWordListViewModel()
     @StateObject var userSentenceListVM = UserSentenceListViewModel()
     @StateObject var userPhraseListVM = UserPhraseListViewModel()
+    @StateObject var vmDict = vmDictionary()
+    
     @State var selection: Int? = nil
     @State var showList: Int? = nil
     @State private var searchText = ""
@@ -81,7 +83,7 @@ struct HomeView: View {
                         Section(footer: EmptyView().padding(0)) {
                             ZStack {
                                 NavigationLink(destination:
-                                                Dictionary()
+                                                Dictionary(vmDict: vmDict)
                                 ) {
                                     EmptyView()
                                 }
@@ -506,6 +508,9 @@ struct HomeView: View {
             //                let ms = 1000
             //                usleep(useconds_t(600 * ms))
             //            }
+            
+            //Get wordlist
+            vmDict.getWordList()
         }
         .environment(\.colorScheme, appTheme == "light" ? .light : .dark)
         //        .overlay(SplashScreen())

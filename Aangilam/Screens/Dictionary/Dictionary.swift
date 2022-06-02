@@ -72,7 +72,8 @@ struct Dictionary: View {
     @State private var partOfSpeech: PartOfSpeech = .unknown
     @State private var showingAlert = false
     
-    @StateObject var vmDict = vmDictionary()
+//    @StateObject var vmDict = vmDictionary()
+    @ObservedObject var vmDict: vmDictionary
     @FocusState private var searchIsFocused: Bool
     @State private var dictType = 1
     
@@ -670,7 +671,7 @@ struct Dictionary: View {
                 searchHistoryVM.getRecentSearchEntries()
                 
                 //Get the list of words
-                vmDict.getWordList()
+//                vmDict.getWordList()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.55) {
                     /// Anything over 0.5 seems to work
@@ -681,8 +682,8 @@ struct Dictionary: View {
     }
 }
 
-struct Dictionary_Previews: PreviewProvider {
-    static var previews: some View {
-        Dictionary()
-    }
-}
+//struct Dictionary_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Dictionary()
+//    }
+//}

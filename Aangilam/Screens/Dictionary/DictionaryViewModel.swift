@@ -8,13 +8,10 @@
 import Foundation
 import SwiftSoup
 
-
-
 class vmDictionary : ObservableObject {
     @Published var wordInfo: WordElement?
     @Published var isFetching: Bool = false
     @Published var definitionFound: Bool?
-//    @Published var searchState: SearchState = .initial
     @Published var searchWord: String = ""
     @Published var wordsApiResponse: WordsApiResponse?
     @Published var webstersResponse: String?
@@ -32,10 +29,6 @@ class vmDictionary : ObservableObject {
                 let listOfWords = try JSONDecoder().decode([WordListItem].self, from: data)
                 if listOfWords.count > 0 {
                     wordList = listOfWords
-                    
-//                    DispatchQueue.main.async {
-//                        self.wordList = listOfWords
-//                    }
                 }
             } catch {
                 print(error)
