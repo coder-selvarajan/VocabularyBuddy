@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct AangilamApp: App {
+struct VocabularyBuddyApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()

@@ -30,7 +30,7 @@
 		706FE9C22840862B00A8A1C5 /* TamilApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706FE9C12840862B00A8A1C5 /* TamilApi.swift */; };
 		707553A5282ADED200BC74A8 /* SearchHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707553A4282ADED200BC74A8 /* SearchHistoryViewModel.swift */; };
 		707553A7282ADFCB00BC74A8 /* SearchHistory+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707553A6282ADFCB00BC74A8 /* SearchHistory+Extensions.swift */; };
-		707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E6E27DDD02E0020557E /* AangilamApp.swift */; };
+		707D1E6F27DDD02E0020557E /* VocabularyBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E6E27DDD02E0020557E /* VocabularyBuddyApp.swift */; };
 		707D1E7127DDD02E0020557E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E7027DDD02E0020557E /* HomeView.swift */; };
 		707D1E7327DDD0330020557E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 707D1E7227DDD0330020557E /* Assets.xcassets */; };
 		707D1E7627DDD0330020557E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 707D1E7527DDD0330020557E /* Preview Assets.xcassets */; };
@@ -86,7 +86,7 @@
 		707553A4282ADED200BC74A8 /* SearchHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewModel.swift; sourceTree = "<group>"; };
 		707553A6282ADFCB00BC74A8 /* SearchHistory+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchHistory+Extensions.swift"; sourceTree = "<group>"; };
 		707D1E6B27DDD02E0020557E /* VocabularyBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VocabularyBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		707D1E6E27DDD02E0020557E /* AangilamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AangilamApp.swift; sourceTree = "<group>"; };
+		707D1E6E27DDD02E0020557E /* VocabularyBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBuddyApp.swift; sourceTree = "<group>"; };
 		707D1E7027DDD02E0020557E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		707D1E7227DDD0330020557E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		707D1E7527DDD0330020557E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 		707D1E6227DDD02E0020557E = {
 			isa = PBXGroup;
 			children = (
-				707D1E6D27DDD02E0020557E /* Aangilam */,
+				707D1E6D27DDD02E0020557E /* VocabularyBuddy */,
 				707D1E6C27DDD02E0020557E /* Products */,
 				709F859D2838166E002CC860 /* Frameworks */,
 			);
@@ -226,12 +226,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		707D1E6D27DDD02E0020557E /* Aangilam */ = {
+		707D1E6D27DDD02E0020557E /* VocabularyBuddy */ = {
 			isa = PBXGroup;
 			children = (
 				70B61D02283D15930097E5A6 /* OfflineDict */,
 				709F859C28381668002CC860 /* Aangilam.entitlements */,
-				707D1E6E27DDD02E0020557E /* AangilamApp.swift */,
+				707D1E6E27DDD02E0020557E /* VocabularyBuddyApp.swift */,
 				707D1E7C27DDE4300020557E /* AangilamModel.xcdatamodeld */,
 				707D1E7227DDD0330020557E /* Assets.xcassets */,
 				707D1E8727DE6C5E0020557E /* Helpers */,
@@ -245,7 +245,7 @@
 				700BD177282058770069967F /* SplashScreen.swift */,
 				707D1E8A27DE6CF90020557E /* ViewModels */,
 			);
-			path = Aangilam;
+			path = VocabularyBuddy;
 			sourceTree = "<group>";
 		};
 		707D1E7427DDD0330020557E /* Preview Content */ = {
@@ -435,7 +435,7 @@
 				7066A9C028250C39008BCAB1 /* EditUserWordView.swift in Sources */,
 				703052D82811318C004FD5D2 /* Words.swift in Sources */,
 				707D1E7127DDD02E0020557E /* HomeView.swift in Sources */,
-				707D1E6F27DDD02E0020557E /* AangilamApp.swift in Sources */,
+				707D1E6F27DDD02E0020557E /* VocabularyBuddyApp.swift in Sources */,
 				70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */,
 				70D91AA528469E8200626632 /* WordList.swift in Sources */,
 				707D1E8627DDE8DE0020557E /* UserWord+Extensions.swift in Sources */,
