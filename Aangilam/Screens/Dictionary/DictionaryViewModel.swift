@@ -21,6 +21,21 @@ class vmDictionary : ObservableObject {
     @Published var wordList: [WordListItem]?
     @Published var filteredWordList: [WordListItem]?
     
+    func getWordListTamil() {
+        if let path = Bundle.main.path(forResource: "TA_Wordlist", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                
+                let listOfWords = try JSONDecoder().decode([WordListItem].self, from: data)
+                if listOfWords.count > 0 {
+                    wordList = listOfWords
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     func getWordList() {
         if let path = Bundle.main.path(forResource: "word-list", ofType: "json") {
             do {
