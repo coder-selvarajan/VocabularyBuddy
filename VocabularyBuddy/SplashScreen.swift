@@ -1,6 +1,6 @@
 //
 //  SplashScreen.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 02/05/22.
 //
@@ -24,7 +24,7 @@ struct SplashScreen: View {
                             Rectangle().foregroundColor(.white).frame(width: 110, height: 110))
                         .padding()
                     
-                    Text("Aangilam App")
+                    Text("Vocabulary Buddy")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                     

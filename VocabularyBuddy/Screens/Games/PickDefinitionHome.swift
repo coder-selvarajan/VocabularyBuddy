@@ -1,6 +1,6 @@
 //
 //  PickMeaningHome.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 24/04/22.
 //

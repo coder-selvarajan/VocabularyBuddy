@@ -1,13 +1,12 @@
 //
 //  Dictionary.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 21/04/22.
 //
 
 import Foundation
 import SwiftUI
-import SwiftSoup
 
 enum SearchState {
     case initial

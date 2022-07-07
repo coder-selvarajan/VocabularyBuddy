@@ -1,6 +1,6 @@
 //
 //  SearchHistory+Extensions.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 10/05/22.
 //

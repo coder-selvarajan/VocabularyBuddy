@@ -1,6 +1,6 @@
 //
 //  UserSentenceListViewModel.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 31/03/22.
 //

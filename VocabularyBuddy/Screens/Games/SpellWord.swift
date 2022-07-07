@@ -1,6 +1,6 @@
 //
 //  FlipCardGame.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 06/04/22.
 //
@@ -179,7 +179,7 @@ struct SpellWord: View {
                     Text("\(endWord[score])!")
                         .font(.largeTitle)
                         .foregroundColor(.indigo)
-                        .confettiCannon(counter: $confettiCounter, repetitions: endConfetti[score], repetitionInterval: 0.3)
+//                        .confettiCannon(counter: $confettiCounter, repetitions: endConfetti[score], repetitionInterval: 0.3)
                     
                     Spacer()
                     HStack {

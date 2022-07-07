@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 13/03/22.
 //
@@ -475,7 +475,7 @@ struct HomeView: View {
                 .padding(0)
             }
             .padding(0)
-            .navigationTitle("Aangilam")
+            .navigationTitle("VocabularyBuddy")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {

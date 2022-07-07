@@ -1,6 +1,6 @@
 //
 //  TamilApi.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 27/05/22.
 //

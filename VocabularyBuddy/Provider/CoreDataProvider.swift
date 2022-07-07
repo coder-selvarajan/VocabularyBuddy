@@ -1,6 +1,6 @@
 //
 //  CoreDataProvider.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 13/03/22.
 //
@@ -17,7 +17,7 @@ class CoreDataProvider {
     
     private init() {
         
-        persistentContainer = NSPersistentCloudKitContainer(name: "AangilamModel")
+        persistentContainer = NSPersistentCloudKitContainer(name: "VocabularyBuddyModel")
         persistentContainer.loadPersistentStores { (description, error) in
             if let error = error {
                 fatalError("Failed to initialize Core Data \(error)")

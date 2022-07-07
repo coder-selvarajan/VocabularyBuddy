@@ -17,12 +17,10 @@
 		703052D82811318C004FD5D2 /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703052D72811318C004FD5D2 /* Words.swift */; };
 		703311B8282A50E300F2E17E /* ViewUserSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703311B7282A50E300F2E17E /* ViewUserSentence.swift */; };
 		703311BA282A529B00F2E17E /* EditUserSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703311B9282A529B00F2E17E /* EditUserSentence.swift */; };
-		70448D65283B559900713B6C /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 70448D64283B559900713B6C /* SwiftSoup */; };
 		70564F8327F5AAEE00EBA186 /* UserSentenceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8127F5AAEE00EBA186 /* UserSentenceList.swift */; };
 		70564F8427F5AAEE00EBA186 /* AddUserSentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8227F5AAEE00EBA186 /* AddUserSentenceView.swift */; };
 		70564F8627F5ABC800EBA186 /* UserSentenceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8527F5ABC800EBA186 /* UserSentenceListViewModel.swift */; };
 		70564F8827F5AC3800EBA186 /* UserSentence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8727F5AC3800EBA186 /* UserSentence+Extensions.swift */; };
-		706316982816D78F008FC5E9 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 706316972816D78F008FC5E9 /* ConfettiSwiftUI */; };
 		7066A9C028250C39008BCAB1 /* EditUserWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7066A9BF28250C39008BCAB1 /* EditUserWordView.swift */; };
 		706E56AD281476FD000AC324 /* PickMeaning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706E56AC281476FD000AC324 /* PickMeaning.swift */; };
 		706FE9BF284084C700A8A1C5 /* TA_dictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = 706FE9BD284084C700A8A1C5 /* TA_dictionary.json */; };
@@ -34,7 +32,7 @@
 		707D1E7127DDD02E0020557E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E7027DDD02E0020557E /* HomeView.swift */; };
 		707D1E7327DDD0330020557E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 707D1E7227DDD0330020557E /* Assets.xcassets */; };
 		707D1E7627DDD0330020557E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 707D1E7527DDD0330020557E /* Preview Assets.xcassets */; };
-		707D1E7E27DDE4300020557E /* AangilamModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E7C27DDE4300020557E /* AangilamModel.xcdatamodeld */; };
+		707D1E7E27DDE4300020557E /* VocabularyBuddyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E7C27DDE4300020557E /* VocabularyBuddyModel.xcdatamodeld */; };
 		707D1E8127DDE5EB0020557E /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8027DDE5EB0020557E /* CoreDataProvider.swift */; };
 		707D1E8427DDE86E0020557E /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8327DDE86E0020557E /* BaseModel.swift */; };
 		707D1E8627DDE8DE0020557E /* UserWord+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D1E8527DDE8DE0020557E /* UserWord+Extensions.swift */; };
@@ -101,7 +99,7 @@
 		7098F9052821AB3100FCBD24 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		709A281027F6ED300018FC37 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		709C69E1283D5E6200FA9D37 /* libLexicontext.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLexicontext.a; path = ../../Dictionaries/LexiContext/libLexicontext.a; sourceTree = "<group>"; };
-		709F859C28381668002CC860 /* Aangilam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Aangilam.entitlements; sourceTree = "<group>"; };
+		709F859C28381668002CC860 /* VocabularyBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VocabularyBuddy.entitlements; sourceTree = "<group>"; };
 		709F859E2838166E002CC860 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		70A6B85D27FD60CF00618D66 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		70A6B85F27FD654E00618D66 /* SpellWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellWord.swift; sourceTree = "<group>"; };
@@ -125,9 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				706316982816D78F008FC5E9 /* ConfettiSwiftUI in Frameworks */,
 				709F859F2838166E002CC860 /* CloudKit.framework in Frameworks */,
-				70448D65283B559900713B6C /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,9 +226,9 @@
 			isa = PBXGroup;
 			children = (
 				70B61D02283D15930097E5A6 /* OfflineDict */,
-				709F859C28381668002CC860 /* Aangilam.entitlements */,
+				709F859C28381668002CC860 /* VocabularyBuddy.entitlements */,
 				707D1E6E27DDD02E0020557E /* VocabularyBuddyApp.swift */,
-				707D1E7C27DDE4300020557E /* AangilamModel.xcdatamodeld */,
+				707D1E7C27DDE4300020557E /* VocabularyBuddyModel.xcdatamodeld */,
 				707D1E7227DDD0330020557E /* Assets.xcassets */,
 				707D1E8727DE6C5E0020557E /* Helpers */,
 				700BD17928205C8D0069967F /* Info.plist */,
@@ -348,8 +344,6 @@
 			);
 			name = VocabularyBuddy;
 			packageProductDependencies = (
-				706316972816D78F008FC5E9 /* ConfettiSwiftUI */,
-				70448D64283B559900713B6C /* SwiftSoup */,
 			);
 			productName = Mozhi;
 			productReference = 707D1E6B27DDD02E0020557E /* VocabularyBuddy.app */;
@@ -380,8 +374,6 @@
 			);
 			mainGroup = 707D1E6227DDD02E0020557E;
 			packageReferences = (
-				706316962816D78F008FC5E9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
-				70448D63283B559900713B6C /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 707D1E6C27DDD02E0020557E /* Products */;
 			projectDirPath = "";
@@ -422,7 +414,7 @@
 				70564F8427F5AAEE00EBA186 /* AddUserSentenceView.swift in Sources */,
 				70DFA4C727F8B2E4007FADB1 /* UserPhraseList.swift in Sources */,
 				701172922815BFDC00B86B45 /* PickDefinitionHome.swift in Sources */,
-				707D1E7E27DDE4300020557E /* AangilamModel.xcdatamodeld in Sources */,
+				707D1E7E27DDE4300020557E /* VocabularyBuddyModel.xcdatamodeld in Sources */,
 				7013929727FC01FB00DA7DDF /* Global.swift in Sources */,
 				706FE9C22840862B00A8A1C5 /* TamilApi.swift in Sources */,
 				70A745FF2808A7F5005892E1 /* RandomPickerView.swift in Sources */,
@@ -584,14 +576,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Aangilam/Aangilam.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VocabularyBuddy/VocabularyBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Aangilam/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"VocabularyBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = G6KL98HCPY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Aangilam/Info.plist;
+				INFOPLIST_FILE = VocabularyBuddy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -604,10 +596,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Aangilam/LexiContext",
+					"$(PROJECT_DIR)/VocabularyBuddy/LexiContext",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.aangilam;
+				PRODUCT_BUNDLE_IDENTIFIER = "in.selvarajan.vocabulary-buddy";
 				PRODUCT_NAME = VocabularyBuddy;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -621,14 +613,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Aangilam/Aangilam.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VocabularyBuddy/VocabularyBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Aangilam/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"VocabularyBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = G6KL98HCPY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Aangilam/Info.plist;
+				INFOPLIST_FILE = VocabularyBuddy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -641,10 +633,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Aangilam/LexiContext",
+					"$(PROJECT_DIR)/VocabularyBuddy/LexiContext",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.aangilam;
+				PRODUCT_BUNDLE_IDENTIFIER = "in.selvarajan.vocabulary-buddy";
 				PRODUCT_NAME = VocabularyBuddy;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -676,46 +668,14 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		70448D63283B559900713B6C /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		706316962816D78F008FC5E9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		70448D64283B559900713B6C /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 70448D63283B559900713B6C /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
-		706316972816D78F008FC5E9 /* ConfettiSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 706316962816D78F008FC5E9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
-			productName = ConfettiSwiftUI;
-		};
-/* End XCSwiftPackageProductDependency section */
-
 /* Begin XCVersionGroup section */
-		707D1E7C27DDE4300020557E /* AangilamModel.xcdatamodeld */ = {
+		707D1E7C27DDE4300020557E /* VocabularyBuddyModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				707D1E7D27DDE4300020557E /* MozhiModel.xcdatamodel */,
 			);
 			currentVersion = 707D1E7D27DDE4300020557E /* MozhiModel.xcdatamodel */;
-			path = AangilamModel.xcdatamodeld;
+			path = VocabularyBuddyModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

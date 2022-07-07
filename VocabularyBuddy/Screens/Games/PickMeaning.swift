@@ -1,12 +1,12 @@
 //
 //  WordFinder.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 23/04/22.
 //
 
 import SwiftUI
-import ConfettiSwiftUI
+//import ConfettiSwiftUI
 
 struct PickMeaning: View {
     @StateObject var vmWordList = UserWordListViewModel()
@@ -195,7 +195,7 @@ struct PickMeaning: View {
                     Text("\(endWord[score])!")
                         .font(.largeTitle)
                         .foregroundColor(.indigo)
-                        .confettiCannon(counter: $counter, repetitions: endConfetti[score], repetitionInterval: 0.3)
+//                        .confettiCannon(counter: $counter, repetitions: endConfetti[score], repetitionInterval: 0.3)
                     
                     Spacer()
                     Button {

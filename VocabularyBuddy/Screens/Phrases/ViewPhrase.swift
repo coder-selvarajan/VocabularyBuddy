@@ -1,6 +1,6 @@
 //
 //  ViewPhrase.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 12/05/22.
 //

@@ -1,6 +1,6 @@
 //
 //  WebView.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 28/05/22.
 //

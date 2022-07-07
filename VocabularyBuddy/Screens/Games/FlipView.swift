@@ -1,6 +1,6 @@
 //
 //  FlipView.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 06/04/22.
 //

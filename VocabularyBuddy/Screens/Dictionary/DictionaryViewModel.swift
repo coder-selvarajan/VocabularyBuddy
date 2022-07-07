@@ -1,12 +1,11 @@
 //
 //  DictionaryViewModel.swift
-//  Aangilam
+//  VocabularyBuddy
 //
 //  Created by Selvarajan on 27/05/22.
 //
 
 import Foundation
-import SwiftSoup
 
 class vmDictionary : ObservableObject {
     @Published var wordInfo: WordElement?
