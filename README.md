@@ -12,5 +12,3 @@ Features:
 - Gamify your learning with word games
 
 Technology: SwiftUI
-
-Track project tasks [here](https://github.com/users/coder-selvarajan/projects/3) 
