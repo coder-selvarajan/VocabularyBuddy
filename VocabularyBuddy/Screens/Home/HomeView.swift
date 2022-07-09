@@ -475,7 +475,7 @@ struct HomeView: View {
                 .padding(0)
             }
             .padding(0)
-            .navigationTitle("VocabularyBuddy")
+            .navigationTitle("Vocabulary Buddy")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {

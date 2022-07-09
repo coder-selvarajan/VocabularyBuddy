@@ -16,3 +16,13 @@ struct VocabularyBuddyApp: App {
         }
     }
 }
+
+// R 88
+// G 86
+// B 214
+
+// Font : Qahiri
+// Font : Dubtronic, Dubtronic Inlin
+// Font : Clutchee
+// Font : Bearpaw
+// Font : Anagram
