@@ -37,7 +37,7 @@ struct CommonIdiomsView: View {
         if searchText.isEmpty {
             return commonIdiomsListVM.commonPhraseAll
         } else {
-            return commonIdiomsListVM.commonPhraseAll.filter { $0.phrase!.contains(searchText) }
+            return commonIdiomsListVM.commonPhraseAll.filter { $0.phrase!.lowercased().contains(searchText.lowercased()) }
         }
     }
 }
