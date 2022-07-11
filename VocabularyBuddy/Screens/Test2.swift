@@ -51,7 +51,6 @@ struct Test2: View {
 //            let data: Data // received from a network request, for example
 //            let json = try? JSONSerialization.jsonObject(with: data, options: [])
             
-            
             if let path = Bundle.main.path(forResource: "websters_dictionary", ofType: "json") {
                 do {
                       let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)

@@ -15,6 +15,9 @@
 		702584E4282CB5C200B6FF20 /* EditPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702584E3282CB5C200B6FF20 /* EditPhrase.swift */; };
 		703052D628112405004FD5D2 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703052D528112405004FD5D2 /* Dictionary.swift */; };
 		703052D82811318C004FD5D2 /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703052D72811318C004FD5D2 /* Words.swift */; };
+		70330665287B4AA00083C34D /* CommonIdioms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70330664287B4AA00083C34D /* CommonIdioms.swift */; };
+		70330667287B4B2A0083C34D /* CSVImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70330666287B4B2A0083C34D /* CSVImport.swift */; };
+		70330669287B4E730083C34D /* common-idioms.csv in Resources */ = {isa = PBXBuildFile; fileRef = 70330668287B4E730083C34D /* common-idioms.csv */; };
 		703311B8282A50E300F2E17E /* ViewUserSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703311B7282A50E300F2E17E /* ViewUserSentence.swift */; };
 		703311BA282A529B00F2E17E /* EditUserSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703311B9282A529B00F2E17E /* EditUserSentence.swift */; };
 		70564F8327F5AAEE00EBA186 /* UserSentenceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70564F8127F5AAEE00EBA186 /* UserSentenceList.swift */; };
@@ -42,10 +45,17 @@
 		708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AEE4C27F22DC200DCB00A /* UserWordList.swift */; };
 		7098F9062821AB3100FCBD24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7098F9052821AB3100FCBD24 /* LaunchScreen.storyboard */; };
 		709A281127F6ED300018FC37 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709A281027F6ED300018FC37 /* Test.swift */; };
+		709D3B78287C216C008F8802 /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 709D3B77287C216C008F8802 /* SwiftCSV */; };
+		709D3B7A287C44AE008F8802 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709D3B79287C44AE008F8802 /* ImportView.swift */; };
+		709D3B7C287C4736008F8802 /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709D3B7B287C4736008F8802 /* Importer.swift */; };
+		709D3B7E287C52E4008F8802 /* CommonPhrase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709D3B7D287C52E4008F8802 /* CommonPhrase+Extensions.swift */; };
+		709D3B80287C5644008F8802 /* CommonPhraseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709D3B7F287C5644008F8802 /* CommonPhraseViewModel.swift */; };
+		709D3B83287C5F04008F8802 /* CommonIdiomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709D3B82287C5F04008F8802 /* CommonIdiomsView.swift */; };
 		709F859F2838166E002CC860 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709F859E2838166E002CC860 /* CloudKit.framework */; };
 		70A6B85E27FD60CF00618D66 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85D27FD60CF00618D66 /* FlipView.swift */; };
 		70A6B86027FD654E00618D66 /* SpellWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6B85F27FD654E00618D66 /* SpellWord.swift */; };
 		70A745FF2808A7F5005892E1 /* RandomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A745FE2808A7F5005892E1 /* RandomPickerView.swift */; };
+		70AC0BFC287C90D100240D9C /* ViewCommonIdiom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AC0BFB287C90D100240D9C /* ViewCommonIdiom.swift */; };
 		70B4E8D32841130C0004A05B /* OwlBotApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B4E8D22841130C0004A05B /* OwlBotApi.swift */; };
 		70B61CFB283C9FD60097E5A6 /* WordsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B61CFA283C9FD60097E5A6 /* WordsApi.swift */; };
 		70BA45DB281B13FC00F112D0 /* ViewUserWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */; };
@@ -70,6 +80,9 @@
 		702584E3282CB5C200B6FF20 /* EditPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhrase.swift; sourceTree = "<group>"; };
 		703052D528112405004FD5D2 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		703052D72811318C004FD5D2 /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
+		70330664287B4AA00083C34D /* CommonIdioms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonIdioms.swift; sourceTree = "<group>"; };
+		70330666287B4B2A0083C34D /* CSVImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVImport.swift; sourceTree = "<group>"; };
+		70330668287B4E730083C34D /* common-idioms.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "common-idioms.csv"; sourceTree = "<group>"; };
 		703311B7282A50E300F2E17E /* ViewUserSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserSentence.swift; sourceTree = "<group>"; };
 		703311B9282A529B00F2E17E /* EditUserSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserSentence.swift; sourceTree = "<group>"; };
 		70564F8127F5AAEE00EBA186 /* UserSentenceList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSentenceList.swift; sourceTree = "<group>"; };
@@ -99,11 +112,17 @@
 		7098F9052821AB3100FCBD24 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		709A281027F6ED300018FC37 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		709C69E1283D5E6200FA9D37 /* libLexicontext.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLexicontext.a; path = ../../Dictionaries/LexiContext/libLexicontext.a; sourceTree = "<group>"; };
+		709D3B79287C44AE008F8802 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
+		709D3B7B287C4736008F8802 /* Importer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
+		709D3B7D287C52E4008F8802 /* CommonPhrase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommonPhrase+Extensions.swift"; sourceTree = "<group>"; };
+		709D3B7F287C5644008F8802 /* CommonPhraseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonPhraseViewModel.swift; sourceTree = "<group>"; };
+		709D3B82287C5F04008F8802 /* CommonIdiomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonIdiomsView.swift; sourceTree = "<group>"; };
 		709F859C28381668002CC860 /* VocabularyBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VocabularyBuddy.entitlements; sourceTree = "<group>"; };
 		709F859E2838166E002CC860 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		70A6B85D27FD60CF00618D66 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		70A6B85F27FD654E00618D66 /* SpellWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellWord.swift; sourceTree = "<group>"; };
 		70A745FE2808A7F5005892E1 /* RandomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPickerView.swift; sourceTree = "<group>"; };
+		70AC0BFB287C90D100240D9C /* ViewCommonIdiom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCommonIdiom.swift; sourceTree = "<group>"; };
 		70B4E8D22841130C0004A05B /* OwlBotApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwlBotApi.swift; sourceTree = "<group>"; };
 		70B61CFA283C9FD60097E5A6 /* WordsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsApi.swift; sourceTree = "<group>"; };
 		70BA45DA281B13FC00F112D0 /* ViewUserWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUserWord.swift; sourceTree = "<group>"; };
@@ -124,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				709F859F2838166E002CC860 /* CloudKit.framework in Frameworks */,
+				709D3B78287C216C008F8802 /* SwiftCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +183,18 @@
 				70D91AA428469E8200626632 /* WordList.swift */,
 			);
 			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		70330663287B4A840083C34D /* DataImport */ = {
+			isa = PBXGroup;
+			children = (
+				70330668287B4E730083C34D /* common-idioms.csv */,
+				70330664287B4AA00083C34D /* CommonIdioms.swift */,
+				70330666287B4B2A0083C34D /* CSVImport.swift */,
+				709D3B79287C44AE008F8802 /* ImportView.swift */,
+				709D3B7B287C4736008F8802 /* Importer.swift */,
+			);
+			path = DataImport;
 			sourceTree = "<group>";
 		};
 		703311B4282A508E00F2E17E /* Words */ = {
@@ -225,6 +257,7 @@
 		707D1E6D27DDD02E0020557E /* VocabularyBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				70330663287B4A840083C34D /* DataImport */,
 				70B61D02283D15930097E5A6 /* OfflineDict */,
 				709F859C28381668002CC860 /* VocabularyBuddy.entitlements */,
 				707D1E6E27DDD02E0020557E /* VocabularyBuddyApp.swift */,
@@ -268,6 +301,7 @@
 				70564F8727F5AC3800EBA186 /* UserSentence+Extensions.swift */,
 				70DFA4BF27F8B28D007FADB1 /* UserPhrase+Extensions.swift */,
 				707553A6282ADFCB00BC74A8 /* SearchHistory+Extensions.swift */,
+				709D3B7D287C52E4008F8802 /* CommonPhrase+Extensions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -288,6 +322,7 @@
 				707D1E8B27DE6D130020557E /* UserWordListViewModel.swift */,
 				70564F8527F5ABC800EBA186 /* UserSentenceListViewModel.swift */,
 				707553A4282ADED200BC74A8 /* SearchHistoryViewModel.swift */,
+				709D3B7F287C5644008F8802 /* CommonPhraseViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -295,6 +330,7 @@
 		708EC4B427F3005600B91A42 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				709D3B81287C5EE0008F8802 /* Resources */,
 				7021B53E284011DE00DB8EBB /* Dictionary */,
 				703311B6282A50A700F2E17E /* Phrases */,
 				703311B5282A509C00F2E17E /* Sentences */,
@@ -305,6 +341,15 @@
 				70FEB4B628190F80000EEB6D /* Test2.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		709D3B81287C5EE0008F8802 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				709D3B82287C5F04008F8802 /* CommonIdiomsView.swift */,
+				70AC0BFB287C90D100240D9C /* ViewCommonIdiom.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		709F859D2838166E002CC860 /* Frameworks */ = {
@@ -344,6 +389,7 @@
 			);
 			name = VocabularyBuddy;
 			packageProductDependencies = (
+				709D3B77287C216C008F8802 /* SwiftCSV */,
 			);
 			productName = Mozhi;
 			productReference = 707D1E6B27DDD02E0020557E /* VocabularyBuddy.app */;
@@ -374,6 +420,7 @@
 			);
 			mainGroup = 707D1E6227DDD02E0020557E;
 			packageReferences = (
+				709D3B76287C216C008F8802 /* XCRemoteSwiftPackageReference "SwiftCSV" */,
 			);
 			productRefGroup = 707D1E6C27DDD02E0020557E /* Products */;
 			projectDirPath = "";
@@ -392,6 +439,7 @@
 				70CABBF6283EB2E00030B9C6 /* websters_dictionary.json in Resources */,
 				70D91AA72846A0B200626632 /* word-list.json in Resources */,
 				7098F9062821AB3100FCBD24 /* LaunchScreen.storyboard in Resources */,
+				70330669287B4E730083C34D /* common-idioms.csv in Resources */,
 				706FE9BF284084C700A8A1C5 /* TA_dictionary.json in Resources */,
 				707D1E7627DDD0330020557E /* Preview Assets.xcassets in Resources */,
 				706FE9C0284084C700A8A1C5 /* TA_Wordlist.json in Resources */,
@@ -411,6 +459,7 @@
 				70BA45DB281B13FC00F112D0 /* ViewUserWord.swift in Sources */,
 				70DFA4C827F8B2E4007FADB1 /* AddUserPhraseView.swift in Sources */,
 				702584E4282CB5C200B6FF20 /* EditPhrase.swift in Sources */,
+				709D3B7C287C4736008F8802 /* Importer.swift in Sources */,
 				70564F8427F5AAEE00EBA186 /* AddUserSentenceView.swift in Sources */,
 				70DFA4C727F8B2E4007FADB1 /* UserPhraseList.swift in Sources */,
 				701172922815BFDC00B86B45 /* PickDefinitionHome.swift in Sources */,
@@ -422,7 +471,9 @@
 				708AEE4D27F22DC200DCB00A /* UserWordList.swift in Sources */,
 				70FEB4B728190F80000EEB6D /* Test2.swift in Sources */,
 				709A281127F6ED300018FC37 /* Test.swift in Sources */,
+				709D3B80287C5644008F8802 /* CommonPhraseViewModel.swift in Sources */,
 				70DFA4C427F8B2DC007FADB1 /* UserPhraseListViewModel.swift in Sources */,
+				709D3B7A287C44AE008F8802 /* ImportView.swift in Sources */,
 				706E56AD281476FD000AC324 /* PickMeaning.swift in Sources */,
 				7066A9C028250C39008BCAB1 /* EditUserWordView.swift in Sources */,
 				703052D82811318C004FD5D2 /* Words.swift in Sources */,
@@ -437,18 +488,23 @@
 				70E0225528421D13009EA836 /* WebView.swift in Sources */,
 				707D1E8127DDE5EB0020557E /* CoreDataProvider.swift in Sources */,
 				703311BA282A529B00F2E17E /* EditUserSentence.swift in Sources */,
+				70330665287B4AA00083C34D /* CommonIdioms.swift in Sources */,
 				707D1E9027DE797D0020557E /* AddUserWordView.swift in Sources */,
 				707D1E8427DDE86E0020557E /* BaseModel.swift in Sources */,
 				703052D628112405004FD5D2 /* Dictionary.swift in Sources */,
+				709D3B83287C5F04008F8802 /* CommonIdiomsView.swift in Sources */,
 				7021B53D2840116D00DB8EBB /* DictionaryViewModel.swift in Sources */,
 				70564F8627F5ABC800EBA186 /* UserSentenceListViewModel.swift in Sources */,
 				70DFA4C027F8B28D007FADB1 /* UserPhrase+Extensions.swift in Sources */,
 				70564F8827F5AC3800EBA186 /* UserSentence+Extensions.swift in Sources */,
 				70A6B86027FD654E00618D66 /* SpellWord.swift in Sources */,
+				70AC0BFC287C90D100240D9C /* ViewCommonIdiom.swift in Sources */,
 				707553A5282ADED200BC74A8 /* SearchHistoryViewModel.swift in Sources */,
 				702584E2282CB5B700B6FF20 /* ViewPhrase.swift in Sources */,
+				70330667287B4B2A0083C34D /* CSVImport.swift in Sources */,
 				707D1E8C27DE6D130020557E /* UserWordListViewModel.swift in Sources */,
 				707D1E8927DE6C760020557E /* ExtensionHelper.swift in Sources */,
+				709D3B7E287C52E4008F8802 /* CommonPhrase+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,6 +725,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		709D3B76287C216C008F8802 /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftcsv/SwiftCSV.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		709D3B77287C216C008F8802 /* SwiftCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 709D3B76287C216C008F8802 /* XCRemoteSwiftPackageReference "SwiftCSV" */;
+			productName = SwiftCSV;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		707D1E7C27DDE4300020557E /* VocabularyBuddyModel.xcdatamodeld */ = {

@@ -47,6 +47,17 @@ extension BaseModel {
         }
     }
     
+    static func all<T>(sortBy sortDescriptor: NSSortDescriptor) -> [T] where T: NSManagedObject {
+        let fetchRequest: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            return try viewContext.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+    }
+    
     static func getRecentRecords<T>(limit: Int) -> [T] where T: NSManagedObject {
         let fetchRequest: NSFetchRequest<T> = NSFetchRequest(entityName: String(describing: T.self))
         fetchRequest.fetchOffset = 0;

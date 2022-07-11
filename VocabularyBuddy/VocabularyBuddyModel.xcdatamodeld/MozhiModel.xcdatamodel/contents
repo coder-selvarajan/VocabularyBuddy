@@ -5,7 +5,7 @@
         <attribute name="example" optional="YES" attributeType="String"/>
         <attribute name="meaning" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
-        <attribute name="phrase" attributeType="String"/>
+        <attribute name="phrase" attributeType="String" defaultValueString="Sample"/>
         <attribute name="tag" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
     </entity>

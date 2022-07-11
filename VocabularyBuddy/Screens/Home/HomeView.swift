@@ -164,7 +164,7 @@ struct HomeView: View {
                                         //
                                     } label: {
                                         VStack(alignment: .center, spacing: 15) {
-                                            Text("Adv")
+                                            Text("Ph")
                                                 .font(.subheadline)
                                                 .foregroundColor(.white)
                                                 .shadow(color: Color.black.opacity(0.4),
@@ -177,18 +177,19 @@ struct HomeView: View {
                                                 )
                                                 .clipShape(Circle())
                                             
-                                            Text("Common \nAdverbs")
+                                            Text("Useful \nPhrases")
                                                 .font(.subheadline)
                                                 .foregroundColor(.primary)
                                             
                                         }
                                     }
                                     
-                                    Button {
-                                        //
-                                    } label: {
+                                    NavigationLink(destination: CommonIdiomsView(), tag: 101, selection: $selection) {
+                                        Button(action: {
+                                            self.selection = 101
+                                        }) {
                                         VStack(alignment: .center, spacing: 15) {
-                                            Text("Ph")
+                                            Text("Id")
                                                 .font(.subheadline)
                                                 .foregroundColor(.white)
                                                 .shadow(color: Color.black.opacity(0.4),
@@ -201,36 +202,15 @@ struct HomeView: View {
                                                 )
                                                 .clipShape(Circle())
                                             
-                                            Text("Useful \nPhrases")
+                                            Text("Common \nIdioms")
                                                 .font(.subheadline)
                                                 .foregroundColor(.primary)
                                             
+                                        }
                                         }
                                     }
                                     
-                                    Button {
-                                        //
-                                    } label: {
-                                        VStack(alignment: .center, spacing: 15) {
-                                            Text("Id")
-                                                .font(.subheadline)
-                                                .foregroundColor(.white)
-                                                .shadow(color: Color.black.opacity(0.4),
-                                                        radius: 2,
-                                                        x: 3,
-                                                        y: 3)
-                                                .padding(23)
-                                                .background(
-                                                    LinearGradient(gradient: Gradient(colors: [.blue, .blue.opacity(0.8), .blue.opacity(0.4)]), startPoint: .topLeading , endPoint: .bottomTrailing)
-                                                )
-                                                .clipShape(Circle())
-                                            
-                                            Text("Useful \nIdioms")
-                                                .font(.subheadline)
-                                                .foregroundColor(.primary)
-                                            
-                                        }
-                                    }
+                                    
                                 }.padding(.bottom, 10)
                             }
                         }
@@ -479,7 +459,7 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-                    NavigationLink(destination: Test2()) {
+                    NavigationLink(destination: ImportView()) {
                         Image(systemName: "line.3.horizontal.circle")
                     }
                 }
