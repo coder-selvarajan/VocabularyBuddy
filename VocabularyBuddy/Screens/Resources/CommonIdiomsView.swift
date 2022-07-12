@@ -26,7 +26,7 @@ struct CommonIdiomsView: View {
             }
         }
         .listStyle(.grouped)
-        .navigationTitle(Text("Common Idioms List"))
+        .navigationTitle(Text("Common Idioms"))
         .searchable(text: $searchText)
         .onAppear {
             commonIdiomsListVM.getAllCommonPhrases()
