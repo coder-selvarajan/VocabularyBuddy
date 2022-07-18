@@ -10,6 +10,7 @@
 		700BD178282058770069967F /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700BD177282058770069967F /* SplashScreen.swift */; };
 		701172922815BFDC00B86B45 /* PickDefinitionHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701172912815BFDC00B86B45 /* PickDefinitionHome.swift */; };
 		7013929727FC01FB00DA7DDF /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013929627FC01FB00DA7DDF /* Global.swift */; };
+		701BE0DB2885DB3A0093CCC8 /* VocabularyBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701BE0DA2885DB3A0093CCC8 /* VocabularyBuddyTests.swift */; };
 		7021B53D2840116D00DB8EBB /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7021B53C2840116D00DB8EBB /* DictionaryViewModel.swift */; };
 		702584E2282CB5B700B6FF20 /* ViewPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702584E1282CB5B700B6FF20 /* ViewPhrase.swift */; };
 		702584E4282CB5C200B6FF20 /* EditPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702584E3282CB5C200B6FF20 /* EditPhrase.swift */; };
@@ -70,11 +71,23 @@
 		70FEB4B728190F80000EEB6D /* Test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FEB4B628190F80000EEB6D /* Test2.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		701BE0DC2885DB3A0093CCC8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 707D1E6327DDD02E0020557E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 707D1E6A27DDD02E0020557E;
+			remoteInfo = VocabularyBuddy;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		700BD177282058770069967F /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		700BD17928205C8D0069967F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		701172912815BFDC00B86B45 /* PickDefinitionHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDefinitionHome.swift; sourceTree = "<group>"; };
 		7013929627FC01FB00DA7DDF /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		701BE0D82885DB3A0093CCC8 /* VocabularyBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabularyBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		701BE0DA2885DB3A0093CCC8 /* VocabularyBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBuddyTests.swift; sourceTree = "<group>"; };
 		7021B53C2840116D00DB8EBB /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
 		702584E1282CB5B700B6FF20 /* ViewPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPhrase.swift; sourceTree = "<group>"; };
 		702584E3282CB5C200B6FF20 /* EditPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhrase.swift; sourceTree = "<group>"; };
@@ -138,6 +151,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		701BE0D52885DB3A0093CCC8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		707D1E6827DDD02E0020557E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -168,6 +188,14 @@
 				707D1E7027DDD02E0020557E /* HomeView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		701BE0D92885DB3A0093CCC8 /* VocabularyBuddyTests */ = {
+			isa = PBXGroup;
+			children = (
+				701BE0DA2885DB3A0093CCC8 /* VocabularyBuddyTests.swift */,
+			);
+			path = VocabularyBuddyTests;
 			sourceTree = "<group>";
 		};
 		7021B53E284011DE00DB8EBB /* Dictionary */ = {
@@ -241,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				707D1E6D27DDD02E0020557E /* VocabularyBuddy */,
+				701BE0D92885DB3A0093CCC8 /* VocabularyBuddyTests */,
 				707D1E6C27DDD02E0020557E /* Products */,
 				709F859D2838166E002CC860 /* Frameworks */,
 			);
@@ -250,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				707D1E6B27DDD02E0020557E /* VocabularyBuddy.app */,
+				701BE0D82885DB3A0093CCC8 /* VocabularyBuddyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -375,6 +405,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		701BE0D72885DB3A0093CCC8 /* VocabularyBuddyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 701BE0E02885DB3B0093CCC8 /* Build configuration list for PBXNativeTarget "VocabularyBuddyTests" */;
+			buildPhases = (
+				701BE0D42885DB3A0093CCC8 /* Sources */,
+				701BE0D52885DB3A0093CCC8 /* Frameworks */,
+				701BE0D62885DB3A0093CCC8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				701BE0DD2885DB3A0093CCC8 /* PBXTargetDependency */,
+			);
+			name = VocabularyBuddyTests;
+			productName = VocabularyBuddyTests;
+			productReference = 701BE0D82885DB3A0093CCC8 /* VocabularyBuddyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		707D1E6A27DDD02E0020557E /* VocabularyBuddy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 707D1E7927DDD0330020557E /* Build configuration list for PBXNativeTarget "VocabularyBuddy" */;
@@ -402,9 +450,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					701BE0D72885DB3A0093CCC8 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = 707D1E6A27DDD02E0020557E;
+					};
 					707D1E6A27DDD02E0020557E = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -427,11 +479,19 @@
 			projectRoot = "";
 			targets = (
 				707D1E6A27DDD02E0020557E /* VocabularyBuddy */,
+				701BE0D72885DB3A0093CCC8 /* VocabularyBuddyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		701BE0D62885DB3A0093CCC8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		707D1E6927DDD02E0020557E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -450,6 +510,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		701BE0D42885DB3A0093CCC8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				701BE0DB2885DB3A0093CCC8 /* VocabularyBuddyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		707D1E6727DDD02E0020557E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -510,7 +578,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		701BE0DD2885DB3A0093CCC8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 707D1E6A27DDD02E0020557E /* VocabularyBuddy */;
+			targetProxy = 701BE0DC2885DB3A0093CCC8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		701BE0DE2885DB3A0093CCC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G6KL98HCPY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.VocabularyBuddyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VocabularyBuddy.app/VocabularyBuddy";
+			};
+			name = Debug;
+		};
+		701BE0DF2885DB3A0093CCC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G6KL98HCPY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = in.selvarajan.VocabularyBuddyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VocabularyBuddy.app/VocabularyBuddy";
+			};
+			name = Release;
+		};
 		707D1E7727DDD0330020557E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -706,6 +820,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		701BE0E02885DB3B0093CCC8 /* Build configuration list for PBXNativeTarget "VocabularyBuddyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				701BE0DE2885DB3A0093CCC8 /* Debug */,
+				701BE0DF2885DB3A0093CCC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		707D1E6627DDD02E0020557E /* Build configuration list for PBXProject "VocabularyBuddy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
