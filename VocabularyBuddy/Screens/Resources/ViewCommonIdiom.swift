@@ -11,6 +11,9 @@ struct ViewCommonIdiom: View {
     @State var commonPhrase: CommonPhrase
     @State var selection: Int? = nil
     
+    func formatText(_ content: String) -> String {
+        return content.replacingOccurrences(of: "\\n", with: "\n")
+    }
     var body: some View {
         VStack(alignment: .leading) {
             Text("\(commonPhrase.phrase ?? "")")
@@ -24,7 +27,7 @@ struct ViewCommonIdiom: View {
                     .padding(.top, 10)
                     .padding(.bottom, 2)
                     .foregroundColor(.blue)
-                Text("\(commonPhrase.meaning ?? "")")
+                Text(formatText(commonPhrase.meaning ?? ""))
                     .padding(.bottom)
                 
                 Divider()
@@ -35,7 +38,8 @@ struct ViewCommonIdiom: View {
                     .font(.headline)
                     .padding(.bottom, 2)
                     .foregroundColor(.blue)
-                Text("\(commonPhrase.example ?? "")")
+                Text(formatText(commonPhrase.example ?? ""))
+                    .lineLimit(10)
                     .padding(.bottom)
                 
                 Divider()
