@@ -260,6 +260,25 @@ struct Dictionary: View {
                                 .padding(.trailing)
                                 .foregroundColor(dictType == 1 ? .indigo : .secondary)
                                 
+                                // WordsApi
+                                Button {
+                                    if (vmDict.wordsApiResponse == nil) {
+                                        // Do WordsApi fetch
+                                        searchState = .submitted
+                                        searchSubmit2WordsApi()
+                                    }
+                                    
+                                    dictType = 2
+                                } label: {
+                                    VStack{
+                                        Text("WordsApi")
+                                        Rectangle().frame(height: 1)
+                                            .foregroundColor(dictType == 2 ? .indigo : .clear)
+                                    }
+                                }
+                                .padding(.trailing)
+                                .foregroundColor(dictType == 2 ? .indigo : .secondary)
+                                
                                 // Tamil
                                 Button {
                                     if (vmDict.tamilResponse == nil) {
@@ -330,24 +349,7 @@ struct Dictionary: View {
                                 .padding(.trailing)
                                 .foregroundColor(dictType == 4 ? .indigo : .secondary)
                                 
-                                //                            // WordsApi
-                                //                            Button {
-                                //                                if (vmDict.wordsApiResponse == nil) {
-                                //                                    // Do WordsApi fetch
-                                //                                    searchState = .submitted
-                                //                                    searchSubmit2WordsApi()
-                                //                                }
-                                //
-                                //                                dictType = 2
-                                //                            } label: {
-                                //                                VStack{
-                                //                                    Text("WordsApi")
-                                //                                    Rectangle().frame(height: 1)
-                                //                                        .foregroundColor(dictType == 2 ? .indigo : .clear)
-                                //                                }
-                                //                            }
-                                //                            .padding(.trailing)
-                                //                            .foregroundColor(dictType == 2 ? .indigo : .secondary)
+    
                                 
                                 //Google
                                 Button {
@@ -452,6 +454,52 @@ struct Dictionary: View {
                                             .padding()
                                             .foregroundColor(.red)
                                     }
+                                }
+                            }
+                            
+                            // WordsApi
+                            if dictType == 2 {
+                                if vmDict.wordsApiResponse != nil {
+                                    Text(vmDict.wordsApiResponse?.word ?? "")
+                                        .font(.largeTitle)
+
+                                    HStack(spacing: 15) {
+                                        Text("Phonetics:").font(.headline).foregroundColor(.blue)
+                                        Text("\(vmDict.wordsApiResponse?.pronunciation.all ?? "") ")
+                                    }.padding(.top, 0)
+
+                                    Divider()
+                                    Text("Definition:").font(.headline).foregroundColor(.blue)
+                                    Text("\(extractDefinitionFrom(wordsApiResults: vmDict.wordsApiResponse!.results))").padding(.top, 0)
+                                    Divider()
+
+                                    if (extractExmple(meanings: vmDict.wordInfo!.meanings) != "") {
+                                        Text("Example Usage:").font(.headline).foregroundColor(.blue)
+                                        Text("\(extractExampleFrom(wordsApiResults: vmDict.wordsApiResponse!.results))").padding(.top, 0)
+                                    }
+
+                                    Button(action: {
+                                        userWordListVM.saveWord(word: vmDict.wordsApiResponse!.word,
+                                                                tag: "WordsApi",
+                                                                meaning: extractDefinitionFrom(wordsApiResults: vmDict.wordsApiResponse!.results),
+                                                                sampleSentence: extractExampleFrom(wordsApiResults: vmDict.wordsApiResponse!.results))
+                                        presentationMode.wrappedValue.dismiss()
+                                    }, label: {
+                                        Text("+ Add this word to my vocabulary")
+                                            .font(.headline)
+                                            .foregroundColor(.white)
+                                            .frame (height: 55)
+                                            .frame (maxWidth: .infinity)
+                                            .background (Color.indigo)
+                                            .cornerRadius(10)
+                                    })
+                                }
+                                else { //if no response found
+                                    Text("No definition is found for '**\(searchText)**'")
+                                        .fontWeight(.thin)
+                                        .multilineTextAlignment(.center)
+                                        .padding()
+                                        .foregroundColor(.red)
                                 }
                             }
                             
@@ -575,51 +623,7 @@ struct Dictionary: View {
                                 }
                             }
                             
-//                            // WordsApi
-//                            if dictType == 2 {
-//                                if vmDict.wordsApiResponse != nil {
-//                                    Text(vmDict.wordsApiResponse?.word ?? "")
-//                                        .font(.largeTitle)
-//
-//                                    HStack(spacing: 15) {
-//                                        Text("Phonetics:").font(.headline).foregroundColor(.blue)
-//                                        Text("\(vmDict.wordsApiResponse?.pronunciation.all ?? "") ")
-//                                    }.padding(.top, 0)
-//
-//                                    Divider()
-//                                    Text("Definition:").font(.headline).foregroundColor(.blue)
-//                                    Text("\(extractDefinitionFrom(wordsApiResults: vmDict.wordsApiResponse!.results))").padding(.top, 0)
-//                                    Divider()
-//
-//                                    if (extractExmple(meanings: vmDict.wordInfo!.meanings) != "") {
-//                                        Text("Example Usage:").font(.headline).foregroundColor(.blue)
-//                                        Text("\(extractExampleFrom(wordsApiResults: vmDict.wordsApiResponse!.results))").padding(.top, 0)
-//                                    }
-//
-//                                    Button(action: {
-//                                        userWordListVM.saveWord(word: vmDict.wordsApiResponse!.word,
-//                                                                tag: "WordsApi",
-//                                                                meaning: extractDefinitionFrom(wordsApiResults: vmDict.wordsApiResponse!.results),
-//                                                                sampleSentence: extractExampleFrom(wordsApiResults: vmDict.wordsApiResponse!.results))
-//                                        presentationMode.wrappedValue.dismiss()
-//                                    }, label: {
-//                                        Text("+ Add this word to my vocabulary")
-//                                            .font(.headline)
-//                                            .foregroundColor(.white)
-//                                            .frame (height: 55)
-//                                            .frame (maxWidth: .infinity)
-//                                            .background (Color.indigo)
-//                                            .cornerRadius(10)
-//                                    })
-//                                }
-//                                else { //if no response found
-//                                    Text("No definition is found for '**\(searchText)**'")
-//                                        .fontWeight(.thin)
-//                                        .multilineTextAlignment(.center)
-//                                        .padding()
-//                                        .foregroundColor(.red)
-//                                }
-//                            }
+                            
                             
                             // Google
                             if dictType == 3 && searchText != "" {

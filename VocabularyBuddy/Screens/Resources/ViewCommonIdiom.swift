@@ -44,7 +44,7 @@ struct ViewCommonIdiom: View {
                 
                 Divider()
             }
-            
+             
             Spacer()
         }
         .padding()
