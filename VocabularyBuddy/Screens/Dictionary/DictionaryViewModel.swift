@@ -51,14 +51,20 @@ class vmDictionary : ObservableObject {
     }
     
     func filterWordList(searchText: String) {
-        if wordList == nil {
-            getWordList()
-        }
-        if wordList != nil {
-            let filteredWords = Array(wordList!.filter {
-                $0.word!.starts(with: searchText)
-            }.prefix(15))
-            filteredWordList = filteredWords
+        // Running the search in background thread
+        DispatchQueue.global().async {
+            if self.wordList == nil {
+                self.getWordList()
+            }
+            if self.wordList != nil {
+                let filteredWords = Array(self.wordList!.filter {
+                    $0.word!.starts(with: searchText)
+                }.prefix(15))
+                
+                DispatchQueue.main.async {
+                    self.filteredWordList = filteredWords
+                }
+            }
         }
     }
     
