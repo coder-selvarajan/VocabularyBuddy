@@ -50,6 +50,7 @@ class vmDictionary : ObservableObject {
         }
     }
     
+    //Search auto-completion
     func filterWordList(searchText: String) {
         // Running the search in background thread
         DispatchQueue.global().async {
@@ -68,6 +69,7 @@ class vmDictionary : ObservableObject {
         }
     }
     
+    //Free DictionaryApi
     func fetchData(inputWord: String, searchHistoryVM: SearchHistoryViewModel) {
         if inputWord != "" {
             let stringURL = "https://api.dictionaryapi.dev/api/v2/entries/en/\(inputWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))"
@@ -105,6 +107,7 @@ class vmDictionary : ObservableObject {
         }
     }
     
+    //WordsApi
     func fetchFromWordsApi(inputWord: String) {
         let headers = [
             "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com",
@@ -140,92 +143,99 @@ class vmDictionary : ObservableObject {
         }.resume()
     }
     
+    //Websters Dictionary
     func fetchFromWebsters(inputWord: String) {
         searchWord = inputWord
         
-        if let path = Bundle.main.path(forResource: "websters_dictionary", ofType: "json") {
-            do {
-                  let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                  let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                
-                if let jsonResult = jsonResult as? [String: Any], let def = jsonResult[inputWord.trim().lowercased()] as? String {
+        DispatchQueue.global().async {
+            if let path = Bundle.main.path(forResource: "websters_dictionary", ofType: "json") {
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                     
-                    var transformedDef = def
-                    transformedDef = transformedDef.replacingOccurrences(of: " 2.", with: " \n\n2.")
-                    transformedDef = transformedDef.replacingOccurrences(of: " 3.", with: " \n\n3.")
-                    transformedDef = transformedDef.replacingOccurrences(of: " 4.", with: " \n\n4.")
-                    transformedDef = transformedDef.replacingOccurrences(of: " 5.", with: " \n\n5.")
-                    transformedDef = transformedDef.replacingOccurrences(of: " 6.", with: " \n\n6.")
-                    transformedDef = transformedDef.replacingOccurrences(of: " 7.", with: " \n\n7.")
-                    transformedDef = transformedDef.replacingOccurrences(of: " 8.", with: " \n\n8.")
-                    transformedDef = transformedDef.replacingOccurrences(of: " 9.", with: " \n\n9.")
-                    transformedDef = transformedDef.replacingOccurrences(of: " 10.", with: " \n\n10.")
-                    
-                    transformedDef = transformedDef.replacingOccurrences(of: " -- ", with: " \n - ")
-                    
-                    print(transformedDef)
-                    DispatchQueue.main.async {
-                        self.webstersResponse = transformedDef
-                        self.isFetching = false
-                        self.definitionFound = true
+                    if let jsonResult = jsonResult as? [String: Any], let def = jsonResult[inputWord.trim().lowercased()] as? String {
+                        
+                        var transformedDef = def
+                        transformedDef = transformedDef.replacingOccurrences(of: " 2.", with: " \n\n2.")
+                        transformedDef = transformedDef.replacingOccurrences(of: " 3.", with: " \n\n3.")
+                        transformedDef = transformedDef.replacingOccurrences(of: " 4.", with: " \n\n4.")
+                        transformedDef = transformedDef.replacingOccurrences(of: " 5.", with: " \n\n5.")
+                        transformedDef = transformedDef.replacingOccurrences(of: " 6.", with: " \n\n6.")
+                        transformedDef = transformedDef.replacingOccurrences(of: " 7.", with: " \n\n7.")
+                        transformedDef = transformedDef.replacingOccurrences(of: " 8.", with: " \n\n8.")
+                        transformedDef = transformedDef.replacingOccurrences(of: " 9.", with: " \n\n9.")
+                        transformedDef = transformedDef.replacingOccurrences(of: " 10.", with: " \n\n10.")
+                        
+                        transformedDef = transformedDef.replacingOccurrences(of: " -- ", with: " \n - ")
+                        
+                        print(transformedDef)
+                        DispatchQueue.main.async {
+                            self.webstersResponse = transformedDef
+                            self.isFetching = false
+                            self.definitionFound = true
+                        }
+                        return
                     }
-                    return
-                }
-              } catch {
-                   // handle error
-                  DispatchQueue.main.async {
-                      self.isFetching = false
-                      self.definitionFound = false
+                  } catch {
+                       // handle error
+                      DispatchQueue.main.async {
+                          self.isFetching = false
+                          self.definitionFound = false
+                      }
+                      print(error)
+                      return
                   }
-                  print(error)
-                  return
-              }
-        }
-        
-        DispatchQueue.main.async {
-            self.isFetching = false
-            self.definitionFound = false
+            }
+            
+            DispatchQueue.main.async {
+                self.isFetching = false
+                self.definitionFound = false
+            }
         }
     }
     
+    //Fetching Tamil Dictionary
     func fetchFromTamil(inputWord: String) {
         searchWord = inputWord
         
-        if let path = Bundle.main.path(forResource: "TA_dictionary", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                
-                let tamilDict = try JSONDecoder().decode([TamilMeaning].self, from: data)
-                let item = tamilDict.filter {  $0.eng == inputWord }
-                if item.count > 0 {
-                    print(item.first!.tamil)
-                    DispatchQueue.main.async {
-                        self.tamilResponse = item.first!.tamil
-                        self.isFetching = false
-                        self.definitionFound = true
+        DispatchQueue.global().async {
+            if let path = Bundle.main.path(forResource: "TA_dictionary", ofType: "json") {
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                    
+                    let tamilDict = try JSONDecoder().decode([TamilMeaning].self, from: data)
+                    let item = tamilDict.filter {  $0.eng == inputWord }
+                    if item.count > 0 {
+                        print(item.first!.tamil)
+                        DispatchQueue.main.async {
+                            self.tamilResponse = item.first!.tamil
+                            self.isFetching = false
+                            self.definitionFound = true
+                        }
+                        return
                     }
+                    else {
+                        // word not found.. handle it accordingly
+                    }
+                } catch {
+                    // handle error
+                    DispatchQueue.main.async {
+                        self.isFetching = false
+                        self.definitionFound = false
+                    }
+                    print(error)
                     return
                 }
-                else {
-                    // word not found.. handle it accordingly
-                }
-            } catch {
-                // handle error
-                DispatchQueue.main.async {
-                    self.isFetching = false
-                    self.definitionFound = false
-                }
-                print(error)
-                return
             }
-        }
-        
-        DispatchQueue.main.async {
-            self.isFetching = false
-            self.definitionFound = false
+            
+            DispatchQueue.main.async {
+                self.isFetching = false
+                self.definitionFound = false
+            }
         }
     }
     
+    //OwlBot Dictionary
     func fetchFromOwlBot(inputWord: String) {
         let stringURL = "https://owlbot.info/api/v4/dictionary/\(inputWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))"
         guard let url = URL(string: stringURL) else {
